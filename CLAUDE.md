@@ -57,7 +57,7 @@ To identify an unmatched venue name, use the `/venues/N` link in its RLP results
 
 ## Repository context
 
-This directory is a git repository (branch `main`, no remote yet), kept as a public portfolio piece. `.gitignore` excludes `data/raw/`, `data/interim/` and `data/processed/team_matches.{parquet,csv}`: scraped pages, betting data and per-match rows with odds are not redistributed. Don't commit them or anything else holding per-match lines or odds; aggregate outputs (`validation_report.txt`, `data/processed/travel_model/`) are tracked. The README's "Data in this repository" section explains this to readers and links the dashboard.
+This directory is a git repository (branch `main`, remote `origin` = https://github.com/eddddddddddie/bears_travel, public), kept as a portfolio piece. `.gitignore` excludes `data/raw/`, `data/interim/` and `data/processed/team_matches.{parquet,csv}`: scraped pages, betting data and per-match rows with odds are not redistributed. Don't commit them or anything else holding per-match lines or odds; aggregate outputs (`validation_report.txt`, `data/processed/travel_model/`) are tracked. The README's "Data in this repository" section explains this to readers and links the dashboard.
 
 The Phase 2 dashboard is a claude.ai artifact (linked in the README) built from five JSON copies of the `travel_model/` tables. It does not update when `travel_model.py` reruns: the uploads have to be replaced.
 
