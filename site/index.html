@@ -316,7 +316,7 @@
   <main class="pb-main">
   <header class="pb-hero" id="top">
     <h1>Perth Bears travel impact</h1>
-    <p class="pb-lede">Between 1996 and 2026, a trip of 3,000 km or more changed the travelling team's match margin by <span class="v dash-skeleton" data-source="effects" data-field="estimate" data-where="model=travel_cost&amp;design=bands&amp;term=band_3000_6000" data-fmt="pts">—</span> points, compared with playing within 150 km of home. In a balanced 2027 draw, <span class="v dash-skeleton" data-source="proj2027" data-field="trips_over_3000km" data-where="team_id=perth_bears" data-fmt="int">—</span> of the Bears' <span class="v dash-skeleton" data-source="bears_opps" data-field="opponents" data-where="team_id=perth_bears" data-fmt="int">—</span> opponents are based 3,000 km or more from Perth. Those opponents incur the same cost when they play in Perth, so travel accounts for a gap of <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing" data-where="team_id=perth_bears" data-fmt="p1">—</span> points between the Bears' expected home and away margins. For a Sydney club the gap is <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing" data-where="team_id=sydney_roosters" data-fmt="p1">—</span> points.</p>
+    <p class="pb-lede">Between 1996 and 2026, a trip of 3,000 km or more changed the travelling team's match margin by <span class="v dash-skeleton" data-source="effects" data-field="estimate" data-where="model=travel_cost&amp;design=bands&amp;term=band_3000_6000" data-fmt="pts">—</span> points, compared with playing within 150 km of home. In a balanced 2027 draw, <span class="v dash-skeleton" data-source="proj2027" data-field="trips_over_3000km" data-where="team_id=perth_bears" data-fmt="int">—</span> of the Bears' <span class="v dash-skeleton" data-source="bears_opps" data-field="opponents" data-where="team_id=perth_bears" data-fmt="int">—</span> opponents are based 3,000 km or more from Perth. Those opponents face the same impact when they play in Perth, so travel accounts for a gap of <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing" data-where="team_id=perth_bears" data-fmt="p1">—</span> points between the Bears' expected home and away margins. For a Sydney club the gap is <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing" data-where="team_id=sydney_roosters" data-fmt="p1">—</span> points.</p>
   </header>
 
   <section class="pb-tiles" id="headline" aria-label="Perth Bears 2027 projection, balanced draw">
@@ -374,11 +374,11 @@
   <section class="pb-sec" id="cost">
     <span class="pb-loz">2. Impact of travel</span>
     <h2>Impact of travel by distance</h2>
-    <p>The next question is what that distance costs on the field. Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
+    <p>The next question is what impact that distance has on the field. Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-bands">
         <h3>Margin change by trip distance, 1996 to 2026</h3>
-        <p class="note">Trips of 150 to 1,000 km reduce the travelling team's margin, and the interval excludes zero. The estimates for 1,000 to 3,000 km are smaller and their intervals include zero. Trips of 3,000 km and over have the largest estimated cost, with a wide interval because few matches involve them.</p>
+        <p class="note">Trips of 150 to 1,000 km reduce the travelling team's margin, and the interval excludes zero. The estimates for 1,000 to 3,000 km are smaller and their intervals include zero. Trips of 3,000 km and over have the largest estimated impact, with a wide interval because few matches involve them.</p>
         <div class="pb-chart dash-skeleton" id="chart-bands" data-source="effects"></div>
       </div>
       <div class="pb-card" id="card-other">
@@ -404,7 +404,7 @@
       <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span><span><i class="dsh"></i>Long-term trend, <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade</span></div>
       <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv home_trend"></div>
     </div>
-    <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the impact of travel would produce. The travel model, fitted with a separate cost for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
+    <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the impact of travel would produce. The travel model, fitted with a separate impact for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-home-trend">
         <h3>Change in home margin per decade</h3>
@@ -413,7 +413,7 @@
       </div>
       <div class="pb-card" id="card-eras">
         <h3>Impact of travel by era</h3>
-        <p class="note">Points of margin for the travelling team, from one model with a cost for each distance band in each era, with the 95% interval and the number of matches with a trip in that band. Trips of 150 to 1,000 km cost <span class="v dash-skeleton" data-source="eras" data-field="estimate" data-where="term=band_150_1000&amp;era=1996 to 2009" data-fmt="pts">—</span> points before 2010 and less since. For trips of 3,000 km and over there are few matches after 2009, and the eras cannot be told apart (p = <span class="v dash-skeleton" data-source="eras" data-field="p_eras_equal" data-where="term=band_3000_6000&amp;era=1996 to 2009" data-fmt="p2">—</span> for equal costs).</p>
+        <p class="note">Points of margin for the travelling team, from one model with a separate impact for each distance band in each era, with the 95% interval and the number of matches with a trip in that band. Trips of 150 to 1,000 km changed the margin by <span class="v dash-skeleton" data-source="eras" data-field="estimate" data-where="term=band_150_1000&amp;era=1996 to 2009" data-fmt="pts">—</span> points before 2010 and less since. For trips of 3,000 km and over there are few matches after 2009, and the eras cannot be told apart (p = <span class="v dash-skeleton" data-source="eras" data-field="p_eras_equal" data-where="term=band_3000_6000&amp;era=1996 to 2009" data-fmt="p2">—</span> for equal impacts).</p>
         <div class="pb-tablebox">
           <table class="pb-table" id="table-eras" data-source="eras" data-row-key="term">
             <thead><tr><th data-field="label">Distance</th></tr></thead>
@@ -427,10 +427,10 @@
   <section class="pb-sec" id="market">
     <span class="pb-loz">4. Betting market</span>
     <h2>Travel in the betting market</h2>
-    <p>If travel has a cost, the betting market should already include it in the line. Closing lines from 2013 to 2026 are compared here with the results of the same matches, using the same distance bands.</p>
+    <p>If travel has an impact, the betting market should already include it in the line. Closing lines from 2013 to 2026 are compared here with the results of the same matches, using the same distance bands.</p>
     <div class="pb-card" id="card-market">
       <h3>Actual and market-priced impact of travel, 2013 to 2026</h3>
-      <p class="note">On matches with a closing line, the market prices all trips over 1,000 km at a similar cost. The difference between the actual and priced cost has a 95% interval that includes zero in <span class="v dash-skeleton" data-source="missed" data-field="crossing_zero" data-row="0" data-fmt="int">—</span> of <span class="v dash-skeleton" data-source="missed" data-field="bands" data-row="0" data-fmt="int">—</span> distance bands, so the closing line shows no measurable mispricing of travel.</p>
+      <p class="note">On matches with a closing line, the market allows for a similar impact on all trips over 1,000 km. The difference between the actual impact and the impact in the line has a 95% interval that includes zero in <span class="v dash-skeleton" data-source="missed" data-field="crossing_zero" data-row="0" data-fmt="int">—</span> of <span class="v dash-skeleton" data-source="missed" data-field="bands" data-row="0" data-fmt="int">—</span> distance bands, so the closing line shows no measurable mispricing of travel.</p>
       <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Actual result</span><span><i class="s1"></i>Priced by the closing line</span></div>
       <div class="pb-chart dash-skeleton" id="chart-market" data-source="effects"></div>
     </div>
@@ -451,7 +451,7 @@
   <section class="pb-sec" id="bears">
     <span class="pb-loz">6. 2027 outlook</span>
     <h2>Perth Bears 2027 outlook</h2>
-    <p>Applying the cost by distance to the distance from Perth to each opponent gives the Bears' expected travel effect in 2027. The projection assumes a balanced draw: each club plays every other club equally often, and each away game is played at the opponent's base. Under that assumption the impact of travel on a club's away games equals its gain when the same opponents travel to it, so the projected season total is zero for every club. Distance changes the difference between a club's home and away margins.</p>
+    <p>Applying the impact by distance to the distance from Perth to each opponent gives the Bears' expected travel effect in 2027. The projection assumes a balanced draw: each club plays every other club equally often, and each away game is played at the opponent's base. Under that assumption the impact of travel on a club's away games equals its gain when the same opponents travel to it, so the projected season total is zero for every club. Distance changes the difference between a club's home and away margins.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-swing">
         <h3>Home-away swing by club</h3>
@@ -463,12 +463,12 @@
       <h3>2027 travel by club</h3>
       <div class="pb-tablebox">
         <table class="pb-table" id="table-proj" data-source="proj2027" data-row-key="team_id">
-          <thead><tr><th data-field="team_name">Club</th><th data-field="mean_away_km">Average trip (km)</th><th data-field="trips_over_3000km">Opponents over 3,000 km</th><th data-field="away_cost_per_game">Cost per away game</th><th data-field="home_away_swing">Home-away swing</th></tr></thead>
+          <thead><tr><th data-field="team_name">Club</th><th data-field="mean_away_km">Average trip (km)</th><th data-field="trips_over_3000km">Opponents over 3,000 km</th><th data-field="away_cost_per_game">Impact per away game</th><th data-field="home_away_swing">Home-away swing</th></tr></thead>
           <tbody></tbody>
         </table>
       </div>
     </div>
-    <p>The projection above uses the impact of travel estimated from every season since 1996. Fitted on 2010 to 2026 matches only, the model gives the Bears <span class="v dash-skeleton" data-source="proj2027" data-field="away_cost_per_game_recent" data-where="team_id=perth_bears" data-fmt="pts">—</span> points per away game, a change of <span class="v dash-skeleton" data-source="proj2027" data-field="away_win_prob_change_recent" data-where="team_id=perth_bears" data-fmt="pct">—</span> in win probability in an evenly matched game, and a home-away swing of <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=perth_bears" data-fmt="p1">—</span> points, against <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=sydney_roosters" data-fmt="p1">—</span> for a Sydney club. The lower recent cost of short trips narrows the swing for east-coast clubs. The cost of trips of 3,000 km and over, which sets the Bears' figure, is not lower in the recent period, but that estimate rests on <span class="v dash-skeleton" data-source="long_recent" data-field="trips" data-row="0" data-fmt="int">—</span> matches since 2010, so the headline keeps the full period.</p>
+    <p>The projection above uses the impact of travel estimated from every season since 1996. Fitted on 2010 to 2026 matches only, the model gives the Bears <span class="v dash-skeleton" data-source="proj2027" data-field="away_cost_per_game_recent" data-where="team_id=perth_bears" data-fmt="pts">—</span> points per away game, a change of <span class="v dash-skeleton" data-source="proj2027" data-field="away_win_prob_change_recent" data-where="team_id=perth_bears" data-fmt="pct">—</span> in win probability in an evenly matched game, and a home-away swing of <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=perth_bears" data-fmt="p1">—</span> points, against <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=sydney_roosters" data-fmt="p1">—</span> for a Sydney club. The smaller recent impact of short trips narrows the swing for east-coast clubs. The impact of trips of 3,000 km and over, which sets the Bears' figure, is not lower in the recent period, but that estimate rests on <span class="v dash-skeleton" data-source="long_recent" data-field="trips" data-row="0" data-fmt="int">—</span> matches since 2010, so the headline keeps the full period.</p>
   </section>
 
   <section class="pb-sec" id="roads">
@@ -554,7 +554,7 @@
       </div>
       <div class="pb-tile">
         <span class="big dash-skeleton" data-source="fixture_summary" data-field="nights_away" data-where="scenario=proposed_fixture" data-fmt="int">—</span>
-        <span class="lab">Nights away from Perth, against <span class="v dash-skeleton" data-source="fixture_summary" data-field="nights_away" data-where="scenario=average_draw" data-fmt="int">—</span>: the cost of staying in the east between games</span>
+        <span class="lab">Nights away from Perth, against <span class="v dash-skeleton" data-source="fixture_summary" data-field="nights_away" data-where="scenario=average_draw" data-fmt="int">—</span>: the trade-off for staying in the east between games</span>
       </div>
     </section>
     <div class="pb-grid">
@@ -618,7 +618,7 @@
     <div class="pb-method">
       <p>Results for 1995 to 2026 come from Rugby League Project, and closing lines from AusSportsBetting. Travel distance is measured from each club's base to the venue, and time-zone offsets are taken at kick-off, including daylight saving. The model uses OLS with robust standard errors on <span class="v dash-skeleton" data-source="effects" data-field="n_matches" data-where="model=travel_cost&amp;design=bands&amp;term=elo_diff" data-fmt="int">—</span> matches. The market comparison uses <span class="v dash-skeleton" data-source="effects" data-field="n_matches" data-where="model=market_priced&amp;design=bands&amp;term=elo_diff" data-fmt="int">—</span> matches with a closing line.</p>
       <ul>
-        <li>Most trips over 3,000 km are between North Queensland and Auckland, or to Darwin. Few involve Perth, so the Bears' figure assumes a Perth trip costs the same as any other trip of that length.</li>
+        <li>Most trips over 3,000 km are between North Queensland and Auckland, or to Darwin. Few involve Perth, so the Bears' figure assumes a Perth trip has the same impact as any other trip of that length.</li>
         <li>The effect of a time-zone change cannot be estimated separately from distance, because nearly every time-zone crossing is a trip to or from New Zealand or Perth.</li>
         <li>The 2027 projection uses a balanced draw. Neutral venues, Magic Round and any Bears home games outside Perth are not included.</li>
         <li>The home advantage trend is a straight line through the regular-season home margin, without the model's adjustment for team strength. The era comparison splits each distance band into 1996 to 2009, 2010 to 2019 and 2022 to 2026 in one model.</li>
@@ -979,7 +979,7 @@
     hbars(el, sorted, {
       label: (r) => r.team_name, value: (r) => r.home_away_swing, fmt: F.p1, axisFmt: d3.format('d'),
       color: (r) => (r.team_id === 'perth_bears' ? C[0] : MUTED),
-      tipText: (r) => [`Swing ${F.p1(r.home_away_swing)} points`, `Cost per away game ${F.pts(r.away_cost_per_game)}`,
+      tipText: (r) => [`Swing ${F.p1(r.home_away_swing)} points`, `Impact per away game ${F.pts(r.away_cost_per_game)}`,
         `Average trip ${F.km(r.mean_away_km)} km`],
     });
   }

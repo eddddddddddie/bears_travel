@@ -7,7 +7,6 @@
   const STARTERS = [
     'What is the travel impact on the Bears per away game?',
     'Has home advantage fallen over time?',
-    'Do betting lines price long trips?',
     'How much would two-game road trips save?',
   ];
   const TABLE_NAMES = {
