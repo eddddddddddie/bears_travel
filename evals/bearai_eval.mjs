@@ -16,11 +16,11 @@ const mostHours = [...data('draw_2027_clubs')].sort((a, b) => b.travel_hours - a
 const mostKm = data('team_season_travel').filter((r) => !r.projected).sort((a, b) => b.km_return_home - a.km_return_home)[0];
 const reds1996 = one('perth_reds_1995_1997', (r) => r.season === 1996 && r.setting === 'away');
 
-// expect: [value, tolerance] pairs; signs are ignored (answers say "costs 4.3 points" as often as "-4.3").
+// expect: [value, tolerance] pairs; signs are ignored (answers say "4.3 points worse" as often as "-4.3").
 // words: regexes that must all match. none: the answer must not state this kind of figure at all.
 const CASES = [
-  { q: 'How many points per away game is travel projected to cost the Bears in 2027?', expect: [[club('perth_bears').away_cost_per_game, 0.06]] },
-  { q: 'What does a trip of 3,000 km or more cost the travelling team?', expect: [[effect('travel_cost', 'band_3000_6000'), 0.06]] },
+  { q: 'What is the projected travel impact on the Bears per away game in 2027, in points?', expect: [[club('perth_bears').away_cost_per_game, 0.06]] },
+  { q: 'What is the impact of a trip of 3,000 km or more on the travelling team?', expect: [[effect('travel_cost', 'band_3000_6000'), 0.06]] },
   { q: 'What is the Bears\' projected home-away swing from travel?', expect: [[club('perth_bears').home_away_swing, 0.06]] },
   { q: 'What is the home-away swing from travel for the Sydney Roosters?', expect: [[club('sydney_roosters').home_away_swing, 0.06]] },
   { q: 'How many of the Bears\' opponents are based 3,000 km or more from Perth?', expect: [[club('perth_bears').trips_over_3000km, 0]] },

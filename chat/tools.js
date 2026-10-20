@@ -66,12 +66,12 @@ export const TABLES = {
   },
   travel_cost_by_era: {
     rows: costByEra,
-    about: 'Cost of each distance band in three eras (bands_era design of travel_cost). ' + POINTS,
+    about: 'Travel impact of each distance band in three eras (bands_era design of travel_cost). ' + POINTS,
     columns: {
       term: 'Term id', label: 'Band', era: '1996 to 2009, 2010 to 2019 or 2022 to 2026',
       estimate: 'Points', ci_low: '95% interval, lower', ci_high: '95% interval, upper', p_value: 'p-value',
       trips: 'Matches with a trip in this band and era',
-      p_eras_equal: 'p-value of the test that the band\'s three era costs are equal',
+      p_eras_equal: 'p-value of the test that the band\'s three era estimates are equal',
     },
   },
   team_season_travel: {
@@ -87,8 +87,8 @@ export const TABLES = {
   projection_2027_clubs: {
     rows: projClubs,
     about: 'Projected 2027 travel effect per club in an 18-club competition with a balanced draw (every opponent home and away, away games at the opponent\'s base). '
-      + 'Opponents pay the same cost when they visit, so each club\'s season total is 0 by construction; the per-game cost and the home-away swing are the meaningful outputs. '
-      + 'Main columns use the 1996 to 2026 band costs; *_recent columns use the 2010 to 2026 fit.',
+      + 'Opponents face the same impact when they visit, so each club\'s season total is 0 by construction; the per-game impact and the home-away swing are the meaningful outputs. '
+      + 'Main columns use the 1996 to 2026 band estimates; *_recent columns use the 2010 to 2026 fit.',
     columns: {
       team_name: 'Club', mean_away_km: 'Average km to away opponents', mean_abs_tz_h: 'Average time-zone hours to away opponents',
       trips_over_3000km: 'Opponents based 3,000 km or more away',
@@ -102,7 +102,7 @@ export const TABLES = {
   },
   projection_2027_pairs: {
     rows: projPairs,
-    about: 'Every ordered pair of 2027 clubs: the trip from team to opponent\'s base, its band and projected cost. ' + POINTS,
+    about: 'Every ordered pair of 2027 clubs: the trip from team to opponent\'s base, its band and projected travel impact. ' + POINTS,
     columns: {
       team_name: 'Travelling club', opp_name: 'Opponent (host)', km: 'Great-circle km between bases',
       tz_shift_h: 'Time-zone shift, hours (positive = travelling east)', band: 'Distance band',

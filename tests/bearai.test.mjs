@@ -71,11 +71,11 @@ test('the schema lists exact values for short text columns', () => {
 
 test('FOLLOWUPS line is held back even when split across chunks', () => {
   const f = new FollowupFilter();
-  const text = 'The cost is -4.3 points.\n\nFOLLOWUPS: What about Melbourne? | Has it changed? | 3. And the Reds?';
+  const text = 'The impact is -4.3 points.\n\nFOLLOWUPS: What about Melbourne? | Has it changed? | 3. And the Reds?';
   let shown = '';
   for (let i = 0; i < text.length; i += 5) shown += f.push(text.slice(i, i + 5));
   const { rest, followups } = f.end();
-  assert.equal(shown + rest, 'The cost is -4.3 points.');
+  assert.equal(shown + rest, 'The impact is -4.3 points.');
   assert.deepEqual(followups, ['What about Melbourne?', 'Has it changed?', 'And the Reds?']);
 });
 

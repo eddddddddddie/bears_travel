@@ -5,7 +5,7 @@
   const API = '/api/chat';
   const MAX_EXCHANGES = 6;   // earlier question-answer pairs sent with a new question
   const STARTERS = [
-    'How much does travel cost the Bears per away game?',
+    'What is the travel impact on the Bears per away game?',
     'Has home advantage fallen over time?',
     'Do betting lines price long trips?',
     'How much would two-game road trips save?',
