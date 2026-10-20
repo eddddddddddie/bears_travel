@@ -1,0 +1,51 @@
+model,design,outcome,sample,term,estimate,std_error,ci_low,ci_high,p_value,n_matches,r2,label
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,elo_diff,1.0259,0.033748,0.95972,1.092,5.903e-203,5913,0.14874,per point of Elo difference
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000,-1.4168,0.49913,-2.395,-0.43849,0.0045331,5913,0.14874,"150 to 1,000 km"
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000,-0.39206,0.71482,-1.7931,1.009,0.58337,5913,0.14874,"1,000 to 2,000 km"
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000,-0.33039,0.71745,-1.7366,1.0758,0.64516,5913,0.14874,"2,000 to 3,000 km"
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000,-4.2872,1.8156,-7.8457,-0.72859,0.018213,5913,0.14874,"3,000 km and over"
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,rest_days,-0.083747,0.087637,-0.25551,0.088019,0.33927,5913,0.14874,per extra day of rest
+travel_cost,bands,margin,1996 to 2026 excl. 2020 and 2021,prior_load_1000km,0.025479,0.068125,-0.10804,0.159,0.7084,5913,0.14874,"per 1,000 km travelled in the previous 21 days"
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",elo_diff,1.0376,0.016242,1.0057,1.0694,0,2091,0.71668,per point of Elo difference
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",band_150_1000,-0.98449,0.20563,-1.3875,-0.58147,1.6863e-06,2091,0.71668,"150 to 1,000 km"
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",band_1000_2000,-1.6753,0.30025,-2.2638,-1.0868,2.4081e-08,2091,0.71668,"1,000 to 2,000 km"
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",band_2000_3000,-1.7967,0.3251,-2.4339,-1.1595,3.2628e-08,2091,0.71668,"2,000 to 3,000 km"
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",band_3000_6000,-1.7213,0.80259,-3.2943,-0.14824,0.03198,2091,0.71668,"3,000 km and over"
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,0.085017,0.037593,0.011337,0.1587,0.023726,2091,0.71668,per extra day of rest
+market_priced,bands,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,-0.0054071,0.026961,-0.058249,0.047435,0.84105,2091,0.71668,"per 1,000 km travelled in the previous 21 days"
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",elo_diff,1.0239,0.058876,0.90849,1.1393,9.7514e-68,2091,0.14016,per point of Elo difference
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",band_150_1000,-0.98872,0.839,-2.6331,0.65569,0.23862,2091,0.14016,"150 to 1,000 km"
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",band_1000_2000,-0.73927,1.1645,-3.0217,1.5432,0.52555,2091,0.14016,"1,000 to 2,000 km"
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",band_2000_3000,-0.65966,1.269,-3.1469,1.8276,0.60319,2091,0.14016,"2,000 to 3,000 km"
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",band_3000_6000,-3.489,3.8477,-11.03,4.0523,0.36452,2091,0.14016,"3,000 km and over"
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,-0.014298,0.14483,-0.29815,0.26956,0.92136,2091,0.14016,per extra day of rest
+travel_cost_line_era,bands,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,0.084978,0.11675,-0.14384,0.3138,0.46669,2091,0.14016,"per 1,000 km travelled in the previous 21 days"
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",band_150_1000,-0.0038358,0.8106,-1.5926,1.5849,0.99622,2091,0.0078204,"150 to 1,000 km"
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",band_1000_2000,0.93992,1.1133,-1.2421,3.122,0.39853,2091,0.0078204,"1,000 to 2,000 km"
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",band_2000_3000,1.1364,1.2383,-1.2907,3.5635,0.35878,2091,0.0078204,"2,000 to 3,000 km"
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",band_3000_6000,-1.7454,3.8601,-9.311,5.8203,0.65115,2091,0.0078204,"3,000 km and over"
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,-0.10099,0.13693,-0.36937,0.16738,0.46079,2091,0.0078204,per extra day of rest
+market_missed,bands,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,0.090004,0.11141,-0.12836,0.30837,0.41918,2091,0.0078204,"per 1,000 km travelled in the previous 21 days"
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,elo_diff,1.0258,0.033773,0.95964,1.092,1.2133e-202,5913,0.14786,per point of Elo difference
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,km_1000,-1.0997,0.41893,-1.9208,-0.27856,0.0086674,5913,0.14786,"per 1,000 km"
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,tz_east_h,1.0783,0.57681,-0.052185,2.2089,0.061554,5913,0.14786,per hour east
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,tz_west_h,1.1895,0.60395,0.0057393,2.3732,0.048899,5913,0.14786,per hour west
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,rest_days,-0.081585,0.087628,-0.25333,0.090164,0.35184,5913,0.14786,per extra day of rest
+travel_cost,linear,margin,1996 to 2026 excl. 2020 and 2021,prior_load_1000km,0.026492,0.07162,-0.11388,0.16686,0.71146,5913,0.14786,"per 1,000 km travelled in the previous 21 days"
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",elo_diff,1.0423,0.016261,1.0105,1.0742,0,2091,0.71926,per point of Elo difference
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",km_1000,-1.1692,0.18686,-1.5354,-0.80292,3.9294e-10,2091,0.71926,"per 1,000 km"
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_east_h,-0.14193,0.24379,-0.61974,0.33588,0.56044,2091,0.71926,per hour east
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_west_h,1.0951,0.26822,0.56942,1.6208,4.4468e-05,2091,0.71926,per hour west
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,0.086248,0.037263,0.013213,0.15928,0.020637,2091,0.71926,per extra day of rest
+market_priced,linear,-team_line_close,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,-0.048656,0.02784,-0.10322,0.0059093,0.080515,2091,0.71926,"per 1,000 km travelled in the previous 21 days"
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",elo_diff,1.0276,0.059049,0.91185,1.1433,7.9199e-68,2091,0.14093,per point of Elo difference
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",km_1000,-1.3741,0.71659,-2.7786,0.030341,0.055159,2091,0.14093,"per 1,000 km"
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_east_h,1.0297,0.98564,-0.90215,2.9615,0.29618,2091,0.14093,per hour east
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_west_h,1.6817,1.0649,-0.40552,3.7689,0.1143,2091,0.14093,per hour west
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,-0.013135,0.1447,-0.29674,0.27047,0.92767,2091,0.14093,per extra day of rest
+travel_cost_line_era,linear,margin,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,0.064596,0.12641,-0.18317,0.31236,0.60936,2091,0.14093,"per 1,000 km travelled in the previous 21 days"
+market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",km_1000,-0.20478,0.68341,-1.5442,1.1347,0.76444,2091,0.0078082,"per 1,000 km"
+market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_east_h,1.1626,0.94904,-0.69751,3.0227,0.22058,2091,0.0078082,per hour east
+market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_west_h,0.59804,1.0309,-1.4226,2.6186,0.56185,2091,0.0078082,per hour west
+market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,-0.10117,0.13714,-0.36997,0.16763,0.46069,2091,0.0078082,per extra day of rest
+market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,0.11208,0.12116,-0.1254,0.34955,0.35497,2091,0.0078082,"per 1,000 km travelled in the previous 21 days"

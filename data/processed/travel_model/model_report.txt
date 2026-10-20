@@ -1,0 +1,83 @@
+PHASE 2 TRAVEL MODEL REPORT
+Points of margin for the travelling team, 95% intervals (HC1). Negative = travel costs the team.
+Matches: travel cost 5913; line era 2091
+
+term                                                    actual (all seasons)         actual (line era)          priced by market          missed by market
+150 to 1,000 km                                       -1.42 (-2.40 to -0.44)    -0.99 (-2.63 to +0.66)    -0.98 (-1.39 to -0.58)    -0.00 (-1.59 to +1.58)
+1,000 to 2,000 km                                     -0.39 (-1.79 to +1.01)    -0.74 (-3.02 to +1.54)    -1.68 (-2.26 to -1.09)    +0.94 (-1.24 to +3.12)
+2,000 to 3,000 km                                     -0.33 (-1.74 to +1.08)    -0.66 (-3.15 to +1.83)    -1.80 (-2.43 to -1.16)    +1.14 (-1.29 to +3.56)
+3,000 km and over                                     -4.29 (-7.85 to -0.73)   -3.49 (-11.03 to +4.05)    -1.72 (-3.29 to -0.15)    -1.75 (-9.31 to +5.82)
+per 1,000 km                                          -1.10 (-1.92 to -0.28)    -1.37 (-2.78 to +0.03)    -1.17 (-1.54 to -0.80)    -0.20 (-1.54 to +1.13)
+per hour east                                         +1.08 (-0.05 to +2.21)    +1.03 (-0.90 to +2.96)    -0.14 (-0.62 to +0.34)    +1.16 (-0.70 to +3.02)
+per hour west                                         +1.19 (+0.01 to +2.37)    +1.68 (-0.41 to +3.77)    +1.10 (+0.57 to +1.62)    +0.60 (-1.42 to +2.62)
+per extra day of rest                                 -0.08 (-0.26 to +0.09)    -0.01 (-0.30 to +0.27)    +0.09 (+0.01 to +0.16)    -0.10 (-0.37 to +0.17)
+per 1,000 km travelled in the previous 21 days        +0.03 (-0.11 to +0.16)    +0.08 (-0.14 to +0.31)    -0.01 (-0.06 to +0.05)    +0.09 (-0.13 to +0.31)
+per point of Elo difference                           +1.03 (+0.96 to +1.09)    +1.02 (+0.91 to +1.14)    +1.04 (+1.01 to +1.07)                       n/a
+
+Common terms (rest, prior load, Elo) are from the bands design; the linear design gives similar values.
+The linear design is a sensitivity check: time zone and distance cannot be separated in this data.
+
+Home advantage by season: raw designated-home margin and the home-ground part left after travel, rest and Elo:
+ season  matches  raw_home_margin  home_ground_adv
+   1995      229             5.50              NaN
+   1996      223             5.33             4.35
+   1997      237             5.62             4.67
+   1998      253             5.00             4.49
+   1999      213             4.21             3.80
+   2000      191             7.32             6.45
+   2001      191             4.51             3.55
+   2002      189             5.12             4.45
+   2003      189             2.19             1.31
+   2004      189             5.38             4.71
+   2005      189             5.41             4.51
+   2006      189             2.11             1.37
+   2007      201             5.83             5.11
+   2008      201             5.17             4.61
+   2009      201             4.08             3.39
+   2010      201             4.41             3.74
+   2011      201             3.58             2.72
+   2012      201             2.36             1.66
+   2013      201             4.08             3.50
+   2014      201             4.18             3.37
+   2015      201             3.72             2.67
+   2016      201             2.00             1.51
+   2017      201             0.51            -0.56
+   2018      201             2.45             1.66
+   2019      201             3.88             3.14
+   2020      169             2.54              NaN
+   2021      201             1.46              NaN
+   2022      201             2.75             2.03
+   2023      213             2.60             1.65
+   2024      213             2.90             2.08
+   2025      213             3.95             3.29
+   2026      213             0.09            -0.84
+
+Projected 2027 travel effect by club (balanced draw, away games at the opponent's base):
+            team_id  mean_away_km  mean_abs_tz_h  trips_over_3000km  away_cost_per_game  home_away_swing  away_win_prob_change
+        perth_bears      3425.065          2.259                 16              -4.054            8.109                -0.094
+           warriors      2479.369          2.172                  2              -0.796            1.592                -0.019
+          north_qld      1806.641          0.377                  2              -0.847            1.693                -0.020
+          melbourne      1126.674          0.290                  0              -1.044            2.088                -0.024
+           dolphins      1001.622          0.377                  1              -1.234            2.469                -0.029
+           brisbane       980.878          0.377                  1              -1.234            2.469                -0.029
+         gold_coast       948.557          0.377                  1              -1.234            2.469                -0.029
+           canberra       762.152          0.290                  1              -1.461            2.923                -0.034
+          newcastle       658.356          0.290                  1              -0.711            1.423                -0.017
+            penrith       628.483          0.290                  1              -0.711            1.423                -0.017
+           cronulla       625.071          0.290                  1              -0.711            1.423                -0.017
+              manly       620.452          0.290                  1              -0.711            1.423                -0.017
+st_george_illawarra       620.432          0.290                  1              -0.711            1.423                -0.017
+    sydney_roosters       619.229          0.290                  1              -0.711            1.423                -0.017
+       south_sydney       618.739          0.290                  1              -0.711            1.423                -0.017
+         parramatta       618.631          0.290                  1              -0.711            1.423                -0.017
+         canterbury       618.551          0.290                  1              -0.711            1.423                -0.017
+       wests_tigers       617.325          0.290                  1              -0.711            1.423                -0.017
+
+Western Reds 1995 to 1997 against Elo:
+ season      setting  matches  mean_margin  mean_margin_vs_elo  mean_km  mean_tz_shift_h
+   1995         away       11       -17.00               -6.55  3524.71             2.18
+   1995 home (Perth)       11        -0.09               -1.98     0.00             0.00
+   1996         away       10       -10.50               -2.74  3313.69             2.00
+   1996 home (Perth)       11        -0.18                2.20     0.00             0.00
+   1997         away        9       -14.67               -7.35  3410.28             2.39
+   1997 home (Perth)        9        -0.33               -1.31     0.22             0.00

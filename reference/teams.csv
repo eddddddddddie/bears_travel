@@ -1,0 +1,30 @@
+team_id,display_name,aliases,first_season,last_season,base_name,lat,lon,tz
+brisbane,Brisbane Broncos,Brisbane|Brisbane Broncos|Broncos,1995,2026,Red Hill / Lang Park,-27.4648,153.0095,Australia/Brisbane
+canberra,Canberra Raiders,Canberra|Canberra Raiders|Raiders,1995,2026,Canberra Stadium,-35.2501,149.1023,Australia/Sydney
+canterbury,Canterbury-Bankstown Bulldogs,Canterbury|Sydney Bulldogs|Canterbury Bulldogs|Canterbury-Bankstown Bulldogs|Canterbury Bankstown|Canterbury Bankstown Bulldogs|Bulldogs,1995,2026,Belmore,-33.9181,151.0886,Australia/Sydney
+cronulla,Cronulla-Sutherland Sharks,Cronulla|Cronulla Sharks|Cronulla-Sutherland Sharks|Cronulla Sutherland|Cronulla Sutherland Sharks|Sharks,1995,2026,Shark Park,-34.0445,151.1342,Australia/Sydney
+dolphins,Dolphins,Dolphins|Redcliffe Dolphins|The Dolphins,2023,2026,Redcliffe,-27.2367,153.1118,Australia/Brisbane
+gold_coast,Gold Coast Titans,Gold Coast|Gold Coast Titans|Titans,2007,2026,Robina,-28.0789,153.3797,Australia/Brisbane
+gold_coast_chargers,Gold Coast Chargers,Gold Coast|Gold Coast Chargers|Gold Coast Seagulls,1995,1998,Carrara,-28.0050,153.3660,Australia/Brisbane
+manly,Manly-Warringah Sea Eagles,Manly|Manly Sea Eagles|Manly Warringah|Manly-Warringah|Manly Warringah Sea Eagles|Manly-Warringah Sea Eagles|Sea Eagles,1995,2026,Brookvale,-33.7676,151.2648,Australia/Sydney
+northern_eagles,Northern Eagles,Northern Eagles|Nth Eagles,2000,2002,Brookvale,-33.7676,151.2648,Australia/Sydney
+melbourne,Melbourne Storm,Melbourne|Melbourne Storm|Storm,1998,2026,AAMI Park,-37.8251,144.9836,Australia/Melbourne
+newcastle,Newcastle Knights,Newcastle|Newcastle Knights|Knights,1995,2026,Newcastle,-32.9187,151.7268,Australia/Sydney
+north_qld,North Queensland Cowboys,North Qld|North Queensland|Nth Queensland|North Queensland Cowboys|Cowboys|North QLD Cowboys,1995,2026,Townsville,-19.2593,146.8188,Australia/Brisbane
+warriors,New Zealand Warriors,Warriors|New Zealand|New Zealand Warriors|NZ Warriors|Auckland|Auckland Warriors,1995,2026,Mt Smart (Auckland),-36.9183,174.8126,Pacific/Auckland
+parramatta,Parramatta Eels,Parramatta|Parramatta Eels|Eels,1995,2026,Parramatta,-33.8075,151.0035,Australia/Sydney
+penrith,Penrith Panthers,Penrith|Penrith Panthers|Panthers,1995,2026,Penrith,-33.7537,150.6970,Australia/Sydney
+south_sydney,South Sydney Rabbitohs,South Sydney|Souths|South Sydney Rabbitohs|Rabbitohs,1995,2026,Redfern,-33.8920,151.2050,Australia/Sydney
+st_george_illawarra,St George Illawarra Dragons,St Geo Illa|St George Illawarra|St. George Illawarra|St George Illawarra Dragons|St. George Illawarra Dragons|St George Illa|St. Geo Illa|St George Dragons,1999,2026,Kogarah,-33.9667,151.1325,Australia/Sydney
+st_george,St George Dragons,St George|St. George|St George Dragons,1995,1998,Kogarah,-33.9667,151.1325,Australia/Sydney
+illawarra,Illawarra Steelers,Illawarra|Illawarra Steelers,1995,1998,Wollongong,-34.4278,150.9034,Australia/Sydney
+sydney_roosters,Sydney Roosters,Sydney|Sydney Roosters|Sydney City|Sydney City Roosters|Eastern Suburbs|Roosters,1995,2026,Moore Park,-33.8891,151.2247,Australia/Sydney
+wests_tigers,Wests Tigers,Wests Tigers,2000,2026,Concord,-33.8565,151.1053,Australia/Sydney
+balmain,Balmain Tigers,Balmain|Balmain Tigers|Sydney Tigers,1995,1999,Leichhardt,-33.8730,151.1610,Australia/Sydney
+western_suburbs,Western Suburbs Magpies,Western Suburbs|Wests|Western Suburbs Magpies|Magpies,1995,1999,Campbelltown,-34.0631,150.8236,Australia/Sydney
+north_sydney,North Sydney Bears,North Sydney|Nth Sydney|North Sydney Bears,1995,1999,North Sydney Oval,-33.8390,151.2080,Australia/Sydney
+adelaide,Adelaide Rams,Adelaide|Adelaide Rams,1997,1998,Adelaide,-34.9073,138.5703,Australia/Adelaide
+hunter,Hunter Mariners,Hunter|Hunter Mariners,1997,1997,Newcastle,-32.9187,151.7268,Australia/Sydney
+perth_reds,Western Reds / Perth Reds,Western Reds|Perth Reds|Perth|Western,1995,1997,WACA (Perth),-31.9600,115.8794,Australia/Perth
+south_qld,South Queensland Crushers,South Queensland|South Qld|Sth Queensland|South Queensland Crushers|Crushers,1995,1997,Lang Park,-27.4648,153.0095,Australia/Brisbane
+perth_bears,Perth Bears,Perth|Perth Bears|Bears,2027,2099,Perth,-31.9512,115.8890,Australia/Perth

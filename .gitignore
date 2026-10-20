@@ -1,0 +1,19 @@
+# Source data is not redistributed: scraped Rugby League Project pages, the
+# AusSportsBetting workbook, and anything holding per-match results or odds.
+# Rebuild it locally with the scripts (see README, Run order).
+data/raw/
+data/interim/
+data/processed/team_matches.parquet
+data/processed/team_matches.csv
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# Local and OS files
+.env
+.DS_Store

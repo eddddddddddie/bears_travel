@@ -1,0 +1,193 @@
+PHASE 1 VALIDATION REPORT
+Scraped rows: 6591; excluded rounds: 67; dropped without scores: 6; matches kept: 6518
+Matches without exactly two team rows: 0
+Unmatched team names: 0 (see unmatched_teams.csv)
+Unmatched venue names: 0 covering 0 matches (see unmatched_venues.csv)
+Team rows with imputed kick-off time: 1708
+Team rows with weekday mismatch between listed day and parsed date: 0
+Team rows using an unverified base override: 161
+ASB rows: 3634; matches joined to a line: 3634; score mismatches RLP vs ASB: 2
+ASB team names not resolved: none
+
+Elo parameters: K 0.0556, home advantage 4.49 points, season carry 0.595, expansion start -0.73 points; fitted on 1996 to 2012
+  MAE of elo_expected_margin, burn-in 1995 to 1995: 14.25 points over 229 matches; mean margin_vs_elo for the designated home side +0.84
+  MAE of elo_expected_margin, fit 1996 to 2012: 13.45 points over 3459 matches; mean margin_vs_elo for the designated home side -0.03
+  MAE of elo_expected_margin, holdout 2013 on: 13.63 points over 2830 matches; mean margin_vs_elo for the designated home side -2.06
+  Matches after 2012 with a closing line: 2465; correlation of elo_expected_margin with -team_line_close: 0.858
+  On those matches: MAE Elo 13.60, MAE closing line 13.06, mean Elo minus line expectation 2.23
+
+Closing line coverage by season (share of team rows):
+season
+1995    0.00
+1996    0.00
+1997    0.00
+1998    0.00
+1999    0.00
+2000    0.00
+2001    0.00
+2002    0.00
+2003    0.00
+2004    0.00
+2005    0.00
+2006    0.00
+2007    0.00
+2008    0.00
+2009    0.00
+2010    0.00
+2011    0.00
+2012    0.00
+2013    0.98
+2014    1.00
+2015    1.00
+2016    1.00
+2017    1.00
+2018    1.00
+2019    1.00
+2020    1.00
+2021    1.00
+2022    1.00
+2023    1.00
+2024    0.30
+2025    0.00
+2026    1.00
+
+Time zone shift from base, team rows by team (hours, count):
+            team_id  shift  rows
+           adelaide   -1.5     1
+           adelaide   -0.5     2
+           adelaide    0.5    17
+           adelaide    1.5     1
+            balmain   -2.0     1
+            balmain   -1.0     2
+            balmain   -0.5     1
+            balmain    2.0     4
+           brisbane   -2.0     4
+           brisbane   -0.5     3
+           brisbane    1.0    45
+           brisbane    2.0    21
+           brisbane    3.0     4
+           brisbane    6.0     1
+           canberra   -2.0     3
+           canberra   -1.0    20
+           canberra   -0.5     5
+           canberra    2.0    27
+           canberra    5.0     1
+         canterbury   -3.0     3
+         canterbury   -2.0     1
+         canterbury   -1.0     5
+         canterbury   -0.5     4
+         canterbury    1.0     1
+         canterbury    2.0    28
+         canterbury    5.0     1
+           cronulla   -2.0     7
+           cronulla   -1.0     8
+           cronulla   -0.5     3
+           cronulla    2.0    23
+           cronulla    5.0     1
+           dolphins   -2.0     3
+           dolphins   -0.5     2
+           dolphins    1.0     5
+           dolphins    2.0     5
+         gold_coast   -2.0     1
+         gold_coast   -0.5     2
+         gold_coast    1.0    28
+         gold_coast    2.0    13
+         gold_coast    3.0     3
+gold_coast_chargers   -2.0     1
+gold_coast_chargers   -0.5     1
+gold_coast_chargers    1.0     3
+gold_coast_chargers    2.0     1
+             hunter   -2.0     1
+             hunter   -0.5     1
+             hunter    2.0     1
+          illawarra   -2.0     1
+          illawarra   -0.5     1
+          illawarra    2.0     3
+              manly   -2.0     6
+              manly   -1.0     9
+              manly   -0.5     1
+              manly    2.0    22
+              manly    5.0     1
+          melbourne   -3.0     2
+          melbourne   -2.0     5
+          melbourne   -1.0    12
+          melbourne   -0.5     6
+          melbourne    2.0    25
+          newcastle   -3.0     1
+          newcastle   -2.0     3
+          newcastle   -1.0     9
+          newcastle   -0.5     1
+          newcastle    1.0     1
+          newcastle    2.0    28
+          newcastle    5.0     1
+          north_qld   -2.0     3
+          north_qld   -0.5     6
+          north_qld    0.5     1
+          north_qld    1.0    29
+          north_qld    2.0    22
+          north_qld    3.0     1
+          north_qld    6.0     1
+       north_sydney   -2.0     1
+       north_sydney   -1.0     1
+       north_sydney   -0.5     1
+       north_sydney    2.0     2
+    northern_eagles   -1.0     1
+    northern_eagles    2.0     3
+         parramatta   -2.0     1
+         parramatta   -1.0    12
+         parramatta   -0.5    11
+         parramatta    2.0    23
+            penrith   -2.0     2
+            penrith   -1.0    10
+            penrith   -0.5     6
+            penrith    1.0     1
+            penrith    2.0    23
+            penrith    5.0     1
+         perth_reds    2.0    26
+         perth_reds    2.5     1
+         perth_reds    3.0     1
+         perth_reds    4.0     2
+          south_qld   -2.0     1
+          south_qld    1.0     2
+          south_qld    2.0     1
+       south_sydney   -3.0     2
+       south_sydney   -2.0    12
+       south_sydney   -1.0     6
+       south_sydney    2.0    18
+       south_sydney    5.0     1
+          st_george   -2.0     2
+          st_george   -0.5     2
+          st_george    2.0     2
+st_george_illawarra   -1.0    14
+st_george_illawarra    2.0    18
+st_george_illawarra    5.0     1
+    sydney_roosters   -2.0     3
+    sydney_roosters   -1.0     9
+    sydney_roosters   -0.5     5
+    sydney_roosters    1.0     2
+    sydney_roosters    2.0    22
+    sydney_roosters    5.0     1
+           warriors   -5.0     1
+           warriors   -4.0     9
+           warriors   -3.0    11
+           warriors   -2.5     2
+           warriors   -2.0   324
+           warriors   -1.0     5
+           warriors    1.0     1
+           warriors    3.0     1
+    western_suburbs   -2.0     2
+    western_suburbs   -0.5     1
+    western_suburbs    2.0     2
+       wests_tigers   -1.0    12
+       wests_tigers    1.0     1
+       wests_tigers    2.0    21
+
+Days rest summary (excluding season openers):
+count    12510.00
+mean         7.80
+std          3.36
+min          3.96
+25%          6.15
+50%          7.00
+75%          8.00
+max         72.98

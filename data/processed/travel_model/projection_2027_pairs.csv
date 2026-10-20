@@ -1,0 +1,307 @@
+team_id,team_name,opp_id,opp_name,km,tz_shift_h,band,away_cost,home_gain
+brisbane,Brisbane Broncos,canberra,Canberra Raiders,941.59,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,canterbury,Canterbury-Bankstown Bulldogs,740.66,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,cronulla,Cronulla-Sutherland Sharks,753.21,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,dolphins,Dolphins,27.302,0,within 150 km,0,-0
+brisbane,Brisbane Broncos,gold_coast,Gold Coast Titans,77.391,0,within 150 km,0,-0
+brisbane,Brisbane Broncos,manly,Manly-Warringah Sea Eagles,720.41,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,melbourne,Melbourne Storm,1374.1,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+brisbane,Brisbane Broncos,newcastle,Newcastle Knights,618.83,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,north_qld,North Queensland Cowboys,1109.4,0,"1,000 to 2,000 km",-0.39206,0.39206
+brisbane,Brisbane Broncos,parramatta,Parramatta Eels,730.87,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,penrith,Penrith Panthers,733.41,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,perth_bears,Perth Bears,3602.1,-2,"3,000 km and over",-4.2872,4.2872
+brisbane,Brisbane Broncos,south_sydney,South Sydney Rabbitohs,735.17,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,st_george_illawarra,St George Illawarra Dragons,744.86,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,sydney_roosters,Sydney Roosters,734.42,0.18519,"150 to 1,000 km",-1.4168,1.4168
+brisbane,Brisbane Broncos,warriors,New Zealand Warriors,2297.6,2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+brisbane,Brisbane Broncos,wests_tigers,Wests Tigers,733.64,0.18519,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,brisbane,Brisbane Broncos,941.59,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,canterbury,Canterbury-Bankstown Bulldogs,234.52,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,cronulla,Cronulla-Sutherland Sharks,229.16,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,dolphins,Dolphins,968.89,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,gold_coast,Gold Coast Titans,894.01,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,manly,Manly-Warringah Sea Eagles,257.74,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,melbourne,Melbourne Storm,466.16,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,newcastle,Newcastle Knights,354.4,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,north_qld,North Queensland Cowboys,1792.2,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+canberra,Canberra Raiders,parramatta,Parramatta Eels,236.77,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,penrith,Penrith Panthers,221.45,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,perth_bears,Perth Bears,3083.5,-2.1852,"3,000 km and over",-4.2872,4.2872
+canberra,Canberra Raiders,south_sydney,South Sydney Rabbitohs,244.67,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,st_george_illawarra,St George Illawarra Dragons,234.27,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,sydney_roosters,Sydney Roosters,246.3,0,"150 to 1,000 km",-1.4168,1.4168
+canberra,Canberra Raiders,warriors,New Zealand Warriors,2310.8,2,"2,000 to 3,000 km",-0.33039,0.33039
+canberra,Canberra Raiders,wests_tigers,Wests Tigers,240.12,0,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,brisbane,Brisbane Broncos,740.66,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,canberra,Canberra Raiders,234.52,0,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,cronulla,Cronulla-Sutherland Sharks,14.67,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,dolphins,Dolphins,767.71,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,gold_coast,Gold Coast Titans,684.97,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,manly,Manly-Warringah Sea Eagles,23.342,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,melbourne,Melbourne Storm,700.67,0,"150 to 1,000 km",-1.4168,1.4168
+canterbury,Canterbury-Bankstown Bulldogs,newcastle,Newcastle Knights,125.93,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,north_qld,North Queensland Cowboys,1683.9,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+canterbury,Canterbury-Bankstown Bulldogs,parramatta,Parramatta Eels,14.594,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,penrith,Penrith Panthers,40.526,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,perth_bears,Perth Bears,3276.3,-2.1852,"3,000 km and over",-4.2872,4.2872
+canterbury,Canterbury-Bankstown Bulldogs,south_sydney,South Sydney Rabbitohs,11.127,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,st_george_illawarra,St George Illawarra Dragons,6.7531,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,sydney_roosters,Sydney Roosters,12.968,0,within 150 km,0,-0
+canterbury,Canterbury-Bankstown Bulldogs,warriors,New Zealand Warriors,2169.8,2,"2,000 to 3,000 km",-0.33039,0.33039
+canterbury,Canterbury-Bankstown Bulldogs,wests_tigers,Wests Tigers,7.0209,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,brisbane,Brisbane Broncos,753.21,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+cronulla,Cronulla-Sutherland Sharks,canberra,Canberra Raiders,229.16,0,"150 to 1,000 km",-1.4168,1.4168
+cronulla,Cronulla-Sutherland Sharks,canterbury,Canterbury-Bankstown Bulldogs,14.67,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,dolphins,Dolphins,780.22,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+cronulla,Cronulla-Sutherland Sharks,gold_coast,Gold Coast Titans,696.91,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+cronulla,Cronulla-Sutherland Sharks,manly,Manly-Warringah Sea Eagles,33.065,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,melbourne,Melbourne Storm,694.97,0,"150 to 1,000 km",-1.4168,1.4168
+cronulla,Cronulla-Sutherland Sharks,newcastle,Newcastle Knights,136.72,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,north_qld,North Queensland Cowboys,1698.5,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+cronulla,Cronulla-Sutherland Sharks,parramatta,Parramatta Eels,28.981,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,penrith,Penrith Panthers,51.709,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,perth_bears,Perth Bears,3279,-2.1852,"3,000 km and over",-4.2872,4.2872
+cronulla,Cronulla-Sutherland Sharks,south_sydney,South Sydney Rabbitohs,18.171,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,st_george_illawarra,St George Illawarra Dragons,8.6524,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,sydney_roosters,Sydney Roosters,19.19,0,within 150 km,0,-0
+cronulla,Cronulla-Sutherland Sharks,warriors,New Zealand Warriors,2162,2,"2,000 to 3,000 km",-0.33039,0.33039
+cronulla,Cronulla-Sutherland Sharks,wests_tigers,Wests Tigers,21.074,0,within 150 km,0,-0
+dolphins,Dolphins,brisbane,Brisbane Broncos,27.302,0,within 150 km,0,-0
+dolphins,Dolphins,canberra,Canberra Raiders,968.89,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,canterbury,Canterbury-Bankstown Bulldogs,767.71,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,cronulla,Cronulla-Sutherland Sharks,780.22,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,gold_coast,Gold Coast Titans,97.294,0,within 150 km,0,-0
+dolphins,Dolphins,manly,Manly-Warringah Sea Eagles,747.41,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,melbourne,Melbourne Storm,1401,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+dolphins,Dolphins,newcastle,Newcastle Knights,645.69,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,north_qld,North Queensland Cowboys,1095,0,"1,000 to 2,000 km",-0.39206,0.39206
+dolphins,Dolphins,parramatta,Parramatta Eels,757.98,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,penrith,Penrith Panthers,760.62,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,perth_bears,Perth Bears,3619.3,-2,"3,000 km and over",-4.2872,4.2872
+dolphins,Dolphins,south_sydney,South Sydney Rabbitohs,762.17,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,st_george_illawarra,St George Illawarra Dragons,771.89,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,sydney_roosters,Sydney Roosters,761.41,0.18519,"150 to 1,000 km",-1.4168,1.4168
+dolphins,Dolphins,warriors,New Zealand Warriors,2302.9,2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+dolphins,Dolphins,wests_tigers,Wests Tigers,760.7,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,brisbane,Brisbane Broncos,77.391,0,within 150 km,0,-0
+gold_coast,Gold Coast Titans,canberra,Canberra Raiders,894.01,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,canterbury,Canterbury-Bankstown Bulldogs,684.97,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,cronulla,Cronulla-Sutherland Sharks,696.91,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,dolphins,Dolphins,97.294,0,within 150 km,0,-0
+gold_coast,Gold Coast Titans,manly,Manly-Warringah Sea Eagles,663.89,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,melbourne,Melbourne Storm,1335.9,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+gold_coast,Gold Coast Titans,newcastle,Newcastle Knights,560.95,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,north_qld,North Queensland Cowboys,1186.1,0,"1,000 to 2,000 km",-0.39206,0.39206
+gold_coast,Gold Coast Titans,parramatta,Parramatta Eels,676.04,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,penrith,Penrith Panthers,680.85,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,perth_bears,Perth Bears,3617.4,-2,"3,000 km and over",-4.2872,4.2872
+gold_coast,Gold Coast Titans,south_sydney,South Sydney Rabbitohs,678.76,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,st_george_illawarra,St George Illawarra Dragons,688.76,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,sydney_roosters,Sydney Roosters,677.88,0.18519,"150 to 1,000 km",-1.4168,1.4168
+gold_coast,Gold Coast Titans,warriors,New Zealand Warriors,2230.4,2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+gold_coast,Gold Coast Titans,wests_tigers,Wests Tigers,677.99,0.18519,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,brisbane,Brisbane Broncos,720.41,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,canberra,Canberra Raiders,257.74,0,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,canterbury,Canterbury-Bankstown Bulldogs,23.342,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,cronulla,Cronulla-Sutherland Sharks,33.065,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,dolphins,Dolphins,747.41,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,gold_coast,Gold Coast Titans,663.89,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,melbourne,Melbourne Storm,723.9,0,"150 to 1,000 km",-1.4168,1.4168
+manly,Manly-Warringah Sea Eagles,newcastle,Newcastle Knights,103.69,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,north_qld,North Queensland Cowboys,1672.3,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+manly,Manly-Warringah Sea Eagles,parramatta,Parramatta Eels,24.552,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,penrith,Penrith Panthers,52.512,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,perth_bears,Perth Bears,3294.3,-2.1852,"3,000 km and over",-4.2872,4.2872
+manly,Manly-Warringah Sea Eagles,south_sydney,South Sydney Rabbitohs,14.895,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,st_george_illawarra,St George Illawarra Dragons,25.285,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,sydney_roosters,Sydney Roosters,14.009,0,within 150 km,0,-0
+manly,Manly-Warringah Sea Eagles,warriors,New Zealand Warriors,2158.7,2,"2,000 to 3,000 km",-0.33039,0.33039
+manly,Manly-Warringah Sea Eagles,wests_tigers,Wests Tigers,17.744,0,within 150 km,0,-0
+melbourne,Melbourne Storm,brisbane,Brisbane Broncos,1374.1,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+melbourne,Melbourne Storm,canberra,Canberra Raiders,466.16,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,canterbury,Canterbury-Bankstown Bulldogs,700.67,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,cronulla,Cronulla-Sutherland Sharks,694.97,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,dolphins,Dolphins,1401,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+melbourne,Melbourne Storm,gold_coast,Gold Coast Titans,1335.9,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+melbourne,Melbourne Storm,manly,Manly-Warringah Sea Eagles,723.9,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,newcastle,Newcastle Knights,818.99,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,north_qld,North Queensland Cowboys,2072.1,-0.18519,"2,000 to 3,000 km",-0.33039,0.33039
+melbourne,Melbourne Storm,parramatta,Parramatta Eels,702.71,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,penrith,Penrith Panthers,685.69,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,perth_bears,Perth Bears,2720.9,-2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+melbourne,Melbourne Storm,south_sydney,South Sydney Rabbitohs,710.77,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,st_george_illawarra,St George Illawarra Dragons,700.32,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,sydney_roosters,Sydney Roosters,712.38,0,"150 to 1,000 km",-1.4168,1.4168
+melbourne,Melbourne Storm,warriors,New Zealand Warriors,2626.7,2,"2,000 to 3,000 km",-0.33039,0.33039
+melbourne,Melbourne Storm,wests_tigers,Wests Tigers,706.27,0,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,brisbane,Brisbane Broncos,618.83,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,canberra,Canberra Raiders,354.4,0,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,canterbury,Canterbury-Bankstown Bulldogs,125.93,0,within 150 km,0,-0
+newcastle,Newcastle Knights,cronulla,Cronulla-Sutherland Sharks,136.72,0,within 150 km,0,-0
+newcastle,Newcastle Knights,dolphins,Dolphins,645.69,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,gold_coast,Gold Coast Titans,560.95,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,manly,Manly-Warringah Sea Eagles,103.69,0,within 150 km,0,-0
+newcastle,Newcastle Knights,melbourne,Melbourne Storm,818.99,0,"150 to 1,000 km",-1.4168,1.4168
+newcastle,Newcastle Knights,north_qld,North Queensland Cowboys,1595.4,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+newcastle,Newcastle Knights,parramatta,Parramatta Eels,119.5,0,within 150 km,0,-0
+newcastle,Newcastle Knights,penrith,Penrith Panthers,133.31,0,within 150 km,0,-0
+newcastle,Newcastle Knights,perth_bears,Perth Bears,3348.8,-2.1852,"3,000 km and over",-4.2872,4.2872
+newcastle,Newcastle Knights,south_sydney,South Sydney Rabbitohs,118.57,0,within 150 km,0,-0
+newcastle,Newcastle Knights,st_george_illawarra,St George Illawarra Dragons,128.92,0,within 150 km,0,-0
+newcastle,Newcastle Knights,sydney_roosters,Sydney Roosters,117.54,0,within 150 km,0,-0
+newcastle,Newcastle Knights,warriors,New Zealand Warriors,2145.7,2,"2,000 to 3,000 km",-0.33039,0.33039
+newcastle,Newcastle Knights,wests_tigers,Wests Tigers,119.18,0,within 150 km,0,-0
+north_qld,North Queensland Cowboys,brisbane,Brisbane Broncos,1109.4,0,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,canberra,Canberra Raiders,1792.2,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,canterbury,Canterbury-Bankstown Bulldogs,1683.9,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,cronulla,Cronulla-Sutherland Sharks,1698.5,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,dolphins,Dolphins,1095,0,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,gold_coast,Gold Coast Titans,1186.1,0,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,manly,Manly-Warringah Sea Eagles,1672.3,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,melbourne,Melbourne Storm,2072.1,0.18519,"2,000 to 3,000 km",-0.33039,0.33039
+north_qld,North Queensland Cowboys,newcastle,Newcastle Knights,1595.4,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,parramatta,Parramatta Eels,1669.9,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,penrith,Penrith Panthers,1656.8,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,perth_bears,Perth Bears,3391.1,-2,"3,000 km and over",-4.2872,4.2872
+north_qld,North Queensland Cowboys,south_sydney,South Sydney Rabbitohs,1684,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,st_george_illawarra,St George Illawarra Dragons,1690.2,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,sydney_roosters,Sydney Roosters,1684.2,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+north_qld,North Queensland Cowboys,warriors,New Zealand Warriors,3354.3,2.1852,"3,000 km and over",-4.2872,4.2872
+north_qld,North Queensland Cowboys,wests_tigers,Wests Tigers,1677.7,0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+parramatta,Parramatta Eels,brisbane,Brisbane Broncos,730.87,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+parramatta,Parramatta Eels,canberra,Canberra Raiders,236.77,0,"150 to 1,000 km",-1.4168,1.4168
+parramatta,Parramatta Eels,canterbury,Canterbury-Bankstown Bulldogs,14.594,0,within 150 km,0,-0
+parramatta,Parramatta Eels,cronulla,Cronulla-Sutherland Sharks,28.981,0,within 150 km,0,-0
+parramatta,Parramatta Eels,dolphins,Dolphins,757.98,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+parramatta,Parramatta Eels,gold_coast,Gold Coast Titans,676.04,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+parramatta,Parramatta Eels,manly,Manly-Warringah Sea Eagles,24.552,0,within 150 km,0,-0
+parramatta,Parramatta Eels,melbourne,Melbourne Storm,702.71,0,"150 to 1,000 km",-1.4168,1.4168
+parramatta,Parramatta Eels,newcastle,Newcastle Knights,119.5,0,within 150 km,0,-0
+parramatta,Parramatta Eels,north_qld,North Queensland Cowboys,1669.9,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+parramatta,Parramatta Eels,penrith,Penrith Panthers,28.952,0,within 150 km,0,-0
+parramatta,Parramatta Eels,perth_bears,Perth Bears,3269.8,-2.1852,"3,000 km and over",-4.2872,4.2872
+parramatta,Parramatta Eels,south_sydney,South Sydney Rabbitohs,20.846,0,within 150 km,0,-0
+parramatta,Parramatta Eels,st_george_illawarra,St George Illawarra Dragons,21.335,0,within 150 km,0,-0
+parramatta,Parramatta Eels,sydney_roosters,Sydney Roosters,22.352,0,within 150 km,0,-0
+parramatta,Parramatta Eels,warriors,New Zealand Warriors,2180.7,2,"2,000 to 3,000 km",-0.33039,0.33039
+parramatta,Parramatta Eels,wests_tigers,Wests Tigers,10.867,0,within 150 km,0,-0
+penrith,Penrith Panthers,brisbane,Brisbane Broncos,733.41,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+penrith,Penrith Panthers,canberra,Canberra Raiders,221.45,0,"150 to 1,000 km",-1.4168,1.4168
+penrith,Penrith Panthers,canterbury,Canterbury-Bankstown Bulldogs,40.526,0,within 150 km,0,-0
+penrith,Penrith Panthers,cronulla,Cronulla-Sutherland Sharks,51.709,0,within 150 km,0,-0
+penrith,Penrith Panthers,dolphins,Dolphins,760.62,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+penrith,Penrith Panthers,gold_coast,Gold Coast Titans,680.85,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+penrith,Penrith Panthers,manly,Manly-Warringah Sea Eagles,52.512,0,within 150 km,0,-0
+penrith,Penrith Panthers,melbourne,Melbourne Storm,685.69,0,"150 to 1,000 km",-1.4168,1.4168
+penrith,Penrith Panthers,newcastle,Newcastle Knights,133.31,0,within 150 km,0,-0
+penrith,Penrith Panthers,north_qld,North Queensland Cowboys,1656.8,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+penrith,Penrith Panthers,parramatta,Parramatta Eels,28.952,0,within 150 km,0,-0
+penrith,Penrith Panthers,perth_bears,Perth Bears,3242.3,-2.1852,"3,000 km and over",-4.2872,4.2872
+penrith,Penrith Panthers,south_sydney,South Sydney Rabbitohs,49.383,0,within 150 km,0,-0
+penrith,Penrith Panthers,st_george_illawarra,St George Illawarra Dragons,46.669,0,within 150 km,0,-0
+penrith,Penrith Panthers,sydney_roosters,Sydney Roosters,51.02,0,within 150 km,0,-0
+penrith,Penrith Panthers,warriors,New Zealand Warriors,2209.6,2,"2,000 to 3,000 km",-0.33039,0.33039
+penrith,Penrith Panthers,wests_tigers,Wests Tigers,39.419,0,within 150 km,0,-0
+perth_bears,Perth Bears,brisbane,Brisbane Broncos,3602.1,2,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,canberra,Canberra Raiders,3083.5,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,canterbury,Canterbury-Bankstown Bulldogs,3276.3,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,cronulla,Cronulla-Sutherland Sharks,3279,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,dolphins,Dolphins,3619.3,2,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,gold_coast,Gold Coast Titans,3617.4,2,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,manly,Manly-Warringah Sea Eagles,3294.3,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,melbourne,Melbourne Storm,2720.9,2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+perth_bears,Perth Bears,newcastle,Newcastle Knights,3348.8,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,north_qld,North Queensland Cowboys,3391.1,2,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,parramatta,Parramatta Eels,3269.8,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,penrith,Penrith Panthers,3242.3,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,south_sydney,South Sydney Rabbitohs,3287.3,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,st_george_illawarra,St George Illawarra Dragons,3279.7,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,sydney_roosters,Sydney Roosters,3289.1,2.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,warriors,New Zealand Warriors,5346.7,4.1852,"3,000 km and over",-4.2872,4.2872
+perth_bears,Perth Bears,wests_tigers,Wests Tigers,3278.5,2.1852,"3,000 km and over",-4.2872,4.2872
+south_sydney,South Sydney Rabbitohs,brisbane,Brisbane Broncos,735.17,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+south_sydney,South Sydney Rabbitohs,canberra,Canberra Raiders,244.67,0,"150 to 1,000 km",-1.4168,1.4168
+south_sydney,South Sydney Rabbitohs,canterbury,Canterbury-Bankstown Bulldogs,11.127,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,cronulla,Cronulla-Sutherland Sharks,18.171,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,dolphins,Dolphins,762.17,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+south_sydney,South Sydney Rabbitohs,gold_coast,Gold Coast Titans,678.76,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+south_sydney,South Sydney Rabbitohs,manly,Manly-Warringah Sea Eagles,14.895,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,melbourne,Melbourne Storm,710.77,0,"150 to 1,000 km",-1.4168,1.4168
+south_sydney,South Sydney Rabbitohs,newcastle,Newcastle Knights,118.57,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,north_qld,North Queensland Cowboys,1684,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+south_sydney,South Sydney Rabbitohs,parramatta,Parramatta Eels,20.846,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,penrith,Penrith Panthers,49.383,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,perth_bears,Perth Bears,3287.3,-2.1852,"3,000 km and over",-4.2872,4.2872
+south_sydney,South Sydney Rabbitohs,st_george_illawarra,St George Illawarra Dragons,10.665,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,sydney_roosters,Sydney Roosters,1.8468,0,within 150 km,0,-0
+south_sydney,South Sydney Rabbitohs,warriors,New Zealand Warriors,2160.2,2,"2,000 to 3,000 km",-0.33039,0.33039
+south_sydney,South Sydney Rabbitohs,wests_tigers,Wests Tigers,10.015,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,brisbane,Brisbane Broncos,744.86,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+st_george_illawarra,St George Illawarra Dragons,canberra,Canberra Raiders,234.27,0,"150 to 1,000 km",-1.4168,1.4168
+st_george_illawarra,St George Illawarra Dragons,canterbury,Canterbury-Bankstown Bulldogs,6.7531,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,cronulla,Cronulla-Sutherland Sharks,8.6524,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,dolphins,Dolphins,771.89,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+st_george_illawarra,St George Illawarra Dragons,gold_coast,Gold Coast Titans,688.76,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+st_george_illawarra,St George Illawarra Dragons,manly,Manly-Warringah Sea Eagles,25.285,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,melbourne,Melbourne Storm,700.32,0,"150 to 1,000 km",-1.4168,1.4168
+st_george_illawarra,St George Illawarra Dragons,newcastle,Newcastle Knights,128.92,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,north_qld,North Queensland Cowboys,1690.2,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+st_george_illawarra,St George Illawarra Dragons,parramatta,Parramatta Eels,21.335,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,penrith,Penrith Panthers,46.669,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,perth_bears,Perth Bears,3279.7,-2.1852,"3,000 km and over",-4.2872,4.2872
+st_george_illawarra,St George Illawarra Dragons,south_sydney,South Sydney Rabbitohs,10.665,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,sydney_roosters,Sydney Roosters,12.117,0,within 150 km,0,-0
+st_george_illawarra,St George Illawarra Dragons,warriors,New Zealand Warriors,2164.4,2,"2,000 to 3,000 km",-0.33039,0.33039
+st_george_illawarra,St George Illawarra Dragons,wests_tigers,Wests Tigers,12.508,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,brisbane,Brisbane Broncos,734.42,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+sydney_roosters,Sydney Roosters,canberra,Canberra Raiders,246.3,0,"150 to 1,000 km",-1.4168,1.4168
+sydney_roosters,Sydney Roosters,canterbury,Canterbury-Bankstown Bulldogs,12.968,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,cronulla,Cronulla-Sutherland Sharks,19.19,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,dolphins,Dolphins,761.41,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+sydney_roosters,Sydney Roosters,gold_coast,Gold Coast Titans,677.88,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+sydney_roosters,Sydney Roosters,manly,Manly-Warringah Sea Eagles,14.009,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,melbourne,Melbourne Storm,712.38,0,"150 to 1,000 km",-1.4168,1.4168
+sydney_roosters,Sydney Roosters,newcastle,Newcastle Knights,117.54,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,north_qld,North Queensland Cowboys,1684.2,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+sydney_roosters,Sydney Roosters,parramatta,Parramatta Eels,22.352,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,penrith,Penrith Panthers,51.02,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,perth_bears,Perth Bears,3289.1,-2.1852,"3,000 km and over",-4.2872,4.2872
+sydney_roosters,Sydney Roosters,south_sydney,South Sydney Rabbitohs,1.8468,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,st_george_illawarra,St George Illawarra Dragons,12.117,0,within 150 km,0,-0
+sydney_roosters,Sydney Roosters,warriors,New Zealand Warriors,2158.6,2,"2,000 to 3,000 km",-0.33039,0.33039
+sydney_roosters,Sydney Roosters,wests_tigers,Wests Tigers,11.604,0,within 150 km,0,-0
+warriors,New Zealand Warriors,brisbane,Brisbane Broncos,2297.6,-2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,canberra,Canberra Raiders,2310.8,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,canterbury,Canterbury-Bankstown Bulldogs,2169.8,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,cronulla,Cronulla-Sutherland Sharks,2162,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,dolphins,Dolphins,2302.9,-2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,gold_coast,Gold Coast Titans,2230.4,-2.1852,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,manly,Manly-Warringah Sea Eagles,2158.7,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,melbourne,Melbourne Storm,2626.7,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,newcastle,Newcastle Knights,2145.7,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,north_qld,North Queensland Cowboys,3354.3,-2.1852,"3,000 km and over",-4.2872,4.2872
+warriors,New Zealand Warriors,parramatta,Parramatta Eels,2180.7,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,penrith,Penrith Panthers,2209.6,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,perth_bears,Perth Bears,5346.7,-4.1852,"3,000 km and over",-4.2872,4.2872
+warriors,New Zealand Warriors,south_sydney,South Sydney Rabbitohs,2160.2,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,st_george_illawarra,St George Illawarra Dragons,2164.4,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,sydney_roosters,Sydney Roosters,2158.6,-2,"2,000 to 3,000 km",-0.33039,0.33039
+warriors,New Zealand Warriors,wests_tigers,Wests Tigers,2170.2,-2,"2,000 to 3,000 km",-0.33039,0.33039
+wests_tigers,Wests Tigers,brisbane,Brisbane Broncos,733.64,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+wests_tigers,Wests Tigers,canberra,Canberra Raiders,240.12,0,"150 to 1,000 km",-1.4168,1.4168
+wests_tigers,Wests Tigers,canterbury,Canterbury-Bankstown Bulldogs,7.0209,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,cronulla,Cronulla-Sutherland Sharks,21.074,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,dolphins,Dolphins,760.7,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+wests_tigers,Wests Tigers,gold_coast,Gold Coast Titans,677.99,-0.18519,"150 to 1,000 km",-1.4168,1.4168
+wests_tigers,Wests Tigers,manly,Manly-Warringah Sea Eagles,17.744,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,melbourne,Melbourne Storm,706.27,0,"150 to 1,000 km",-1.4168,1.4168
+wests_tigers,Wests Tigers,newcastle,Newcastle Knights,119.18,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,north_qld,North Queensland Cowboys,1677.7,-0.18519,"1,000 to 2,000 km",-0.39206,0.39206
+wests_tigers,Wests Tigers,parramatta,Parramatta Eels,10.867,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,penrith,Penrith Panthers,39.419,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,perth_bears,Perth Bears,3278.5,-2.1852,"3,000 km and over",-4.2872,4.2872
+wests_tigers,Wests Tigers,south_sydney,South Sydney Rabbitohs,10.015,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,st_george_illawarra,St George Illawarra Dragons,12.508,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,sydney_roosters,Sydney Roosters,11.604,0,within 150 km,0,-0
+wests_tigers,Wests Tigers,warriors,New Zealand Warriors,2170.2,2,"2,000 to 3,000 km",-0.33039,0.33039
