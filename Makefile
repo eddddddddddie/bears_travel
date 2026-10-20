@@ -4,7 +4,7 @@
 PYTHON ?= python
 ARGS ?=
 
-.PHONY: all scrape lines build elo model roads fixture draw assets test
+.PHONY: all scrape lines build elo model roads fixture draw assets test chat-test chat-eval
 
 all: build model roads fixture draw test
 
@@ -42,3 +42,10 @@ assets:
 
 test:
 	$(PYTHON) tests/test_pipeline.py
+
+# Bear-ai: offline checks of its tools and server (node), and the accuracy eval (spends API credit)
+chat-test:
+	npm test
+
+chat-eval:
+	npm run eval

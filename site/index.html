@@ -145,6 +145,7 @@
   .pb-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
   .pb-legend i { width: 0.625rem; height: 0.625rem; border-radius: 2px; display: inline-block; }
   .pb-legend i.ln { height: 3px; width: 0.875rem; border-radius: 1px; }
+  .pb-legend i.dsh { height: 0; width: 0.875rem; border-radius: 0; border-top: 2px dashed var(--pb-fg); }
   .pb-tt { position: absolute; pointer-events: none; background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; box-shadow: 0 8px 24px var(--pb-shadow); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: 0.8rem; color: var(--pb-fg); display: grid; gap: 2px; z-index: 2; max-width: 16rem; }
   .pb-tt[hidden] { display: none; }
   .pb-tt .t { color: var(--pb-muted); }
@@ -210,6 +211,61 @@
   .pb-about { display: grid; gap: var(--cds-gap-sm); font-size: 0.9rem; color: var(--pb-muted); line-height: 1.55; max-width: 46rem; }
   .pb-about p { margin: 0; }
   .pb-about a { color: var(--pb-fg); text-decoration-color: var(--pb-red); text-underline-offset: 3px; }
+  /* Bear-ai: a launcher and a side panel (full screen on phones), inside .pb so it takes the page theme.
+     Hidden until /api/chat says it is switched on (site/assets/bearai.js). */
+  .bai-launch { position: fixed; z-index: 6; right: max(16px, env(safe-area-inset-right, 0px)); bottom: max(16px, env(safe-area-inset-bottom, 0px));
+    display: inline-flex; align-items: center; gap: 0.55rem; font: inherit; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.02em;
+    color: var(--pb-on-red); background: var(--pb-red); border: 0; border-radius: 999px; padding: 0.7rem 1.15rem 0.7rem 0.85rem; cursor: pointer;
+    box-shadow: 0 6px 20px var(--pb-shadow); }
+  .bai-launch svg { width: 1.45rem; height: 1.45rem; flex: none; }
+  .bai-launch:focus-visible { outline: 2px solid var(--pb-fg); outline-offset: 3px; }
+  .pb.bai-on .bai-launch { display: none; }
+  .bai { position: fixed; z-index: 7; top: 0; right: 0; bottom: 0; width: min(27rem, 100%); display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+    background: var(--pb-panel); color: var(--pb-fg); border-left: 1px solid var(--pb-line); box-shadow: -10px 0 30px var(--pb-shadow);
+    padding-right: env(safe-area-inset-right, 0px); font-size: 0.95rem; }
+  .bai-head { display: flex; align-items: center; gap: 0.6rem; padding: 0.9rem 0.75rem 0.9rem 1.1rem; border-bottom: 1px solid var(--pb-line); }
+  .bai-head svg { width: 1.6rem; height: 1.6rem; flex: none; }
+  .bai-head h2 { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.02em; }
+  .bai-head p { margin: 0; font-size: var(--cds-font-size-caption); color: var(--pb-muted); }
+  .bai-head .grow { flex: 1; min-width: 0; }
+  .bai-icon { font: inherit; font-size: 12px; font-weight: 600; color: var(--pb-muted); background: transparent; border: 1px solid var(--pb-line); border-radius: 4px; padding: 0.35rem 0.55rem; cursor: pointer; }
+  .bai-icon:hover { color: var(--pb-fg); background: var(--pb-panel-2); }
+  .bai-icon:focus-visible, .bai-chip:focus-visible, .bai-send:focus-visible, .bai-nums summary:focus-visible { outline: 2px solid var(--pb-red); outline-offset: 1px; }
+  .bai-log { overflow-y: auto; overflow-x: hidden; overscroll-behavior: contain; padding: 1rem 1.1rem; display: flex; flex-direction: column; gap: 0.85rem; }
+  .bai-intro { display: grid; gap: 0.8rem; color: var(--pb-muted); line-height: 1.5; }
+  .bai-intro p { margin: 0; }
+  .bai-chips { display: flex; flex-wrap: wrap; gap: 0.45rem; }
+  .bai-chip { font: inherit; font-size: 0.85rem; text-align: left; color: var(--pb-fg); background: var(--pb-panel-2); border: 1px solid var(--pb-line); border-radius: 999px; padding: 0.4rem 0.75rem; cursor: pointer; line-height: 1.3; }
+  .bai-chip:hover:not(:disabled) { border-color: var(--pb-red); }
+  .bai-chip:disabled { opacity: 0.55; cursor: default; }
+  .bai-q { align-self: flex-end; max-width: 88%; background: var(--pb-red); color: var(--pb-on-red); border-radius: 12px 12px 2px 12px; padding: 0.55rem 0.8rem; line-height: 1.45; white-space: pre-wrap; overflow-wrap: anywhere; }
+  .bai-a { display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.5rem; line-height: 1.55; overflow-wrap: anywhere; min-width: 0; }
+  .bai-text p, .bai-text ul, .bai-text ol { margin: 0 0 0.55rem; }
+  .bai-text ul, .bai-text ol { padding-left: 1.2rem; }
+  .bai-text li + li { margin-top: 0.25rem; }
+  .bai-text .bai-h { font-weight: 700; }
+  .bai-text strong { font-weight: 600; }
+  .bai-status { margin: 0; color: var(--pb-muted); font-size: 0.85rem; }
+  .bai-status::after { content: '…'; }
+  @media (prefers-reduced-motion: no-preference) { .bai-status { animation: pb-pulse 1.4s ease-in-out infinite; } }
+  .bai-err { margin: 0; color: var(--pb-red); font-weight: 600; }
+  .bai-nums { border-top: 1px solid var(--pb-line); padding-top: 0.45rem; font-size: 0.85rem; }
+  .bai-nums summary { cursor: pointer; color: var(--pb-muted); font-weight: 600; }
+  .bai-tbl { margin-top: 0.6rem; overflow-x: auto; }
+  .bai-tbl table { border-collapse: collapse; font-size: 12px; font-variant-numeric: tabular-nums; min-width: 100%; }
+  .bai-tbl th, .bai-tbl td { text-align: left; padding: 0.25rem 0.5rem 0.25rem 0; border-bottom: 1px solid var(--pb-line); white-space: nowrap; }
+  .bai-tbl th { color: var(--pb-muted); font-weight: 600; }
+  .bai-cap { margin: 0 0 0.25rem; font-weight: 600; }
+  .bai-note { margin: 0.25rem 0 0; color: var(--pb-muted); font-size: 12px; }
+  .bai-foot { border-top: 1px solid var(--pb-line); padding: 0.75rem 1.1rem calc(0.7rem + env(safe-area-inset-bottom, 0px)); display: grid; gap: 0.5rem; }
+  .bai-foot form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; align-items: end; }
+  .bai-foot textarea { font: inherit; font-size: 16px; color: var(--pb-fg); background: var(--pb-panel-2); border: 1px solid var(--pb-line); border-radius: 8px; padding: 0.55rem 0.7rem; resize: none; min-height: 2.6rem; max-height: 8rem; field-sizing: content; }
+  .bai-foot textarea:focus { outline: 2px solid var(--pb-red); outline-offset: -1px; }
+  .bai-send { font: inherit; font-weight: 600; color: var(--pb-on-red); background: var(--pb-red); border: 0; border-radius: 8px; padding: 0 1rem; height: 2.6rem; cursor: pointer; }
+  .bai-send:disabled { opacity: 0.55; cursor: default; }
+  .bai-small { margin: 0; font-size: var(--cds-font-size-caption); color: var(--pb-muted); line-height: 1.4; }
+  .bai-check:empty { display: none; }
+  @media (max-width: 30rem) { .bai { border-left: 0; box-shadow: none; } .bai-launch .lbl { display: none; } .bai-launch { padding: 0.8rem; } }
   @media (max-width: 56rem) {
     .pb-shell { grid-template-columns: minmax(0, 1fr); }
     .pb-nav { height: auto; flex-direction: row; padding-left: 0; }
@@ -227,6 +283,7 @@
 <body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js"></script>
 <script src="assets/dash.js"></script>
+<script src="assets/bearai.js" defer></script>
 <div class="pb" data-pb-theme="light">
  <div class="pb-shell">
   <nav class="pb-nav" aria-label="Sections">
@@ -345,8 +402,8 @@
     <div class="pb-card" id="card-home">
       <h3>Home advantage by season</h3>
       <p class="note">Points per match for the designated home side. 1995 is not modelled because it is the first season in the data. 2020 and 2021 are left out because teams played from temporary bases.</p>
-      <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span></div>
-      <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv"></div>
+      <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span><span><i class="dsh"></i>Long-term trend, <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade</span></div>
+      <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv home_trend"></div>
     </div>
     <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the impact of travel would produce. The travel model, fitted with a separate cost for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
     <div class="pb-grid">
@@ -587,6 +644,24 @@
   </footer>
   </main>
  </div>
+ <button type="button" class="bai-launch" id="bai-launch" aria-controls="bai" aria-expanded="false" hidden><svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="17" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="47" cy="15" r="8" fill="none" stroke="currentColor" stroke-width="4"/><rect x="8" y="14" width="48" height="44" rx="12" fill="none" stroke="currentColor" stroke-width="4"/><path d="M19 47 L32 27 L45 47" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="lbl">Ask Bear-ai</span></button>
+ <aside class="bai" id="bai" aria-label="Bear-ai, questions about this analysis" hidden>
+  <div class="bai-head">
+   <svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="17" cy="15" r="8" fill="none" stroke="var(--pb-red)" stroke-width="4"/><circle cx="47" cy="15" r="8" fill="none" stroke="var(--pb-red)" stroke-width="4"/><rect x="8" y="14" width="48" height="44" rx="12" fill="none" stroke="var(--pb-red)" stroke-width="4"/><path d="M19 47 L32 27 L45 47" fill="none" stroke="var(--pb-red)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+   <div class="grow"><h2>Bear-ai</h2><p>Answers from this page's data</p></div>
+   <button type="button" class="bai-icon bai-new">New chat</button>
+   <button type="button" class="bai-icon bai-close" aria-label="Close Bear-ai">Close</button>
+  </div>
+  <div class="bai-log" role="log" aria-live="polite"></div>
+  <div class="bai-foot">
+   <div class="bai-check"></div>
+   <form>
+    <textarea rows="1" maxlength="500" placeholder="Ask about travel and the Bears" aria-label="Your question"></textarea>
+    <button type="submit" class="bai-send">Ask</button>
+   </form>
+   <p class="bai-small">Bear-ai uses Claude to answer from the tables behind this page and can make mistakes. <span class="bai-left"></span></p>
+  </div>
+ </aside>
 </div>
 
 <script>
@@ -840,6 +915,15 @@
       g.append('path').datum(rows).attr('d', d3.line().defined((r) => r[s.key] != null).x((r) => x(r.season)).y((r) => y(r[s.key])))
         .style('fill', 'none').style('stroke', s.color).style('stroke-width', 2).style('stroke-linecap', 'round').style('stroke-linejoin', 'round');
     });
+    // Long-term linear trend of the home margin (regular-season matches), from home_advantage_trend
+    const tr = dash.data('home_trend');
+    const all = tr.status === 'ok' ? tr.data.find((r) => r.group === 'all') : null;
+    const trendAt = (season) => all.margin_2010 + all.slope_per_decade * (season - 2010) / 10;
+    if (all) {
+      const [s0, s1] = x.domain();
+      g.append('line').attr('x1', x(s0)).attr('x2', x(s1)).attr('y1', y(trendAt(s0))).attr('y2', y(trendAt(s1)))
+        .style('stroke', 'var(--pb-fg)').style('stroke-width', 1.5).style('stroke-dasharray', '6 4').style('opacity', 0.75);
+    }
     const rule = g.append('line').attr('y1', top).attr('y2', H - bottom).style('stroke', 'var(--pb-ref)').style('stroke-width', 1).attr('opacity', 0);
     const dots = series.map((s) => g.append('circle').attr('r', 4).style('fill', s.color).style('stroke', 'var(--pb-panel)').style('stroke-width', 2).attr('opacity', 0));
     const tip = makeTip(el);
@@ -850,7 +934,8 @@
         rule.attr('x1', x(r.season)).attr('x2', x(r.season)).attr('opacity', 1);
         series.forEach((s, i) => dots[i].attr('cx', x(r.season)).attr('cy', r[s.key] != null ? y(r[s.key]) : -99).attr('opacity', r[s.key] != null ? 1 : 0));
         tip.show(event, String(r.season), series.map((s) => ({ color: s.color,
-          text: `${s.name}: ${r[s.key] != null ? F.pts(r[s.key]) : 'not modelled'}` })));
+          text: `${s.name}: ${r[s.key] != null ? F.pts(r[s.key]) : 'not modelled'}` }))
+          .concat(all ? [{ text: `Long-term trend: ${F.pts(trendAt(r.season))}` }] : []));
       })
       .on('mouseleave', () => { rule.attr('opacity', 0); dots.forEach((d) => d.attr('opacity', 0)); tip.hide(); });
   }

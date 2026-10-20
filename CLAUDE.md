@@ -26,7 +26,7 @@ python src/draw_2027.py            # full 2027 draw around the Bears' fixture (s
 
 The `Makefile` has one target per script: `make scrape`, `lines`, `build`, `elo`, `model`, `roads`, `fixture`, `draw`, `assets`, `test`, and `make all` (= `build model roads fixture draw test`). Scrape and lines hit the network, so they are never part of `all`. Script flags go through `ARGS`, e.g. `make scrape ARGS=--refresh`. `requirements.txt` pins exact versions; update the pins deliberately, since a pandas or statsmodels change can shift the committed outputs.
 
-CI (`.github/workflows/test.yml`) runs `python tests/test_pipeline.py` on Python 3.12 for every push and pull request. It needs no scraped data.
+CI (`.github/workflows/test.yml`) runs `python tests/test_pipeline.py` on Python 3.12 and Bear-ai's `npm test` on Node 24 for every push and pull request. Neither needs scraped data or an API key.
 
 `test_pipeline` runs as a plain script; `pytest tests/test_pipeline.py` also works. It needs no network: it redirects `config.RAW_DIR`, `INTERIM_DIR` and `PROCESSED_DIR` to a temp directory, parses inline fixture HTML, writes a synthetic ASB workbook, then runs `build_dataset.main()` and asserts specific feature values (DST-aware tz shifts, rest days, line sign flips, Elo updates from `config.ELO_K` and `ELO_HOME_ADV`). It also calls `elo.run_elo` directly on a three-match frame to check successor, expansion and returning-club starts, and checks `travel_model.match_frame` signs and `pair_offsets` daylight saving. The test does not fit the Phase 2 models (the fixture is too small). When changing feature logic, update the hard-coded expected values there.
 
@@ -61,6 +61,16 @@ Key design points that span files:
 - **Time zone shifts are folded into -12 to +12** (`wrap_hours`), so trans-Pacific trips such as Las Vegas read as +5 or +6 east rather than -18.
 - **Season openers.** `days_rest` is blank, and `km_from_prev_venue` / `tz_shift_from_prev_venue_h` fall back to the from-base values when the previous row for the team is in a different season.
 - **Thresholds and season list live in `src/config.py`** (`AT_BASE_KM`, `AWAY_TRIP_KM`, `ROLLING_WINDOW_DAYS`, `COVID_SEASONS`, `LINE_JOIN_MAX_DAYS`, `EXCLUDE_ROUND_RE`, `SEASON_PAGES`, `ELO_*`).
+
+## Bear-ai (chat assistant)
+
+`chat/` and `functions/` hold Bear-ai, a Cloudflare Pages Function (`/api/chat`) deployed with the site, modelled on Wharf-ai in the FreoDockers project. Commands: `npm test` (offline, `tests/bearai.test.mjs`, also in CI), `npm run eval` (spends about US$0.15; needs `ANTHROPIC_API_KEY`), `npm run dev` (wrangler on port 8788; pass the key with `--binding ANTHROPIC_API_KEY=...`). README "Bear-ai" has the Cloudflare setup.
+
+- Grounding: every number comes from `chat/tools.js`, fixed queries over the `site/data/*.json` tables (imported at build time, so the function always matches the deployed page). The model picks tables, columns, filters and aggregates; it never writes code. Unknown columns and filter keys are errors, never skipped. Tools use `eager_input_streaming`, so `run()` checks every argument against the tool's schema before running.
+- Each table in `TABLES` has an `about` line and a description of every exposed column; `describe()` turns them, with the values of short text columns, into the cached schema part of the system prompt. When `travel_model.py` or the fixture scripts add or rename a column, add it there (a test fails if a described column is missing from the data).
+- `chat/answer.js` holds the prompt (`INTRO`: rules, missing data, the caveats from the Phase 2 findings, no betting advice) and the manual streaming loop on `claude-sonnet-5-5`, adaptive thinking, effort low, `fallbacks: "default"`. Within a question the message list is append-only and assistant turns go back whole; between questions only text is kept. The trailing `FOLLOWUPS:` line is removed from the stream by `FollowupFilter`. When findings change, update the caveats in `INTRO` along with the README.
+- `functions/api/chat.js`: GET says whether Bear-ai is on (key, Turnstile and KV all set, or `BEARAI_DEV=1`); POST checks the history (alternating plain-text turns, question at most 500 characters), the Turnstile token and the KV caps, counts the question, then streams NDJSON events. IP addresses are hashed with the date before they are used as KV keys.
+- `site/assets/bearai.js` draws the panel and renders a small safe subset of Markdown as text nodes (never `innerHTML`). The claude.ai copy of the dashboard has no function behind it, so the panel stays hidden there.
 
 ## Parser notes
 

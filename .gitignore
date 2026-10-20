@@ -17,3 +17,11 @@ venv/
 # Local and OS files
 .env
 .DS_Store
+
+# Node (Bear-ai)
+node_modules/
+.wrangler/
+.dev.vars
+
+# Bear-ai eval output
+evals/results/

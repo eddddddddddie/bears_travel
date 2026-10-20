@@ -22,6 +22,33 @@ Preview it locally with `python -m http.server 8000 --directory site` and open h
 
 Hosting is Cloudflare Pages connected to this repository: production branch `main`, no build command, build output directory `site`, custom domain `bears.thisaithat.com`. Each push to `main` redeploys.
 
+## Bear-ai
+
+Bear-ai is the dashboard's chat assistant. It answers questions about the analysis from the same tables the page draws (`site/data/*.json`), in the manner of Wharf-ai on the Fremantle dashboard: Claude (`claude-sonnet-5-5`, effort low) calls fixed queries over the tables and quotes only numbers they return; it never writes code. Each answer can show the numbers behind it and suggests three follow-up questions.
+
+| File | Contents |
+|---|---|
+| `chat/tools.js` | The tables, a description of every column, and three tools: `get_rows`, `aggregate`, `correlate` |
+| `chat/answer.js` | The prompt and the streaming tool loop |
+| `functions/api/chat.js` | Cloudflare Pages Function at `/api/chat`: bot check, daily caps, streams the answer |
+| `site/assets/bearai.js` | The panel on the page; hidden unless `/api/chat` reports Bear-ai is switched on |
+| `tests/bearai.test.mjs` | Offline checks (`npm test`): tools against plain reads of the JSON, bad calls, input limits |
+| `evals/bearai_eval.mjs` | Accuracy eval (`npm run eval`): 14 questions, expected figures read from `site/data/`, about US$0.15 a run |
+
+The site is public, so every question spends API credit. Each question needs a Cloudflare Turnstile token, and questions are capped per visitor (a hash of the IP address; addresses are not stored) and across all visitors per Perth day, counted in Workers KV. A question costs about US$0.01, so the default caps (10 per visitor, 150 in total) limit spend to about US$1.50 a day. KV counts are eventually consistent, so a burst can pass a cap by a few questions.
+
+Setup in the Cloudflare dashboard (Pages project, Settings):
+
+1. Build command `npm ci` (installs the Anthropic SDK for the function); output directory stays `site`.
+2. Workers KV: create a namespace and bind it to the project as `BEARAI_KV`.
+3. Turnstile: add a widget for `bears.thisaithat.com` (managed mode), then set `TURNSTILE_SITE_KEY` (plain text) and `TURNSTILE_SECRET` (secret).
+4. `ANTHROPIC_API_KEY` (secret). A key in its own Anthropic workspace with a monthly spend limit keeps the cost bounded whatever happens to the caps.
+5. Optional: `BEARAI_USER_CAP` and `BEARAI_DAILY_CAP`.
+
+Until the key, Turnstile and KV are all set, `/api/chat` reports Bear-ai as off and the page shows no button. Preview deployments use the Preview environment's settings.
+
+Local run: `npm install`, then `npm run dev -- --binding ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY` (or put the key in a gitignored `.dev.vars` file) and open http://localhost:8788. `BEARAI_DEV=1` skips the bot check and uses a local KV store. Rerun the eval after changing the prompt, the tools or the model.
+
 ## Data in this repository
 
 The repository holds code, reference tables and derived outputs. Source data is not redistributed, and `.gitignore` keeps it out:
