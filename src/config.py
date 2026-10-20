@@ -52,3 +52,20 @@ ELO_PARENTS = {
     "northern_eagles": ("manly", "north_sydney"),
     "manly": ("northern_eagles",),
 }
+
+# 2027 fixture proposal (src/fixture_2027.py). The draw is not published; these are assumptions.
+FIXTURE_SEASON_START = "2027-03-04"   # Thursday of Round 1; each round is the Thursday to Sunday of one week
+FIXTURE_ROUNDS = 27                   # 24 games and 3 byes, the byes in the State of Origin window
+FIXTURE_BYE_AFTER_GAME = (12, 15, 19) # byes fall after these game numbers (rounds 13, 17 and 22)
+FIXTURE_REPEAT_OPPONENTS = 7          # clubs met twice, once home and once away
+FIXTURE_MAX_AWAY_IN_A_ROW = 2
+FIXTURE_MIN_NIGHTS_BETWEEN = 4
+FIXTURE_GAME_DAYS = ("Thu", "Fri", "Sat", "Sun")
+# Door-to-door travel time: per flight, a fixed allowance for transfers, check-in and taxi plus air time
+# at an average block speed that is faster eastbound (prevailing westerlies; Perth to Sydney is about 4 h
+# eastbound and 5 h westbound). Legs under AWAY_TRIP_KM go by road.
+FLIGHT_GROUND_H = 2.5
+FLIGHT_KMH_EAST = 820
+FLIGHT_KMH_WEST = 680
+ROAD_KMH = 70
+ROAD_GROUND_H = 0.5

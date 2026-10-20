@@ -45,6 +45,7 @@ python src/build_dataset.py        # writes data/processed/
 python src/elo.py                  # optional: refit the Elo parameters (needs scipy)
 python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
 python src/road_trips.py           # Bears two-game road trip plans, same output folders (needs networkx)
+python src/fixture_2027.py         # proposed Bears 2027 fixture, same output folders
 python src/site_assets.py          # map outline and link-preview image for site/ (needs matplotlib)
 ```
 
@@ -60,9 +61,10 @@ The `Makefile` wraps the same steps (`PYTHON` defaults to `python`; pass script 
 | `make elo` | `elo.py`, optional refit |
 | `make model` | `travel_model.py` |
 | `make roads` | `road_trips.py` |
+| `make fixture` | `fixture_2027.py` |
 | `make assets` | `site_assets.py` |
 | `make test` | `tests/test_pipeline.py` |
-| `make all` | `build`, `model`, `roads`, `test` |
+| `make all` | `build`, `model`, `roads`, `fixture`, `test` |
 
 `make all` does not scrape or download. Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
 
@@ -182,6 +184,24 @@ Results from the October 2026 run:
 - The saving ranges from 36,500 to 40,100 km across sets, so it does not depend much on which clubs the Bears play away.
 - Typical pairs are two Sydney clubs, the Broncos with the Dolphins or Titans, the Storm with the Raiders, and the Warriors with a Queensland or New South Wales club.
 - The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin. Two-game trips would also put the Bears' home games in pairs.
+
+## Proposed 2027 fixture
+
+`src/fixture_2027.py` builds a full 2027 fixture the Bears could put to the NRL to reduce their travel time. Rules: no more than two away games in a row, at least four nights between games, games only Thursday to Sunday. Assumptions (in `config.py`, `FIXTURE_*` and the travel-time settings): 27 rounds from the week of Thursday 4 March 2027 with 24 games and three byes in the State of Origin window; every other club played once and seven clubs twice (home and away); no Magic Round or overseas round; away games at the opponent's base. Travel time is door to door: 2.5 hours per flight for transfers, check-in and taxiing, plus air time at 820 km/h eastbound and 680 km/h westbound (Perth to Sydney about 4 hours east and 5 hours west), and road legs under 150 km at 70 km/h.
+
+Method:
+
+1. For every set of 12 away opponents from the 17, the least-time plan with at most two away games in a row is a maximum-weight matching on the hours saved by pairing two away games; the set with the least total time is proposed.
+2. The seven clubs met twice are chosen from the away set so the average end-2026 rating of the Bears' 24 opponents is closest to the average of all 17. This does not affect travel.
+3. The season runs home, away trip, two home games, and so on, with byes in rounds 13, 17 and 22; trips and home opponents are ordered to maximise the gap between the two meetings with each repeat opponent (`scipy.optimize.linear_sum_assignment`).
+4. Home games are on Saturdays; each trip is a Sunday game then a Thursday game (the four-night minimum), flying east on the Saturday, moving by road on the Monday and flying home on the Friday.
+
+Results from the October 2026 run:
+
+- Away games: the nine Sydney clubs, Newcastle, the Broncos and the Dolphins, as six two-game trips whose second leg is by road. The Warriors, Cowboys, Titans, Storm and Raiders are played at home only.
+- Travel time falls from 171 hours (average draw, returning to Perth after each away game) to 89 hours, 48% less; flights from 24 to 12; km from about 82,200 to 40,200.
+- Nights away from Perth rise from 24 to 36, because the team stays in the east between the two games of each trip.
+- The fixture is the Bears' preferred position for negotiation: a real draw has to meet every club's constraints.
 
 ## Known gaps
 

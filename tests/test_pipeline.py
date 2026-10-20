@@ -19,6 +19,7 @@ import config  # noqa: E402
 import build_dataset  # noqa: E402
 import elo  # noqa: E402
 import fetch_lines  # noqa: E402
+import fixture_2027  # noqa: E402
 import road_trips  # noqa: E402
 import scrape_rlp  # noqa: E402
 import travel_model  # noqa: E402
@@ -155,7 +156,7 @@ def test_pipeline():
 def test_site_tables():
     # config.ROOT, not PROCESSED_DIR: test_pipeline points PROCESSED_DIR at a temp directory
     csv_dir = config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME
-    for name in (*travel_model.SITE_TABLES, *road_trips.SITE_TABLES):
+    for name in (*travel_model.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES):
         json_path, csv_path = travel_model.SITE_DATA_DIR / f"{name}.json", csv_dir / f"{name}.csv"
         assert json_path.exists() and csv_path.exists(), f"{name}: missing {json_path.name} or {csv_path.name}"
         records = json.loads(json_path.read_text(encoding="utf-8"))
@@ -182,8 +183,38 @@ def test_road_trips():
     assert road_trips.flights("P", [("A1", "A2")], d) == 2   # the 10 km leg is road travel
 
 
+def test_fixture_rules():
+    """Fixture travel times, trip pairing and the rule checks, on toy inputs."""
+    # Eastbound flights are quicker than the same leg westbound; short legs go by road
+    assert fixture_2027.leg_hours(3300, True) < fixture_2027.leg_hours(3300, False)
+    assert fixture_2027.leg_hours(20, True) == fixture_2027.leg_hours(20, False) < 1
+    # Two grounds 20 km apart in the east pair into one trip; the third ground stays a single trip
+    ids = ["P", "S1", "S2", "M"]
+    km = {("P", "S1"): 3300, ("P", "S2"): 3300, ("P", "M"): 2700, ("S1", "S2"): 20, ("S1", "M"): 700, ("S2", "M"): 700}
+    lon = pd.Series({"P": 116.0, "S1": 151.0, "S2": 151.1, "M": 145.0})
+    d = pd.DataFrame(0.0, index=ids, columns=ids)
+    for (a, b), v in km.items():
+        d.at[a, b] = d.at[b, a] = v
+    t = fixture_2027.time_matrix(d, lon)
+    _, trips = fixture_2027.best_pairs("P", ["S1", "S2"], t)
+    assert len(trips) == 1 and sorted(trips[0]) == ["S1", "S2"]
+    # Rule checks: a valid season passes, three away games in a row or a Monday game fails
+    pattern = fixture_2027.PATTERN
+    days = ["Sat" if k == "H" else ("Sun" if i == 0 or pattern[i - 1] != "A" else "Thu") for i, k in enumerate(pattern)]
+    ok = pd.DataFrame({"home_away": ["Home" if k == "H" else "Away" for k in pattern], "day": days,
+                       "nights_since_last_game": pd.array([None] + [7] * (len(pattern) - 1), dtype="Int64")})
+    fixture_2027.check_rules(ok)
+    for bad in (ok.assign(home_away=["Away"] * 3 + list(ok["home_away"][3:])), ok.assign(day=["Mon"] + days[1:])):
+        try:
+            fixture_2027.check_rules(bad)
+        except AssertionError:
+            continue
+        raise AssertionError("check_rules accepted a fixture that breaks the rules")
+
+
 if __name__ == "__main__":
     test_pipeline()
     test_site_tables()
     test_road_trips()
+    test_fixture_rules()
     print("All checks passed.")

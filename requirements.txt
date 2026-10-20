@@ -5,7 +5,7 @@ lxml==5.3.0
 openpyxl==3.1.5
 pyarrow==21.0.0
 tzdata==2025.2
-scipy==1.16.3        # only for refitting Elo parameters (python src/elo.py)
+scipy==1.16.3        # Elo refit (src/elo.py) and fixture ordering (src/fixture_2027.py)
 statsmodels==0.14.5     # Phase 2 travel model (python src/travel_model.py)
 matplotlib==3.10.6      # only for the link-preview image (python src/site_assets.py)
 networkx==3.5        # pairing away games into road trips (python src/road_trips.py)

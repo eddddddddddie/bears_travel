@@ -176,6 +176,12 @@
   .pb-pick select { font: inherit; font-size: 0.95rem; color: var(--pb-fg); background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; padding: 0.4rem 0.6rem; max-width: 100%; }
   .pb-pick select:focus-visible { outline: 2px solid var(--pb-red); outline-offset: 1px; }
   #table-road td:first-child { white-space: normal; min-width: 12rem; }
+  .pb-tablebox.tall { max-height: 34rem; }
+  #table-fixture tr.away td, #table-legs tr.flight td { color: var(--pb-fg); }
+  #table-fixture tr.home td:nth-child(3) { color: var(--pb-red); font-weight: 600; }
+  #table-fixture tr.bye td { color: var(--pb-muted); }
+  #table-fixture td:nth-child(4), #table-legs td:nth-child(2), #table-legs td:nth-child(3) { white-space: normal; }
+  @media (max-width: 30rem) { #table-fixture th:nth-child(5), #table-fixture td:nth-child(5), #table-legs th:nth-child(4), #table-legs td:nth-child(4) { display: none; } }
   @media (max-width: 30rem) { #table-road th:nth-child(3), #table-road td:nth-child(3) { display: none; } #table-road td:first-child { min-width: 9rem; } }
   .pb-about { display: grid; gap: var(--cds-gap-sm); font-size: 0.9rem; color: var(--pb-muted); line-height: 1.55; max-width: 46rem; }
   .pb-about p { margin: 0; }
@@ -210,6 +216,7 @@
       <a href="#reds" data-go="reds">Western Reds</a>
       <a href="#bears" data-go="bears">2027 outlook</a>
       <a href="#roads" data-go="roads">Road trips</a>
+      <a href="#fixture" data-go="fixture">Fixture</a>
       <a href="#method" data-go="method">Method</a>
       <a href="#about" data-go="about">About</a>
     </div>
@@ -413,6 +420,53 @@
     <p>Every possible set of away opponents pairs fully into two-game trips, so home games would also fall in pairs. Legs under 150 km, such as between two Sydney grounds, are counted as road travel rather than flights. The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin.</p>
   </section>
 
+  <section class="pb-sec" id="fixture">
+    <span class="pb-loz">8. Fixture proposal</span>
+    <h2>A 2027 fixture for the Bears to propose</h2>
+    <p>The road trips above assume any set of away opponents. A full fixture the club could put to the NRL also chooses which opponents the Bears play away, which they play twice, and the date of every game. It follows three rules: no more than two away games in a row, at least four nights between games, and games only from Thursday to Sunday. Within those rules it minimises door-to-door travel time, counting each flight's air time plus transfers, check-in and taxiing, with road legs between nearby grounds.</p>
+    <section class="pb-tiles" id="fixture-figures" aria-label="Proposed 2027 fixture compared with an average draw">
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="fixture_summary" data-field="travel_hours" data-where="scenario=proposed_fixture" data-fmt="h0">—</span>
+        <span class="lab">Hours of travel in the season, against <span class="v dash-skeleton" data-source="fixture_summary" data-field="travel_hours" data-where="scenario=average_draw" data-fmt="h0">—</span> for an average draw returning to Perth after each away game</span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="fixture_summary" data-field="pct_saved_vs_average" data-where="scenario=proposed_fixture" data-fmt="pct0">—</span>
+        <span class="lab">Less travel time</span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="fixture_summary" data-field="flights" data-where="scenario=proposed_fixture" data-fmt="int">—</span>
+        <span class="lab">Flights, against <span class="v dash-skeleton" data-source="fixture_summary" data-field="flights" data-where="scenario=average_draw" data-fmt="int">—</span></span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="fixture_summary" data-field="nights_away" data-where="scenario=proposed_fixture" data-fmt="int">—</span>
+        <span class="lab">Nights away from Perth, against <span class="v dash-skeleton" data-source="fixture_summary" data-field="nights_away" data-where="scenario=average_draw" data-fmt="int">—</span>: the cost of staying in the east between games</span>
+      </div>
+    </section>
+    <div class="pb-grid">
+      <div class="pb-card" id="card-fixture">
+        <h3>Proposed 2027 fixture</h3>
+        <p class="note" id="fixture-note"></p>
+        <div class="pb-tablebox tall">
+          <table class="pb-table" id="table-fixture" data-source="fixture" data-row-key="round">
+            <thead><tr><th data-field="round">Round</th><th data-field="date">Date</th><th data-field="home_away">Venue</th><th data-field="opponent">Opponent</th><th data-field="nights_since_last_game">Nights since last game</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pb-card" id="card-legs">
+        <h3>Journeys</h3>
+        <p class="note">The team flies east the day before the first game of a trip, moves by road the day after it, and flies home the day after the second game.</p>
+        <div class="pb-tablebox tall">
+          <table class="pb-table" id="table-legs" data-source="fixture_legs" data-row-key="trip,date">
+            <thead><tr><th data-field="date">Date</th><th data-field="from">From</th><th data-field="to">To</th><th data-field="mode">Mode</th><th data-field="hours">Hours</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>The proposal plays every away game in Sydney, Newcastle or south-east Queensland, where the second game of each trip is a short drive from the first, and brings the Warriors, Cowboys, Titans, Storm and Raiders to Perth. The clubs met twice are chosen so that the Bears' opponents are of average strength overall, which does not change travel. Two-game trips add nights away from Perth while halving the number of flights. The draw assumes 27 rounds with byes in the State of Origin window and no Magic Round or overseas round; a real draw also has to meet every other club's constraints, so this fixture is the club's preferred position for negotiation with the NRL.</p>
+  </section>
+
   <section class="pb-sec" id="method">
     <span class="pb-loz">Method</span>
     <h2>Method and limits</h2>
@@ -457,7 +511,7 @@
 
   const F = {
     pts: d3.format('+.1f'), p1: d3.format('.1f'),
-    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'), pct0: d3.format('.0%'),
+    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'), pct0: d3.format('.0%'), h0: d3.format(',.0f'),
   };
 
   dash.calc('km_rank', {
@@ -832,6 +886,40 @@
   }
   roadPick.addEventListener('change', () => drawRoadPlan());
 
+  // ---------------------------------------------------------------- fixture proposal
+  const dayFmt = d3.utcFormat('%a %-d %b');
+  const isoDay = (iso) => dayFmt(new Date(`${iso}T00:00:00Z`));
+
+  function fillRows(tbody, rows, cells, keyOf, classOf) {
+    tbody.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = keyOf(r);
+      if (classOf) tr.className = classOf(r);
+      cells(r).forEach((v) => { const td = document.createElement('td'); td.textContent = v; tr.append(td); });
+      return tr;
+    }));
+  }
+
+  function drawFixture() {
+    const fx = dash.data('fixture'), legsData = dash.data('fixture_legs'), sum = dash.data('fixture_summary');
+    const body = document.querySelector('#table-fixture tbody'), legBody = document.querySelector('#table-legs tbody');
+    const note = document.getElementById('fixture-note');
+    if (fx.status !== 'ok') { body.replaceChildren(); } else {
+      fillRows(body, fx.data, (r) => r.home_away === 'Bye'
+        ? [r.round, `Week of ${isoDay(r.week_of)}`, 'Bye', '', '']
+        : [r.round, isoDay(r.date), r.home_away === 'Home' ? 'Home, Perth' : `Away, ${r.venue}`,
+           r.meeting === '1 of 1' ? r.opponent : `${r.opponent} (${r.meeting})`,
+           r.nights_since_last_game == null ? '' : F.int(r.nights_since_last_game)],
+      (r) => String(r.round), (r) => r.home_away.toLowerCase());
+    }
+    if (legsData.status !== 'ok') { legBody.replaceChildren(); } else {
+      fillRows(legBody, legsData.data, (r) => [isoDay(r.date), r.from, r.to, r.mode, d3.format('.1f')(r.hours)],
+        (r) => [r.trip, r.date].map((v) => encodeURIComponent(String(v))).join(','), (r) => r.mode.toLowerCase());
+    }
+    const p = sum.status === 'ok' ? sum.data.find((r) => r.scenario === 'proposed_fixture') : null;
+    note.textContent = p ? `Away: ${p.away_opponents}. Played twice: ${p.repeat_opponents}.` : '';
+  }
+
   // ---------------------------------------------------------------- theme selector
   // The page always opens in Light; a visitor's choice applies until they leave or reload
   const themeButtons = [...root.querySelectorAll('.pb-seg button')];
@@ -1045,7 +1133,7 @@
 
   dash.onData(() => {
     fillValues();
-    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawClub(); drawReds();
+    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawFixture(); drawClub(); drawReds();
     if (!opened && dash.data('effects').status === 'ok') {
       opened = true;
       const named = document.getElementById(location.hash.slice(1));

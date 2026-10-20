@@ -54,7 +54,7 @@ def best_trips(base: str, away: list[str], d: pd.DataFrame) -> tuple[float, list
         if saving > 0:
             g.add_edge(a, b, weight=saving)
     paired = nx.max_weight_matching(g)
-    trips = [tuple(sorted(p)) for p in paired]
+    trips = sorted(tuple(sorted(p)) for p in paired)   # sorted: the matching is a set, so runs agree
     in_pairs = {t for p in trips for t in p}
     trips += [(a,) for a in away if a not in in_pairs]
     return sum(trip_km(base, trip, d) for trip in trips), trips

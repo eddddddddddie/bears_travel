@@ -12,6 +12,9 @@
     land: 'data/land_au_nz.json',
     road_summary: 'data/road_trips_summary.json',
     road_schedule: 'data/road_trips_schedule.json',
+    fixture: 'data/fixture_2027.json',
+    fixture_legs: 'data/fixture_2027_legs.json',
+    fixture_summary: 'data/fixture_2027_summary.json',
   };
   const state = Object.fromEntries(Object.keys(SOURCES).map((id) => [id, { status: 'loading', data: [] }]));
   const calcs = {};
