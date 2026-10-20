@@ -2,9 +2,9 @@
   "name": "bears-travel-site",
   "private": true,
   "type": "module",
-  "description": "Bear-ai, the dashboard's chat assistant: a Cloudflare Pages Function (functions/) and its tools (chat/).",
+  "description": "Bear-ai, the dashboard's chat assistant: the site's Cloudflare Worker (worker/, wrangler.jsonc) and its tools (chat/).",
   "scripts": {
-    "dev": "wrangler pages dev site --kv BEARAI_KV --binding BEARAI_DEV=1",
+    "dev": "wrangler dev --var BEARAI_DEV:1",
     "test": "node --test tests/bearai.test.mjs",
     "eval": "node evals/bearai_eval.mjs"
   },

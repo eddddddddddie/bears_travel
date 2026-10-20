@@ -1,4 +1,4 @@
-// Cloudflare Pages Function at /api/chat: Bear-ai's server side, deployed with the site.
+// Bear-ai's server side at /api/chat, routed here by worker/index.js.
 //   GET  -> {enabled, siteKey, perVisitor}: whether the page should show Bear-ai
 //   POST {messages, section, token} -> NDJSON stream of the events chat/answer.js emits, then
 //        {type: 'done', remaining} or {type: 'error', message}
@@ -8,15 +8,16 @@
 // per Perth day, counted in Workers KV. KV is eventually consistent, so a burst can overshoot a cap
 // by a few questions; the caps bound spend, they are not exact.
 //
-// Settings (Pages > Settings > Variables and Secrets, and a KV binding):
+// Settings (Worker > Settings > Variables and Secrets; the KV binding is in wrangler.jsonc):
 //   ANTHROPIC_API_KEY  secret; a key in its own workspace with a spend limit is safest
-//   TURNSTILE_SECRET   secret, and TURNSTILE_SITE_KEY (plain): from Cloudflare Turnstile
+//   TURNSTILE_SECRET, TURNSTILE_SITE_KEY  secrets, from Cloudflare Turnstile (the site key is public,
+//                      but secrets survive deploys from the repo)
 //   BEARAI_KV          KV namespace binding for the counters
 //   BEARAI_USER_CAP    questions per visitor per day (default 10)
 //   BEARAI_DAILY_CAP   questions per day across everyone (default 150)
 //   BEARAI_DEV = "1"   local only: skip Turnstile and caps when they are not configured
 
-import { streamAnswer, friendlyError, makeClient, SECTIONS } from '../../chat/answer.js';
+import { streamAnswer, friendlyError, makeClient, SECTIONS } from '../chat/answer.js';
 
 const MAX_TURNS = 13;            // six earlier exchanges plus the new question
 const MAX_QUESTION = 500;        // characters
@@ -35,7 +36,7 @@ const caps = (env) => ({
 const dev = (env) => env.BEARAI_DEV === '1';
 const configured = (env) => Boolean(env.ANTHROPIC_API_KEY && env.TURNSTILE_SECRET && env.TURNSTILE_SITE_KEY && env.BEARAI_KV);
 
-export async function onRequestGet({ env }) {
+export function handleGet(env) {
   const enabled = Boolean(env.ANTHROPIC_API_KEY) && (configured(env) || dev(env));
   return json({ enabled, siteKey: env.TURNSTILE_SITE_KEY || null, perVisitor: caps(env).user });
 }
@@ -73,7 +74,7 @@ export function checkHistory(messages) {
   return null;
 }
 
-export async function onRequestPost({ request, env, waitUntil }) {
+export async function handlePost(request, env, ctx) {
   if (!env.ANTHROPIC_API_KEY || !(configured(env) || dev(env))) return json({ error: 'Bear-ai is not switched on.' }, 503);
   let body;
   try { body = await request.json(); } catch { return json({ error: 'Bad request.' }, 400); }
@@ -138,7 +139,7 @@ export async function onRequestPost({ request, env, waitUntil }) {
     }
   };
   // The answer keeps streaming after this handler returns the Response.
-  waitUntil(run());
+  ctx.waitUntil(run());
 
   return new Response(readable, {
     headers: { 'content-type': 'application/x-ndjson; charset=utf-8', 'cache-control': 'no-store', 'x-content-type-options': 'nosniff' },

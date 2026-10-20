@@ -20,7 +20,7 @@ Builds one row per team per match for NRL 1998 to 2026 and the 1995 to 1997 seas
 
 Preview it locally with `python -m http.server 8000 --directory site` and open http://localhost:8000.
 
-Hosting is Cloudflare Pages connected to this repository: production branch `main`, no build command, build output directory `site`, custom domain `bears.thisaithat.com`. Each push to `main` redeploys.
+Hosting is the Cloudflare Worker `bears-travel`, deployed by Workers Builds on each push to `main`: `wrangler.jsonc` serves `site/` as static assets and routes `/api/*` to `worker/index.js` (Bear-ai). Custom domain `bears.thisaithat.com`.
 
 ## Bear-ai
 
@@ -30,24 +30,23 @@ Bear-ai is the dashboard's chat assistant. It answers questions about the analys
 |---|---|
 | `chat/tools.js` | The tables, a description of every column, and three tools: `get_rows`, `aggregate`, `correlate` |
 | `chat/answer.js` | The prompt and the streaming tool loop |
-| `functions/api/chat.js` | Cloudflare Pages Function at `/api/chat`: bot check, daily caps, streams the answer |
+| `worker/index.js`, `worker/chat.js`, `wrangler.jsonc` | The site's Cloudflare Worker: serves `site/` as static assets and runs `/api/chat` (bot check, daily caps, streamed answer) |
 | `site/assets/bearai.js` | The panel on the page; hidden unless `/api/chat` reports Bear-ai is switched on |
 | `tests/bearai.test.mjs` | Offline checks (`npm test`): tools against plain reads of the JSON, bad calls, input limits |
 | `evals/bearai_eval.mjs` | Accuracy eval (`npm run eval`): 14 questions, expected figures read from `site/data/`, about US$0.15 a run |
 
 The site is public, so every question spends API credit. Each question needs a Cloudflare Turnstile token, and questions are capped per visitor (a hash of the IP address; addresses are not stored) and across all visitors per Perth day, counted in Workers KV. A question costs about US$0.01, so the default caps (10 per visitor, 150 in total) limit spend to about US$1.50 a day. KV counts are eventually consistent, so a burst can pass a cap by a few questions.
 
-Setup in the Cloudflare dashboard (Pages project, Settings):
+Setup (the site is the `bears-travel` Worker, deployed by Workers Builds from `main`):
 
-1. Build command `npm ci` (installs the Anthropic SDK for the function); output directory stays `site`.
-2. Workers KV: create a namespace and bind it to the project as `BEARAI_KV`.
-3. Turnstile: add a widget for `bears.thisaithat.com` (managed mode), then set `TURNSTILE_SITE_KEY` (plain text) and `TURNSTILE_SECRET` (secret).
-4. `ANTHROPIC_API_KEY` (secret). A key in its own Anthropic workspace with a monthly spend limit keeps the cost bounded whatever happens to the caps.
-5. Optional: `BEARAI_USER_CAP` and `BEARAI_DAILY_CAP`.
+1. Workers KV: create a namespace (Storage & Databases, Workers KV) and add its ID to `kv_namespaces` in `wrangler.jsonc` as `{ "binding": "BEARAI_KV", "id": "<namespace id>" }`. The binding has to be in the config: a deploy from the repo replaces bindings added only in the dashboard.
+2. Turnstile: add a widget for `bears.thisaithat.com` (managed mode).
+3. On the Worker (Settings, Variables and Secrets), add `ANTHROPIC_API_KEY`, `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET`, all as secrets (the site key is public, but secrets survive deploys). A key in its own Anthropic workspace with a monthly spend limit keeps the cost bounded whatever happens to the caps.
+4. Optional: `BEARAI_USER_CAP` and `BEARAI_DAILY_CAP`.
 
-Until the key, Turnstile and KV are all set, `/api/chat` reports Bear-ai as off and the page shows no button. Preview deployments use the Preview environment's settings.
+Until the key, Turnstile and KV are all set, `/api/chat` reports Bear-ai as off and the page shows no button.
 
-Local run: `npm install`, then `npm run dev -- --binding ANTHROPIC_API_KEY=$ANTHROPIC_API_KEY` (or put the key in a gitignored `.dev.vars` file) and open http://localhost:8788. `BEARAI_DEV=1` skips the bot check and uses a local KV store. Rerun the eval after changing the prompt, the tools or the model.
+Local run: `npm install`, then `npm run dev -- --var ANTHROPIC_API_KEY:$ANTHROPIC_API_KEY` (or put the key in a gitignored `.dev.vars` file) and open http://localhost:8787. `BEARAI_DEV=1` skips the bot check, and the caps when no KV is bound. Rerun the eval after changing the prompt, the tools or the model.
 
 ## Data in this repository
 

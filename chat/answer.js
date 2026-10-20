@@ -1,5 +1,5 @@
 // Bear-ai's answer loop: Claude answers by calling the data tools in tools.js, streaming text as
-// it goes. Used by the Pages Function (functions/api/chat.js) and the eval (evals/bearai_eval.mjs).
+// it goes. Used by the site's Worker (worker/chat.js) and the eval (evals/bearai_eval.mjs).
 
 import Anthropic from '@anthropic-ai/sdk';
 import * as T from './tools.js';

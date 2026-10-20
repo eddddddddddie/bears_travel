@@ -1,7 +1,7 @@
 // Bear-ai's data tools: fixed queries over the JSON tables the dashboard draws from (site/data/),
 // so every number in an answer was computed here, not recalled or worked out by the model.
 // No model-written code runs: the model picks a table, columns, filters and an aggregate.
-// Shared by the Cloudflare Pages Function (functions/api/chat.js), tests and the eval.
+// Shared by the site's Worker (worker/chat.js), tests and the eval.
 
 import travelEffects from '../site/data/travel_effects.json' with { type: 'json' };
 import homeAdvantage from '../site/data/home_advantage_by_season.json' with { type: 'json' };

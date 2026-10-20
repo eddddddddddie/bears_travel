@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import * as T from '../chat/tools.js';
 import { FollowupFilter, SYSTEM_TEXT } from '../chat/answer.js';
-import { checkHistory } from '../functions/api/chat.js';
+import { checkHistory } from '../worker/chat.js';
 
 const load = (name) => JSON.parse(readFileSync(new URL(`../site/data/${name}.json`, import.meta.url)));
 const rows = (out) => out.table.rows.map((r) => Object.fromEntries(out.table.columns.map((c, i) => [c, r[i]])));
