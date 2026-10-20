@@ -6,11 +6,11 @@
 <meta name="color-scheme" content="light dark">
 <meta name="theme-color" content="#181818">
 <title>Perth Bears Travel Cost</title>
-<meta name="description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
+<meta name="description" content="Estimated impact of travel on NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
 <meta name="author" content="Ed Lewis">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Perth Bears Travel Cost">
-<meta property="og:description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
+<meta property="og:description" content="Estimated impact of travel on NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
 <meta property="og:url" content="https://bears.thisaithat.com/">
 <meta property="og:image" content="https://bears.thisaithat.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -18,7 +18,7 @@
 <meta property="og:image:alt" content="Perth Bears travel cost: projected cost per away game, home-away swing and season km, with a map of trips from Perth to each opponent.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Perth Bears Travel Cost">
-<meta name="twitter:description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027.">
+<meta name="twitter:description" content="Estimated impact of travel on NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027.">
 <meta name="twitter:image" content="https://bears.thisaithat.com/og-image.png">
 <meta name="twitter:image:alt" content="Perth Bears travel cost: projected cost per away game, home-away swing and season km, with a map of trips from Perth to each opponent.">
 <link rel="canonical" href="https://bears.thisaithat.com/">
@@ -219,7 +219,7 @@
     <div class="links">
       <a href="#top" data-go="top">Overview</a>
       <a href="#map" data-go="map">Distance</a>
-      <a href="#cost" data-go="cost">Travel cost</a>
+      <a href="#cost" data-go="cost">Impact of travel</a>
       <a href="#home" data-go="home">Home advantage</a>
       <a href="#market" data-go="market">Betting market</a>
       <a href="#reds" data-go="reds">Western Reds</a>
@@ -301,8 +301,8 @@
   </section>
 
   <section class="pb-sec" id="cost">
-    <span class="pb-loz">2. Cost of travel</span>
-    <h2>Cost of travel by distance</h2>
+    <span class="pb-loz">2. Impact of travel</span>
+    <h2>Impact of travel by distance</h2>
     <p>The next question is what that distance costs on the field. Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-bands">
@@ -333,7 +333,7 @@
       <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span></div>
       <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv"></div>
     </div>
-    <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the cost of travel would produce. The travel model, fitted with a separate cost for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
+    <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the impact of travel would produce. The travel model, fitted with a separate cost for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-home-trend">
         <h3>Change in home margin per decade</h3>
