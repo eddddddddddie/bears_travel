@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="color-scheme" content="dark">
-<meta name="theme-color" content="#0a0a0a">
+<meta name="color-scheme" content="dark light">
+<meta name="theme-color" content="#181818">
 <title>Perth Bears Travel Cost</title>
 <meta name="description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
 <meta property="og:type" content="website">
@@ -24,14 +24,17 @@
     --cds-dur-slow: 300ms;
     --cds-font-size-caption: 12px;
     --font-anthropic-sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    color-scheme: dark; background: #0a0a0a;
   }
   html { -webkit-text-size-adjust: 100%; scroll-behavior: auto; }
-  body { margin: 0; background: #0a0a0a; color: #ffffff; font-size: 15px; }
+  /* Page background behind .pb follows the chosen theme (Auto follows the device) */
+  html { background: #0a0a0a; color-scheme: dark; }
+  @media (prefers-color-scheme: light) { html:not(:has(.pb[data-pb-theme="dark"])) { background: #f6f6f6; color-scheme: light; } }
+  html:has(.pb[data-pb-theme="light"]) { background: #f6f6f6; color-scheme: light; }
+  body { margin: 0; font-size: 15px; }
   *, *::before, *::after { box-sizing: border-box; }
   [hidden] { display: none !important; }
-  .dash-skeleton { color: transparent; background: rgba(255, 255, 255, 0.06); border-radius: 4px; }
-  .pb-chart.dash-skeleton { background: rgba(255, 255, 255, 0.04); }
+  .dash-skeleton { color: transparent; background: var(--pb-line); border-radius: 4px; }
+  .pb-chart.dash-skeleton { background: var(--pb-grid); }
   @media (prefers-reduced-motion: no-preference) {
     .dash-skeleton { animation: pb-pulse 1.4s ease-in-out infinite; }
     @keyframes pb-pulse { 50% { opacity: 0.55; } }
@@ -41,29 +44,66 @@
      The page keeps the club's dark look in both viewer themes. */
   .pb {
     --pb-bg: #0a0a0a; --pb-panel: #181818; --pb-panel-2: #222222; --pb-line: rgba(255, 255, 255, 0.09);
-    --pb-fg: #ffffff; --pb-muted: rgba(255, 255, 255, 0.72);
-    --pb-red: #ec1d3a; --pb-hero-a: #1f1f1f;
+    --pb-fg: #ffffff; --pb-muted: rgba(255, 255, 255, 0.72); --pb-on-red: #ffffff;
+    --pb-red: #ec1d3a; --pb-hero-a: #1f1f1f; --pb-shadow: rgba(0, 0, 0, 0.5);
     --pb-s0: #ec1d3a; --pb-s1: #4a90d9; --pb-s-muted: #4a4a4a;
     --pb-grid: rgba(255, 255, 255, 0.08); --pb-axis: rgba(255, 255, 255, 0.3); --pb-ref: rgba(255, 255, 255, 0.5);
+    /* The sidebar stays dark in both themes, as on the club site */
+    --pb-nav-bg: #181818; --pb-nav-foot: #0a0a0a; --pb-nav-hover: #222222; --pb-nav-fg: #ffffff;
+    --pb-nav-muted: rgba(255, 255, 255, 0.6); --pb-nav-line: rgba(255, 255, 255, 0.09); --pb-nav-axis: rgba(255, 255, 255, 0.3);
     --pb-font: 'Barlow', var(--font-anthropic-sans), system-ui, sans-serif;
     color-scheme: dark; background: var(--pb-bg); color: var(--pb-fg); font-family: var(--pb-font);
-    padding-block: var(--cds-pad-lg) var(--cds-pad-xl);
-    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   }
-  .pb-shell { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: var(--cds-gap-xl); max-width: 84rem; margin-inline: auto; }
-  .pb-nav { position: sticky; top: var(--cds-gap-md); align-self: start; z-index: 3; background: var(--pb-panel); border-radius: 6px; padding-block: var(--cds-pad-md); display: flex; flex-direction: column; }
-  .pb-nav .brand { display: grid; gap: 2px; padding: 0 var(--cds-pad-md) var(--cds-pad-md); margin-bottom: var(--cds-pad-sm); border-bottom: 1px solid var(--pb-line); }
-  .pb-nav .brand b { font-weight: 700; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.06em; }
-  .pb-nav .brand span { font-size: 11px; color: var(--pb-muted); }
-  .pb-nav a { color: var(--pb-fg); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; font-weight: 600; padding: 0.75rem var(--cds-pad-md); border-left: 3px solid transparent; }
-  .pb-nav a:hover { background: var(--pb-panel-2); }
-  .pb-nav a.on { border-left-color: var(--pb-red); background: var(--pb-panel-2); }
+  /* Light palette: Auto follows the device setting; the selector sets data-pb-theme on .pb */
+  @media (prefers-color-scheme: light) {
+    .pb:not([data-pb-theme="dark"]) {
+    --pb-bg: #f6f6f6; --pb-panel: #ffffff; --pb-panel-2: #f0f0f0; --pb-line: rgba(0, 0, 0, 0.1);
+    --pb-fg: #1a1a1a; --pb-muted: rgba(0, 0, 0, 0.64);
+    --pb-red: #d6132f; --pb-hero-a: #ffffff; --pb-shadow: rgba(0, 0, 0, 0.12);
+    --pb-s0: #d6132f; --pb-s1: #2f6fb5; --pb-s-muted: #c4c4c4;
+    --pb-grid: rgba(0, 0, 0, 0.07); --pb-axis: rgba(0, 0, 0, 0.3); --pb-ref: rgba(0, 0, 0, 0.45);
+    color-scheme: light;
+    }
+  }
+  .pb[data-pb-theme="light"] {
+    --pb-bg: #f6f6f6; --pb-panel: #ffffff; --pb-panel-2: #f0f0f0; --pb-line: rgba(0, 0, 0, 0.1);
+    --pb-fg: #1a1a1a; --pb-muted: rgba(0, 0, 0, 0.64);
+    --pb-red: #d6132f; --pb-hero-a: #ffffff; --pb-shadow: rgba(0, 0, 0, 0.12);
+    --pb-s0: #d6132f; --pb-s1: #2f6fb5; --pb-s-muted: #c4c4c4;
+    --pb-grid: rgba(0, 0, 0, 0.07); --pb-axis: rgba(0, 0, 0, 0.3); --pb-ref: rgba(0, 0, 0, 0.45);
+    color-scheme: light;
+  }
+  .pb-shell { display: grid; grid-template-columns: 12.75rem minmax(0, 1fr); align-items: start; }
+  .pb-nav { position: sticky; top: 0; height: 100vh; height: 100dvh; z-index: 3; display: flex; flex-direction: column; background: var(--pb-nav-bg); padding-left: env(safe-area-inset-left, 0px); }
+  .pb-nav .brand { display: grid; justify-items: center; gap: 0.35rem; padding: 1.75rem 1rem 1.6rem; text-align: center; }
+  .pb-nav .brand svg { width: 2.75rem; height: 2.75rem; display: block; }
+  .pb-nav .brand small { font-size: 9px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pb-nav-fg); }
+  .pb-nav .brand b { font-size: 1.35rem; font-weight: 700; line-height: 1; letter-spacing: 0.02em; text-transform: uppercase; color: var(--pb-red); }
+  .pb-nav .links { display: flex; flex-direction: column; }
+  .pb-nav .links a { color: var(--pb-nav-fg); text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.25em; font-weight: 500; padding: 0.8rem 1.75rem; border-left: 3px solid transparent; }
+  .pb-nav .links a:hover { border-left-color: var(--pb-nav-axis); }
+  .pb-nav .links a.on { border-left-color: var(--pb-red); }
+  .pb-nav .theme { margin-top: auto; display: grid; gap: 0.5rem; padding: 1rem 1.75rem; }
+  .pb-nav .theme > span { font-size: 9px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--pb-nav-muted); }
+  .pb-seg { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--pb-nav-line); border-radius: 4px; overflow: hidden; }
+  .pb-seg button { font: inherit; font-size: 11px; font-weight: 600; color: var(--pb-nav-muted); background: transparent; border: 0; padding: 0.45rem 0.25rem; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 0.3rem; }
+  .pb-seg button + button { border-left: 1px solid var(--pb-nav-line); }
+  .pb-seg button svg { width: 0.85rem; height: 0.85rem; flex: none; }
+  .pb-seg button:hover { color: var(--pb-nav-fg); background: var(--pb-nav-hover); }
+  .pb-seg button[aria-pressed="true"] { color: var(--pb-on-red); background: var(--pb-red); }
+  .pb-seg button:focus-visible { outline: 2px solid var(--pb-nav-fg); outline-offset: -2px; }
+  .pb-nav .foot { display: grid; background: var(--pb-nav-foot); }
+  .pb-nav .foot a { display: flex; align-items: center; gap: 0.65rem; padding: 0.95rem 1.75rem; color: var(--pb-nav-fg); text-decoration: none; font-size: 0.9rem; font-weight: 600; border-top: 1px solid var(--pb-nav-line); }
+  .pb-nav .foot a:hover { background: var(--pb-nav-hover); }
+  .pb-nav .foot svg { width: 1rem; height: 1rem; flex: none; }
   .pb-nav a:focus-visible { outline: 2px solid var(--pb-red); outline-offset: -2px; }
-  .pb-main { display: grid; gap: calc(var(--cds-gap-xl) * 1.5); min-width: 0; container-type: inline-size; }
+  .pb-main { display: grid; gap: calc(var(--cds-gap-xl) * 1.5); min-width: 0; width: 100%; max-width: 76rem; justify-self: center; container-type: inline-size;
+    padding-block: var(--cds-pad-lg) var(--cds-pad-xl);
+    padding-left: max(clamp(16px, 3vw, 2.5rem), env(safe-area-inset-left, 0px)); padding-right: max(clamp(16px, 3vw, 2.5rem), env(safe-area-inset-right, 0px)); }
   .pb-hero { display: grid; gap: var(--cds-gap-md); padding: clamp(1.25rem, 4vw, 2.75rem); border-radius: 6px; border: 1px solid var(--pb-line); background: linear-gradient(155deg, var(--pb-hero-a) 0%, var(--pb-bg) 75%); }
   .pb-hero h1 { font-weight: 700; font-size: clamp(1.9rem, 4.4vw, 3.1rem); line-height: 1.05; margin: 0; text-wrap: balance; }
   .pb-lede { margin: 0; max-width: 44rem; font-size: 1.05rem; line-height: 1.55; color: var(--pb-muted); }
-  .pb-loz { justify-self: start; display: inline-block; background: var(--pb-red); color: var(--pb-fg); text-transform: uppercase; font-size: 10px; letter-spacing: 0.125em; font-weight: 600; padding: 0.35rem 0.55rem; border-radius: 4px; line-height: 1; }
+  .pb-loz { justify-self: start; display: inline-block; background: var(--pb-red); color: var(--pb-on-red); text-transform: uppercase; font-size: 10px; letter-spacing: 0.125em; font-weight: 600; padding: 0.35rem 0.55rem; border-radius: 4px; line-height: 1; }
   .pb .v { color: var(--pb-fg); font-weight: 600; font-variant-numeric: tabular-nums; }
   .pb-tiles { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--cds-gap-md); }
   @container (max-width: 52rem) { .pb-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
@@ -86,7 +126,7 @@
   .pb-legend span { display: inline-flex; align-items: center; gap: 0.375rem; }
   .pb-legend i { width: 0.625rem; height: 0.625rem; border-radius: 2px; display: inline-block; }
   .pb-legend i.ln { height: 3px; width: 0.875rem; border-radius: 1px; }
-  .pb-tt { position: absolute; pointer-events: none; background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: 0.8rem; color: var(--pb-fg); display: grid; gap: 2px; z-index: 2; max-width: 16rem; }
+  .pb-tt { position: absolute; pointer-events: none; background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; box-shadow: 0 8px 24px var(--pb-shadow); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: 0.8rem; color: var(--pb-fg); display: grid; gap: 2px; z-index: 2; max-width: 16rem; }
   .pb-tt[hidden] { display: none; }
   .pb-tt .t { color: var(--pb-muted); }
   .pb-tt .r { display: flex; align-items: center; gap: 0.375rem; font-variant-numeric: tabular-nums; }
@@ -110,12 +150,16 @@
   .pb [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
   .pb svg text { font-family: var(--pb-font); }
   @media (max-width: 56rem) {
-    .pb-shell { grid-template-columns: minmax(0, 1fr); gap: var(--cds-gap-lg); }
-    .pb-nav { flex-direction: row; overflow-x: auto; scrollbar-width: none; top: 0; padding-block: 0; border-radius: 0 0 6px 6px; }
-    .pb-nav::-webkit-scrollbar { display: none; }
-    .pb-nav .brand { display: none; }
-    .pb-nav a { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 0.85rem var(--cds-pad-md); }
-    .pb-nav a.on { border-bottom-color: var(--pb-red); }
+    .pb-shell { grid-template-columns: minmax(0, 1fr); }
+    .pb-nav { height: auto; flex-direction: row; padding-left: 0; }
+    .pb-nav .brand, .pb-nav .foot { display: none; }
+    .pb-nav .theme { margin-top: 0; padding: 0.45rem max(8px, env(safe-area-inset-right, 0px)) 0.45rem 0.25rem; flex: none; }
+    .pb-nav .theme > span, .pb-seg button .lbl { display: none; }
+    .pb-seg button { padding: 0.4rem 0.5rem; }
+    .pb-nav .links { flex-direction: row; overflow-x: auto; scrollbar-width: none; flex: 1; min-width: 0; padding-inline: max(8px, env(safe-area-inset-left, 0px)) max(8px, env(safe-area-inset-right, 0px)); }
+    .pb-nav .links::-webkit-scrollbar { display: none; }
+    .pb-nav .links a { white-space: nowrap; border-left: 0; border-bottom: 3px solid transparent; padding: 0.95rem 0.9rem; }
+    .pb-nav .links a.on { border-bottom-color: var(--pb-red); }
   }
 </style>
 </head>
@@ -125,13 +169,27 @@
 <div class="pb">
  <div class="pb-shell">
   <nav class="pb-nav" aria-label="Sections">
-    <div class="brand"><b>Travel analysis</b><span>Independent, NRL 1995 to 2027</span></div>
-    <a href="#top" data-go="top">Overview</a>
-    <a href="#cost" data-go="cost">Travel cost</a>
-    <a href="#home" data-go="home">Home advantage</a>
-    <a href="#bears" data-go="bears">2027 outlook</a>
-    <a href="#reds" data-go="reds">Western Reds</a>
-    <a href="#method" data-go="method">Method</a>
+    <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--pb-nav-foot)"/><path d="M7 23 L16 9 L25 23" fill="none" stroke="var(--pb-red)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><small>Independent</small><b>Travel analysis</b></div>
+    <div class="links">
+      <a href="#top" data-go="top">Overview</a>
+      <a href="#cost" data-go="cost">Travel cost</a>
+      <a href="#home" data-go="home">Home advantage</a>
+      <a href="#bears" data-go="bears">2027 outlook</a>
+      <a href="#reds" data-go="reds">Western Reds</a>
+      <a href="#method" data-go="method">Method</a>
+    </div>
+    <div class="theme">
+      <span id="pb-theme-label">Theme</span>
+      <div class="pb-seg" role="group" aria-labelledby="pb-theme-label">
+        <button type="button" id="pb-theme-auto" data-theme="auto" aria-pressed="true" title="Follow the device setting"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="M12 4 A8 8 0 0 1 12 20 Z" fill="currentColor" stroke="none"/></svg><span class="lbl">Auto</span></button>
+        <button type="button" id="pb-theme-light" data-theme="light" aria-pressed="false" title="Light"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="lbl">Light</span></button>
+        <button type="button" id="pb-theme-dark" data-theme="dark" aria-pressed="false" title="Dark"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><span class="lbl">Dark</span></button>
+      </div>
+    </div>
+    <div class="foot">
+      <a href="https://github.com/eddddddddddie/bears_travel" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6 L2 12 L8 18"/><path d="M16 6 L22 12 L16 18"/></svg>Code</a>
+      <a href="https://github.com/eddddddddddie/bears_travel/tree/main/site/data" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10 H21"/><path d="M9 10 V20"/></svg>Data</a>
+    </div>
   </nav>
   <main class="pb-main">
   <header class="pb-hero" id="top">
@@ -166,7 +224,7 @@
   <section class="pb-sec" id="cost">
     <span class="pb-loz">Travel cost</span>
     <h2>Cost of travel by distance</h2>
-    <p>Each match is modelled from the home side's view, controlling for team strength (Elo), rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
+    <p>Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-bands">
         <h3>Margin change by trip distance, 1996 to 2026</h3>
@@ -181,8 +239,8 @@
       </div>
     </div>
     <div class="pb-card" id="card-other">
-      <h3>Other factors in the same model</h3>
-      <p class="note">The estimates for rest and for travel in the previous 21 days are close to zero. The Elo coefficient is close to one point of margin per rating point, which indicates the Elo ratings are well calibrated.</p>
+      <h3>Rest and recent travel</h3>
+      <p class="note">The estimates for rest and for travel in the previous 21 days are close to zero, so neither has a measurable effect on margin.</p>
       <div class="pb-tablebox">
         <table class="pb-table" id="table-other" data-source="effects" data-row-key="model,design,term">
           <thead><tr><th data-field="label">Factor</th><th data-field="estimate">Points</th><th data-field="ci_low">95% low</th><th data-field="ci_high">95% high</th></tr></thead>
@@ -198,7 +256,7 @@
     <p>The raw home margin is the designated home side's average margin. The home-ground part is the season intercept from the model: the home advantage remaining after travel, rest and team strength are accounted for. The difference between the two lines is the part attributable to the visiting team's travel.</p>
     <div class="pb-card" id="card-home">
       <h3>Home advantage by season</h3>
-      <p class="note">Points per match for the designated home side. 1995 is the Elo warm-up season. 2020 and 2021 are left out of the model because teams played from temporary bases.</p>
+      <p class="note">Points per match for the designated home side. 1995 is not modelled because it is the first season in the data. 2020 and 2021 are left out because teams played from temporary bases.</p>
       <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span></div>
       <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv"></div>
     </div>
@@ -235,7 +293,7 @@
   <section class="pb-sec" id="reds">
     <span class="pb-loz">History</span>
     <h2>Western Reds, 1995 to 1997</h2>
-    <p>The Western Reds are the only previous Perth club in the competition. Results are shown as margin against the Elo expectation, which includes the average home advantage, so zero means the Reds performed as an average club would have in the same fixture.</p>
+    <p>The Western Reds are the only previous Perth club in the competition. Results are shown as margin against the expected margin for the fixture, given both teams' strength and the average home advantage, so zero means the Reds performed as an average club would have in the same fixture.</p>
     <div class="pb-card" id="card-reds">
       <h3>Western Reds against expectation</h3>
       <p class="note">Away from Perth the Reds' margins were below expectation in all three seasons. At home their margins were close to expectation, so visiting teams did not show an equivalent travel cost in Perth. This is consistent with eastward travel costing more than westward travel, but each bar covers one season of home or away matches, so the difference is not statistically reliable.</p>
@@ -465,7 +523,7 @@
     const d = dash.data('effects');
     const body = table.querySelector('tbody');
     if (d.status !== 'ok') { body.replaceChildren(); return; }
-    const terms = ['rest_days', 'prior_load_1000km', 'elo_diff'];
+    const terms = ['rest_days', 'prior_load_1000km'];
     body.replaceChildren(...terms.map((t) => {
       const r = d.data.find((x) => x.model === 'travel_cost' && x.design === 'bands' && x.term === t);
       const tr = document.createElement('tr');
@@ -585,11 +643,26 @@
         g.append('rect').attr('x', bx).attr('width', bw).attr('y', Math.min(y(v), y(0))).attr('height', Math.abs(y(v) - y(0)))
           .attr('rx', 4).style('fill', st.color)
           .on('mousemove', (event) => tip.show(event, `${s}, ${st.name.toLowerCase()}`, [
-            { text: `Against Elo ${F.pts(v)} points` }, { text: `Average margin ${F.pts(r.mean_margin)}` }, { text: `${r.matches} matches` }]))
+            { text: `Against expectation ${F.pts(v)} points` }, { text: `Average margin ${F.pts(r.mean_margin)}` }, { text: `${r.matches} matches` }]))
           .on('mouseleave', () => tip.hide());
       });
     });
   }
+
+  // ---------------------------------------------------------------- theme selector
+  const THEME_KEY = 'pb-theme';
+  const themeButtons = [...root.querySelectorAll('.pb-seg button')];
+  const applyTheme = (t) => {
+    if (t === 'light' || t === 'dark') root.dataset.pbTheme = t; else delete root.dataset.pbTheme;
+    themeButtons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.theme === (t || 'auto'))));
+  };
+  let savedTheme = 'auto';
+  try { savedTheme = localStorage.getItem(THEME_KEY) || 'auto'; } catch (err) { /* storage blocked: stay on Auto */ }
+  applyTheme(savedTheme);
+  themeButtons.forEach((b) => b.addEventListener('click', () => {
+    applyTheme(b.dataset.theme);
+    try { localStorage.setItem(THEME_KEY, b.dataset.theme); } catch (err) { /* not remembered */ }
+  }));
 
   // ---------------------------------------------------------------- section navigation
   const links = [...root.querySelectorAll('.pb-nav a[data-go]')];
