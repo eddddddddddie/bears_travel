@@ -39,7 +39,7 @@ The site is public, so every question spends API credit. Each question needs a C
 
 Setup (the site is the `bears-travel` Worker, deployed by Workers Builds from `main`):
 
-1. Workers KV: create a namespace (Storage & Databases, Workers KV) and add its ID to `kv_namespaces` in `wrangler.jsonc` as `{ "binding": "BEARAI_KV", "id": "<namespace id>" }`. The binding has to be in the config: a deploy from the repo replaces bindings added only in the dashboard.
+1. Workers KV: the `bearai` namespace is bound as `BEARAI_KV` in `wrangler.jsonc`. The binding has to be in the config: a deploy from the repo replaces bindings added only in the dashboard.
 2. Turnstile: add a widget for `bears.thisaithat.com` (managed mode).
 3. On the Worker (Settings, Variables and Secrets), add `ANTHROPIC_API_KEY`, `TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET`, all as secrets (the site key is public, but secrets survive deploys). A key in its own Anthropic workspace with a monthly spend limit keeps the cost bounded whatever happens to the caps.
 4. Optional: `BEARAI_USER_CAP` and `BEARAI_DAILY_CAP`.

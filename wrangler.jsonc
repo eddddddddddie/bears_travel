@@ -10,8 +10,8 @@
     "binding": "ASSETS",
     "run_worker_first": ["/api/*"]
   },
-  // Bear-ai's daily question counters. Until this binding exists Bear-ai reports itself off and
-  // the page shows no button. Secrets (ANTHROPIC_API_KEY, TURNSTILE_*) are set in the dashboard.
-  "kv_namespaces": [],
+  // Bear-ai's daily question counters. Secrets (ANTHROPIC_API_KEY, TURNSTILE_*) are set on the
+  // Worker in the dashboard; until all three and this binding exist, the page shows no button.
+  "kv_namespaces": [{ "binding": "BEARAI_KV", "id": "7425a282cc074b36b35593eb096b1c01" }],
   "observability": { "enabled": true }
 }
