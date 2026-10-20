@@ -1,8 +1,12 @@
 """End-to-end test on synthetic fixtures (no network). Run: python tests/test_pipeline.py
 
+Also checks that the committed site/data/*.json tables match their data/processed/travel_model/*.csv
+counterparts in row count and columns (both are tracked, so no scraped data is needed).
+
 The fixture HTML follows the 11-cell row layout nrlR parses. Re-check the parser against a
 live cached page after the first real scrape (see README, 'First run checks').
 """
+import json
 import sys
 import tempfile
 from datetime import datetime
@@ -145,8 +149,21 @@ def test_pipeline():
 
     unmatched = pd.read_csv(config.PROCESSED_DIR / "unmatched_venues.csv")
     assert unmatched["venue_raw"].tolist() == ["Mystery Oval"]
-    print("All checks passed.")
+
+
+def test_site_tables():
+    # config.ROOT, not PROCESSED_DIR: test_pipeline points PROCESSED_DIR at a temp directory
+    csv_dir = config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME
+    for name in travel_model.SITE_TABLES:
+        json_path, csv_path = travel_model.SITE_DATA_DIR / f"{name}.json", csv_dir / f"{name}.csv"
+        assert json_path.exists() and csv_path.exists(), f"{name}: missing {json_path.name} or {csv_path.name}"
+        records = json.loads(json_path.read_text(encoding="utf-8"))
+        table = pd.read_csv(csv_path)
+        assert len(records) == len(table), f"{name}: {len(records)} JSON rows, {len(table)} CSV rows"
+        assert records and all(list(r) == list(table.columns) for r in records), f"{name}: columns differ"
 
 
 if __name__ == "__main__":
     test_pipeline()
+    test_site_tables()
+    print("All checks passed.")

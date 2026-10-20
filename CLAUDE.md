@@ -21,7 +21,13 @@ python src/travel_model.py         # Phase 2: OLS travel models + dashboard tabl
 python src/site_assets.py          # [--refresh] map outline and og-image.png for site/ from site/data/ (needs matplotlib)
 ```
 
-There is one test function (`test_pipeline`) run as a plain script; `pytest tests/test_pipeline.py` also works. It needs no network: it redirects `config.RAW_DIR`, `INTERIM_DIR` and `PROCESSED_DIR` to a temp directory, parses inline fixture HTML, writes a synthetic ASB workbook, then runs `build_dataset.main()` and asserts specific feature values (DST-aware tz shifts, rest days, line sign flips, Elo updates from `config.ELO_K` and `ELO_HOME_ADV`). It also calls `elo.run_elo` directly on a three-match frame to check successor, expansion and returning-club starts, and checks `travel_model.match_frame` signs and `pair_offsets` daylight saving. The test does not fit the Phase 2 models (the fixture is too small). When changing feature logic, update the hard-coded expected values there.
+The `Makefile` has one target per script: `make scrape`, `lines`, `build`, `elo`, `model`, `assets`, `test`, and `make all` (= `build model test`). Scrape and lines hit the network, so they are never part of `all`. Script flags go through `ARGS`, e.g. `make scrape ARGS=--refresh`. `requirements.txt` pins exact versions; update the pins deliberately, since a pandas or statsmodels change can shift the committed outputs.
+
+CI (`.github/workflows/test.yml`) runs `python tests/test_pipeline.py` on Python 3.12 for every push and pull request. It needs no scraped data.
+
+`test_pipeline` runs as a plain script; `pytest tests/test_pipeline.py` also works. It needs no network: it redirects `config.RAW_DIR`, `INTERIM_DIR` and `PROCESSED_DIR` to a temp directory, parses inline fixture HTML, writes a synthetic ASB workbook, then runs `build_dataset.main()` and asserts specific feature values (DST-aware tz shifts, rest days, line sign flips, Elo updates from `config.ELO_K` and `ELO_HOME_ADV`). It also calls `elo.run_elo` directly on a three-match frame to check successor, expansion and returning-club starts, and checks `travel_model.match_frame` signs and `pair_offsets` daylight saving. The test does not fit the Phase 2 models (the fixture is too small). When changing feature logic, update the hard-coded expected values there.
+
+A second function, `test_site_tables`, checks that every table in `travel_model.SITE_TABLES` exists in both `site/data/*.json` and `data/processed/travel_model/*.csv` (both committed) with the same row count and columns. It fails if one is regenerated and committed without the other.
 
 There is no linter or formatter configured.
 

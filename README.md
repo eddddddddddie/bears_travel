@@ -1,5 +1,7 @@
 # Perth Bears travel analysis
 
+[![test](https://github.com/eddddddddddie/bears_travel/actions/workflows/test.yml/badge.svg)](https://github.com/eddddddddddie/bears_travel/actions/workflows/test.yml)
+
 Builds one row per team per match for NRL 1998 to 2026 and the 1995 to 1997 seasons that included the Western Reds, with travel distance, time zone shift (daylight saving applied by date), rest, kick-off time on the team's home clock, rolling travel load, the closing betting line and a pre-match Elo rating for each side (Phase 1). Phase 2 estimates what travel costs a team, tests whether the betting market prices it, and projects the Perth Bears' 2027 travel load.
 
 **Dashboard:** [bears.thisaithat.com](https://bears.thisaithat.com) presents the Phase 2 results: what each distance band costs, how much of home advantage is travel, what the betting market charges, and the Bears' 2027 outlook. It is a static site in `site/`, drawn from the JSON copies of the Phase 2 tables that `travel_model.py` writes to `site/data/`.
@@ -46,6 +48,23 @@ python src/site_assets.py          # map outline and link-preview image for site
 ```
 
 Repeat `build_dataset.py` after each edit to the reference tables. It does not re-download anything.
+
+The `Makefile` wraps the same steps (`PYTHON` defaults to `python`; pass script flags with `ARGS`, e.g. `make scrape ARGS=--refresh`):
+
+| Target | Runs |
+|---|---|
+| `make scrape` | `scrape_rlp.py` (network) |
+| `make lines` | `fetch_lines.py` (network) |
+| `make build` | `build_dataset.py` |
+| `make elo` | `elo.py`, optional refit |
+| `make model` | `travel_model.py` |
+| `make assets` | `site_assets.py` |
+| `make test` | `tests/test_pipeline.py` |
+| `make all` | `build`, `model`, `test` |
+
+`make all` does not scrape or download. Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
+
+`requirements.txt` pins the versions the committed outputs were produced with. GitHub Actions (`.github/workflows/test.yml`) runs `tests/test_pipeline.py` on Python 3.12 for every push and pull request. Besides the synthetic-fixture pipeline test, it checks that each `site/data/*.json` table in `travel_model.SITE_TABLES` has the same rows and columns as its CSV in `data/processed/travel_model/`, so rerun `travel_model.py` and commit both together.
 
 ## Sources
 
