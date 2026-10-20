@@ -5,6 +5,9 @@
   "name": "bears-travel",
   "main": "worker/index.js",
   "compatibility_date": "2026-10-01",
+  // Workers Builds has SKIP_DEPENDENCY_INSTALL set, so install the Anthropic SDK here before wrangler
+  // bundles worker/. `npm install` (not `npm ci`) so `wrangler dev` doesn't delete its own node_modules.
+  "build": { "command": "npm install --no-audit --no-fund" },
   "assets": {
     "directory": "./site",
     "binding": "ASSETS",
