@@ -49,3 +49,36 @@ market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 
 market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",tz_west_h,0.59804,1.0309,-1.4226,2.6186,0.56185,2091,0.0078082,per hour west
 market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",rest_days,-0.10117,0.13714,-0.36997,0.16763,0.46069,2091,0.0078082,per extra day of rest
 market_missed,linear,margin_vs_line,"2013 to 2026 with closing line, excl. 2020 and 2021",prior_load_1000km,0.11208,0.12116,-0.1254,0.34955,0.35497,2091,0.0078082,"per 1,000 km travelled in the previous 21 days"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,elo_diff,1.0273,0.03379,0.96111,1.0936,4.8929e-203,5913,0.15005,per point of Elo difference
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000_1996_2009,-2.709,0.72832,-4.1365,-1.2815,0.00019961,5913,0.15005,"150 to 1,000 km, 1996 to 2009"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000_2010_2019,0.016923,0.8321,-1.614,1.6478,0.98377,5913,0.15005,"150 to 1,000 km, 2010 to 2019"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000_2022_2026,-0.83381,1.1993,-3.1843,1.5167,0.48689,5913,0.15005,"150 to 1,000 km, 2022 to 2026"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000_1996_2009,-0.58189,1.0939,-2.7259,1.5621,0.59477,5913,0.15005,"1,000 to 2,000 km, 1996 to 2009"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000_2010_2019,-0.518,1.0578,-2.5912,1.5552,0.62435,5913,0.15005,"1,000 to 2,000 km, 2010 to 2019"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000_2022_2026,0.38482,1.8463,-3.2339,4.0035,0.83489,5913,0.15005,"1,000 to 2,000 km, 2022 to 2026"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000_1996_2009,-0.7156,0.9977,-2.671,1.2398,0.47322,5913,0.15005,"2,000 to 3,000 km, 1996 to 2009"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000_2010_2019,0.052871,1.2338,-2.3653,2.471,0.96582,5913,0.15005,"2,000 to 3,000 km, 2010 to 2019"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000_2022_2026,-0.07702,1.8352,-3.674,3.52,0.96652,5913,0.15005,"2,000 to 3,000 km, 2022 to 2026"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000_1996_2009,-4.1599,2.0782,-8.2331,-0.086653,0.045321,5913,0.15005,"3,000 km and over, 1996 to 2009"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000_2010_2019,-2.4981,3.7719,-9.891,4.8947,0.50778,5913,0.15005,"3,000 km and over, 2010 to 2019"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000_2022_2026,-11.202,7.3189,-25.547,3.143,0.12589,5913,0.15005,"3,000 km and over, 2022 to 2026"
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,rest_days,-0.079172,0.087674,-0.25101,0.092667,0.36651,5913,0.15005,per extra day of rest
+travel_cost,bands_era,margin,1996 to 2026 excl. 2020 and 2021,prior_load_1000km,0.027511,0.06827,-0.1063,0.16132,0.68697,5913,0.15005,"per 1,000 km travelled in the previous 21 days"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,elo_diff,1.0258,0.033757,0.9596,1.0919,8.3425e-203,5913,0.14907,per point of Elo difference
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000,-1.4685,0.49912,-2.4468,-0.49026,0.0032587,5913,0.14907,"150 to 1,000 km"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000,-0.37731,0.71773,-1.784,1.0294,0.5991,5913,0.14907,"1,000 to 2,000 km"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000,-0.34833,0.71801,-1.7556,1.0589,0.62758,5913,0.14907,"2,000 to 3,000 km"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000,-4.8699,2.2165,-9.2142,-0.52569,0.028011,5913,0.14907,"3,000 km and over"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_150_1000_per_decade,0.66833,0.54483,-0.39951,1.7362,0.21994,5913,0.14907,"150 to 1,000 km, change per decade"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_1000_2000_per_decade,-0.075075,0.84076,-1.7229,1.5728,0.92885,5913,0.14907,"1,000 to 2,000 km, change per decade"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_2000_3000_per_decade,0.10866,0.79864,-1.4567,1.674,0.89178,5913,0.14907,"2,000 to 3,000 km, change per decade"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,band_3000_6000_per_decade,-0.99898,1.9651,-4.8506,2.8526,0.61121,5913,0.14907,"3,000 km and over, change per decade"
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,rest_days,-0.081359,0.087624,-0.2531,0.090381,0.35315,5913,0.14907,per extra day of rest
+travel_cost,bands_trend,margin,1996 to 2026 excl. 2020 and 2021,prior_load_1000km,0.026523,0.068173,-0.10709,0.16014,0.69724,5913,0.14907,"per 1,000 km travelled in the previous 21 days"
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,elo_diff,0.97854,0.050457,0.87964,1.0774,8.7948e-84,3057,0.12161,per point of Elo difference
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,band_150_1000,-0.27328,0.68729,-1.6203,1.0738,0.69091,3057,0.12161,"150 to 1,000 km"
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,band_1000_2000,-0.19488,0.94283,-2.0428,1.653,0.83625,3057,0.12161,"1,000 to 2,000 km"
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,band_2000_3000,0.066502,1.0287,-1.9497,2.0827,0.94845,3057,0.12161,"2,000 to 3,000 km"
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,band_3000_6000,-5.1309,3.4936,-11.978,1.7165,0.14193,3057,0.12161,"3,000 km and over"
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,rest_days,-0.018992,0.11304,-0.24054,0.20255,0.86657,3057,0.12161,per extra day of rest
+travel_cost_recent,bands,margin,2010 to 2026 excl. 2020 and 2021,prior_load_1000km,0.049554,0.089636,-0.12613,0.22524,0.58038,3057,0.12161,"per 1,000 km travelled in the previous 21 days"

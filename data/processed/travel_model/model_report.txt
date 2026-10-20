@@ -52,26 +52,64 @@ Home advantage by season: raw designated-home margin and the home-ground part le
    2025      213             3.95             3.29
    2026      213             0.09            -0.84
 
-Projected 2027 travel effect by club (balanced draw, away games at the opponent's base):
-            team_id  mean_away_km  mean_abs_tz_h  trips_over_3000km  away_cost_per_game  home_away_swing  away_win_prob_change
-        perth_bears      3425.065          2.259                 16              -4.054            8.109                -0.094
-           warriors      2479.369          2.172                  2              -0.796            1.592                -0.019
-          north_qld      1806.641          0.377                  2              -0.847            1.693                -0.020
-          melbourne      1126.674          0.290                  0              -1.044            2.088                -0.024
-           dolphins      1001.622          0.377                  1              -1.234            2.469                -0.029
-           brisbane       980.878          0.377                  1              -1.234            2.469                -0.029
-         gold_coast       948.557          0.377                  1              -1.234            2.469                -0.029
-           canberra       762.152          0.290                  1              -1.461            2.923                -0.034
-          newcastle       658.356          0.290                  1              -0.711            1.423                -0.017
-            penrith       628.483          0.290                  1              -0.711            1.423                -0.017
-           cronulla       625.071          0.290                  1              -0.711            1.423                -0.017
-              manly       620.452          0.290                  1              -0.711            1.423                -0.017
-st_george_illawarra       620.432          0.290                  1              -0.711            1.423                -0.017
-    sydney_roosters       619.229          0.290                  1              -0.711            1.423                -0.017
-       south_sydney       618.739          0.290                  1              -0.711            1.423                -0.017
-         parramatta       618.631          0.290                  1              -0.711            1.423                -0.017
-         canterbury       618.551          0.290                  1              -0.711            1.423                -0.017
-       wests_tigers       617.325          0.290                  1              -0.711            1.423                -0.017
+Home advantage trend, regular season: change in designated-home margin per decade (95% interval):
+  All matches                             -1.16 (-1.69 to -0.63)  p 0.000  n 5862
+  Visitors over 150 km                    -1.59 (-2.27 to -0.90)  p 0.000  n 3512
+  Visitors within 150 km                  -0.54 (-1.37 to +0.29)  p 0.205  n 2350
+  Over minus within                       -1.05 (-2.12 to +0.03)  p 0.058  n 5862
+
+Travel cost by era (bands_era design, one model with season intercepts and the usual controls):
+            label          era  estimate  ci_low  ci_high  trips  p_eras_equal
+  150 to 1,000 km 1996 to 2009    -2.709  -4.136   -1.282    930         0.042
+  150 to 1,000 km 2010 to 2019     0.017  -1.614    1.648    690         0.042
+  150 to 1,000 km 2022 to 2026    -0.834  -3.184    1.517    402         0.042
+1,000 to 2,000 km 1996 to 2009    -0.582  -2.726    1.562    352         0.896
+1,000 to 2,000 km 2010 to 2019    -0.518  -2.591    1.555    270         0.896
+1,000 to 2,000 km 2022 to 2026     0.385  -3.234    4.003    144         0.896
+2,000 to 3,000 km 1996 to 2009    -0.716  -2.671    1.240    334         0.876
+2,000 to 3,000 km 2010 to 2019     0.053  -2.365    2.471    250         0.876
+2,000 to 3,000 km 2022 to 2026    -0.077  -3.674    3.520    115         0.876
+3,000 km and over 1996 to 2009    -4.160  -8.233   -0.087     67         0.571
+3,000 km and over 2010 to 2019    -2.498  -9.891    4.895     23         0.571
+3,000 km and over 2022 to 2026   -11.202 -25.547    3.143     10         0.571
+
+Travel cost trend (bands_trend design, change per decade from 2010):
+  150 to 1,000 km                                   -1.47 (-2.45 to -0.49)
+  1,000 to 2,000 km                                 -0.38 (-1.78 to +1.03)
+  2,000 to 3,000 km                                 -0.35 (-1.76 to +1.06)
+  3,000 km and over                                 -4.87 (-9.21 to -0.53)
+  150 to 1,000 km, change per decade                +0.67 (-0.40 to +1.74)
+  1,000 to 2,000 km, change per decade              -0.08 (-1.72 to +1.57)
+  2,000 to 3,000 km, change per decade              +0.11 (-1.46 to +1.67)
+  3,000 km and over, change per decade              -1.00 (-4.85 to +2.85)
+
+Bands design fitted on 2010 to 2026 only (travel_cost_recent):
+  150 to 1,000 km                                   -0.27 (-1.62 to +1.07)
+  1,000 to 2,000 km                                 -0.19 (-2.04 to +1.65)
+  2,000 to 3,000 km                                 +0.07 (-1.95 to +2.08)
+  3,000 km and over                                 -5.13 (-11.98 to +1.72)
+
+Projected 2027 travel effect by club (balanced draw, away games at the opponent's base);
+*_recent columns use the 2010 to 2026 band costs:
+            team_id  mean_away_km  trips_over_3000km  away_cost_per_game  home_away_swing  away_win_prob_change  away_cost_per_game_recent  home_away_swing_recent  away_win_prob_change_recent
+        perth_bears      3425.065                 16              -4.054            8.109                -0.094                     -4.825                   9.650                       -0.111
+           warriors      2479.369                  2              -0.796            1.592                -0.019                     -0.545                   1.090                       -0.013
+          north_qld      1806.641                  2              -0.847            1.693                -0.020                     -0.760                   1.520                       -0.018
+          melbourne      1126.674                  0              -1.044            2.088                -0.024                     -0.199                   0.399                       -0.005
+           dolphins      1001.622                  1              -1.234            2.469                -0.029                     -0.498                   0.995                       -0.012
+           brisbane       980.878                  1              -1.234            2.469                -0.029                     -0.498                   0.995                       -0.012
+         gold_coast       948.557                  1              -1.234            2.469                -0.029                     -0.498                   0.995                       -0.012
+           canberra       762.152                  1              -1.461            2.923                -0.034                     -0.534                   1.069                       -0.012
+          newcastle       658.356                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+            penrith       628.483                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+           cronulla       625.071                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+              manly       620.452                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+st_george_illawarra       620.432                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+    sydney_roosters       619.229                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+       south_sydney       618.739                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+         parramatta       618.631                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+         canterbury       618.551                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
+       wests_tigers       617.325                  1              -0.711            1.423                -0.017                     -0.390                   0.779                       -0.009
 
 Western Reds 1995 to 1997 against Elo:
  season      setting  matches  mean_margin  mean_margin_vs_elo  mean_km  mean_tz_shift_h

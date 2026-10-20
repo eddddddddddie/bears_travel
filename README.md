@@ -139,6 +139,7 @@ The first live run (October 2026) cleared these checks. Repeat them when adding 
 | `travel_cost_line_era` | `margin`, controlling for Elo difference | 2013+ with a closing line | Same, on the market sample |
 | `market_priced` | `-team_line_close`, controlling for Elo difference | 2013+ with a closing line | What does the market charge for travel? |
 | `market_missed` | `margin_vs_line` | 2013+ with a closing line | What does the market leave out? |
+| `travel_cost_recent` | `margin`, controlling for Elo difference | 2010 to 2026 | What does travel cost in the recent era? (bands design only) |
 
 Every model excludes 2020 and 2021 (unverified temporary bases), 1995 (Elo burn-in) and the Las Vegas games. Each is fitted in two designs:
 
@@ -147,6 +148,13 @@ Every model excludes 2020 and 2021 (unverified temporary bases), 1995 (Elo burn-
 
 Both designs also include days of rest (capped at 4 to 14) and km travelled in the previous 21 days.
 
+Two more designs of `travel_cost` test whether travel costs less than it used to. Both keep the season intercepts, Elo difference, rest and prior load:
+
+- **`bands_era`**: each distance band split into three eras, 1996 to 2009, 2010 to 2019 and 2022 to 2026 (`ERAS`), with a Wald test that a band's three era costs are equal.
+- **`bands_trend`**: the four bands plus each band times (season - 2010) / 10, a straight-line change in its cost per decade.
+
+The home advantage trend (`home_advantage_trend`) is a separate, simpler regression: the designated home side's raw margin on (season - 2010) / 10, regular season only, 1995 to 2026 excluding 2020 and 2021 and the Las Vegas games, for all matches and split by whether the visitors travelled more than 150 km. The difference row is the interaction term from one regression on all matches.
+
 Outputs in `data/processed/travel_model/`, sized for a dashboard:
 
 | File | Contents |
@@ -154,8 +162,10 @@ Outputs in `data/processed/travel_model/`, sized for a dashboard:
 | `coefficients.csv` | Every term of every model and design, with 95% intervals |
 | `travel_effects.csv` | The same without the season intercepts, with readable labels |
 | `home_advantage_by_season.csv` | Raw home margin and the home-ground part left after travel, rest and Elo |
+| `home_advantage_trend.csv` | Change in raw home margin per decade, for all matches and split by visitors' travel, with 95% intervals |
+| `travel_cost_by_era.csv` | Each band's cost in each era from `bands_era`, with 95% intervals, matches with such a trip and the p-value for equal eras |
 | `team_season_travel.csv` | Season km (return-home basis), trips, time-zone hours, margin and `margin_vs_elo` per club, with projected 2027 rows (`projected = True`) |
-| `projection_2027_pairs.csv`, `projection_2027_clubs.csv` | Distance, time zone and projected travel cost for every club pair and club in an 18-team 2027 competition |
+| `projection_2027_pairs.csv`, `projection_2027_clubs.csv` | Distance, time zone and projected travel cost for every club pair and club in an 18-team 2027 competition; the `*_recent` club columns use the 2010 to 2026 band costs |
 | `perth_reds_1995_1997.csv` | Western Reds home and away results against Elo |
 | `model_report.txt` | Summary tables |
 | `road_trips_summary.csv`, `road_trips_schedule.csv`, `road_trips_pair_savings.csv` | Perth Bears road trip plans (`road_trips.py`, see below) |
@@ -165,10 +175,13 @@ Results from the October 2026 run (points of margin for the travelling team, 95%
 - **Home advantage is mostly not travel.** About 1 point of a 3 to 5 point home advantage comes from the visitors' journey. The home-ground part has fallen from about 4.5 points before 2010 to about 2 points since 2022.
 - **Distance cost is a step plus a long-haul penalty.** Trips of 150 to 1,000 km cost -1.4 (-2.4 to -0.4). Trips of 1,000 to 3,000 km are no worse (about -0.4, intervals spanning 0). Trips of 3,000 km and over cost -4.3 (-7.9 to -0.7). Most trips over 3,000 km are between North Queensland and Auckland, or to Darwin, Perth and Townsville; few involve Perth.
 - **Time zone cannot be separated from distance.** Nearly every time-zone crossing is a New Zealand or Perth trip. In the linear design the hour terms come out positive (about +1.1 per hour), which offsets a straight line that overstates the cost of New Zealand trips; it is not evidence that crossing time zones helps. A tropical-venue term (Townsville, Darwin) was tested and is near 0.
+- **Home advantage has declined, mostly where the visitors travelled.** In regular-season matches from 1995 to 2026 (excluding 2020 and 2021), the raw home margin changed by -1.2 points per decade (-1.7 to -0.6). Where the visitors travelled more than 150 km the change was -1.6 (-2.3 to -0.9); where they were based within 150 km it was -0.5 (-1.4 to +0.3). The difference between the two slopes is -1.0 (-2.1 to +0.0, p = 0.06), so the gap is borderline on its own.
+- **The cost of short trips has fallen; the cost of long trips has not measurably changed.** In `bands_era`, a 150 to 1,000 km trip cost -2.7 (-4.1 to -1.3) in 1996 to 2009, +0.0 (-1.6 to +1.6) in 2010 to 2019 and -0.8 (-3.2 to +1.5) in 2022 to 2026; the test of equal eras gives p = 0.04. The 1,000 to 2,000 and 2,000 to 3,000 km bands show no era differences (p = 0.90 and 0.88). Trips of 3,000 km and over cost -4.2 (-8.2 to -0.1), -2.5 (-9.9 to +4.9) and -11.2 (-25.5 to +3.1) in the three eras (p = 0.57), on 67, 23 and 10 matches. The straight-line `bands_trend` terms are not distinguishable from 0 (150 to 1,000 km +0.7 per decade, -0.4 to +1.7; 3,000 km and over -1.0, -4.9 to +2.9), so the short-trip change looks more like a step around 2010 than a steady trend. The fall in short-trip cost is consistent with the faster decline in home margin where visitors travel, since most travelling visitors make trips of 150 to 1,000 km.
 - **Rest and recent travel load show no effect** (both within ±0.3 points per unit).
 - **Elo is well calibrated.** The Elo difference coefficient is 1.03 (0.96 to 1.09).
 - **The market prices travel about evenly by distance.** It charges about 1.0 point for trips of 150 to 1,000 km and about 1.7 points for every longer band. The point estimates suggest the market overprices 1,000 to 3,000 km trips by about 1 point and underprices trips over 3,000 km by about 1.75. No `market_missed` term is distinguishable from 0, so there is no evidence of a betting edge.
 - **Perth Bears 2027.** In a balanced draw, 16 of the Bears' 17 opponents are based more than 3,000 km away (Melbourne is about 2,700 km). The bands design puts the cost at about 4 points per away game, roughly 9 percentage points of win probability in an even match. Opponents pay the same in Perth, so the projected season total is 0 by construction. The effect is a home-away swing of about 8 points, against about 1.4 for a Sydney club. On a return-home basis the Bears would travel about 82,000 km, more than any club in any season since 1995.
+- **Perth Bears 2027 on recent-era costs.** With the bands design fitted on 2010 to 2026 only (`travel_cost_recent`), the cost is -4.8 points per away game (about 11 percentage points of win probability) and the home-away swing about 9.7 points, against about 0.8 for a Sydney club. The site headline and the main projection columns use the full 1996 to 2026 fit. The recent fit's lower short-trip cost narrows the swing for east-coast clubs, but the Bears' figure is set by trips of 3,000 km and over, and that cost shows no fall between eras. The recent estimate for that band, -5.1 (-12.0 to +1.7), rests on 33 matches since 2010, most of them North Queensland against the Warriors, and its interval is about twice as wide as the full-period one. The full period is the better-supported estimate of a long-trip cost; the recent projection is reported beside it on the site and in `projection_2027_clubs` (`away_cost_per_game_recent`, `home_away_swing_recent`, `away_win_prob_change_recent`).
 - **Western Reds 1995 to 1997.** Away from Perth the Reds averaged about 5.5 points below Elo, which already allows for a normal home advantage. At home they were about 0.4 below Elo, so visiting teams did not lose the same ground in Perth. With about 30 games on each side the difference is within noise, but it is the only direct evidence on Perth trips. It fits eastward travel being harder than westward.
 
 ## Road trips

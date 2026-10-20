@@ -5,6 +5,8 @@
   const SOURCES = {
     effects: 'data/travel_effects.json',
     home_adv: 'data/home_advantage_by_season.json',
+    home_trend: 'data/home_advantage_trend.json',
+    eras: 'data/travel_cost_by_era.json',
     proj2027: 'data/projection_2027_clubs.json',
     pairs: 'data/projection_2027_pairs.json',
     club_seasons: 'data/team_season_travel.json',

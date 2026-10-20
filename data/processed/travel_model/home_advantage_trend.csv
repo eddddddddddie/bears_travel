@@ -1,0 +1,5 @@
+group,label,slope_per_decade,ci_low,ci_high,p_value,margin_2010,matches,first_season,last_season
+all,All matches,-1.159,-1.6876,-0.63047,1.7246e-05,3.6182,5862,1995,2026
+visitors_travelled,Visitors over 150 km,-1.5851,-2.2681,-0.90202,5.4114e-06,3.9192,3512,1995,2026
+visitors_local,Visitors within 150 km,-0.53985,-1.3747,0.29496,0.20499,3.2162,2350,1995,2026
+difference,Over minus within,-1.0452,-2.1239,0.033384,0.057525,0.70292,5862,1995,2026

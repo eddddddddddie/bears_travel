@@ -155,6 +155,7 @@
   .pb-table th { position: sticky; top: 0; background: var(--pb-panel); text-align: right; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.12em; font-weight: 600; color: var(--pb-muted); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-bottom: 1px solid var(--pb-axis); }
   .pb-table td { text-align: right; padding: 0.45rem var(--cds-pad-sm); border-bottom: 1px solid var(--pb-line); }
   .pb-table th:first-child, .pb-table td:first-child { text-align: left; }
+  .pb-table td .sub { font-size: 0.75rem; color: var(--pb-muted); }
   .pb-table tr.hl td { font-weight: 600; background: var(--pb-panel-2); }
   .pb-table tr.hl td:first-child { box-shadow: inset 3px 0 0 var(--pb-red); }
   .pb-method { display: grid; gap: var(--cds-gap-sm); font-size: 0.85rem; color: var(--pb-muted); line-height: 1.55; max-width: 52rem; }
@@ -324,6 +325,24 @@
       <div class="pb-legend" aria-hidden="true"><span><i class="ln s0"></i>Raw home margin</span><span><i class="ln s1"></i>Home-ground part</span></div>
       <div class="pb-chart dash-skeleton" id="chart-home" data-source="home_adv"></div>
     </div>
+    <p>Home advantage has also declined over time. In regular-season matches from <span class="v dash-skeleton" data-source="home_trend" data-field="first_season" data-where="group=all" data-fmt="yr">—</span> to <span class="v dash-skeleton" data-source="home_trend" data-field="last_season" data-where="group=all" data-fmt="yr">—</span>, the home margin changed by <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=all" data-fmt="pts">—</span> points per decade. Where the visitors travelled more than 150 km the change was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_travelled" data-fmt="pts">—</span> points per decade, and where they were based within 150 km it was <span class="v dash-skeleton" data-source="home_trend" data-field="slope_per_decade" data-where="group=visitors_local" data-fmt="pts">—</span>, with an interval that includes zero. Most of the decline is in matches with a travelling visitor, which is what a fall in the cost of travel would produce. The travel model, fitted with a separate cost for each distance band in each era, places that fall in trips of 150 to 1,000 km.</p>
+    <div class="pb-grid">
+      <div class="pb-card" id="card-home-trend">
+        <h3>Change in home margin per decade</h3>
+        <p class="note">Regular-season matches, designated home side, as a straight-line trend with no adjustment for team strength. 2020 and 2021 are left out because teams played from temporary bases. The last row is the difference between the slopes for visitors over and within 150 km. Bars are 95% intervals.</p>
+        <div class="pb-chart dash-skeleton" id="chart-home-trend" data-source="home_trend"></div>
+      </div>
+      <div class="pb-card" id="card-eras">
+        <h3>Travel cost by era</h3>
+        <p class="note">Points of margin for the travelling team, from one model with a cost for each distance band in each era, with the 95% interval and the number of matches with a trip in that band. Trips of 150 to 1,000 km cost <span class="v dash-skeleton" data-source="eras" data-field="estimate" data-where="term=band_150_1000&amp;era=1996 to 2009" data-fmt="pts">—</span> points before 2010 and less since. For trips of 3,000 km and over there are few matches after 2009, and the eras cannot be told apart (p = <span class="v dash-skeleton" data-source="eras" data-field="p_eras_equal" data-where="term=band_3000_6000&amp;era=1996 to 2009" data-fmt="p2">—</span> for equal costs).</p>
+        <div class="pb-tablebox">
+          <table class="pb-table" id="table-eras" data-source="eras" data-row-key="term">
+            <thead><tr><th data-field="label">Distance</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
   </section>
 
   <section class="pb-sec" id="market">
@@ -370,6 +389,7 @@
         </table>
       </div>
     </div>
+    <p>The projection above uses travel costs from every season since 1996. Fitted on 2010 to 2026 matches only, the model gives the Bears <span class="v dash-skeleton" data-source="proj2027" data-field="away_cost_per_game_recent" data-where="team_id=perth_bears" data-fmt="pts">—</span> points per away game, a change of <span class="v dash-skeleton" data-source="proj2027" data-field="away_win_prob_change_recent" data-where="team_id=perth_bears" data-fmt="pct">—</span> in win probability in an evenly matched game, and a home-away swing of <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=perth_bears" data-fmt="p1">—</span> points, against <span class="v dash-skeleton" data-source="proj2027" data-field="home_away_swing_recent" data-where="team_id=sydney_roosters" data-fmt="p1">—</span> for a Sydney club. The lower recent cost of short trips narrows the swing for east-coast clubs. The cost of trips of 3,000 km and over, which sets the Bears' figure, is not lower in the recent period, but that estimate rests on <span class="v dash-skeleton" data-source="long_recent" data-field="trips" data-row="0" data-fmt="int">—</span> matches since 2010, so the headline keeps the full period.</p>
   </section>
 
   <section class="pb-sec" id="roads">
@@ -476,6 +496,7 @@
         <li>Most trips over 3,000 km are between North Queensland and Auckland, or to Darwin. Few involve Perth, so the Bears' figure assumes a Perth trip costs the same as any other trip of that length.</li>
         <li>The effect of a time-zone change cannot be estimated separately from distance, because nearly every time-zone crossing is a trip to or from New Zealand or Perth.</li>
         <li>The 2027 projection uses a balanced draw. Neutral venues, Magic Round and any Bears home games outside Perth are not included.</li>
+        <li>The home advantage trend is a straight line through the regular-season home margin, without the model's adjustment for team strength. The era comparison splits each distance band into 1996 to 2009, 2010 to 2019 and 2022 to 2026 in one model.</li>
         <li>Win chance converts points to probability for an evenly matched game, using the standard deviation of the model's residuals.</li>
         <li>Distances are great-circle distances between club bases and venues. Map outlines are from Natural Earth (public domain).</li>
       </ul>
@@ -512,6 +533,7 @@
   const F = {
     pts: d3.format('+.1f'), p1: d3.format('.1f'),
     pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'), pct0: d3.format('.0%'), h0: d3.format(',.0f'),
+    yr: d3.format('d'), p2: d3.format('.2f'),
   };
 
   dash.calc('km_rank', {
@@ -541,6 +563,13 @@
       const b = effects.filter((r) => r.model === 'market_missed' && r.design === 'bands' && r.term.startsWith('band_'));
       return [{ bands: b.length, crossing_zero: b.filter((r) => r.ci_low <= 0 && r.ci_high >= 0).length }];
     },
+  });
+
+  dash.calc('long_recent', {
+    title: 'Long trips since 2010',
+    description: 'Matches with a trip of 3,000 km or more by one side in the eras after 2009.',
+    inputs: ['eras'],
+    fn: (eras) => [{ trips: d3.sum(eras.filter((r) => r.term === 'band_3000_6000' && +r.era.slice(0, 4) >= 2010), (r) => r.trips) }],
   });
 
   // ---------------------------------------------------------------- helpers
@@ -625,7 +654,7 @@
     const vals = cats.flatMap((c) => series.flatMap((s) => { const r = c[s.key]; return r ? [r.ci_low, r.ci_high] : []; }));
     const x = d3.scaleLinear([Math.min(0, d3.min(vals)), Math.max(0, d3.max(vals))], [left, W - 12]).nice();
     const g = svg.append('g');
-    xAxis(g, x, top, top + cats.length * band, 5, d3.format('+'));
+    xAxis(g, x, top, top + cats.length * band, W < 480 ? 3 : 5, d3.format('+'));
     g.append('text').attr('x', W - 12).attr('y', H - 4).attr('text-anchor', 'end')
       .style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--pb-muted)').text(axisLabel);
     g.append('line').attr('x1', x(0)).attr('x2', x(0)).attr('y1', top).attr('y2', top + cats.length * band)
@@ -755,6 +784,39 @@
           text: `${s.name}: ${r[s.key] != null ? F.pts(r[s.key]) : 'not modelled'}` })));
       })
       .on('mouseleave', () => { rule.attr('opacity', 0); dots.forEach((d) => d.attr('opacity', 0)); tip.hide(); });
+  }
+
+  function drawHomeTrend() {
+    const el = document.getElementById('chart-home-trend');
+    const rows = chartState(el, 'home_trend'); if (!rows) return;
+    const cats = rows.map((r) => ({ label: r.label, a: { estimate: r.slope_per_decade, ci_low: r.ci_low, ci_high: r.ci_high } }));
+    forest(el, cats, [{ key: 'a', name: 'Change per decade', color: C[0] }], 'Points of home margin per decade');
+  }
+
+  function drawEras() {
+    const table = document.getElementById('table-eras');
+    const d = dash.data('eras');
+    const body = table.querySelector('tbody');
+    if (d.status !== 'ok') { body.replaceChildren(); return; }
+    // One row per band, one column per era: estimate, 95% interval and the number of matches with such a trip
+    const eras = [...new Set(d.data.map((r) => r.era))];
+    const head = table.querySelector('thead tr');
+    head.replaceChildren(head.firstElementChild, ...eras.map((e) => {
+      const th = document.createElement('th'); th.textContent = e; return th;
+    }));
+    body.replaceChildren(...BAND_ORDER.map((term) => {
+      const rows = d.data.filter((r) => r.term === term);
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(term);
+      const td0 = document.createElement('td'); td0.textContent = rows[0].label; tr.append(td0);
+      eras.forEach((e) => {
+        const r = rows.find((x) => x.era === e), td = document.createElement('td');
+        [[F.pts(r.estimate), ''], [`${F.pts(r.ci_low)} to ${F.pts(r.ci_high)}`, 'sub'], [`${F.int(r.trips)} matches`, 'sub']].forEach(([v, cls]) => {
+          const div = document.createElement('div'); div.textContent = v; if (cls) div.className = cls; td.append(div);
+        });
+        tr.append(td);
+      });
+      return tr;
+    }));
   }
 
   function drawSwing() {
@@ -1133,7 +1195,7 @@
 
   dash.onData(() => {
     fillValues();
-    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawFixture(); drawClub(); drawReds();
+    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawHomeTrend(); drawEras(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawFixture(); drawClub(); drawReds();
     if (!opened && dash.data('effects').status === 'ok') {
       opened = true;
       const named = document.getElementById(location.hash.slice(1));

@@ -11,6 +11,8 @@ The travel terms then measure the part of home advantage that comes from the vis
 
 Models (OLS, heteroskedasticity-robust HC1 standard errors):
   bands      margin ~ season intercepts + elo diff + distance band diffs + rest diff + prior 21-day load diff
+  bands_era  as bands, with each band split into three eras (ERAS), to test whether travel costs less now
+  bands_trend as bands, plus each band times (season - 2010) / 10, a linear change in its cost per decade
   linear     as bands, with km per 1,000 and east and west time-zone hours in place of the bands.
              A sensitivity check only: almost every time-zone crossing is a New Zealand or Perth trip, so
              time zone and distance cannot be separated, and the hour terms come out positive (they offset
@@ -18,6 +20,10 @@ Models (OLS, heteroskedasticity-robust HC1 standard errors):
   market     on 2013+ matches with a closing line, the same two designs fitted to
              -team_line_close (what the market prices), margin (what happened, same matches) and
              margin_vs_line (what the market missed; no Elo term because the line is the expectation)
+  recent     bands on RECENT_SEASONS only (travel_cost_recent), for a second 2027 projection
+
+The home advantage trend (home_advantage_trend) is separate: designated-home margin regressed on
+(season - 2010) / 10 for regular-season matches, split by whether the visitors travelled over AWAY_TRIP_KM.
 
 Sample: 1996 to 2026 (1995 is the Elo burn-in season), excluding the 2020 and 2021 seasons
 (temporary bases are unverified) and matches over EXCLUDE_KM from either base (Las Vegas).
@@ -39,12 +45,15 @@ from common import haversine_km, utc_offset_hours
 OUT_DIR_NAME = "travel_model"
 # Tables the static site (site/index.html) reads, written as JSON to site/data/ on every run
 SITE_DATA_DIR = config.ROOT / "site" / "data"
-SITE_TABLES = ("travel_effects", "home_advantage_by_season", "projection_2027_clubs", "projection_2027_pairs",
-               "team_season_travel", "perth_reds_1995_1997")
+SITE_TABLES = ("travel_effects", "home_advantage_by_season", "home_advantage_trend", "travel_cost_by_era",
+               "projection_2027_clubs", "projection_2027_pairs", "team_season_travel", "perth_reds_1995_1997")
 FIRST_SEASON = 1996
 EXCLUDE_KM = 6000
 BANDS = [(150, 1000), (1000, 2000), (2000, 3000), (3000, EXCLUDE_KM)]   # baseline: within 150 km of base
 BAND_LABELS = ["150 to 1,000 km", "1,000 to 2,000 km", "2,000 to 3,000 km", "3,000 km and over"]
+ERAS = [(1996, 2009), (2010, 2019), (2022, 2026)]   # COVID_SEASONS 2020 and 2021 are out of the sample
+RECENT_SEASONS = (2010, 2026)    # the second projection; 2022 to 2026 alone has only 10 trips of 3,000 km and over
+TREND_CENTRE = 2010              # trend terms are per decade from this season
 REST_CAP = (4, 14)               # days; rest beyond two weeks adds nothing, season openers set to 7
 BEARS_SEASON = 2027
 BEARS_SEASON_DATES = ("2027-03-05", "2027-09-05")  # regular season window used to average time-zone shifts
@@ -71,6 +80,25 @@ def band_terms() -> list[str]:
     return [f"band_{lo}_{hi}" for lo, hi in BANDS]
 
 
+def era_terms() -> list[str]:
+    return [f"{b}_{lo}_{hi}" for b in band_terms() for lo, hi in ERAS]
+
+
+def trend_terms() -> list[str]:
+    return [f"{b}_per_decade" for b in band_terms()]
+
+
+def add_era_terms(m: pd.DataFrame) -> pd.DataFrame:
+    """Band differences split by era, and band differences times decades from TREND_CENTRE."""
+    m = m.copy()
+    decade = (m["season"] - TREND_CENTRE) / 10
+    for b in band_terms():
+        for lo, hi in ERAS:
+            m[f"{b}_{lo}_{hi}"] = m[b] * m["season"].between(lo, hi)
+        m[f"{b}_per_decade"] = m[b] * decade
+    return m
+
+
 def match_frame(long: pd.DataFrame) -> pd.DataFrame:
     """One row per match from the designated home side, travel features as home minus away."""
     h = long[long["is_designated_home"]].reset_index(drop=True)
@@ -94,7 +122,8 @@ def sample(m: pd.DataFrame) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------- models
-TRAVEL_TERMS = {"bands": band_terms(), "linear": ["km_1000", "tz_east_h", "tz_west_h"]}
+TRAVEL_TERMS = {"bands": band_terms(), "linear": ["km_1000", "tz_east_h", "tz_west_h"],
+                "bands_era": era_terms(), "bands_trend": band_terms() + trend_terms()}
 COMMON_TERMS = ["rest_days", "prior_load_1000km"]
 
 
@@ -115,7 +144,7 @@ def tidy(fit, model: str, design: str, outcome: str, sample_label: str) -> pd.Da
 
 
 def run_models(m: pd.DataFrame) -> pd.DataFrame:
-    s = sample(m)
+    s = add_era_terms(sample(m))
     lined = s[(s["season"] >= 2013) & s["team_line_close"].notna()]
     span = f"{s['season'].min()} to {s['season'].max()} excl. 2020 and 2021"
     lspan = f"{lined['season'].min()} to {lined['season'].max()} with closing line, excl. 2020 and 2021"
@@ -127,11 +156,37 @@ def run_models(m: pd.DataFrame) -> pd.DataFrame:
         out.append(tidy(fit_ols(lined, "margin", design), "travel_cost_line_era", design, "margin", lspan))
         out.append(tidy(fit_ols(lined, "margin_vs_line", design, elo=False), "market_missed", design,
                         "margin_vs_line", lspan))
+    for design in ("bands_era", "bands_trend"):
+        out.append(tidy(fit_ols(s, "margin", design), "travel_cost", design, "margin", span))
+    recent = s[s["season"].between(*RECENT_SEASONS)]
+    out.append(tidy(fit_ols(recent, "margin", "bands"), "travel_cost_recent", "bands", "margin",
+                    f"{recent['season'].min()} to {recent['season'].max()} excl. 2020 and 2021"))
     return pd.concat(out, ignore_index=True)
+
+
+def era_table(m: pd.DataFrame) -> pd.DataFrame:
+    """Each band's cost by era from the bands_era design, with a Wald test that the eras are equal.
+
+    trips counts matches in which exactly one side made a trip in that band (the band difference is not 0).
+    """
+    s = add_era_terms(sample(m))
+    fit = fit_ols(s, "margin", "bands_era")
+    ci = fit.conf_int()
+    rows = []
+    for b, label in zip(band_terms(), BAND_LABELS):
+        names = [f"{b}_{lo}_{hi}" for lo, hi in ERAS]
+        p_equal = float(fit.wald_test(", ".join(f"{a} = {c}" for a, c in zip(names, names[1:])), scalar=True).pvalue)
+        for (lo, hi), name in zip(ERAS, names):
+            rows.append({"term": b, "label": label, "era": f"{lo} to {hi}", "estimate": fit.params[name],
+                         "ci_low": ci.at[name, 0], "ci_high": ci.at[name, 1], "p_value": fit.pvalues[name],
+                         "trips": int((s[name] != 0).sum()), "p_eras_equal": p_equal})
+    return pd.DataFrame(rows)
 
 
 # ---------------------------------------------------------------- dashboard tables
 TERM_LABELS = dict(zip(band_terms(), BAND_LABELS)) | {
+    f"{b}_{lo}_{hi}": f"{lab}, {lo} to {hi}" for b, lab in zip(band_terms(), BAND_LABELS) for lo, hi in ERAS} | {
+    f"{b}_per_decade": f"{lab}, change per decade" for b, lab in zip(band_terms(), BAND_LABELS)} | {
     "km_1000": "per 1,000 km", "tz_east_h": "per hour east", "tz_west_h": "per hour west",
     "rest_days": "per extra day of rest", "prior_load_1000km": "per 1,000 km travelled in the previous 21 days",
     "elo_diff": "per point of Elo difference"}
@@ -158,6 +213,38 @@ def home_advantage(coefs: pd.DataFrame, long: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def home_advantage_trend(long: pd.DataFrame) -> pd.DataFrame:
+    """Change in the designated-home margin per decade, regular season, split by the visitors' trip.
+
+    Raw margin with no Elo or season terms, on 1995 to 2026 excluding COVID_SEASONS (temporary bases decide
+    which side travelled) and matches over EXCLUDE_KM from either base. The difference row is the interaction
+    from one regression, margin ~ decade x visitors travelled, so its interval covers both slopes.
+    margin_2010 is the fitted home margin in TREND_CENTRE (for the difference row, travelled minus local).
+    """
+    h = long[long["is_designated_home"] & ~long["is_final"] & ~long["covid_season"]
+             & long[["km_from_base", "opp_km_from_base"]].notna().all(axis=1)]
+    h = h[h[["km_from_base", "opp_km_from_base"]].max(axis=1) < EXCLUDE_KM]
+    d = pd.DataFrame({"margin": h["margin"].astype(float), "decade": (h["season"] - TREND_CENTRE) / 10,
+                      "travelled": (h["opp_km_from_base"] > config.AWAY_TRIP_KM).astype(float)})
+    d["decade_x_travelled"] = d["decade"] * d["travelled"]
+    groups = [("all", "All matches", d, ["decade"], "decade", "const"),
+              ("visitors_travelled", f"Visitors over {config.AWAY_TRIP_KM:,} km",
+               d[d["travelled"] == 1], ["decade"], "decade", "const"),
+              ("visitors_local", f"Visitors within {config.AWAY_TRIP_KM:,} km",
+               d[d["travelled"] == 0], ["decade"], "decade", "const"),
+              ("difference", "Over minus within", d,
+               ["decade", "travelled", "decade_x_travelled"], "decade_x_travelled", "travelled")]
+    rows = []
+    for key, label, g, terms, slope, level in groups:
+        fit = sm.OLS(g["margin"], sm.add_constant(g[terms])).fit(cov_type="HC1")
+        ci = fit.conf_int()
+        rows.append({"group": key, "label": label, "slope_per_decade": fit.params[slope],
+                     "ci_low": ci.at[slope, 0], "ci_high": ci.at[slope, 1], "p_value": fit.pvalues[slope],
+                     "margin_2010": fit.params[level], "matches": int(fit.nobs),
+                     "first_season": int(h["season"].min()), "last_season": int(h["season"].max())})
+    return pd.DataFrame(rows)
+
+
 def team_season_travel(long: pd.DataFrame) -> pd.DataFrame:
     g = long[long["season"] >= 1995].groupby(["season", "team_id"])
     out = g.agg(matches=("match_key", "size"), trips=("is_trip", "sum"),
@@ -180,18 +267,19 @@ def pair_offsets(tz_from: str, tz_to: str, start: str, end: str) -> float:
     return float(np.mean(shifts))
 
 
-def bears_projection(coefs: pd.DataFrame, teams: pd.DataFrame, clubs: list[str],
-                     sigma: float) -> tuple[pd.DataFrame, pd.DataFrame]:
+def bears_projection(coefs: pd.DataFrame, teams: pd.DataFrame, clubs: list[str], sigma: float,
+                     model: str = "travel_cost") -> tuple[pd.DataFrame, pd.DataFrame]:
     """Each club's travel cost against every other club in an 18-team 2027 competition (bands design).
 
     Away games are approximated as trips to the opponent's base, so the draw is balanced and each
     club's season total is zero by construction: what a club loses on the road it gains when the
     same opponents travel to it. The useful outputs are the per-game costs and the home-away swing.
     sigma (residual SD of margin) converts points to win probability for an evenly matched game.
+    model picks the band costs: travel_cost (all seasons) or travel_cost_recent (RECENT_SEASONS).
     Returns (pairs, clubs), in points of margin for that club.
     """
     t = teams.set_index("team_id")
-    bands = (coefs[(coefs["model"] == "travel_cost") & (coefs["design"] == "bands")]
+    bands = (coefs[(coefs["model"] == model) & (coefs["design"] == "bands")]
              .set_index("term")["estimate"])
     rows = []
     for a in clubs:
@@ -242,7 +330,7 @@ def fmt(coefs, model, design, term):
     return f"{r['estimate']:+.2f} ({r['ci_low']:+.2f} to {r['ci_high']:+.2f})"
 
 
-def report(coefs, home, clubs, reds) -> str:
+def report(coefs, home, clubs, reds, eras, trend) -> str:
     n = coefs.groupby("model")["n_matches"].first()
     lines = ["PHASE 2 TRAVEL MODEL REPORT",
              "Points of margin for the travelling team, 95% intervals (HC1). Negative = travel costs the team.",
@@ -259,9 +347,22 @@ def report(coefs, home, clubs, reds) -> str:
               "The linear design is a sensitivity check: time zone and distance cannot be separated in this data.",
               "", "Home advantage by season: raw designated-home margin and the home-ground part left after travel, rest and Elo:",
               home[["season", "matches", "raw_home_margin", "home_ground_adv"]].round(2).to_string(index=False),
-              "", f"Projected {BEARS_SEASON} travel effect by club (balanced draw, away games at the opponent's base):",
-              clubs[["team_id", "mean_away_km", "mean_abs_tz_h", "trips_over_3000km", "away_cost_per_game",
-                     "home_away_swing", "away_win_prob_change"]].round(3).to_string(index=False),
+              "", "Home advantage trend, regular season: change in designated-home margin per decade (95% interval):",
+              "\n".join(f"  {r.label:<40}{r.slope_per_decade:+.2f} ({r.ci_low:+.2f} to {r.ci_high:+.2f})"
+                        f"  p {r.p_value:.3f}  n {r.matches}" for r in trend.itertuples()),
+              "", "Travel cost by era (bands_era design, one model with season intercepts and the usual controls):",
+              eras[["label", "era", "estimate", "ci_low", "ci_high", "trips", "p_eras_equal"]].round(3).to_string(index=False),
+              "", f"Travel cost trend (bands_trend design, change per decade from {TREND_CENTRE}):",
+              "\n".join(f"  {TERM_LABELS[term]:<50}{fmt(coefs, 'travel_cost', 'bands_trend', term)}"
+                        for term in band_terms() + trend_terms()),
+              "", f"Bands design fitted on {RECENT_SEASONS[0]} to {RECENT_SEASONS[1]} only (travel_cost_recent):",
+              "\n".join(f"  {TERM_LABELS[term]:<50}{fmt(coefs, 'travel_cost_recent', 'bands', term)}"
+                        for term in band_terms()),
+              "", f"Projected {BEARS_SEASON} travel effect by club (balanced draw, away games at the opponent's base);",
+              f"*_recent columns use the {RECENT_SEASONS[0]} to {RECENT_SEASONS[1]} band costs:",
+              clubs[["team_id", "mean_away_km", "trips_over_3000km", "away_cost_per_game", "home_away_swing",
+                     "away_win_prob_change", "away_cost_per_game_recent", "home_away_swing_recent",
+                     "away_win_prob_change_recent"]].round(3).to_string(index=False),
               "", "Western Reds 1995 to 1997 against Elo:", reds.round(2).to_string(index=False)]
     return "\n".join(lines)
 
@@ -281,8 +382,16 @@ def main() -> int:
     home = home_advantage(coefs, long)
     teams = pd.read_csv(config.REF_DIR / "teams.csv")
     clubs_2027 = sorted(set(long.loc[long["season"] == long["season"].max(), "team_id"]) | {"perth_bears"})
-    sigma = float(np.sqrt(fit_ols(sample(m), "margin", "bands").mse_resid))
+    s = sample(m)
+    sigma = float(np.sqrt(fit_ols(s, "margin", "bands").mse_resid))
     pairs, clubs = bears_projection(coefs, teams, clubs_2027, sigma)
+    # Second projection from the recent band costs, kept beside the full-period one (see README)
+    sigma_recent = float(np.sqrt(fit_ols(s[s["season"].between(*RECENT_SEASONS)], "margin", "bands").mse_resid))
+    _, recent = bears_projection(coefs, teams, clubs_2027, sigma_recent, model="travel_cost_recent")
+    cols = ["away_cost_per_game", "home_away_swing", "away_win_prob_change"]
+    clubs = clubs.merge(recent[["team_id"] + cols].rename(columns={c: f"{c}_recent" for c in cols}), on="team_id")
+    eras = era_table(m)
+    trend = home_advantage_trend(long)
     reds = perth_reds_case(long)
 
     # Projected 2027 rows sit after the history so a dashboard can rank the Bears against past seasons
@@ -295,6 +404,7 @@ def main() -> int:
                        ignore_index=True)
 
     tables = {"coefficients": coefs, "travel_effects": effects, "home_advantage_by_season": home,
+              "home_advantage_trend": trend, "travel_cost_by_era": eras,
               "team_season_travel": travel, "projection_2027_pairs": pairs, "projection_2027_clubs": clubs,
               "perth_reds_1995_1997": reds}
     names = teams.set_index("team_id")["display_name"]
@@ -306,7 +416,7 @@ def main() -> int:
         if name in SITE_TABLES:
             SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
             table.to_json(SITE_DATA_DIR / f"{name}.json", orient="records", double_precision=4)
-    text = report(coefs, home, clubs, reds)
+    text = report(coefs, home, clubs, reds, eras, trend)
     (out / "model_report.txt").write_text(text, encoding="utf-8")
     print(text)
     return 0
