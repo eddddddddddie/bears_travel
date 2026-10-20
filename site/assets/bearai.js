@@ -1,6 +1,6 @@
 // Bear-ai panel: asks /api/chat (worker/chat.js) and streams the answer, with the numbers
 // behind it and suggested follow-ups. Shows nothing unless the function says Bear-ai is switched on,
-// so the static page still works on its own and in the claude.ai copy.
+// so the static page still works on its own.
 (() => {
   const API = '/api/chat';
   const MAX_EXCHANGES = 6;   // earlier question-answer pairs sent with a new question

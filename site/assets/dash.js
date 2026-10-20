@@ -1,4 +1,4 @@
-// Minimal stand-in for the claude.ai dashboard runtime, so the same page code runs as a static site.
+// The page's data layer, modelled on the claude.ai dashboard runtime the page was first built for.
 // Loads the JSON tables travel_model.py writes to site/data/ and exposes the small `dash` API the page uses:
 // data(id), calc(id, {inputs, fn}), onData(fn), setLink(name).
 (() => {
