@@ -10,6 +10,8 @@
     club_seasons: 'data/team_season_travel.json',
     reds: 'data/perth_reds_1995_1997.json',
     land: 'data/land_au_nz.json',
+    road_summary: 'data/road_trips_summary.json',
+    road_schedule: 'data/road_trips_schedule.json',
   };
   const state = Object.fromEntries(Object.keys(SOURCES).map((id) => [id, { status: 'loading', data: [] }]));
   const calcs = {};

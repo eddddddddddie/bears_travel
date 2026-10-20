@@ -8,3 +8,4 @@ tzdata>=2024.1
 scipy>=1.11        # only for refitting Elo parameters (python src/elo.py)
 statsmodels>=0.14     # Phase 2 travel model (python src/travel_model.py)
 matplotlib>=3.8      # only for the link-preview image (python src/site_assets.py)
+networkx>=3.0      # pairing away games into road trips (python src/road_trips.py)

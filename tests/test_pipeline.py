@@ -15,6 +15,7 @@ import config  # noqa: E402
 import build_dataset  # noqa: E402
 import elo  # noqa: E402
 import fetch_lines  # noqa: E402
+import road_trips  # noqa: E402
 import scrape_rlp  # noqa: E402
 import travel_model  # noqa: E402
 from common import local_to_utc, utc_offset_hours  # noqa: E402
@@ -148,5 +149,25 @@ def test_pipeline():
     print("All checks passed.")
 
 
+def test_road_trips():
+    """Two-game trip pairing on a toy map with a known best plan."""
+    # Base P; A1 and A2 are 10 km apart and 1,000 km from P; B1 and B2 likewise, 2,000 km from P.
+    ids = ["P", "A1", "A2", "B1", "B2", "C"]
+    km = {("P", "A1"): 1000, ("P", "A2"): 1000, ("P", "B1"): 2000, ("P", "B2"): 2000, ("P", "C"): 500,
+          ("A1", "A2"): 10, ("B1", "B2"): 10, ("A1", "B1"): 1500, ("A1", "B2"): 1500, ("A2", "B1"): 1500,
+          ("A2", "B2"): 1500, ("A1", "C"): 1400, ("A2", "C"): 1400, ("B1", "C"): 2400, ("B2", "C"): 2400}
+    d = pd.DataFrame(0.0, index=ids, columns=ids)
+    for (a, b), v in km.items():
+        d.at[a, b] = d.at[b, a] = v
+    total, trips = road_trips.best_trips("P", ["A1", "A2", "B1", "B2"], d)
+    assert sorted(trips) == [("A1", "A2"), ("B1", "B2")] and total == (1000 + 10 + 1000) + (2000 + 10 + 2000)
+    # An odd number of games leaves one single trip; C (saving 100 with A1 or A2) stays on its own
+    total, trips = road_trips.best_trips("P", ["A1", "A2", "C"], d)
+    assert sorted(trips) == [("A1", "A2"), ("C",)] and total == 2010 + 1000
+    assert road_trips.flights("P", [("A1", "A2")], d) == 2   # the 10 km leg is road travel
+    print("Road trip checks passed.")
+
+
 if __name__ == "__main__":
     test_pipeline()
+    test_road_trips()

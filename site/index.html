@@ -174,6 +174,8 @@
   .pb-pick { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); font-size: 0.85rem; color: var(--pb-muted); }
   .pb-pick select { font: inherit; font-size: 0.95rem; color: var(--pb-fg); background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; padding: 0.4rem 0.6rem; max-width: 100%; }
   .pb-pick select:focus-visible { outline: 2px solid var(--pb-red); outline-offset: 1px; }
+  #table-road td:first-child { white-space: normal; min-width: 12rem; }
+  @media (max-width: 30rem) { #table-road th:nth-child(3), #table-road td:nth-child(3) { display: none; } #table-road td:first-child { min-width: 9rem; } }
   .pb-about { display: grid; gap: var(--cds-gap-sm); font-size: 0.9rem; color: var(--pb-muted); line-height: 1.55; max-width: 46rem; }
   .pb-about p { margin: 0; }
   .pb-about a { color: var(--pb-fg); text-decoration-color: var(--pb-red); text-underline-offset: 3px; }
@@ -205,6 +207,7 @@
       <a href="#cost" data-go="cost">Travel cost</a>
       <a href="#home" data-go="home">Home advantage</a>
       <a href="#bears" data-go="bears">2027 outlook</a>
+      <a href="#roads" data-go="roads">Road trips</a>
       <a href="#clubs" data-go="clubs">Club travel</a>
       <a href="#reds" data-go="reds">Western Reds</a>
       <a href="#method" data-go="method">Method</a>
@@ -329,6 +332,54 @@
     </div>
   </section>
 
+  <section class="pb-sec" id="roads">
+    <span class="pb-loz">2027 outlook</span>
+    <h2>Two-game road trips for the Bears</h2>
+    <p>If the Bears stay away between two consecutive away games instead of returning to Perth, the two games become one trip: Perth to the first ground, on to the second, then back to Perth. With no more than two away games in a row, the plan with the least travel is the pairing of away games that saves the most km, which can be solved exactly as a matching problem. The 2027 draw is not yet published, so the plan is computed for each of the <span class="v dash-skeleton" data-source="road_summary" data-field="away_sets" data-where="scenario=average" data-fmt="int">—</span> possible sets of away opponents.</p>
+    <section class="pb-tiles" id="road-figures" aria-label="Perth Bears 2027 road trips, average over every set of away opponents">
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="road_summary" data-field="km_return_home" data-where="scenario=average" data-fmt="km">—</span>
+        <span class="lab">Season km returning to Perth after each away game, average over every set</span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="road_summary" data-field="km_road_trips" data-where="scenario=average" data-fmt="km">—</span>
+        <span class="lab">Season km with two-game road trips, average over every set</span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="road_summary" data-field="pct_saved" data-where="scenario=average" data-fmt="pct0">—</span>
+        <span class="lab">Less travel</span>
+      </div>
+      <div class="pb-tile">
+        <span class="big dash-skeleton" data-source="road_summary" data-field="flights_road_trips" data-where="scenario=average" data-fmt="p1">—</span>
+        <span class="lab">Flights a season, against <span class="v dash-skeleton" data-source="road_summary" data-field="flights_return_home" data-where="scenario=average" data-fmt="int">—</span> when returning after each game</span>
+      </div>
+    </section>
+    <div class="pb-grid">
+      <div class="pb-card" id="card-road">
+        <h3>Season km by set of away opponents</h3>
+        <p class="note">The saving is similar for every set of away opponents, so it does not depend on the published draw.</p>
+        <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Two-game road trips</span><span><i class="s1"></i>Returning after each game</span></div>
+        <div class="pb-chart dash-skeleton" id="chart-road" data-source="road_summary"></div>
+      </div>
+      <div class="pb-card" id="card-road-plan">
+        <h3>Trip plan</h3>
+        <div class="pb-pick"><label for="road-pick">Away opponents</label><select id="road-pick">
+          <option value="median">Median set</option>
+          <option value="least_travel">Set with the least travel</option>
+          <option value="most_travel">Set with the most travel</option>
+        </select></div>
+        <p class="note" id="road-away"></p>
+        <div class="pb-tablebox">
+          <table class="pb-table" id="table-road" data-source="road_schedule" data-row-key="scenario,trip">
+            <thead><tr><th data-field="route">Trip</th><th data-field="km">km</th><th data-field="km_if_return_home">km returning after each game</th><th data-field="km_saved">km saved</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>Every possible set of away opponents pairs fully into two-game trips, so home games would also fall in pairs. Legs under 150 km, such as between two Sydney grounds, are counted as road travel rather than flights. The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin.</p>
+  </section>
+
   <section class="pb-sec" id="clubs">
     <span class="pb-loz">Club travel</span>
     <h2>Season travel by club</h2>
@@ -399,7 +450,7 @@
 
   const F = {
     pts: d3.format('+.1f'), p1: d3.format('.1f'),
-    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'),
+    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'), pct0: d3.format('.0%'),
   };
 
   dash.calc('km_rank', {
@@ -719,6 +770,61 @@
     });
   }
 
+  // ---------------------------------------------------------------- road trips
+  const ROAD_ORDER = [['average', 'Average, every set'], ['median', 'Median set'],
+                      ['least_travel', 'Least-travel set'], ['most_travel', 'Most-travel set']];
+
+  function drawRoad() {
+    const el = document.getElementById('chart-road');
+    const rows = chartState(el, 'road_summary'); if (!rows) return;
+    const cats = ROAD_ORDER.map(([key, label]) => ({ label, r: rows.find((x) => x.scenario === key) })).filter((c) => c.r);
+    const band = 46, top = 6, bottom = 40;
+    const H = top + cats.length * band + bottom;
+    const { svg, W } = newSvg(el, H);
+    const left = textWidth(svg, cats.map((c) => c.label), 'var(--cds-font-size-caption)') + 14;
+    const x = d3.scaleLinear([0, d3.max(cats, (c) => c.r.km_return_home)], [left, W - 12]).nice();
+    const g = svg.append('g');
+    xAxis(g, x, top, top + cats.length * band, W < 480 ? 3 : 5, (v) => `${v / 1000}k`);
+    g.append('text').attr('x', W - 12).attr('y', H - 4).attr('text-anchor', 'end')
+      .style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--pb-muted)').text('Season km');
+    const tip = makeTip(el);
+    cats.forEach((c, i) => {
+      const cy = top + i * band + band / 2;
+      g.append('text').attr('x', left - 14).attr('y', cy).attr('dy', '0.35em').attr('text-anchor', 'end')
+        .style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--pb-fg)').text(c.label);
+      g.append('line').attr('x1', x(c.r.km_road_trips)).attr('x2', x(c.r.km_return_home)).attr('y1', cy).attr('y2', cy)
+        .style('stroke', MUTED).style('stroke-width', 2).style('stroke-linecap', 'round');
+      [[c.r.km_return_home, C[1]], [c.r.km_road_trips, C[0]]].forEach(([v, col]) => g.append('circle')
+        .attr('cx', x(v)).attr('cy', cy).attr('r', 6).style('fill', col).style('stroke', 'var(--pb-panel)').style('stroke-width', 2));
+      g.append('rect').attr('x', 0).attr('y', cy - band / 2).attr('width', W).attr('height', band).style('fill', 'transparent')
+        .on('mousemove', (event) => tip.show(event, c.label, [
+          { color: C[0], text: `Two-game road trips: ${F.km(c.r.km_road_trips)} km` },
+          { color: C[1], text: `Returning after each game: ${F.km(c.r.km_return_home)} km` },
+          { text: `${F.pct0(c.r.pct_saved)} less travel` }]))
+        .on('mouseleave', () => tip.hide());
+    });
+  }
+
+  const roadPick = document.getElementById('road-pick');
+  function drawRoadPlan() {
+    const body = document.querySelector('#table-road tbody');
+    const away = document.getElementById('road-away');
+    const plan = dash.data('road_schedule'), summary = dash.data('road_summary');
+    if (plan.status !== 'ok' || summary.status !== 'ok') { body.replaceChildren(); away.textContent = ''; return; }
+    const key = roadPick.value;
+    const s = summary.data.find((r) => r.scenario === key);
+    away.textContent = s ? `Away to: ${s.away_opponents}.` : '';
+    body.replaceChildren(...plan.data.filter((r) => r.scenario === key).map((r) => {
+      const tr = document.createElement('tr');
+      tr.dataset.key = [r.scenario, r.trip].map((v) => encodeURIComponent(String(v))).join(',');
+      [r.route, F.km(r.km), F.km(r.km_if_return_home), F.km(r.km_saved)].forEach((v) => {
+        const td = document.createElement('td'); td.textContent = v; tr.append(td);
+      });
+      return tr;
+    }));
+  }
+  roadPick.addEventListener('change', () => drawRoadPlan());
+
   // ---------------------------------------------------------------- theme selector
   // The page always opens in Light; a visitor's choice applies until they leave or reload
   const themeButtons = [...root.querySelectorAll('.pb-seg button')];
@@ -932,7 +1038,7 @@
 
   dash.onData(() => {
     fillValues();
-    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawClub(); drawReds();
+    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawClub(); drawReds();
     if (!opened && dash.data('effects').status === 'ok') {
       opened = true;
       const named = document.getElementById(location.hash.slice(1));

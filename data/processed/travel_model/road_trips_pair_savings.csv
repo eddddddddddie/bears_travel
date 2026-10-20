@@ -1,0 +1,137 @@
+club_a,club_b,km_between,km_saved
+Brisbane Broncos,Dolphins,27.302,7194.1
+Brisbane Broncos,Gold Coast Titans,77.391,7142.1
+Dolphins,Gold Coast Titans,97.294,7139.4
+Gold Coast Titans,New Zealand Warriors,2230.4,6733.7
+Dolphins,New Zealand Warriors,2302.9,6663.1
+Brisbane Broncos,New Zealand Warriors,2297.6,6651.2
+South Sydney Rabbitohs,Sydney Roosters,1.8468,6574.5
+Manly-Warringah Sea Eagles,Sydney Roosters,14.009,6569.4
+Manly-Warringah Sea Eagles,South Sydney Rabbitohs,14.895,6566.7
+St George Illawarra Dragons,Sydney Roosters,12.117,6556.7
+South Sydney Rabbitohs,St George Illawarra Dragons,10.665,6556.3
+Sydney Roosters,Wests Tigers,11.604,6556.1
+South Sydney Rabbitohs,Wests Tigers,10.015,6555.8
+Manly-Warringah Sea Eagles,Wests Tigers,17.744,6555.1
+Canterbury-Bankstown Bulldogs,Sydney Roosters,12.968,6552.4
+Canterbury-Bankstown Bulldogs,South Sydney Rabbitohs,11.127,6552.4
+Cronulla-Sutherland Sharks,St George Illawarra Dragons,8.6524,6550.1
+Newcastle Knights,New Zealand Warriors,2145.7,6549.8
+Canterbury-Bankstown Bulldogs,St George Illawarra Dragons,6.7531,6549.3
+Cronulla-Sutherland Sharks,Sydney Roosters,19.19,6548.9
+Manly-Warringah Sea Eagles,St George Illawarra Dragons,25.285,6548.7
+Cronulla-Sutherland Sharks,South Sydney Rabbitohs,18.171,6548.1
+Canterbury-Bankstown Bulldogs,Wests Tigers,7.0209,6547.8
+Canterbury-Bankstown Bulldogs,Manly-Warringah Sea Eagles,23.342,6547.2
+St George Illawarra Dragons,Wests Tigers,12.508,6545.8
+Canterbury-Bankstown Bulldogs,Cronulla-Sutherland Sharks,14.67,6540.6
+Cronulla-Sutherland Sharks,Manly-Warringah Sea Eagles,33.065,6540.2
+Manly-Warringah Sea Eagles,Parramatta Eels,24.552,6539.5
+Manly-Warringah Sea Eagles,Newcastle Knights,103.69,6539.4
+Parramatta Eels,Wests Tigers,10.867,6537.5
+Parramatta Eels,Sydney Roosters,22.352,6536.6
+Cronulla-Sutherland Sharks,Wests Tigers,21.074,6536.5
+Parramatta Eels,South Sydney Rabbitohs,20.846,6536.2
+Canterbury-Bankstown Bulldogs,Parramatta Eels,14.594,6531.5
+Parramatta Eels,St George Illawarra Dragons,21.335,6528.2
+Newcastle Knights,Sydney Roosters,117.54,6520.4
+Cronulla-Sutherland Sharks,Parramatta Eels,28.981,6519.8
+Newcastle Knights,South Sydney Rabbitohs,118.57,6517.5
+Newcastle Knights,Wests Tigers,119.18,6508.1
+Newcastle Knights,St George Illawarra Dragons,128.92,6499.6
+Canterbury-Bankstown Bulldogs,Newcastle Knights,125.93,6499.1
+Newcastle Knights,Parramatta Eels,119.5,6499.1
+Cronulla-Sutherland Sharks,Newcastle Knights,136.72,6491.1
+Manly-Warringah Sea Eagles,Penrith Panthers,52.512,6484.1
+Parramatta Eels,Penrith Panthers,28.952,6483.1
+Manly-Warringah Sea Eagles,New Zealand Warriors,2158.7,6482.3
+Penrith Panthers,Wests Tigers,39.419,6481.4
+Penrith Panthers,Sydney Roosters,51.02,6480.4
+Penrith Panthers,South Sydney Rabbitohs,49.383,6480.2
+Canterbury-Bankstown Bulldogs,Penrith Panthers,40.526,6478
+Sydney Roosters,New Zealand Warriors,2158.6,6477.3
+Penrith Panthers,St George Illawarra Dragons,46.669,6475.4
+South Sydney Rabbitohs,New Zealand Warriors,2160.2,6473.8
+Cronulla-Sutherland Sharks,Penrith Panthers,51.709,6469.6
+Cronulla-Sutherland Sharks,New Zealand Warriors,2162,6463.8
+St George Illawarra Dragons,New Zealand Warriors,2164.4,6462
+Newcastle Knights,Penrith Panthers,133.31,6457.7
+New Zealand Warriors,Wests Tigers,2170.2,6455.1
+Canterbury-Bankstown Bulldogs,New Zealand Warriors,2169.8,6453.2
+Parramatta Eels,New Zealand Warriors,2180.7,6435.8
+Gold Coast Titans,Newcastle Knights,560.95,6405.2
+Penrith Panthers,New Zealand Warriors,2209.6,6379.5
+Brisbane Broncos,Newcastle Knights,618.83,6332
+Dolphins,Newcastle Knights,645.69,6322.4
+Gold Coast Titans,Manly-Warringah Sea Eagles,663.89,6247.8
+Gold Coast Titans,Sydney Roosters,677.88,6228.7
+Gold Coast Titans,South Sydney Rabbitohs,678.76,6225.9
+Gold Coast Titans,Wests Tigers,677.99,6218
+Gold Coast Titans,Parramatta Eels,676.04,6211.2
+Canterbury-Bankstown Bulldogs,Gold Coast Titans,684.97,6208.7
+Gold Coast Titans,St George Illawarra Dragons,688.76,6208.4
+Cronulla-Sutherland Sharks,Gold Coast Titans,696.91,6199.5
+Gold Coast Titans,Penrith Panthers,680.85,6178.9
+Brisbane Broncos,Manly-Warringah Sea Eagles,720.41,6176
+Dolphins,Manly-Warringah Sea Eagles,747.41,6166.1
+Brisbane Broncos,Sydney Roosters,734.42,6156.8
+Brisbane Broncos,South Sydney Rabbitohs,735.17,6154.2
+Brisbane Broncos,Wests Tigers,733.64,6147
+Dolphins,Sydney Roosters,761.41,6147
+Dolphins,South Sydney Rabbitohs,762.17,6144.4
+Brisbane Broncos,Parramatta Eels,730.87,6141
+Brisbane Broncos,Canterbury-Bankstown Bulldogs,740.66,6137.7
+Dolphins,Wests Tigers,760.7,6137.1
+Brisbane Broncos,St George Illawarra Dragons,744.86,6137
+Canberra Raiders,Cronulla-Sutherland Sharks,229.16,6133.3
+Dolphins,Parramatta Eels,757.98,6131.1
+Canberra Raiders,St George Illawarra Dragons,234.27,6129
+Brisbane Broncos,Cronulla-Sutherland Sharks,753.21,6127.9
+Canterbury-Bankstown Bulldogs,Dolphins,767.71,6127.8
+Dolphins,St George Illawarra Dragons,771.89,6127.1
+Canberra Raiders,Sydney Roosters,246.3,6126.3
+Canberra Raiders,South Sydney Rabbitohs,244.67,6126.1
+Canberra Raiders,Canterbury-Bankstown Bulldogs,234.52,6125.3
+Canberra Raiders,Wests Tigers,240.12,6121.9
+Canberra Raiders,Manly-Warringah Sea Eagles,257.74,6120
+Canberra Raiders,New Zealand Warriors,2310.8,6119.4
+Cronulla-Sutherland Sharks,Dolphins,780.22,6118
+Canberra Raiders,Parramatta Eels,236.77,6116.5
+Brisbane Broncos,Penrith Panthers,733.41,6111
+Canberra Raiders,Penrith Panthers,221.45,6104.3
+Dolphins,Penrith Panthers,760.62,6100.9
+Canberra Raiders,Newcastle Knights,354.4,6077.9
+Dolphins,North Queensland Cowboys,1095,5915.3
+Brisbane Broncos,North Queensland Cowboys,1109.4,5883.8
+Gold Coast Titans,North Queensland Cowboys,1186.1,5822.4
+Canberra Raiders,Gold Coast Titans,894.01,5806.9
+Brisbane Broncos,Canberra Raiders,941.59,5744
+Canberra Raiders,Dolphins,968.89,5733.9
+Melbourne Storm,New Zealand Warriors,2626.7,5441
+North Queensland Cowboys,New Zealand Warriors,3354.3,5383.5
+Canberra Raiders,Melbourne Storm,466.16,5338.3
+Cronulla-Sutherland Sharks,Melbourne Storm,694.97,5304.9
+Melbourne Storm,St George Illawarra Dragons,700.32,5300.3
+Melbourne Storm,Sydney Roosters,712.38,5297.7
+Melbourne Storm,South Sydney Rabbitohs,710.77,5297.4
+Canterbury-Bankstown Bulldogs,Melbourne Storm,700.67,5296.5
+Melbourne Storm,Wests Tigers,706.27,5293.2
+Manly-Warringah Sea Eagles,Melbourne Storm,723.9,5291.3
+Melbourne Storm,Parramatta Eels,702.71,5288
+Melbourne Storm,Penrith Panthers,685.69,5277.5
+Melbourne Storm,Newcastle Knights,818.99,5250.7
+Newcastle Knights,North Queensland Cowboys,1595.4,5144.5
+Manly-Warringah Sea Eagles,North Queensland Cowboys,1672.3,5013.1
+Gold Coast Titans,Melbourne Storm,1335.9,5002.5
+North Queensland Cowboys,Sydney Roosters,1684.2,4996
+North Queensland Cowboys,South Sydney Rabbitohs,1684,4994.3
+North Queensland Cowboys,Wests Tigers,1677.7,4991.9
+North Queensland Cowboys,Parramatta Eels,1669.9,4991
+Canterbury-Bankstown Bulldogs,North Queensland Cowboys,1683.9,4983.5
+North Queensland Cowboys,St George Illawarra Dragons,1690.2,4980.7
+North Queensland Cowboys,Penrith Panthers,1656.8,4976.5
+Cronulla-Sutherland Sharks,North Queensland Cowboys,1698.5,4971.5
+Brisbane Broncos,Melbourne Storm,1374.1,4948.9
+Dolphins,Melbourne Storm,1401,4939.1
+Canberra Raiders,North Queensland Cowboys,1792.2,4682.4
+Melbourne Storm,North Queensland Cowboys,2072.1,4039.9

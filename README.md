@@ -42,6 +42,7 @@ python src/fetch_lines.py          # AusSportsBetting workbook, cached in data/r
 python src/build_dataset.py        # writes data/processed/
 python src/elo.py                  # optional: refit the Elo parameters (needs scipy)
 python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
+python src/road_trips.py           # Bears two-game road trip plans, same output folders (needs networkx)
 python src/site_assets.py          # map outline and link-preview image for site/ (needs matplotlib)
 ```
 
@@ -135,6 +136,7 @@ Outputs in `data/processed/travel_model/`, sized for a dashboard:
 | `projection_2027_pairs.csv`, `projection_2027_clubs.csv` | Distance, time zone and projected travel cost for every club pair and club in an 18-team 2027 competition |
 | `perth_reds_1995_1997.csv` | Western Reds home and away results against Elo |
 | `model_report.txt` | Summary tables |
+| `road_trips_summary.csv`, `road_trips_schedule.csv`, `road_trips_pair_savings.csv` | Perth Bears road trip plans (`road_trips.py`, see below) |
 
 Results from the October 2026 run (points of margin for the travelling team, 95% intervals):
 
@@ -146,6 +148,20 @@ Results from the October 2026 run (points of margin for the travelling team, 95%
 - **The market prices travel about evenly by distance.** It charges about 1.0 point for trips of 150 to 1,000 km and about 1.7 points for every longer band. The point estimates suggest the market overprices 1,000 to 3,000 km trips by about 1 point and underprices trips over 3,000 km by about 1.75. No `market_missed` term is distinguishable from 0, so there is no evidence of a betting edge.
 - **Perth Bears 2027.** In a balanced draw, 16 of the Bears' 17 opponents are based more than 3,000 km away (Melbourne is about 2,700 km). The bands design puts the cost at about 4 points per away game, roughly 9 percentage points of win probability in an even match. Opponents pay the same in Perth, so the projected season total is 0 by construction. The effect is a home-away swing of about 8 points, against about 1.4 for a Sydney club. On a return-home basis the Bears would travel about 82,000 km, more than any club in any season since 1995.
 - **Western Reds 1995 to 1997.** Away from Perth the Reds averaged about 5.5 points below Elo, which already allows for a normal home advantage. At home they were about 0.4 below Elo, so visiting teams did not lose the same ground in Perth. With about 30 games on each side the difference is within noise, but it is the only direct evidence on Perth trips. It fits eastward travel being harder than westward.
+
+## Road trips
+
+`src/road_trips.py` estimates how much travel the Perth Bears would save by staying away between two consecutive away games instead of returning to Perth, with no more than two away games in a row. A season's away travel is then a set of one-game trips (Perth, A, Perth) and two-game trips (Perth, A, B, Perth). The plan with the least km is the pairing of away games with the largest total saving, where pairing A and B saves `d(Perth, A) + d(Perth, B) - d(A, B)`. That is a maximum-weight matching, solved exactly with networkx. Trips longer than two games would make it a vehicle routing problem.
+
+The 2027 draw is not published, so the plan is computed for every possible set of 12 away opponents from the 17 (6,188 sets), with each away game at the opponent's base and great-circle distances between bases. Legs under `AWAY_TRIP_KM` (150 km) count as road travel, not flights.
+
+Results from the October 2026 run:
+
+- Every set of away opponents pairs fully into six two-game trips.
+- Average season travel falls from 82,202 km (returning to Perth after each game) to 44,036 km, 46% less, and flights fall from 24 to about 14.
+- The saving ranges from 36,500 to 40,100 km across sets, so it does not depend much on which clubs the Bears play away.
+- Typical pairs are two Sydney clubs, the Broncos with the Dolphins or Titans, the Storm with the Raiders, and the Warriors with a Queensland or New South Wales club.
+- The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin. Two-game trips would also put the Bears' home games in pairs.
 
 ## Known gaps
 
