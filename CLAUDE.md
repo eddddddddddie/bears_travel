@@ -31,7 +31,7 @@ Three stages, connected only through files in `data/interim/`:
 1. `scrape_rlp.py` → `data/interim/rlp_results.csv` (one row per match, raw team/venue names, local date and kick-off).
 2. `fetch_lines.py` → `data/interim/asb_lines.csv` (optional; `build_dataset.py` runs without it and leaves line columns blank).
 3. `build_dataset.py` → `data/processed/team_matches.{parquet,csv}`, `unmatched_teams.csv`, `unmatched_venues.csv`, `validation_report.txt`.
-4. `travel_model.py` (Phase 2) reads `team_matches.parquet` → `data/processed/travel_model/*.csv` and `model_report.txt`.
+4. `travel_model.py` (Phase 2) reads `team_matches.parquet` → `data/processed/travel_model/*.csv`, `model_report.txt` and `site/data/*.json`.
 
 Network access happens only in stages 1 and 2, and both cache downloads; stage 3 is the one to rerun after editing anything in `reference/`.
 
@@ -59,7 +59,9 @@ To identify an unmatched venue name, use the `/venues/N` link in its RLP results
 
 This directory is a git repository (branch `main`, remote `origin` = https://github.com/eddddddddddie/bears_travel, public), kept as a portfolio piece. `.gitignore` excludes `data/raw/`, `data/interim/` and `data/processed/team_matches.{parquet,csv}`: scraped pages, betting data and per-match rows with odds are not redistributed. Don't commit them or anything else holding per-match lines or odds; aggregate outputs (`validation_report.txt`, `data/processed/travel_model/`) are tracked. The README's "Data in this repository" section explains this to readers and links the dashboard.
 
-The Phase 2 dashboard is a claude.ai artifact (linked in the README) built from five JSON copies of the `travel_model/` tables. It does not update when `travel_model.py` reruns: the uploads have to be replaced.
+The public dashboard is the static site in `site/`, deployed by Cloudflare Pages from `main` (no build, output directory `site`, domain bears.thisaithat.com). `site/index.html` is the page; `site/assets/dash.js` is a small stand-in for the claude.ai dashboard runtime (`dash.data`, `dash.calc`, `dash.onData`, `dash.setLink`) that loads `site/data/*.json`, which `travel_model.py` writes on every run (`SITE_TABLES`). Every figure on the page is filled from that data by script; keep numbers out of the markup. The page keeps the club's dark look in every theme, with chart colours red `#ec1d3a` and blue `#4a90d9` (validated for colour-blind separation on the `#181818` panels), and says it is independent and not affiliated with the club; don't add club logos or photos.
+
+A private claude.ai copy of the dashboard (https://claude.ai/artifact/XDXhYLJzjjgx2orNSuuRcQ) runs the same page body and `<style>` without the `<head>` and base styles. It does not update from the repo: changes have to be written to it separately, along with fresh uploads of the JSON.
 
 The parent folder (outside the repository) contains `bears_travel_phase1.zip` and `bears_travel_phase1_source.txt` (a single-file bundle of every project file, each section headed `===== FILE: <path> =====`). These are hand-made snapshots of Phase 1, are not regenerated automatically and are stale.
 

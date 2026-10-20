@@ -2,7 +2,21 @@
 
 Builds one row per team per match for NRL 1998 to 2026 and the 1995 to 1997 seasons that included the Western Reds, with travel distance, time zone shift (daylight saving applied by date), rest, kick-off time on the team's home clock, rolling travel load, the closing betting line and a pre-match Elo rating for each side (Phase 1). Phase 2 estimates what travel costs a team, tests whether the betting market prices it, and projects the Perth Bears' 2027 travel load.
 
-**Dashboard:** [Perth Bears travel cost](https://claude.ai/artifact/XDXhYLJzjjgx2orNSuuRcQ) presents the Phase 2 results: what each distance band costs, how much of home advantage is travel, what the betting market charges, and the Bears' 2027 outlook. It is drawn from the tables in `data/processed/travel_model/`.
+**Dashboard:** [bears.thisaithat.com](https://bears.thisaithat.com) presents the Phase 2 results: what each distance band costs, how much of home advantage is travel, what the betting market charges, and the Bears' 2027 outlook. It is a static site in `site/`, drawn from the JSON copies of the Phase 2 tables that `travel_model.py` writes to `site/data/`.
+
+## Static site
+
+`site/` is served as is, with no build step:
+
+| File | Contents |
+|---|---|
+| `site/index.html` | The dashboard page (d3 7.9.0 from cdnjs, Barlow from Google Fonts) |
+| `site/assets/dash.js` | Loads the JSON tables and gives the page the small `dash` data API it uses |
+| `site/data/*.json` | Written by `travel_model.py` on every run; commit them with the model outputs |
+
+Preview it locally with `python -m http.server 8000 --directory site` and open http://localhost:8000.
+
+Hosting is Cloudflare Pages connected to this repository: production branch `main`, no build command, build output directory `site`, custom domain `bears.thisaithat.com`. Each push to `main` redeploys.
 
 ## Data in this repository
 
@@ -14,7 +28,7 @@ The repository holds code, reference tables and derived outputs. Source data is 
 | `data/interim/` | Match results and betting lines extracted from those sources | `scrape_rlp.py`, `fetch_lines.py` |
 | `data/processed/team_matches.{parquet,csv}` | One row per team per match, including closing lines and odds | `build_dataset.py` |
 
-Tracked outputs are aggregates: `validation_report.txt`, the `unmatched_*.csv` checks, and the Phase 2 tables in `data/processed/travel_model/`. A fresh clone needs the full run order below before `build_dataset.py` or `travel_model.py` will run.
+Tracked outputs are aggregates: `validation_report.txt`, the `unmatched_*.csv` checks, the Phase 2 tables in `data/processed/travel_model/` and their JSON copies in `site/data/`. A fresh clone needs the full run order below before `build_dataset.py` or `travel_model.py` will run.
 
 ## Run order
 
@@ -25,7 +39,7 @@ python src/scrape_rlp.py           # about 32 season pages, cached in data/raw/r
 python src/fetch_lines.py          # AusSportsBetting workbook, cached in data/raw/
 python src/build_dataset.py        # writes data/processed/
 python src/elo.py                  # optional: refit the Elo parameters (needs scipy)
-python src/travel_model.py         # Phase 2 models and dashboard tables in data/processed/travel_model/
+python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
 ```
 
 Repeat `build_dataset.py` after each edit to the reference tables. It does not re-download anything.

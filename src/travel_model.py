@@ -1,7 +1,8 @@
 """Phase 2: what travel costs a team, whether the betting market prices it, and the Perth Bears outlook.
 
 Input:   data/processed/team_matches.parquet (build_dataset.py)
-Outputs: data/processed/travel_model/*.csv and model_report.txt (tables sized for a dashboard)
+Outputs: data/processed/travel_model/*.csv and model_report.txt (tables sized for a dashboard),
+         and site/data/*.json, the copies the static site at site/index.html reads
 
 Unit of analysis: one row per match, seen from the designated home side, with every travel feature
 entered as team minus opponent. Each season gets its own intercept, which is the home advantage left
@@ -36,6 +37,10 @@ import config
 from common import haversine_km, utc_offset_hours
 
 OUT_DIR_NAME = "travel_model"
+# Tables the static site (site/index.html) reads, written as JSON to site/data/ on every run
+SITE_DATA_DIR = config.ROOT / "site" / "data"
+SITE_TABLES = ("travel_effects", "home_advantage_by_season", "projection_2027_clubs", "team_season_travel",
+               "perth_reds_1995_1997")
 FIRST_SEASON = 1996
 EXCLUDE_KM = 6000
 BANDS = [(150, 1000), (1000, 2000), (2000, 3000), (3000, EXCLUDE_KM)]   # baseline: within 150 km of base
@@ -296,6 +301,9 @@ def main() -> int:
             if col in table:
                 table.insert(table.columns.get_loc(col) + 1, col.replace("_id", "") + "_name", table[col].map(names))
         table.to_csv(out / f"{name}.csv", index=False, float_format="%.5g")
+        if name in SITE_TABLES:
+            SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
+            table.to_json(SITE_DATA_DIR / f"{name}.json", orient="records", double_precision=4)
     text = report(coefs, home, clubs, reds)
     (out / "model_report.txt").write_text(text, encoding="utf-8")
     print(text)
