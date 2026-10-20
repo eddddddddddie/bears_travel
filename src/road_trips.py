@@ -35,6 +35,7 @@ from travel_model import AWAY_GAMES, OUT_DIR_NAME, SITE_DATA_DIR
 
 TEAM = "perth_bears"
 MAX_AWAY_IN_A_ROW = 2   # the matching formulation below relies on this being 2
+SITE_TABLES = ("road_trips_summary", "road_trips_schedule", "road_trips_pair_savings")
 
 
 def distance_matrix(teams: pd.DataFrame, clubs: list[str]) -> pd.DataFrame:
@@ -139,8 +140,7 @@ def main() -> int:
 
     sets = evaluate_all(TEAM, opponents, d, AWAY_GAMES)
     summary, picks = summarise(sets, names)
-    tables = {"road_trips_summary": summary, "road_trips_schedule": schedule(picks, TEAM, d, names),
-              "road_trips_pair_savings": pair_savings(TEAM, opponents, d, names)}
+    tables = dict(zip(SITE_TABLES, (summary, schedule(picks, TEAM, d, names), pair_savings(TEAM, opponents, d, names))))
     out = config.PROCESSED_DIR / OUT_DIR_NAME
     out.mkdir(parents=True, exist_ok=True)
     SITE_DATA_DIR.mkdir(parents=True, exist_ok=True)
