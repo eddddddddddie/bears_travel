@@ -20,6 +20,8 @@ Steps:
      game. It keeps the Bears' fixture, gives every club 12 home games and the run limits above, and
      minimises total door-to-door travel time for all 18 clubs, where two away games in consecutive
      rounds are one trip (base, first ground, second ground, base) as in the Bears' fixture.
+     Trips to and from Perth follow the Qantas Group route (flights.py) on any day it flies; other
+     legs are one great-circle flight, or road under AWAY_TRIP_KM.
   3. Days. Each round's games fill one Thursday, two Friday, three Saturday and three Sunday slots,
      with the Bears' days fixed, assigned round by round to avoid short turnarounds.
 
@@ -39,6 +41,7 @@ from scipy.sparse import lil_matrix, vstack
 
 import config
 from fixture_2027 import DAY_OFFSET, time_matrix
+from flights import apply_perth
 from road_trips import TEAM, distance_matrix
 from travel_model import OUT_DIR_NAME, SITE_DATA_DIR
 
@@ -195,7 +198,8 @@ def assign_days(games: pd.DataFrame, bears: pd.DataFrame) -> pd.DataFrame:
 
 
 # ---------------------------------------------------------------- checks and club travel
-def club_travel(draw: pd.DataFrame, clubs: list[str], d: pd.DataFrame, t: pd.DataFrame, names: pd.Series) -> pd.DataFrame:
+def club_travel(draw: pd.DataFrame, clubs: list[str], d: pd.DataFrame, t: pd.DataFrame, f: pd.DataFrame,
+                names: pd.Series) -> pd.DataFrame:
     rows = []
     for c in clubs:
         g = draw[(draw["home_id"] == c) | (draw["away_id"] == c)].sort_values("round")
@@ -224,7 +228,7 @@ def club_travel(draw: pd.DataFrame, clubs: list[str], d: pd.DataFrame, t: pd.Dat
             for a, b in zip(stops, stops[1:]):
                 km += d.at[a, b]
                 hours += t.at[a, b]
-                flights += d.at[a, b] >= config.AWAY_TRIP_KM
+                flights += f.at[a, b]
             i += 1
         rows.append({"team_id": c, "club": names[c], "games": len(seq), "home": home_n, "away": len(seq) - home_n,
                      "longest_away_run": away_run, "longest_home_run": home_run, "min_nights_between": min(nights),
@@ -271,7 +275,7 @@ def main() -> int:
     names = tt["display_name"]
     ids = {names[c]: c for c in clubs}
     d = distance_matrix(teams, clubs)
-    t = time_matrix(d, tt["lon"])
+    d, t, f = apply_perth(d, time_matrix(d, tt["lon"]), teams)   # Perth legs on any day the route flies
 
     rounds = matchups(bears, ids)
     games, byes, total_hours = orient(rounds, bears, ids, t, clubs)
@@ -282,7 +286,7 @@ def main() -> int:
     draw["meeting"] = ""
     for p, g in draw.assign(p=[frozenset(x) for x in zip(draw["home_id"], draw["away_id"])]).groupby("p"):
         draw.loc[g.index, "meeting"] = ["1 of 2", "2 of 2"] if len(g) == 2 else ["1 of 1"]
-    clubs_table = club_travel(draw, clubs, d, t, names)
+    clubs_table = club_travel(draw, clubs, d, t, f, names)
     check(draw, clubs_table, bears, names)
 
     draw = draw[["round", "date", "day", "home", "away", "venue", "meeting", "home_id", "away_id"]]

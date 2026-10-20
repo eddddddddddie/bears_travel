@@ -21,6 +21,7 @@ import elo  # noqa: E402
 import fetch_lines  # noqa: E402
 import draw_2027  # noqa: E402
 import fixture_2027  # noqa: E402
+import flights  # noqa: E402
 import road_trips  # noqa: E402
 import scrape_rlp  # noqa: E402
 import travel_model  # noqa: E402
@@ -157,7 +158,8 @@ def test_pipeline():
 def test_site_tables():
     # config.ROOT, not PROCESSED_DIR: test_pipeline points PROCESSED_DIR at a temp directory
     csv_dir = config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME
-    for name in (*travel_model.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES, *draw_2027.SITE_TABLES):
+    for name in (*travel_model.SITE_TABLES, *flights.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES,
+                 *draw_2027.SITE_TABLES):
         json_path, csv_path = travel_model.SITE_DATA_DIR / f"{name}.json", csv_dir / f"{name}.csv"
         assert json_path.exists() and csv_path.exists(), f"{name}: missing {json_path.name} or {csv_path.name}"
         records = json.loads(json_path.read_text(encoding="utf-8"))
@@ -181,7 +183,8 @@ def test_road_trips():
     # An odd number of games leaves one single trip; C (saving 100 with A1 or A2) stays on its own
     total, trips = road_trips.best_trips("P", ["A1", "A2", "C"], d)
     assert sorted(trips) == [("A1", "A2"), ("C",)] and total == 2010 + 1000
-    assert road_trips.flights("P", [("A1", "A2")], d) == 2   # the 10 km leg is road travel
+    f = (d >= config.AWAY_TRIP_KM).astype(int)
+    assert road_trips.flights("P", [("A1", "A2")], f) == 2   # the 10 km leg is road travel
 
 
 def test_fixture_rules():
@@ -225,9 +228,34 @@ def test_draw_round_robin():
     assert len(seen) == 18 * 17 // 2
 
 
+def test_perth_flights():
+    """Routes from Perth: connections, flying days, road to the base and the matrix overrides."""
+    teams = pd.read_csv(config.REF_DIR / "teams.csv").set_index("team_id")
+    go = lambda c, east=True, day=None: flights.journey(c, teams.at[c, "lat"], teams.at[c, "lon"], east, day)
+    tsv, syd = go("north_qld"), go("sydney_roosters")
+    assert tsv.path == ("PER", "BNE", "TSV") and tsv.flights == 2 and tsv.road_km == 0
+    assert tsv.hours > syd.hours + config.FLIGHT_CONNECT_H and go("north_qld", east=False).path == ("TSV", "BNE", "PER")
+    assert syd.hours < go("sydney_roosters", east=False).hours   # eastbound is quicker
+    # Auckland flies Mon, Wed and Sat eastbound; Tue, Thu and Sun back; nothing else serves it
+    assert go("warriors", day="Sat") is not None and go("warriors", day="Fri") is None
+    assert go("warriors", east=False, day="Fri") is None and go("warriors", east=False, day="Sun") is not None
+    # Newcastle on a day without its flight: Sydney, then road
+    ntl = go("newcastle", day="Sat")
+    assert ntl.path == ("PER", "SYD") and ntl.road_km > config.AIRPORT_ROAD_KM and go("newcastle", day="Fri").path == ("PER", "NTL")
+    # Matrices: Perth rows and columns replaced; other legs untouched; a day with no flight gets the penalty
+    clubs = ["perth_bears", "north_qld", "warriors", "brisbane"]
+    d = road_trips.distance_matrix(teams.reset_index(), clubs)
+    t = fixture_2027.time_matrix(d, teams["lon"])
+    d2, t2, f2 = flights.apply_perth(d, t, teams.reset_index(), day_back="Fri")
+    assert d2.at["perth_bears", "north_qld"] > d.at["perth_bears", "north_qld"] and f2.at["perth_bears", "north_qld"] == 2
+    assert d2.at["brisbane", "north_qld"] == d.at["brisbane", "north_qld"] and f2.at["brisbane", "north_qld"] == 1
+    assert t2.at["warriors", "perth_bears"] == flights.PENALTY_H and t2.at["perth_bears", "warriors"] < 12
+
+
 if __name__ == "__main__":
     test_pipeline()
     test_site_tables()
+    test_perth_flights()
     test_road_trips()
     test_fixture_rules()
     test_draw_round_robin()

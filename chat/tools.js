@@ -19,6 +19,7 @@ import fixtureLegs from '../site/data/fixture_2027_legs.json' with { type: 'json
 import fixtureSummary from '../site/data/fixture_2027_summary.json' with { type: 'json' };
 import draw from '../site/data/draw_2027.json' with { type: 'json' };
 import drawClubs from '../site/data/draw_2027_clubs.json' with { type: 'json' };
+import perthFlights from '../site/data/perth_flights_2027.json' with { type: 'json' };
 
 const POINTS = 'Points of match margin for the travelling team, against playing within 150 km of its base (negative = worse).';
 
@@ -117,9 +118,20 @@ export const TABLES = {
       mean_margin_vs_elo: 'Average points above the Elo expectation', mean_km: 'Average km travelled', mean_tz_shift_h: 'Average time-zone shift, hours',
     },
   },
+  perth_flights_2027: {
+    rows: perthFlights,
+    about: 'The Qantas Group flight from Perth to each 2027 opponent, from schedules checked in October 2026: nonstop to every city except Townsville (one stop in Brisbane); the Gold Coast nonstop is Jetstar; Auckland and Newcastle are served three days a week. Hours are door to door (2.5 hours per journey for transfers and check-in, plus air time, plus 1.5 hours per connection, plus road from the airport where it is over 60 km). Road trips, the proposed fixture and the full draw use these routes for journeys to and from Perth.',
+    columns: {
+      club: 'Opponent', base: 'Home ground area', route: 'Airports flown through, from Perth', carrier: 'Qantas, QantasLink or Jetstar',
+      stops: 'Connections (0 = nonstop)', days_east: 'Days it flies from Perth', days_west: 'Days it flies back to Perth',
+      other_days: 'Route on days the main flight does not fly', great_circle_km: 'Straight-line km from Perth (the travel model\'s measure)',
+      flown_km: 'km along the flight route, plus any road', hours_east: 'Door-to-door hours from Perth', hours_west: 'Door-to-door hours back to Perth',
+      via: 'Connecting city',
+    },
+  },
   road_trips_summary: {
     rows: roadSummary,
-    about: 'Perth Bears 2027 travel if two consecutive away games are played on one trip (Perth, A, B, Perth) instead of returning home after each, with at most two away games in a row. Computed over all 6,188 possible sets of 12 away opponents.',
+    about: 'Perth Bears 2027 travel if two consecutive away games are played on one trip (Perth, A, B, Perth) instead of returning home after each, with at most two away games in a row. Computed over all 6,188 possible sets of 12 away opponents. km to and from Perth are flown km along the Qantas Group route (perth_flights_2027), so they are a little higher than the straight-line season km in projection_2027_clubs.',
     columns: {
       scenario: 'average, median, best or worst set of away opponents', label: 'Readable scenario', away_sets: 'Away sets covered',
       km_return_home: 'Season km returning home after each away game', km_road_trips: 'Season km with two-game trips', km_saved: 'km saved',
@@ -151,7 +163,11 @@ export const TABLES = {
   fixture_2027_legs: {
     rows: fixtureLegs,
     about: 'Travel legs of the proposed fixture\'s away trips. Travel time is door to door (2.5 hours per flight plus air time; road legs at 70 km/h).',
-    columns: { trip: 'Trip number', date: 'Date', day: 'Day', from: 'From', to: 'To', mode: 'Flight or Road', km: 'km', hours: 'Hours' },
+    columns: {
+      trip: 'Trip number', date: 'Date', day: 'Day', from: 'From', to: 'To', mode: 'Flight or Road',
+      route: 'Airports flown through for journeys to or from Perth; Direct flight or Road otherwise', carrier: 'Airline for journeys to or from Perth',
+      flights: 'Flights on the journey', km: 'km', hours: 'Door-to-door hours',
+    },
   },
   fixture_2027_summary: {
     rows: fixtureSummary,

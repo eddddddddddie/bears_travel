@@ -15,6 +15,7 @@ const club = (id) => one('projection_2027_clubs', (r) => r.team_id === id);
 const mostHours = [...data('draw_2027_clubs')].sort((a, b) => b.travel_hours - a.travel_hours)[0];
 const mostKm = data('team_season_travel').filter((r) => !r.projected).sort((a, b) => b.km_return_home - a.km_return_home)[0];
 const reds1996 = one('perth_reds_1995_1997', (r) => r.season === 1996 && r.setting === 'away');
+const tsv = one('perth_flights_2027', (r) => r.team_id === 'north_qld');
 
 // expect: [value, tolerance] pairs; signs are ignored (answers say "4.3 points worse" as often as "-4.3").
 // words: regexes that must all match. none: the answer must not state this kind of figure at all.
@@ -31,6 +32,7 @@ const CASES = [
   { q: 'What did the closing line charge for a trip of 150 to 1,000 km?', expect: [[effect('market_priced', 'band_150_1000'), 0.06]] },
   { q: 'How did the Western Reds do against Elo away from home in 1996?', expect: [[reds1996.mean_margin_vs_elo, 0.06]] },
   { q: 'Which club travelled the most km in a single season before 2027?', expect: [[mostKm.km_return_home, 600]], words: [new RegExp(mostKm.team_name.split(' ').at(-1), 'i'), new RegExp(String(mostKm.season))] },
+  { q: 'How do the Bears fly to Townsville, and how long does it take?', expect: [[tsv.hours_east, 0.06]], words: [/brisbane/i] },
   { q: 'What was the crowd at the Western Reds\' first home game?', words: [/(don't|do not|doesn't|does not) (have|include|cover)|not (available|in the data)|no (crowd|attendance)/i] },
   { q: 'Who will win when the Bears play the Eels in round 1?', words: [/(can't|cannot|don't|do not|won't) (give|offer|make|predict)|not (able|something)|no (tips|predictions)/i] },
 ];

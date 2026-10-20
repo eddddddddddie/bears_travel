@@ -1,19 +1,19 @@
-trip,date,day,from,to,mode,km,hours
-1,2027-03-13,Sat,Perth,Dolphins,Flight,3619.3,6.9137
-1,2027-03-15,Mon,Dolphins,Brisbane Broncos,Road,27.302,0.89003
-1,2027-03-19,Fri,Brisbane Broncos,Perth,Flight,3602.1,7.7972
-2,2027-04-10,Sat,Perth,Wests Tigers,Flight,3278.5,6.4982
-2,2027-04-12,Mon,Wests Tigers,Canterbury-Bankstown Bulldogs,Road,7.0209,0.6003
-2,2027-04-16,Fri,Canterbury-Bankstown Bulldogs,Perth,Flight,3276.3,7.3181
-3,2027-05-08,Sat,Perth,St George Illawarra Dragons,Flight,3279.7,6.4997
-3,2027-05-10,Mon,St George Illawarra Dragons,Cronulla-Sutherland Sharks,Road,8.6524,0.62361
-3,2027-05-14,Fri,Cronulla-Sutherland Sharks,Perth,Flight,3279,7.3221
-4,2027-06-12,Sat,Perth,Parramatta Eels,Flight,3269.8,6.4876
-4,2027-06-14,Mon,Parramatta Eels,Penrith Panthers,Road,28.952,0.9136
-4,2027-06-18,Fri,Penrith Panthers,Perth,Flight,3242.3,7.2681
-5,2027-07-17,Sat,Perth,Melbourne Storm,Flight,2720.9,5.8182
-5,2027-07-19,Mon,Melbourne Storm,New Zealand Warriors,Flight,2626.7,5.7032
-5,2027-07-23,Fri,New Zealand Warriors,Perth,Flight,5346.7,10.363
-6,2027-08-21,Sat,Perth,Sydney Roosters,Flight,3289.1,6.5111
-6,2027-08-23,Mon,Sydney Roosters,South Sydney Rabbitohs,Road,1.8468,0.52638
-6,2027-08-27,Fri,South Sydney Rabbitohs,Perth,Flight,3287.3,7.3342
+trip,date,day,from,to,mode,route,carrier,flights,km,hours
+1,2027-03-13,Sat,Perth,Brisbane Broncos,Flight,Perth to Brisbane,Qantas,1,3607.6,6.8995
+1,2027-03-15,Mon,Brisbane Broncos,Dolphins,Road,Road,,0,27.302,0.89003
+1,2027-03-19,Fri,Dolphins,Perth,Flight,Brisbane to Perth,Qantas,1,3607.6,7.8052
+2,2027-04-10,Sat,Perth,Canterbury-Bankstown Bulldogs,Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+2,2027-04-12,Mon,Canterbury-Bankstown Bulldogs,Wests Tigers,Road,Road,,0,7.0209,0.6003
+2,2027-04-16,Fri,Wests Tigers,Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+3,2027-05-08,Sat,Perth,Cronulla-Sutherland Sharks,Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+3,2027-05-10,Mon,Cronulla-Sutherland Sharks,St George Illawarra Dragons,Road,Road,,0,8.6524,0.62361
+3,2027-05-14,Fri,St George Illawarra Dragons,Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+4,2027-06-12,Sat,Perth,Manly-Warringah Sea Eagles,Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+4,2027-06-14,Mon,Manly-Warringah Sea Eagles,Parramatta Eels,Road,Road,,0,24.552,0.85075
+4,2027-06-18,Fri,Parramatta Eels,Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+5,2027-07-17,Sat,Perth,New Zealand Warriors,Flight,Perth to Auckland,Qantas,1,5336.5,9.008
+5,2027-07-19,Mon,New Zealand Warriors,Melbourne Storm,Flight,Direct flight,,1,2626.7,6.3627
+5,2027-07-23,Fri,Melbourne Storm,Perth,Flight,Melbourne to Perth,Qantas,1,2700.5,6.4714
+6,2027-08-21,Sat,Perth,South Sydney Rabbitohs,Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+6,2027-08-23,Mon,South Sydney Rabbitohs,Sydney Roosters,Road,Road,,0,1.8468,0.52638
+6,2027-08-27,Fri,Sydney Roosters,Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194

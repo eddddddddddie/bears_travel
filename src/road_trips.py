@@ -10,7 +10,9 @@ two-game cap it is not needed.)
 
 The 2027 draw is not published, so every possible set of AWAY_GAMES away opponents is evaluated
 (C(17, 12) = 6,188 sets for the Bears), each with its best trip plan. Venues are taken as each
-opponent's base, as in the travel model's projection. Distances are great-circle km between bases.
+opponent's base, as in the travel model's projection. Legs to and from Perth are the km flown on the
+Qantas Group route (flights.py, so Townsville goes through Brisbane); other legs are great-circle km
+between bases.
 
 The travel model found no measurable effect of travel in the previous 21 days on results, so the
 savings are reported in km and flights, not in points of margin.
@@ -31,6 +33,7 @@ import pandas as pd
 
 import config
 from common import haversine_km
+from flights import apply_perth
 from travel_model import AWAY_GAMES, OUT_DIR_NAME, SITE_DATA_DIR
 
 TEAM = "perth_bears"
@@ -65,23 +68,24 @@ def trip_km(base: str, trip: tuple[str, ...], d: pd.DataFrame) -> float:
     return float(sum(d.at[a, b] for a, b in zip(stops, stops[1:])))
 
 
-def flights(base: str, trips: list[tuple[str, ...]], d: pd.DataFrame) -> int:
-    """Legs longer than AWAY_TRIP_KM; shorter legs (two Sydney grounds) count as a bus trip."""
+def flights(base: str, trips: list[tuple[str, ...]], f: pd.DataFrame) -> int:
+    """Flights on every leg (f from flights.apply_perth: two for a connection, none for a bus trip
+    between two grounds under AWAY_TRIP_KM apart)."""
     n = 0
     for trip in trips:
         stops = [base, *trip, base]
-        n += sum(d.at[a, b] > config.AWAY_TRIP_KM for a, b in zip(stops, stops[1:]))
+        n += int(sum(f.at[a, b] for a, b in zip(stops, stops[1:])))
     return n
 
 
-def evaluate_all(base: str, opponents: list[str], d: pd.DataFrame, n_away: int) -> pd.DataFrame:
+def evaluate_all(base: str, opponents: list[str], d: pd.DataFrame, f: pd.DataFrame, n_away: int) -> pd.DataFrame:
     rows = []
     for away in combinations(opponents, n_away):
         km, trips = best_trips(base, list(away), d)
         rows.append({"away": away, "trips": trips, "km_road_trips": km,
                      "km_return_home": float(2 * d.loc[base, list(away)].sum()),
-                     "flights_road_trips": flights(base, trips, d),
-                     "flights_return_home": flights(base, [(a,) for a in away], d)})
+                     "flights_road_trips": flights(base, trips, f),
+                     "flights_return_home": flights(base, [(a,) for a in away], f)})
     s = pd.DataFrame(rows)
     s["km_saved"] = s["km_return_home"] - s["km_road_trips"]
     return s
@@ -134,11 +138,11 @@ def main() -> int:
     teams = pd.read_csv(config.REF_DIR / "teams.csv")
     opponents = sorted(set(seasons.loc[seasons["season"] == seasons["season"].max(), "team_id"]))
     clubs = [TEAM] + opponents
-    d = distance_matrix(teams, clubs)
+    d, _, f = apply_perth(distance_matrix(teams, clubs), None, teams)
     names = teams.set_index("team_id")["display_name"]
     names = names.str.replace(r"^Perth Bears$", "Perth", regex=True)   # the base, in routes
 
-    sets = evaluate_all(TEAM, opponents, d, AWAY_GAMES)
+    sets = evaluate_all(TEAM, opponents, d, f, AWAY_GAMES)
     summary, picks = summarise(sets, names)
     tables = dict(zip(SITE_TABLES, (summary, schedule(picks, TEAM, d, names), pair_savings(TEAM, opponents, d, names))))
     out = config.PROCESSED_DIR / OUT_DIR_NAME

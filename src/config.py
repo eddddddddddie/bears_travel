@@ -70,3 +70,30 @@ FLIGHT_KMH_EAST = 820
 FLIGHT_KMH_WEST = 680
 ROAD_KMH = 70
 ROAD_GROUND_H = 0.5
+
+# Flights to and from Perth (src/flights.py), from Qantas Group schedules checked in October 2026: nonstop
+# to every opponent's city except Townsville, which connects in Brisbane. Legs between two eastern clubs
+# stay one great-circle flight. Airport coordinates are approximate (within about 2 km).
+AIRPORTS = {
+    "PER": ("Perth", -31.940, 115.967), "SYD": ("Sydney", -33.946, 151.177), "BNE": ("Brisbane", -27.384, 153.117),
+    "MEL": ("Melbourne", -37.669, 144.841), "CBR": ("Canberra", -35.307, 149.195), "OOL": ("Gold Coast", -28.164, 153.505),
+    "NTL": ("Newcastle", -32.795, 151.834), "TSV": ("Townsville", -19.252, 146.765), "AKL": ("Auckland", -37.008, 174.792),
+}
+CLUB_AIRPORT = {"brisbane": "BNE", "dolphins": "BNE", "gold_coast": "OOL", "melbourne": "MEL", "canberra": "CBR",
+                "newcastle": "NTL", "north_qld": "TSV", "warriors": "AKL"}   # every other 2027 club flies to SYD
+# Routes from Perth to each airport, in order of preference: (stops after PER, carrier, days east, days
+# west); None means daily. The first route that flies on the travel day is used; when the last stop is
+# not the club's airport the team finishes by road. With FLIGHTS_QANTAS_ONLY, Jetstar routes are skipped.
+PERTH_ROUTES = {
+    "SYD": [(("SYD",), "Qantas", None, None)],
+    "BNE": [(("BNE",), "Qantas", None, None)],
+    "MEL": [(("MEL",), "Qantas", None, None)],
+    "CBR": [(("CBR",), "Qantas", None, None)],
+    "OOL": [(("OOL",), "Jetstar", None, None), (("BNE",), "Qantas", None, None)],
+    "NTL": [(("NTL",), "QantasLink", ("Fri", "Sun", "Mon"), ("Fri", "Sun", "Mon")), (("SYD",), "Qantas", None, None)],
+    "TSV": [(("BNE", "TSV"), "Qantas", None, None)],
+    "AKL": [(("AKL",), "Qantas", ("Mon", "Wed", "Sat"), ("Tue", "Thu", "Sun"))],
+}
+FLIGHTS_QANTAS_ONLY = False
+FLIGHT_CONNECT_H = 1.5   # time on the ground between two flights of one journey
+AIRPORT_ROAD_KM = 60     # road from airport to base beyond this is added (shorter, e.g. Penrith, is in FLIGHT_GROUND_H)

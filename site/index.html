@@ -341,17 +341,16 @@
   <section class="pb-sec" id="map">
     <span class="pb-loz">1. Distance</span>
     <h2>Distance from Perth to each 2027 opponent</h2>
-    <p>The Bears will be the most isolated club in the competition. Their average trip to an opponent's base is <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=perth_bears" data-fmt="km">—</span> km, against <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=warriors" data-fmt="km">—</span> km for the Warriors, the next most isolated club. Each line follows the great-circle route from Perth to an opponent's base and is coloured by the distance band used in the travel model. The dots are the bases of every club in the 2027 competition.</p>
+    <p>The Bears will be the most isolated club in the competition. Their average trip to an opponent's base is <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=perth_bears" data-fmt="km">—</span> km, against <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=warriors" data-fmt="km">—</span> km for the Warriors, the next most isolated club. Each line follows the Qantas Group flight from Perth, checked in October 2026: nonstop to every opponent's city except Townsville, which connects in Brisbane (dashed). Auckland and Newcastle are not served every day. Lines are coloured by the distance band used in the travel model, which measures the straight-line distance from Perth. The dots are the bases of every club in the 2027 competition.</p>
     <div class="pb-card" id="card-map">
       <h3>Perth Bears away trips in a balanced 2027 draw</h3>
-      <p class="note">Hover over or tap a base for the club, the distance from Perth and the time-zone shift. The shift is the opponent's clock minus Perth's, averaged over the regular season, so it includes daylight saving in the eastern states and New Zealand.</p>
+      <p class="note">Hover over or tap a base for the club, the flight, its door-to-door hours, the distance from Perth and the time-zone shift. The shift is the opponent's clock minus Perth's, averaged over the regular season, so it includes daylight saving in the eastern states and New Zealand.</p>
       <div class="pb-legend" id="legend-map" aria-hidden="true"></div>
-      <div class="pb-chart map dash-skeleton" id="chart-map" data-source="pairs"></div>
+      <div class="pb-chart map dash-skeleton" id="chart-map" data-source="pairs flights"></div>
     </div>
   </section>
 
   <section class="pb-sec" id="clubs">
-    <span class="pb-loz">1. Distance</span>
     <h2>Season travel by club</h2>
     <p>Over a season, that distance adds up to more travel than any club has recorded since 1995. Choose a club to see how far it has travelled each season, against every other club in grey. The red point is the Perth Bears' projected season.</p>
     <div class="pb-grid">
@@ -474,15 +473,15 @@
   <section class="pb-sec" id="roads">
     <span class="pb-loz">7. Road trips</span>
     <h2>Two-game road trips for the Bears</h2>
-    <p>The draw also affects travel: the order of away games sets how often the Bears fly between Perth and the east coast. If the Bears stay away between two consecutive away games instead of returning to Perth, the two games become one trip: Perth to the first ground, on to the second, then back to Perth. With no more than two away games in a row, the plan with the least travel is the pairing of away games that saves the most km, which can be solved exactly as a matching problem. The 2027 draw is not yet published, so the plan is computed for each of the <span class="v dash-skeleton" data-source="road_summary" data-field="away_sets" data-where="scenario=average" data-fmt="int">—</span> possible sets of away opponents.</p>
+    <p>The draw also affects travel: the order of away games sets how often the Bears fly between Perth and the east coast. If the Bears stay away between two consecutive away games instead of returning to Perth, the two games become one trip: Perth to the first ground, on to the second, then back to Perth. With no more than two away games in a row, the plan with the least travel is the pairing of away games that saves the most km, which can be solved exactly as a matching problem. Journeys to and from Perth are measured along the flight route, so a trip to Townsville goes through Brisbane, and the totals are a little higher than the straight-line season distance in the overview. The 2027 draw is not yet published, so the plan is computed for each of the <span class="v dash-skeleton" data-source="road_summary" data-field="away_sets" data-where="scenario=average" data-fmt="int">—</span> possible sets of away opponents.</p>
     <section class="pb-tiles" id="road-figures" aria-label="Perth Bears 2027 road trips, average over every set of away opponents">
       <div class="pb-tile">
         <span class="big dash-skeleton" data-source="road_summary" data-field="km_return_home" data-where="scenario=average" data-fmt="km">—</span>
-        <span class="lab">Season km returning to Perth after each away game, average over every set</span>
+        <span class="lab">Season km flown returning to Perth after each away game, average over every set</span>
       </div>
       <div class="pb-tile">
         <span class="big dash-skeleton" data-source="road_summary" data-field="km_road_trips" data-where="scenario=average" data-fmt="km">—</span>
-        <span class="lab">Season km with two-game road trips, average over every set</span>
+        <span class="lab">Season km flown with two-game road trips, average over every set</span>
       </div>
       <div class="pb-tile">
         <span class="big dash-skeleton" data-source="road_summary" data-field="pct_saved" data-where="scenario=average" data-fmt="pct0">—</span>
@@ -523,7 +522,7 @@
     <span class="pb-loz">8. Fixture proposal</span>
     <h2>A 2027 fixture for the Bears to propose</h2>
     <div class="pb-intro-grid">
-      <p>The road trips above assume any set of away opponents. A full fixture the club could put to the NRL also chooses which opponents the Bears play away, which they play twice, and the date of every game. It follows three rules: no more than two away games in a row, at least four nights between games, and games only from Thursday to Sunday. It also includes one trip to New Zealand. Within those rules it minimises door-to-door travel time, counting each flight's air time plus transfers, check-in and taxiing, with road legs between nearby grounds.</p>
+      <p>The road trips above assume any set of away opponents. A full fixture the club could put to the NRL also chooses which opponents the Bears play away, which they play twice, and the date of every game. It follows three rules: no more than two away games in a row, at least four nights between games, and games only from Thursday to Sunday. It also includes one trip to New Zealand. Within those rules it minimises door-to-door travel time, counting each flight's air time plus transfers, check-in and taxiing, with road legs between nearby grounds. Journeys to and from Perth use the Qantas Group flight on that day.</p>
       <div class="pb-card" id="card-replay">
         <h3>Season replay</h3>
         <p class="note">The proposed fixture played back at ten days per second, following the team on every journey.</p>
@@ -570,7 +569,7 @@
       </div>
       <div class="pb-card" id="card-legs">
         <h3>Journeys</h3>
-        <p class="note">The team flies east the day before the first game of a trip, moves by road the day after it, and flies home the day after the second game.</p>
+        <p class="note">The team flies east the day before the first game of a trip, moves to the second ground the day after it, and flies home the day after the second game.</p>
         <div class="pb-tablebox tall">
           <table class="pb-table" id="table-legs" data-source="fixture_legs" data-row-key="trip,date">
             <thead><tr><th data-field="date">Date</th><th data-field="from">From</th><th data-field="to">To</th><th data-field="mode">Mode</th><th data-field="hours">Hours</th></tr></thead>
@@ -579,7 +578,7 @@
         </div>
       </div>
     </div>
-    <p>Ten of the away games are in Sydney and south-east Queensland, in pairs a short drive apart. The trip to Auckland follows a game in Melbourne, so the team flies on from Melbourne instead of returning to Perth in between. The Cowboys, Titans, Knights, Raiders and Sea Eagles are played only in Perth. The clubs met twice are chosen so that the Bears' opponents are of average strength overall, which does not change travel. Two-game trips add nights away from Perth while cutting the number of flights from 24 to 13.</p>
+    <p>Ten of the away games are in Sydney and south-east Queensland, in pairs a short drive apart. Auckland is the first game of a trip that ends in Melbourne: Qantas flies Perth to Auckland on Saturdays but not back on Fridays, so the team flies on to Melbourne instead of returning to Perth in between. The Cowboys, Titans, Knights, Raiders and Panthers are played only in Perth. The clubs met twice are chosen so that the Bears' opponents are of average strength overall, which does not change travel. Two-game trips add nights away from Perth while cutting the number of flights from 24 to 13.</p>
     <h3 class="pb-subhead" id="draw">The full 2027 draw</h3>
     <p>The other clubs' games are scheduled around the Bears' fixture under the same rules for every club: no more than two away games in a row, no more than three home games in a row, at least four nights between games, and games only from Thursday to Sunday. Rounds 13, 17 and 22 are bye weekends for every club. Each club plays 12 home and 12 away games, meets the other 17 clubs at least once and 7 of them twice, once at each ground. The match-ups follow a standard round robin arranged around the Bears' rounds; the home team in each game is chosen to minimise total travel time across all 18 clubs, counting two consecutive away games as one trip.</p>
     <div class="pb-grid">
@@ -623,7 +622,7 @@
         <li>The 2027 projection uses a balanced draw. Neutral venues, Magic Round and any Bears home games outside Perth are not included.</li>
         <li>The home advantage trend is a straight line through the regular-season home margin, without the model's adjustment for team strength. The era comparison splits each distance band into 1996 to 2009, 2010 to 2019 and 2022 to 2026 in one model.</li>
         <li>Win chance converts points to probability for an evenly matched game, using the standard deviation of the model's residuals.</li>
-        <li>Distances are great-circle distances between club bases and venues. Map outlines are from Natural Earth (public domain).</li>
+        <li>The travel model uses great-circle distances between club bases and venues. Road trips, the fixture and the draw use the km and hours of the Qantas Group route for journeys to and from Perth (October 2026 schedules), and one great-circle flight between eastern cities. Map outlines are from Natural Earth (public domain).</li>
       </ul>
     </div>
   </section>
@@ -1128,7 +1127,7 @@
       (r) => String(r.round), (r) => r.home_away.toLowerCase());
     }
     if (legsData.status !== 'ok') { legBody.replaceChildren(); } else {
-      fillRows(legBody, legsData.data, (r) => [isoDay(r.date), r.from, r.to, r.mode, d3.format('.1f')(r.hours)],
+      fillRows(legBody, legsData.data, (r) => [isoDay(r.date), r.from, r.to, r.carrier ? `${r.mode}, ${r.carrier}` : r.mode, d3.format('.1f')(r.hours)],
         (r) => [r.trip, r.date].map((v) => encodeURIComponent(String(v))).join(','), (r) => r.mode.toLowerCase());
     }
     const p = sum.status === 'ok' ? sum.data.find((r) => r.scenario === 'proposed_fixture') : null;
@@ -1215,7 +1214,7 @@
   function replayState(m, t) {
     let pos = m.perth, at = 'Perth', leg = null, km = 0, hours = 0, flights = 0;
     for (const l of m.legs) {
-      if (t >= l.t1) { pos = l.b; at = l.to; km += l.km; hours += l.hours; flights += l.mode === 'Flight' ? 1 : 0; continue; }
+      if (t >= l.t1) { pos = l.b; at = l.to; km += l.km; hours += l.hours; flights += l.flights ?? (l.mode === 'Flight' ? 1 : 0); continue; }
       if (t > l.t0) {
         const f = (t - l.t0) / (l.t1 - l.t0);
         pos = d3.geoInterpolate(l.a, l.b)(f); leg = l;
@@ -1345,7 +1344,10 @@
     const legend = document.getElementById('legend-map');
     const land = chartState(el, 'land'); if (!land) { legend.replaceChildren(); return; }
     const rows = chartState(el, 'pairs'); if (!rows) { legend.replaceChildren(); return; }
-    const from = rows.filter((r) => r.team_id === 'perth_bears').sort((a, b) => b.km - a.km);
+    const flights = chartState(el, 'flights'); if (!flights) { legend.replaceChildren(); return; }
+    const flight = new Map(flights.map((f) => [f.team_id, f]));
+    const from = rows.filter((r) => r.team_id === 'perth_bears').sort((a, b) => b.km - a.km)
+      .map((p) => ({ ...p, f: flight.get(p.opp_id) }));
     const colour = bandColours(from);
 
     legend.replaceChildren(...[...colour].map(([band, c]) => {
@@ -1354,20 +1356,25 @@
     }), (() => {
       const s = document.createElement('span'); const i = document.createElement('i');
       i.className = 'dot'; i.style.background = 'var(--pb-fg)'; s.append(i, 'Club base'); return s;
-    })());
+    })(), ...(from.some((p) => p.f && p.f.stops) ? [(() => {
+      const s = document.createElement('span'); const i = document.createElement('i');
+      i.className = 'dsh'; s.append(i, 'One stop'); return s;
+    })()] : []));
 
     el.replaceChildren();
     const W = Math.max(280, el.clientWidth), H = Math.round(Math.min(540, Math.max(220, W * 0.62)));
     const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
-      .attr('aria-label', `Map of great-circle routes from Perth to ${from.length} opponents`).style('display', 'block');
+      .attr('aria-label', `Map of flight routes from Perth to ${from.length} opponents`).style('display', 'block');
     const proj = d3.geoConicEqualArea().parallels([-18, -36]).rotate([-145, 0]).fitExtent([[6, 6], [W - 6, H - 6]], MAP_VIEW);
     const path = d3.geoPath(proj);
     svg.append('path').datum(land).attr('d', path)
       .style('fill', 'var(--pb-panel-2)').style('stroke', 'var(--pb-axis)').style('stroke-width', 0.5);
 
     const lines = svg.append('g').selectAll('path').data(from).join('path')
-      .attr('d', (p) => path({ type: 'LineString', coordinates: [[p.lon, p.lat], [p.opp_lon, p.opp_lat]] }))
+      .attr('d', (p) => path({ type: 'LineString', coordinates: [[p.lon, p.lat],
+        ...(p.f && p.f.via ? [[p.f.via_lon, p.f.via_lat]] : []), [p.opp_lon, p.opp_lat]] }))
       .style('fill', 'none').style('stroke', (p) => colour.get(p.band)).style('stroke-width', 1.75)
+      .style('stroke-dasharray', (p) => (p.f && p.f.stops ? '5 4' : null))
       .style('stroke-linecap', 'round').style('opacity', 0.9);
     const pts = from.map((p) => ({ p, xy: proj([p.opp_lon, p.opp_lat]) }));
     svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (d) => d.xy[0]).attr('cy', (d) => d.xy[1]).attr('r', 3.5)
@@ -1392,13 +1399,21 @@
         const ids = new Set(group.map((p) => p.opp_id));
         lines.style('opacity', (p) => (ids.has(p.opp_id) ? 1 : 0.2)).style('stroke-width', (p) => (ids.has(p.opp_id) ? 2.5 : 1.75));
         ring.attr('cx', near.xy[0]).attr('cy', near.xy[1]).attr('opacity', 1);
+        // One flight line per route: the Sydney clubs share theirs
+        const flightLines = (f) => (!f ? [] : [
+          { text: `${f.carrier}, ${f.stops ? `${f.stops} stop` : 'nonstop'}: ${f.route}` },
+          { text: f.days_east === 'Daily' ? 'Daily' : `Out ${f.days_east}; back ${f.days_west}` },
+          ...(f.other_days ? [{ text: f.other_days }] : []),
+          { text: `About ${d3.format('.1f')(f.hours_east)} h out, ${d3.format('.1f')(f.hours_west)} h back, door to door` }]);
         if (group.length === 1) {
           const p = group[0];
           tip.show(event, p.opp_name, [{ color: colour.get(p.band), text: `${F.km(p.km)} km from Perth` },
-            { text: `Time zone ${F.h(p.tz_shift_h)} h` }]);
+            { text: `Time zone ${F.h(p.tz_shift_h)} h` }, ...flightLines(p.f)]);
         } else {
-          tip.show(event, `${group.length} clubs, km from Perth and time zone`, group.map((p) => ({
-            color: colour.get(p.band), text: `${p.opp_name}: ${F.km(p.km)} km, ${F.h(p.tz_shift_h)} h` })));
+          const routes = new Set(group.map((p) => p.f && p.f.route));
+          tip.show(event, `${group.length} clubs, km from Perth and time zone`, [...group.map((p) => ({
+            color: colour.get(p.band), text: `${p.opp_name}: ${F.km(p.km)} km, ${F.h(p.tz_shift_h)} h` })),
+            ...(routes.size === 1 ? flightLines(group[0].f) : [])]);
         }
       })
       .on('pointerleave', clear);

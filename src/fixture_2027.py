@@ -8,10 +8,13 @@ Assumptions (settings in config.py; the 2027 draw is not published):
     Origin window. No Magic Round or overseas round.
   - 24 games: every other club once and FIXTURE_REPEAT_OPPONENTS clubs twice (once home, once away),
     so 12 home games in Perth and 12 away games at 12 different opponents' bases.
-  - Travel time is door to door: FLIGHT_GROUND_H per flight plus air time at FLIGHT_KMH_EAST or
-    FLIGHT_KMH_WEST; legs under AWAY_TRIP_KM go by road.
+  - Travel time is door to door: FLIGHT_GROUND_H per journey plus air time at FLIGHT_KMH_EAST or
+    FLIGHT_KMH_WEST; legs under AWAY_TRIP_KM go by road. Legs to and from Perth follow the Qantas Group
+    route flying on that day (flights.py: Townsville connects in Brisbane, Auckland is served on three
+    days each way, Newcastle on three days with Sydney and road on the others).
   - The team travels the day before an away game and returns the day after. On a two-game trip it
-    stays in the east and moves to the second city the day after the first game.
+    stays in the east and moves to the second city the day after the first game. So it leaves Perth on
+    a Saturday and returns on a Friday (or on the Monday after a one-game trip).
 
 Steps:
   1. Away opponents and trips. For every set of 12 away opponents from the 17 that includes the clubs
@@ -44,12 +47,14 @@ import pandas as pd
 from scipy.optimize import linear_sum_assignment
 
 import config
+from flights import PENALTY_H, apply_perth, journey
 from road_trips import TEAM, distance_matrix
 from travel_model import OUT_DIR_NAME, SITE_DATA_DIR
 
 SITE_TABLES = ("fixture_2027", "fixture_2027_legs", "fixture_2027_summary")
 DAY_OFFSET = {"Thu": 0, "Fri": 1, "Sat": 2, "Sun": 3}   # days after the round's Thursday
 HOME_DAY, TRIP_FIRST_DAY, TRIP_SECOND_DAY = "Sat", "Sun", "Thu"
+OUT_DAY, BACK_DAY, SINGLE_BACK_DAY = "Sat", "Fri", "Mon"   # Perth departure and return days that follow
 PATTERN = ["H"] + ["A", "A", "H", "H"] * 5 + ["A", "A", "H"]   # 24 games, 12 home, 12 away
 GAP_CAP = 13   # rounds; gaps beyond this do not improve the order further
 
@@ -78,11 +83,14 @@ def pair_order(base: str, a: str, b: str, t: pd.DataFrame) -> tuple[tuple[str, s
     return ((a, b), ab) if ab <= ba else ((b, a), ba)
 
 
-def best_pairs(base: str, away: list[str], t: pd.DataFrame) -> tuple[float, list[tuple[str, ...]]]:
-    """Least-time plan with at most two away games in a row: (hours, trips in flying order)."""
+def best_pairs(base: str, away: list[str], t: pd.DataFrame,
+               single_back: pd.Series | None = None) -> tuple[float, list[tuple[str, ...]]]:
+    """Least-time plan with at most two away games in a row: (hours, trips in flying order).
+    single_back: hours home after a one-game trip, when its return day differs from a two-game trip's."""
     g = nx.Graph()
     g.add_nodes_from(away)
-    single = {a: t.at[base, a] + t.at[a, base] for a in away}
+    back = t[base] if single_back is None else single_back
+    single = {a: t.at[base, a] + back[a] for a in away}
     for a, b in combinations(away, 2):
         saving = single[a] + single[b] - pair_order(base, a, b, t)[1]
         if saving > 0:
@@ -101,18 +109,21 @@ def best_pairs(base: str, away: list[str], t: pd.DataFrame) -> tuple[float, list
 
 
 # ---------------------------------------------------------------- choices
-def choose_away_set(base: str, opponents: list[str], t: pd.DataFrame, d: pd.DataFrame, n_away: int):
-    best, return_home_hours, return_home_km = None, [], []
+def choose_away_set(base: str, opponents: list[str], t: pd.DataFrame, single_back: pd.Series, any_day, n_away: int):
+    """t and single_back follow the trip days; any_day = (km, hours, flights) on any flying day, for the
+    average-draw baseline of returning to Perth after every away game."""
+    d_any, t_any, f_any = any_day
+    best, return_home = None, []
     required = [c for c in config.FIXTURE_AWAY_REQUIRED if c in opponents]
     for away in combinations(opponents, n_away):
-        return_home_hours.append(sum(t.at[base, a] + t.at[a, base] for a in away))
-        return_home_km.append(2 * sum(d.at[base, a] for a in away))
+        return_home.append([sum(m.at[base, a] + m.at[a, base] for a in away) for m in (t_any, d_any, f_any)])
         if not set(required) <= set(away):   # the average draw covers every set; the proposal must include these
             continue
-        hours, trips = best_pairs(base, list(away), t)
+        hours, trips = best_pairs(base, list(away), t, single_back)
         if best is None or hours < best[0] - 1e-9:
             best = (hours, list(away), trips)
-    return best, float(np.mean(return_home_hours)), float(np.mean(return_home_km))
+    assert best[0] < PENALTY_H, "no away set can be flown on the trip days"
+    return best, [float(x) for x in np.mean(return_home, axis=0)]
 
 
 def end_of_season_ratings(long: pd.DataFrame) -> pd.Series:
@@ -174,13 +185,16 @@ def order_season(trips: list[tuple[str, ...]], home_opps: list[str], repeats: li
 def build(long: pd.DataFrame, teams: pd.DataFrame):
     opponents = sorted(set(long.loc[long["season"] == long["season"].max(), "team_id"]))
     clubs = [TEAM] + opponents
-    d = distance_matrix(teams, clubs)
+    d_gc = distance_matrix(teams, clubs)
     tt = teams.set_index("team_id")
-    t = time_matrix(d, tt["lon"])
+    t_gc = time_matrix(d_gc, tt["lon"])
+    any_day = apply_perth(d_gc, t_gc, teams)
+    d, t, _ = apply_perth(d_gc, t_gc, teams, day_out=OUT_DAY, day_back=BACK_DAY)
+    single_back = apply_perth(d_gc, t_gc, teams, day_back=SINGLE_BACK_DAY)[1][TEAM]
     names, venue = tt["display_name"], tt["base_name"]
 
     n_away = len(PATTERN) // 2
-    (hours, away, trips), avg_return_home_hours, avg_return_home_km = choose_away_set(TEAM, opponents, t, d, n_away)
+    (hours, away, trips), average_draw = choose_away_set(TEAM, opponents, t, single_back, any_day, n_away)
     assert set(config.FIXTURE_AWAY_REQUIRED) & set(opponents) <= set(away), "required away games missing"
     repeats = choose_repeats(away, opponents, end_of_season_ratings(long), config.FIXTURE_REPEAT_OPPONENTS)
     home_opps = sorted([o for o in opponents if o not in away] + repeats)
@@ -207,16 +221,16 @@ def build(long: pd.DataFrame, teams: pd.DataFrame):
                      "meeting": f"{meetings[opp]} of {total}", "trip": trip})
         if kind == "Away":
             prev = TEAM if leg_no == 1 else by_round_trip(by_round, trip, 1)
-            legs.append(leg(trip, game_date - timedelta(days=1 if leg_no == 1 else 0), prev, opp, d, t, names,
+            legs.append(leg(trip, game_date - timedelta(days=1 if leg_no == 1 else 0), prev, opp, d_gc, t_gc, tt,
                             depart_override=None if leg_no == 1 else rows[-2]["date"]))
             if leg_no == trip_len:
-                legs.append(leg(trip, game_date + timedelta(days=1), opp, TEAM, d, t, names))
+                legs.append(leg(trip, game_date + timedelta(days=1), opp, TEAM, d_gc, t_gc, tt))
     fixture = pd.DataFrame(rows)
     fixture["trip"] = fixture["trip"].astype("Int64")
     fixture["nights_since_last_game"] = nights_between(fixture)
     legs = pd.DataFrame(legs)
     check_rules(fixture)
-    summary = summarise(fixture, legs, away, t, d, (avg_return_home_hours, avg_return_home_km), names, repeats)
+    summary = summarise(legs, away, any_day, average_draw, names, repeats)
     return fixture, legs, summary
 
 
@@ -224,13 +238,25 @@ def by_round_trip(by_round: dict, trip: int, leg_no: int) -> str:
     return next(g[1] for g in by_round.values() if g[0] == "Away" and g[2] == trip and g[3] == leg_no)
 
 
-def leg(trip, travel_date, a, b, d, t, names, depart_override=None):
+def leg(trip, travel_date, a, b, d_gc, t_gc, tt, depart_override=None):
+    """One journey. Legs to or from Perth take the route flying on the travel date; others are one
+    great-circle flight, or road under AWAY_TRIP_KM."""
     if depart_override:   # move to the second city the day after the first game
         travel_date = date.fromisoformat(depart_override) + timedelta(days=1)
-    km = float(d.at[a, b])
-    return {"trip": trip, "date": travel_date.isoformat(), "day": travel_date.strftime("%a"),
-            "from": "Perth" if a == TEAM else names[a], "to": "Perth" if b == TEAM else names[b],
-            "mode": "Road" if km < config.AWAY_TRIP_KM else "Flight", "km": km, "hours": float(t.at[a, b])}
+    day, names = travel_date.strftime("%a"), tt["display_name"]
+    row = {"trip": trip, "date": travel_date.isoformat(), "day": day,
+           "from": "Perth" if a == TEAM else names[a], "to": "Perth" if b == TEAM else names[b]}
+    if TEAM in (a, b):
+        club = b if a == TEAM else a
+        j = journey(club, tt.at[club, "lat"], tt.at[club, "lon"], a == TEAM, day)
+        assert j is not None, f"no flight between Perth and {names[club]} on {day} {travel_date}"
+        route = " to ".join(config.AIRPORTS[x][0] for x in j.path) + (", then road" if j.road_km else "")
+        return {**row, "mode": "Flight", "route": route, "carrier": j.carrier, "flights": j.flights,
+                "km": j.km, "hours": j.hours}
+    km = float(d_gc.at[a, b])
+    road = km < config.AWAY_TRIP_KM
+    return {**row, "mode": "Road" if road else "Flight", "route": "Road" if road else "Direct flight",
+            "carrier": "", "flights": 0 if road else 1, "km": km, "hours": float(t_gc.at[a, b])}
 
 
 def nights_between(fixture: pd.DataFrame) -> list:
@@ -258,19 +284,22 @@ def check_rules(fixture: pd.DataFrame) -> None:
     assert (games["home_away"] == "Home").sum() == (games["home_away"] == "Away").sum()
 
 
-def summarise(fixture, legs, away, t, d, average_draw, names, repeats) -> pd.DataFrame:
-    avg_return_home_hours, avg_return_home_km = average_draw
+def summarise(legs, away, any_day, average_draw, names, repeats) -> pd.DataFrame:
+    avg_return_home_hours, avg_return_home_km, avg_return_home_flights = average_draw
+    d, t, f = any_day
     n_away = len(away)
-    flights = int((legs["mode"] == "Flight").sum())
+    flights = int(legs["flights"].sum())
     trip_nights = []
     for trip, g in legs.groupby("trip"):
         trip_nights.append((date.fromisoformat(g["date"].max()) - date.fromisoformat(g["date"].min())).days)
     rows = [
         {"scenario": "average_draw", "label": "Average draw, returning to Perth after each away game",
-         "travel_hours": avg_return_home_hours, "km": avg_return_home_km, "flights": 2 * n_away, "nights_away": 2 * n_away},
+         "travel_hours": avg_return_home_hours, "km": avg_return_home_km, "flights": avg_return_home_flights,
+         "nights_away": 2 * n_away},
         {"scenario": "proposed_opponents", "label": "Proposed away opponents, returning after each game",
          "travel_hours": float(sum(t.at[TEAM, a] + t.at[a, TEAM] for a in away)),
-         "km": float(2 * d.loc[TEAM, away].sum()), "flights": 2 * n_away, "nights_away": 2 * n_away},
+         "km": float(sum(d.at[TEAM, a] + d.at[a, TEAM] for a in away)),
+         "flights": int(sum(f.at[TEAM, a] + f.at[a, TEAM] for a in away)), "nights_away": 2 * n_away},
         {"scenario": "proposed_fixture", "label": "Proposed fixture with two-game road trips",
          "travel_hours": float(legs["hours"].sum()), "km": float(legs["km"].sum()), "flights": flights,
          "nights_away": int(sum(trip_nights))},

@@ -1,19 +1,19 @@
 scenario,trip,games,route,stop1,stop2,km,km_if_return_home,km_saved
-median,1,2,Perth to Gold Coast Titans to New Zealand Warriors to Perth,Gold Coast Titans,New Zealand Warriors,11195,17928,6733.7
-median,2,2,Perth to Brisbane Broncos to Dolphins to Perth,Brisbane Broncos,Dolphins,7248.7,14443,7194.1
-median,3,2,Perth to Manly-Warringah Sea Eagles to Newcastle Knights to Perth,Manly-Warringah Sea Eagles,Newcastle Knights,6746.7,13286,6539.4
-median,4,2,Perth to Sydney Roosters to Wests Tigers to Perth,Sydney Roosters,Wests Tigers,6579.3,13135,6556.1
-median,5,2,Perth to Canterbury-Bankstown Bulldogs to St George Illawarra Dragons to Perth,Canterbury-Bankstown Bulldogs,St George Illawarra Dragons,6562.8,13112,6549.3
-median,6,2,Perth to Parramatta Eels to Penrith Panthers to Perth,Parramatta Eels,Penrith Panthers,6541,13024,6483.1
-least_travel,1,2,Perth to Manly-Warringah Sea Eagles to Newcastle Knights to Perth,Manly-Warringah Sea Eagles,Newcastle Knights,6746.7,13286,6539.4
-least_travel,2,2,Perth to South Sydney Rabbitohs to Sydney Roosters to Perth,South Sydney Rabbitohs,Sydney Roosters,6578.2,13153,6574.5
-least_travel,3,2,Perth to Cronulla-Sutherland Sharks to St George Illawarra Dragons to Perth,Cronulla-Sutherland Sharks,St George Illawarra Dragons,6567.4,13117,6550.1
-least_travel,4,2,Perth to Canterbury-Bankstown Bulldogs to Wests Tigers to Perth,Canterbury-Bankstown Bulldogs,Wests Tigers,6561.9,13110,6547.8
-least_travel,5,2,Perth to Parramatta Eels to Penrith Panthers to Perth,Parramatta Eels,Penrith Panthers,6541,13024,6483.1
-least_travel,6,2,Perth to Canberra Raiders to Melbourne Storm to Perth,Canberra Raiders,Melbourne Storm,6270.6,11609,5338.3
-most_travel,1,2,Perth to Newcastle Knights to New Zealand Warriors to Perth,Newcastle Knights,New Zealand Warriors,10841,17391,6549.8
-most_travel,2,2,Perth to Dolphins to North Queensland Cowboys to Perth,Dolphins,North Queensland Cowboys,8105.4,14021,5915.3
-most_travel,3,2,Perth to Brisbane Broncos to Gold Coast Titans to Perth,Brisbane Broncos,Gold Coast Titans,7296.9,14439,7142.1
-most_travel,4,2,Perth to Manly-Warringah Sea Eagles to Sydney Roosters to Perth,Manly-Warringah Sea Eagles,Sydney Roosters,6597.4,13167,6569.4
-most_travel,5,2,Perth to Canberra Raiders to Canterbury-Bankstown Bulldogs to Perth,Canberra Raiders,Canterbury-Bankstown Bulldogs,6594.3,12720,6125.3
-most_travel,6,2,Perth to South Sydney Rabbitohs to St George Illawarra Dragons to Perth,South Sydney Rabbitohs,St George Illawarra Dragons,6577.7,13134,6556.3
+median,1,2,Perth to Gold Coast Titans to New Zealand Warriors to Perth,Gold Coast Titans,New Zealand Warriors,11186,17912,6725.4
+median,2,2,Perth to Brisbane Broncos to Dolphins to Perth,Brisbane Broncos,Dolphins,7242.4,14430,7187.8
+median,3,2,Perth to Newcastle Knights to Parramatta Eels to Perth,Newcastle Knights,Parramatta Eels,6750.4,13262,6511.4
+median,4,2,Perth to Canberra Raiders to St George Illawarra Dragons to Perth,Canberra Raiders,St George Illawarra Dragons,6596.3,12724,6127.8
+median,5,2,Perth to Canterbury-Bankstown Bulldogs to Wests Tigers to Perth,Canterbury-Bankstown Bulldogs,Wests Tigers,6561.4,13109,6547.4
+median,6,2,Perth to South Sydney Rabbitohs to Sydney Roosters to Perth,South Sydney Rabbitohs,Sydney Roosters,6556.2,13109,6552.6
+least_travel,1,2,Perth to Manly-Warringah Sea Eagles to Newcastle Knights to Perth,Manly-Warringah Sea Eagles,Newcastle Knights,6734.6,13262,6527.2
+least_travel,2,2,Perth to Parramatta Eels to Penrith Panthers to Perth,Parramatta Eels,Penrith Panthers,6583.4,13109,6525.4
+least_travel,3,2,Perth to Cronulla-Sutherland Sharks to St George Illawarra Dragons to Perth,Cronulla-Sutherland Sharks,St George Illawarra Dragons,6563.1,13109,6545.7
+least_travel,4,2,Perth to Canterbury-Bankstown Bulldogs to Wests Tigers to Perth,Canterbury-Bankstown Bulldogs,Wests Tigers,6561.4,13109,6547.4
+least_travel,5,2,Perth to South Sydney Rabbitohs to Sydney Roosters to Perth,South Sydney Rabbitohs,Sydney Roosters,6556.2,13109,6552.6
+least_travel,6,2,Perth to Canberra Raiders to Melbourne Storm to Perth,Canberra Raiders,Melbourne Storm,6251.6,11571,5319.3
+most_travel,1,2,Perth to Newcastle Knights to New Zealand Warriors to Perth,Newcastle Knights,New Zealand Warriors,10836,17380,6544.5
+most_travel,2,2,Perth to Dolphins to North Queensland Cowboys to Perth,Dolphins,North Queensland Cowboys,9422.5,16655,7232.4
+most_travel,3,2,Perth to Brisbane Broncos to Gold Coast Titans to Perth,Brisbane Broncos,Gold Coast Titans,7304.3,14454,7149.5
+most_travel,4,2,Perth to Cronulla-Sutherland Sharks to Manly-Warringah Sea Eagles to Perth,Cronulla-Sutherland Sharks,Manly-Warringah Sea Eagles,6587.5,13109,6521.3
+most_travel,5,2,Perth to Canberra Raiders to Penrith Panthers to Perth,Canberra Raiders,Penrith Panthers,6583.5,12724,6140.6
+most_travel,6,2,Perth to Parramatta Eels to Wests Tigers to Perth,Parramatta Eels,Wests Tigers,6565.3,13109,6543.5

@@ -9,6 +9,7 @@
     eras: 'data/travel_cost_by_era.json',
     proj2027: 'data/projection_2027_clubs.json',
     pairs: 'data/projection_2027_pairs.json',
+    flights: 'data/perth_flights_2027.json',
     club_seasons: 'data/team_season_travel.json',
     reds: 'data/perth_reds_1995_1997.json',
     land: 'data/land_au_nz.json',

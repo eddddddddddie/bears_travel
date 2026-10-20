@@ -1,0 +1,18 @@
+team_id,club,base,route,carrier,stops,days_east,days_west,other_days,great_circle_km,flown_km,hours_east,hours_west,via,via_lat,via_lon,base_lat,base_lon
+warriors,New Zealand Warriors,Mt Smart (Auckland),Perth to Auckland,Qantas,0,"Mon, Wed, Sat","Tue, Thu, Sun",,5346.7,5336.5,9.008,10.348,,,,-36.918,174.81
+dolphins,Dolphins,Redcliffe,Perth to Brisbane,Qantas,0,Daily,Daily,,3619.3,3607.6,6.8995,7.8052,,,,-27.237,153.11
+gold_coast,Gold Coast Titans,Robina,Perth to Gold Coast,Jetstar,0,Daily,Daily,,3617.4,3619.3,6.9138,7.8225,,,,-28.079,153.38
+brisbane,Brisbane Broncos,Red Hill / Lang Park,Perth to Brisbane,Qantas,0,Daily,Daily,,3602.1,3607.6,6.8995,7.8052,,,,-27.465,153.01
+north_qld,North Queensland Cowboys,Townsville,Perth to Brisbane to Townsville,Qantas,1,Daily,Daily,,3391.1,4719.9,10.035,10.662,Brisbane,-27.384,153.12,-19.259,146.82
+newcastle,Newcastle Knights,Newcastle,Perth to Newcastle,QantasLink,0,"Fri, Sun, Mon","Fri, Sun, Mon","Other days: Qantas to Sydney, then road",3348.8,3353.7,6.5898,7.4319,,,,-32.919,151.73
+manly,Manly-Warringah Sea Eagles,Brookvale,Perth to Sydney,Qantas,0,Daily,Daily,,3294.3,3277.2,6.4966,7.3194,,,,-33.768,151.26
+sydney_roosters,Sydney Roosters,Moore Park,Perth to Sydney,Qantas,0,Daily,Daily,,3289.1,3277.2,6.4966,7.3194,,,,-33.889,151.22
+south_sydney,South Sydney Rabbitohs,Redfern,Perth to Sydney,Qantas,0,Daily,Daily,,3287.3,3277.2,6.4966,7.3194,,,,-33.892,151.21
+st_george_illawarra,St George Illawarra Dragons,Kogarah,Perth to Sydney,Qantas,0,Daily,Daily,,3279.7,3277.2,6.4966,7.3194,,,,-33.967,151.13
+cronulla,Cronulla-Sutherland Sharks,Shark Park,Perth to Sydney,Qantas,0,Daily,Daily,,3279,3277.2,6.4966,7.3194,,,,-34.044,151.13
+wests_tigers,Wests Tigers,Concord,Perth to Sydney,Qantas,0,Daily,Daily,,3278.5,3277.2,6.4966,7.3194,,,,-33.856,151.11
+canterbury,Canterbury-Bankstown Bulldogs,Belmore,Perth to Sydney,Qantas,0,Daily,Daily,,3276.3,3277.2,6.4966,7.3194,,,,-33.918,151.09
+parramatta,Parramatta Eels,Parramatta,Perth to Sydney,Qantas,0,Daily,Daily,,3269.8,3277.2,6.4966,7.3194,,,,-33.807,151
+penrith,Penrith Panthers,Penrith,Perth to Sydney,Qantas,0,Daily,Daily,,3242.3,3277.2,6.4966,7.3194,,,,-33.754,150.7
+canberra,Canberra Raiders,Canberra Stadium,Perth to Canberra,Qantas,0,Daily,Daily,,3083.5,3084.9,6.262,7.0366,,,,-35.25,149.1
+melbourne,Melbourne Storm,AAMI Park,Perth to Melbourne,Qantas,0,Daily,Daily,,2720.9,2700.5,5.7933,6.4714,,,,-37.825,144.98

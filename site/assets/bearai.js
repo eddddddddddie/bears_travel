@@ -17,6 +17,7 @@
     road_trips_summary: 'Road trips', road_trips_schedule: 'Road trip plans', road_trips_pair_savings: 'Road trip pair savings',
     fixture_2027: 'Proposed 2027 fixture', fixture_2027_legs: 'Proposed fixture travel legs',
     fixture_2027_summary: 'Proposed fixture summary', draw_2027: 'Full 2027 draw', draw_2027_clubs: 'Full 2027 draw by club',
+    perth_flights_2027: 'Flights from Perth',
   };
 
   const root = document.querySelector('.pb');

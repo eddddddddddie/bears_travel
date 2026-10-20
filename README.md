@@ -70,6 +70,7 @@ python src/fetch_lines.py          # AusSportsBetting workbook, cached in data/r
 python src/build_dataset.py        # writes data/processed/
 python src/elo.py                  # optional: refit the Elo parameters (needs scipy)
 python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
+python src/flights.py              # Qantas Group routes from Perth to each 2027 opponent, same output folders
 python src/road_trips.py           # Bears two-game road trip plans, same output folders (needs networkx)
 python src/fixture_2027.py         # proposed Bears 2027 fixture, same output folders
 python src/draw_2027.py            # full 2027 competition draw around it, plus site/data/perth_bears_2027_draw.csv
@@ -87,12 +88,13 @@ The `Makefile` wraps the same steps (`PYTHON` defaults to `python`; pass script 
 | `make build` | `build_dataset.py` |
 | `make elo` | `elo.py`, optional refit |
 | `make model` | `travel_model.py` |
+| `make flights` | `flights.py` |
 | `make roads` | `road_trips.py` |
 | `make fixture` | `fixture_2027.py` |
 | `make draw` | `draw_2027.py` |
 | `make assets` | `site_assets.py` |
 | `make test` | `tests/test_pipeline.py` |
-| `make all` | `build`, `model`, `roads`, `fixture`, `draw`, `test` |
+| `make all` | `build`, `model`, `flights`, `roads`, `fixture`, `draw`, `test` |
 
 `make all` does not scrape or download. Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
 
@@ -212,17 +214,33 @@ Results from the October 2026 run (points of margin for the travelling team, 95%
 - **Perth Bears 2027 on recent-era costs.** With the bands design fitted on 2010 to 2026 only (`travel_cost_recent`), the cost is -4.8 points per away game (about 11 percentage points of win probability) and the home-away swing about 9.7 points, against about 0.8 for a Sydney club. The site headline and the main projection columns use the full 1996 to 2026 fit. The recent fit's lower short-trip cost narrows the swing for east-coast clubs, but the Bears' figure is set by trips of 3,000 km and over, and that cost shows no fall between eras. The recent estimate for that band, -5.1 (-12.0 to +1.7), rests on 33 matches since 2010, most of them North Queensland against the Warriors, and its interval is about twice as wide as the full-period one. The full period is the better-supported estimate of a long-trip cost; the recent projection is reported beside it on the site and in `projection_2027_clubs` (`away_cost_per_game_recent`, `home_away_swing_recent`, `away_win_prob_change_recent`).
 - **Western Reds 1995 to 1997.** Away from Perth the Reds averaged about 5.5 points below Elo, which already allows for a normal home advantage. At home they were about 0.4 below Elo, so visiting teams did not lose the same ground in Perth. With about 30 games on each side the difference is within noise, but it is the only direct evidence on Perth trips. It fits eastward travel being harder than westward.
 
+## Flights from Perth
+
+`src/flights.py` replaces the single great-circle flight for every journey to or from Perth with the Qantas Group route, from schedules checked in October 2026 (`AIRPORTS`, `CLUB_AIRPORT` and `PERTH_ROUTES` in `config.py`):
+
+| To | Route | Days |
+|---|---|---|
+| Sydney clubs, Broncos, Dolphins, Storm, Raiders | Qantas nonstop to Sydney, Brisbane, Melbourne or Canberra | Daily |
+| Titans | Jetstar nonstop to the Gold Coast (`FLIGHTS_QANTAS_ONLY` flies Qantas to Brisbane and drives instead) | Daily |
+| Knights | QantasLink nonstop to Newcastle; other days Qantas to Sydney, then road | Fri, Sun, Mon |
+| Cowboys | Qantas to Townsville, connecting in Brisbane | Daily |
+| Warriors | Qantas nonstop to Auckland | Out Mon, Wed, Sat; back Tue, Thu, Sun |
+
+A journey's door-to-door time is `FLIGHT_GROUND_H` (2.5 hours), plus air time on each flight at the eastbound or westbound block speed, plus `FLIGHT_CONNECT_H` (1.5 hours) per connection, plus road from the airport to the base where it is over `AIRPORT_ROAD_KM` (60 km). For the nonstop routes the air times are within about 15 minutes of the scheduled ones. Townsville's connection makes it about 10 hours from Perth instead of 6.6.
+
+Road trips, the fixture and the draw use these routes; the fixture checks the flying day of every journey to or from Perth (out on Saturday, back on Friday, or on Monday after a one-game trip). Legs between two eastern clubs stay one great-circle flight. The travel model, the 2027 projection and the site's season km keep great-circle distance from base, the measure the model was fitted on. `site/data/perth_flights_2027.json` feeds the site's distance map. Schedules change: check `PERTH_ROUTES` against the Qantas timetable before relying on the days.
+
 ## Road trips
 
 `src/road_trips.py` estimates how much travel the Perth Bears would save by staying away between two consecutive away games instead of returning to Perth, with no more than two away games in a row. A season's away travel is then a set of one-game trips (Perth, A, Perth) and two-game trips (Perth, A, B, Perth). The plan with the least km is the pairing of away games with the largest total saving, where pairing A and B saves `d(Perth, A) + d(Perth, B) - d(A, B)`. That is a maximum-weight matching, solved exactly with networkx. Trips longer than two games would make it a vehicle routing problem.
 
-The 2027 draw is not published, so the plan is computed for every possible set of 12 away opponents from the 17 (6,188 sets), with each away game at the opponent's base and great-circle distances between bases. Legs under `AWAY_TRIP_KM` (150 km) count as road travel, not flights.
+The 2027 draw is not published, so the plan is computed for every possible set of 12 away opponents from the 17 (6,188 sets), with each away game at the opponent's base. Journeys to and from Perth are the km flown on the Qantas Group route (see Flights from Perth); other legs are great-circle distances between bases. Legs under `AWAY_TRIP_KM` (150 km) count as road travel, not flights.
 
 Results from the October 2026 run:
 
 - Every set of away opponents pairs fully into six two-game trips.
-- Average season travel falls from 82,202 km (returning to Perth after each game) to 44,036 km, 46% less, and flights fall from 24 to about 14.
-- The saving ranges from 36,500 to 40,100 km across sets, so it does not depend much on which clubs the Bears play away.
+- Average season travel falls from 84,035 km flown (returning to Perth after each game) to 44,953 km, 47% less, and flights fall from about 25 to about 15 (a Townsville trip is two flights each way).
+- The saving ranges from 37,600 to 40,600 km across sets, so it does not depend much on which clubs the Bears play away.
 - Typical pairs are two Sydney clubs, the Broncos with the Dolphins or Titans, the Storm with the Raiders, and the Warriors with a Queensland or New South Wales club.
 - The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin. Two-game trips would also put the Bears' home games in pairs.
 
@@ -239,8 +257,8 @@ Method:
 
 Results from the October 2026 run:
 
-- Away games: eight Sydney clubs, the Broncos and the Dolphins in five two-game trips whose second leg is by road, and the Storm then the Warriors on one trip (Perth, Melbourne, Auckland, Perth). The Cowboys, Titans, Knights, Raiders and Sea Eagles are played at home only.
-- Travel time falls from 171 hours (average draw, returning to Perth after each away game) to 95 hours, 44% less; flights from 24 to 13; km from about 82,200 to 44,200. Without the New Zealand requirement the optimum is 89 hours and 12 flights, with every away game in New South Wales or south-east Queensland.
+- Away games: eight Sydney clubs, the Broncos and the Dolphins in five two-game trips whose second leg is by road, and the Warriors then the Storm on one trip (Perth, Auckland, Melbourne, Perth): Qantas flies Perth to Auckland on Saturdays but not back on Fridays. The Cowboys, Titans, Knights, Raiders and Panthers are played at home only.
+- Travel time falls from 175 hours (average draw, returning to Perth after each away game) to 95 hours, 46% less; flights from about 25 to 13; km from about 84,000 to 44,200. Without the New Zealand requirement the optimum is 89 hours and 13 flights, with the Raiders and the Storm in place of the Warriors.
 - Nights away from Perth rise from 24 to 36, because the team stays in the east between the two games of each trip.
 - The fixture is the Bears' preferred position for negotiation: a real draw has to meet every club's constraints.
 
@@ -252,7 +270,7 @@ Results from the October 2026 run:
 2. A mixed-integer program (`scipy.optimize.milp`, HiGHS) chooses the home team in every game: 12 home games per club, the run limits, the Bears' fixture fixed, and total door-to-door travel time for all 18 clubs minimised, counting two away games in consecutive rounds as one trip.
 3. Each round's games fill one Thursday, two Friday, three Saturday and three Sunday slots, with the Bears' days fixed, assigned round by round to avoid four- and five-night turnarounds.
 
-`check` asserts every rule for every club on each run. The October 2026 run gives 1,185 travel hours across the league; the Warriors (103 hours) and the Bears (95) travel most, St George Illawarra least (38). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
+`check` asserts every rule for every club on each run. The October 2026 run gives 1,176 travel hours across the league; the Warriors (100 hours) and the Bears (95) travel most, Manly-Warringah least (36). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
 
 ## Known gaps
 

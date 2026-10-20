@@ -4,9 +4,9 @@
 PYTHON ?= python
 ARGS ?=
 
-.PHONY: all scrape lines build elo model roads fixture draw assets test chat-test chat-eval
+.PHONY: all scrape lines build elo model flights roads fixture draw assets test chat-test chat-eval
 
-all: build model roads fixture draw test
+all: build model flights roads fixture draw test
 
 scrape:
 	$(PYTHON) src/scrape_rlp.py $(ARGS)
@@ -23,6 +23,10 @@ elo:
 
 model:
 	$(PYTHON) src/travel_model.py
+
+# Qantas Group routes from Perth to each 2027 opponent (road trips, fixture and draw use them)
+flights:
+	$(PYTHON) src/flights.py
 
 # Perth Bears two-game road trip plans (about 10 s)
 roads:
