@@ -39,8 +39,8 @@ from common import haversine_km, utc_offset_hours
 OUT_DIR_NAME = "travel_model"
 # Tables the static site (site/index.html) reads, written as JSON to site/data/ on every run
 SITE_DATA_DIR = config.ROOT / "site" / "data"
-SITE_TABLES = ("travel_effects", "home_advantage_by_season", "projection_2027_clubs", "team_season_travel",
-               "perth_reds_1995_1997")
+SITE_TABLES = ("travel_effects", "home_advantage_by_season", "projection_2027_clubs", "projection_2027_pairs",
+               "team_season_travel", "perth_reds_1995_1997")
 FIRST_SEASON = 1996
 EXCLUDE_KM = 6000
 BANDS = [(150, 1000), (1000, 2000), (2000, 3000), (3000, EXCLUDE_KM)]   # baseline: within 150 km of base
@@ -202,6 +202,8 @@ def bears_projection(coefs: pd.DataFrame, teams: pd.DataFrame, clubs: list[str],
             f = side_features([km], [0.0], [7.0], [km]).iloc[0]
             cost = float(sum(bands[c] * f[c] for c in band_terms()))
             rows.append({"team_id": a, "opp_id": b, "km": km,
+                         # base coordinates, so the dashboard map can draw each trip
+                         "lat": t.at[a, "lat"], "lon": t.at[a, "lon"], "opp_lat": t.at[b, "lat"], "opp_lon": t.at[b, "lon"],
                          "tz_shift_h": pair_offsets(t.at[a, "tz"], t.at[b, "tz"], *BEARS_SEASON_DATES),
                          "band": next((lab for (lo, hi), lab in zip(BANDS, BAND_LABELS) if lo < km <= hi),
                                       "within 150 km"),

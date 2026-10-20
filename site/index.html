@@ -11,6 +11,15 @@
 <meta property="og:title" content="Perth Bears Travel Cost">
 <meta property="og:description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027. Independent analysis of matches from 1995 to 2026.">
 <meta property="og:url" content="https://bears.thisaithat.com/">
+<meta property="og:image" content="https://bears.thisaithat.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Perth Bears travel cost: projected cost per away game, home-away swing and season km, with a map of trips from Perth to each opponent.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Perth Bears Travel Cost">
+<meta name="twitter:description" content="Estimated cost of travel to NRL teams, whether closing betting lines price it, and the projected travel effect for the Perth Bears in 2027.">
+<meta name="twitter:image" content="https://bears.thisaithat.com/og-image.png">
+<meta name="twitter:image:alt" content="Perth Bears travel cost: projected cost per away game, home-away swing and season km, with a map of trips from Perth to each opponent.">
 <link rel="canonical" href="https://bears.thisaithat.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23181818'/%3E%3Cpath d='M7 23 L16 9 L25 23' fill='none' stroke='%23ec1d3a' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -149,6 +158,17 @@
   .pb [data-dash-source-state=empty] { color: transparent; }
   .pb [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
   .pb svg text { font-family: var(--pb-font); }
+  .pb-chart.map { min-height: 12rem; }
+  .pb-chart.map .pb-tt { width: max-content; max-width: min(20rem, 100%); }
+  .pb-chart.map svg { touch-action: pan-y; }
+  .pb-legend i.dot { border-radius: 50%; }
+  .pb-pick { display: flex; flex-wrap: wrap; align-items: center; gap: var(--cds-gap-sm); font-size: 0.85rem; color: var(--pb-muted); }
+  .pb-pick select { font: inherit; font-size: 0.95rem; color: var(--pb-fg); background: var(--pb-panel-2); border: 1px solid var(--pb-axis); border-radius: 4px; padding: 0.4rem 0.6rem; max-width: 100%; }
+  .pb-pick select:focus-visible { outline: 2px solid var(--pb-red); outline-offset: 1px; }
+  .pb-about { display: grid; gap: var(--cds-gap-sm); font-size: 0.9rem; color: var(--pb-muted); line-height: 1.55; max-width: 46rem; }
+  .pb-about p { margin: 0; }
+  .pb-about a { color: var(--pb-fg); text-decoration-color: var(--pb-red); text-underline-offset: 3px; }
+  .pb-todo { color: var(--pb-fg); border: 1px dashed var(--pb-red); border-radius: 4px; padding: 0 0.3rem; }
   @media (max-width: 56rem) {
     .pb-shell { grid-template-columns: minmax(0, 1fr); }
     .pb-nav { height: auto; flex-direction: row; padding-left: 0; }
@@ -172,11 +192,14 @@
     <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--pb-nav-foot)"/><path d="M7 23 L16 9 L25 23" fill="none" stroke="var(--pb-red)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><small>Independent</small><b>Travel analysis</b></div>
     <div class="links">
       <a href="#top" data-go="top">Overview</a>
+      <a href="#map" data-go="map">Trip map</a>
       <a href="#cost" data-go="cost">Travel cost</a>
       <a href="#home" data-go="home">Home advantage</a>
       <a href="#bears" data-go="bears">2027 outlook</a>
+      <a href="#clubs" data-go="clubs">Club travel</a>
       <a href="#reds" data-go="reds">Western Reds</a>
       <a href="#method" data-go="method">Method</a>
+      <a href="#about" data-go="about">About</a>
     </div>
     <div class="theme">
       <span id="pb-theme-label">Theme</span>
@@ -218,6 +241,18 @@
       <span class="lab">Bears 2027 season travel</span>
       <span class="big dash-skeleton" data-source="proj2027" data-field="season_km_return_home" data-where="team_id=perth_bears" data-fmt="km">—</span>
       <span class="sub">km, flying home after each away game. Rank <span class="v dash-skeleton" data-source="km_rank" data-field="rank" data-where="key=2027_perth_bears" data-fmt="int">—</span> of <span class="v dash-skeleton" data-source="km_rank" data-field="total" data-where="key=2027_perth_bears" data-fmt="int">—</span> club seasons since 1995</span>
+    </div>
+  </section>
+
+  <section class="pb-sec" id="map">
+    <span class="pb-loz">2027 outlook</span>
+    <h2>Distance from Perth to each 2027 opponent</h2>
+    <p>Each line follows the great-circle route from Perth to an opponent's base and is coloured by the distance band used in the travel model. The dots are the bases of every club in the 2027 competition.</p>
+    <div class="pb-card" id="card-map">
+      <h3>Perth Bears away trips in a balanced 2027 draw</h3>
+      <p class="note">Hover over or tap a base for the club, the distance from Perth and the time-zone shift. The shift is the opponent's clock minus Perth's, averaged over the regular season, so it includes daylight saving in the eastern states and New Zealand.</p>
+      <div class="pb-legend" id="legend-map" aria-hidden="true"></div>
+      <div class="pb-chart map dash-skeleton" id="chart-map" data-source="pairs"></div>
     </div>
   </section>
 
@@ -290,6 +325,19 @@
     </div>
   </section>
 
+  <section class="pb-sec" id="clubs">
+    <span class="pb-loz">Club travel</span>
+    <h2>Season travel by club</h2>
+    <p>Choose a club to see how far it has travelled each season, against every other club in grey. The red point is the Perth Bears' projected season.</p>
+    <div class="pb-card" id="card-club">
+      <div class="pb-pick"><label for="club-pick">Club</label><select id="club-pick" disabled></select></div>
+      <p class="note" id="club-summary"></p>
+      <div class="pb-legend" aria-hidden="true"><span><i class="ln s1"></i>Selected club</span><span><i class="dot s0"></i>Perth Bears (projected)</span><span><i class="ln mu"></i>Other clubs</span></div>
+      <div class="pb-chart dash-skeleton" id="chart-club" data-source="club_seasons"></div>
+      <p class="note">Season km on a return-home basis: each away trip is counted from the club's base to the venue and back. Projected seasons assume a balanced draw with away games at opponents' bases and are drawn with a dashed line. Gaps are seasons a club did not play.</p>
+    </div>
+  </section>
+
   <section class="pb-sec" id="reds">
     <span class="pb-loz">History</span>
     <h2>Western Reds, 1995 to 1997</h2>
@@ -312,7 +360,18 @@
         <li>The effect of a time-zone change cannot be estimated separately from distance, because nearly every time-zone crossing is a trip to or from New Zealand or Perth.</li>
         <li>The 2027 projection uses a balanced draw. Neutral venues, Magic Round and any Bears home games outside Perth are not included.</li>
         <li>Win chance converts points to probability for an evenly matched game, using the standard deviation of the model's residuals.</li>
+        <li>Distances are great-circle distances between club bases and venues. Map outlines are from Natural Earth (public domain).</li>
       </ul>
+    </div>
+  </section>
+
+  <section class="pb-sec" id="about">
+    <span class="pb-loz">About</span>
+    <h2>About this analysis</h2>
+    <div class="pb-about">
+      <!-- Placeholder: replace the two marked spans with the author's name and links before publishing -->
+      <p>Written and maintained by <span class="pb-todo">[Author name]</span>. <span class="pb-todo">[Links: personal site, LinkedIn]</span></p>
+      <p>This is an independent analysis built from public match results and betting lines. The code, data pipeline and method notes are on <a href="https://github.com/eddddddddddie/bears_travel">GitHub</a>, where corrections and questions can be raised as issues.</p>
     </div>
   </section>
 
@@ -336,7 +395,7 @@
 
   const F = {
     pts: d3.format('+.1f'), p1: d3.format('.1f'),
-    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','),
+    pct: d3.format('+.1%'), km: d3.format(',.0f'), int: d3.format(','), h: d3.format('+.1f'),
   };
 
   dash.calc('km_rank', {
@@ -659,6 +718,187 @@
   applyTheme('light');
   themeButtons.forEach((b) => b.addEventListener('click', () => applyTheme(b.dataset.theme)));
 
+  // Map view: Australia and New Zealand, from the Indian Ocean coast to the Tasman's east side
+  const MAP_VIEW = { type: 'MultiPoint', coordinates: [[112, -10], [146, -10], [179, -10], [112, -47.5], [146, -47.5], [179, -47.5]] };
+
+  // Distance bands, farthest first: red, then blue, any others muted (site_assets.py colours the preview image the same way)
+  function bandColours(pairs) {
+    const bands = [...new Set(pairs.map((p) => p.band))]
+      .sort((a, b) => d3.min(pairs, (p) => (p.band === b ? p.km : Infinity)) - d3.min(pairs, (p) => (p.band === a ? p.km : Infinity)));
+    return new Map(bands.map((b, i) => [b, i < C.length ? C[i] : MUTED]));
+  }
+
+  function drawMap() {
+    const el = document.getElementById('chart-map');
+    const legend = document.getElementById('legend-map');
+    const land = chartState(el, 'land'); if (!land) { legend.replaceChildren(); return; }
+    const rows = chartState(el, 'pairs'); if (!rows) { legend.replaceChildren(); return; }
+    const from = rows.filter((r) => r.team_id === 'perth_bears').sort((a, b) => b.km - a.km);
+    const colour = bandColours(from);
+
+    legend.replaceChildren(...[...colour].map(([band, c]) => {
+      const s = document.createElement('span'); const i = document.createElement('i');
+      i.className = 'ln'; i.style.background = c; s.append(i, band); return s;
+    }), (() => {
+      const s = document.createElement('span'); const i = document.createElement('i');
+      i.className = 'dot'; i.style.background = 'var(--pb-fg)'; s.append(i, 'Club base'); return s;
+    })());
+
+    el.replaceChildren();
+    const W = Math.max(280, el.clientWidth), H = Math.round(Math.min(540, Math.max(220, W * 0.62)));
+    const svg = d3.select(el).append('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img')
+      .attr('aria-label', `Map of great-circle routes from Perth to ${from.length} opponents`).style('display', 'block');
+    const proj = d3.geoConicEqualArea().parallels([-18, -36]).rotate([-145, 0]).fitExtent([[6, 6], [W - 6, H - 6]], MAP_VIEW);
+    const path = d3.geoPath(proj);
+    svg.append('path').datum(land).attr('d', path)
+      .style('fill', 'var(--pb-panel-2)').style('stroke', 'var(--pb-axis)').style('stroke-width', 0.5);
+
+    const lines = svg.append('g').selectAll('path').data(from).join('path')
+      .attr('d', (p) => path({ type: 'LineString', coordinates: [[p.lon, p.lat], [p.opp_lon, p.opp_lat]] }))
+      .style('fill', 'none').style('stroke', (p) => colour.get(p.band)).style('stroke-width', 1.75)
+      .style('stroke-linecap', 'round').style('opacity', 0.9);
+    const pts = from.map((p) => ({ p, xy: proj([p.opp_lon, p.opp_lat]) }));
+    svg.append('g').selectAll('circle').data(pts).join('circle').attr('cx', (d) => d.xy[0]).attr('cy', (d) => d.xy[1]).attr('r', 3.5)
+      .style('fill', 'var(--pb-fg)').style('stroke', 'var(--pb-panel)').style('stroke-width', 1.5);
+    const o = proj([from[0].lon, from[0].lat]);
+    svg.append('circle').attr('cx', o[0]).attr('cy', o[1]).attr('r', 6)
+      .style('fill', C[0]).style('stroke', 'var(--pb-fg)').style('stroke-width', 2);
+    svg.append('text').attr('x', o[0] + 4).attr('y', o[1] + 22)
+      .style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).style('fill', 'var(--pb-fg)').text(from[0].team_name);
+
+    // Hover: the nearest base within reach, plus any bases drawn on top of it (the Sydney clubs share a few pixels)
+    const tip = makeTip(el);
+    const ring = svg.append('circle').attr('r', 8).style('fill', 'none').style('stroke', 'var(--pb-fg)').style('stroke-width', 1.5).attr('opacity', 0);
+    const dist = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+    const clear = () => { lines.style('opacity', 0.9).style('stroke-width', 1.75); ring.attr('opacity', 0); tip.hide(); };
+    svg.append('rect').attr('width', W).attr('height', H).style('fill', 'transparent')
+      .on('pointermove pointerdown', (event) => {
+        const m = d3.pointer(event, svg.node());
+        const near = d3.least(pts, (d) => dist(d.xy, m));
+        if (dist(near.xy, m) > 28) { clear(); return; }
+        const group = pts.filter((d) => dist(d.xy, near.xy) <= 10).map((d) => d.p).sort((a, b) => a.km - b.km);
+        const ids = new Set(group.map((p) => p.opp_id));
+        lines.style('opacity', (p) => (ids.has(p.opp_id) ? 1 : 0.2)).style('stroke-width', (p) => (ids.has(p.opp_id) ? 2.5 : 1.75));
+        ring.attr('cx', near.xy[0]).attr('cy', near.xy[1]).attr('opacity', 1);
+        if (group.length === 1) {
+          const p = group[0];
+          tip.show(event, p.opp_name, [{ color: colour.get(p.band), text: `${F.km(p.km)} km from Perth` },
+            { text: `Time zone ${F.h(p.tz_shift_h)} h` }]);
+        } else {
+          tip.show(event, `${group.length} clubs, km from Perth and time zone`, group.map((p) => ({
+            color: colour.get(p.band), text: `${p.opp_name}: ${F.km(p.km)} km, ${F.h(p.tz_shift_h)} h` })));
+        }
+      })
+      .on('pointerleave', clear);
+  }
+
+  // Club picker: clubs in the projected season first, then former clubs, each by name
+  const picker = document.getElementById('club-pick');
+  function fillPicker(rows) {
+    if (picker.options.length) return;
+    const projSeason = d3.max(rows, (r) => r.season);
+    const teams = d3.groups(rows, (r) => r.team_id).map(([id, rs]) => ({
+      id, name: d3.greatest(rs, (r) => r.season).team_name, current: rs.some((r) => r.season === projSeason) }));
+    [[`${projSeason} clubs`, true], ['Former clubs', false]].forEach(([label, current]) => {
+      const og = document.createElement('optgroup'); og.label = label;
+      teams.filter((t) => t.current === current).sort((a, b) => d3.ascending(a.name, b.name)).forEach((t) => {
+        const op = document.createElement('option'); op.value = t.id; op.textContent = t.name; og.append(op);
+      });
+      picker.append(og);
+    });
+    // Start on the most-travelled existing club in the projection, the nearest comparison for the Bears
+    const proj = rows.filter((r) => r.projected && r.team_id !== 'perth_bears');
+    picker.value = d3.greatest(proj, (r) => r.km_return_home).team_id;
+    picker.disabled = false;
+  }
+  picker.addEventListener('change', () => drawClub());
+
+  function drawClub() {
+    const el = document.getElementById('chart-club');
+    const summary = document.getElementById('club-summary');
+    const rows = chartState(el, 'club_seasons'); if (!rows) { summary.textContent = ''; return; }
+    fillPicker(rows);
+    const id = picker.value;
+    const mine = rows.filter((r) => r.team_id === id).sort((a, b) => a.season - b.season);
+    const hist = mine.filter((r) => !r.projected), proj = mine.find((r) => r.projected);
+    const bears = rows.find((r) => r.team_id === 'perth_bears' && r.projected);
+    const name = d3.greatest(mine, (r) => r.season).team_name;
+
+    const parts = [];
+    if (hist.length) {
+      const most = d3.greatest(hist, (r) => r.km_return_home);
+      parts.push(`${name} travelled furthest in ${most.season}, ${F.km(most.km_return_home)} km, and averaged ${F.km(d3.mean(hist, (r) => r.km_return_home))} km a season over ${hist.length} season${hist.length > 1 ? 's' : ''} from ${hist[0].season} to ${hist[hist.length - 1].season}.`);
+    }
+    if (proj && id !== 'perth_bears') parts.push(`The ${proj.season} projection is ${F.km(proj.km_return_home)} km, against ${F.km(bears.km_return_home)} km for the Perth Bears.`);
+    if (id === 'perth_bears') {
+      const rank = dash.data('km_rank').data.find((r) => r.team_id === 'perth_bears' && r.projected);
+      parts.push(`The Perth Bears' ${bears.season} projection is ${F.km(bears.km_return_home)} km${rank ? `, rank ${rank.rank} of ${F.int(rank.total)} club seasons` : ''}.`);
+    }
+    summary.textContent = parts.join(' ');
+
+    const H = 280, top = 12, bottom = 28;
+    const { svg, W } = newSvg(el, H);
+    svg.attr('aria-label', `Season km for ${name}`);
+    const y = d3.scaleLinear([0, d3.max(rows, (r) => r.km_return_home)], [H - bottom, top]).nice();
+    const yFmt = (v) => (v === 0 ? '0' : `${v / 1000}k`);
+    const left = textWidth(svg, y.ticks(5).map(yFmt), 'var(--cds-font-size-caption)') + 10;
+    const x = d3.scaleLinear(d3.extent(rows, (r) => r.season), [left, W - 12]);
+    const g = svg.append('g');
+    y.ticks(5).forEach((t) => {
+      g.append('line').attr('x1', left).attr('x2', W - 12).attr('y1', y(t)).attr('y2', y(t))
+        .style('stroke', t === 0 ? 'var(--pb-axis)' : 'var(--pb-grid)').style('stroke-width', 1);
+      g.append('text').attr('x', left - 8).attr('y', y(t)).attr('dy', '0.35em').attr('text-anchor', 'end')
+        .style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--pb-muted)').text(yFmt(t));
+    });
+    x.ticks(W < 480 ? 4 : 7).filter(Number.isInteger).forEach((t) => g.append('text').attr('x', x(t)).attr('y', H - 8).attr('text-anchor', 'middle')
+      .style('font-size', 'var(--cds-font-size-caption)').style('fill', 'var(--pb-muted)').text(t));
+
+    // One point per season with gaps where a club did not play, so lines do not bridge missing seasons
+    const filled = (rs) => {
+      const m = new Map(rs.map((r) => [r.season, r]));
+      return d3.range(rs[0].season, rs[rs.length - 1].season + 1).map((s) => m.get(s) || null);
+    };
+    const line = d3.line().defined((r) => r).x((r) => x(r.season)).y((r) => y(r.km_return_home));
+    d3.groups(rows.filter((r) => !r.projected && r.team_id !== id), (r) => r.team_id).forEach(([, rs]) => {
+      g.append('path').datum(filled(rs.sort((a, b) => a.season - b.season))).attr('d', line)
+        .style('fill', 'none').style('stroke', MUTED).style('stroke-width', 1).style('stroke-linejoin', 'round');
+    });
+    if (hist.length) {
+      g.append('path').datum(filled(hist)).attr('d', line).style('fill', 'none').style('stroke', C[1]).style('stroke-width', 2.5)
+        .style('stroke-linejoin', 'round').style('stroke-linecap', 'round');
+      g.selectAll(null).data(hist.filter((r, i) => (hist[i - 1]?.season !== r.season - 1) && (hist[i + 1]?.season !== r.season + 1)))
+        .join('circle').attr('cx', (r) => x(r.season)).attr('cy', (r) => y(r.km_return_home)).attr('r', 3).style('fill', C[1]);
+    }
+    if (proj && id !== 'perth_bears') {
+      const last = hist[hist.length - 1];
+      if (last && last.season === proj.season - 1) {
+        g.append('line').attr('x1', x(last.season)).attr('y1', y(last.km_return_home)).attr('x2', x(proj.season)).attr('y2', y(proj.km_return_home))
+          .style('stroke', C[1]).style('stroke-width', 2).style('stroke-dasharray', '4 3');
+      }
+      g.append('circle').attr('cx', x(proj.season)).attr('cy', y(proj.km_return_home)).attr('r', 4)
+        .style('fill', 'var(--pb-panel)').style('stroke', C[1]).style('stroke-width', 2);
+    }
+    g.append('circle').attr('cx', x(bears.season)).attr('cy', y(bears.km_return_home)).attr('r', 6)
+      .style('fill', C[0]).style('stroke', 'var(--pb-fg)').style('stroke-width', 2);
+    g.append('text').attr('x', x(bears.season) - 10).attr('y', y(bears.km_return_home)).attr('dy', '0.35em').attr('text-anchor', 'end')
+      .style('font-size', 'var(--cds-font-size-caption)').style('font-weight', 600).style('fill', 'var(--pb-fg)')
+      .text(`Perth Bears ${bears.season}`);
+
+    const rule = g.append('line').attr('y1', top).attr('y2', H - bottom).style('stroke', 'var(--pb-ref)').style('stroke-width', 1).attr('opacity', 0);
+    const tip = makeTip(el);
+    g.append('rect').attr('x', left).attr('y', top).attr('width', W - 12 - left).attr('height', H - bottom - top).style('fill', 'transparent')
+      .on('mousemove', (event) => {
+        const [mx] = d3.pointer(event, svg.node());
+        const r = mine[d3.minIndex(mine, (d) => Math.abs(x(d.season) - mx))];
+        rule.attr('x1', x(r.season)).attr('x2', x(r.season)).attr('opacity', 1);
+        const lines = [{ color: C[1], text: `${F.km(r.km_return_home)} km${r.projected ? ', projected' : ''}` }];
+        if (r.trips != null) lines.push({ text: `${F.int(r.trips)} away trips` });
+        if (r.season === bears.season && id !== 'perth_bears') lines.push({ color: C[0], text: `Perth Bears ${F.km(bears.km_return_home)} km, projected` });
+        tip.show(event, `${name}, ${r.season}`, lines);
+      })
+      .on('mouseleave', () => { rule.attr('opacity', 0); tip.hide(); });
+  }
+
   // ---------------------------------------------------------------- section navigation
   const links = [...root.querySelectorAll('.pb-nav a[data-go]')];
   const setActive = (id) => links.forEach((a) => a.classList.toggle('on', a.dataset.go === id));
@@ -681,7 +921,7 @@
 
   dash.onData(() => {
     fillValues();
-    drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawReds();
+    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawSwing(); drawKm(); drawProj(); drawClub(); drawReds();
     if (!opened && dash.data('effects').status === 'ok') {
       opened = true;
       const named = document.getElementById(location.hash.slice(1));

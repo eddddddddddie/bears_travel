@@ -13,6 +13,8 @@ Builds one row per team per match for NRL 1998 to 2026 and the 1995 to 1997 seas
 | `site/index.html` | The dashboard page (d3 7.9.0 from cdnjs, Barlow from Google Fonts) |
 | `site/assets/dash.js` | Loads the JSON tables and gives the page the small `dash` data API it uses |
 | `site/data/*.json` | Written by `travel_model.py` on every run; commit them with the model outputs |
+| `site/data/land_au_nz.json` | Australia and New Zealand land outline for the map, from Natural Earth 1:50m (public domain), written by `site_assets.py` |
+| `site/og-image.png` | 1200 x 630 link preview with the headline figures, written by `site_assets.py` from `site/data/` |
 
 Preview it locally with `python -m http.server 8000 --directory site` and open http://localhost:8000.
 
@@ -40,6 +42,7 @@ python src/fetch_lines.py          # AusSportsBetting workbook, cached in data/r
 python src/build_dataset.py        # writes data/processed/
 python src/elo.py                  # optional: refit the Elo parameters (needs scipy)
 python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
+python src/site_assets.py          # map outline and link-preview image for site/ (needs matplotlib)
 ```
 
 Repeat `build_dataset.py` after each edit to the reference tables. It does not re-download anything.
