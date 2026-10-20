@@ -203,13 +203,13 @@
     <div class="brand"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="var(--pb-nav-foot)"/><path d="M7 23 L16 9 L25 23" fill="none" stroke="var(--pb-red)" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg><small>Independent</small><b>Travel analysis</b></div>
     <div class="links">
       <a href="#top" data-go="top">Overview</a>
-      <a href="#map" data-go="map">Trip map</a>
+      <a href="#map" data-go="map">Distance</a>
       <a href="#cost" data-go="cost">Travel cost</a>
       <a href="#home" data-go="home">Home advantage</a>
+      <a href="#market" data-go="market">Betting market</a>
+      <a href="#reds" data-go="reds">Western Reds</a>
       <a href="#bears" data-go="bears">2027 outlook</a>
       <a href="#roads" data-go="roads">Road trips</a>
-      <a href="#clubs" data-go="clubs">Club travel</a>
-      <a href="#reds" data-go="reds">Western Reds</a>
       <a href="#method" data-go="method">Method</a>
       <a href="#about" data-go="about">About</a>
     </div>
@@ -252,9 +252,9 @@
   </section>
 
   <section class="pb-sec" id="map">
-    <span class="pb-loz">2027 outlook</span>
+    <span class="pb-loz">1. Distance</span>
     <h2>Distance from Perth to each 2027 opponent</h2>
-    <p>Each line follows the great-circle route from Perth to an opponent's base and is coloured by the distance band used in the travel model. The dots are the bases of every club in the 2027 competition.</p>
+    <p>The Bears will be the most isolated club in the competition. Their average trip to an opponent's base is <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=perth_bears" data-fmt="km">—</span> km, against <span class="v dash-skeleton" data-source="proj2027" data-field="mean_away_km" data-where="team_id=warriors" data-fmt="km">—</span> km for the Warriors, the next most isolated club. Each line follows the great-circle route from Perth to an opponent's base and is coloured by the distance band used in the travel model. The dots are the bases of every club in the 2027 competition.</p>
     <div class="pb-card" id="card-map">
       <h3>Perth Bears away trips in a balanced 2027 draw</h3>
       <p class="note">Hover over or tap a base for the club, the distance from Perth and the time-zone shift. The shift is the opponent's clock minus Perth's, averaged over the regular season, so it includes daylight saving in the eastern states and New Zealand.</p>
@@ -263,39 +263,54 @@
     </div>
   </section>
 
+  <section class="pb-sec" id="clubs">
+    <span class="pb-loz">1. Distance</span>
+    <h2>Season travel by club</h2>
+    <p>Over a season, that distance adds up to more travel than any club has recorded since 1995. Choose a club to see how far it has travelled each season, against every other club in grey. The red point is the Perth Bears' projected season.</p>
+    <div class="pb-grid">
+      <div class="pb-card" id="card-club">
+        <div class="pb-pick"><label for="club-pick">Club</label><select id="club-pick" disabled></select></div>
+        <p class="note" id="club-summary"></p>
+        <div class="pb-legend" aria-hidden="true"><span><i class="ln s1"></i>Selected club</span><span><i class="dot s0"></i>Perth Bears (projected)</span><span><i class="ln mu"></i>Other clubs</span></div>
+        <div class="pb-chart dash-skeleton" id="chart-club" data-source="club_seasons"></div>
+        <p class="note">Season km on a return-home basis: each away trip is counted from the club's base to the venue and back. Projected seasons assume a balanced draw with away games at opponents' bases and are drawn with a dashed line. Gaps are seasons a club did not play.</p>
+      </div>
+      <div class="pb-card" id="card-km">
+        <h3>Most-travelled club seasons</h3>
+        <p class="note">Season km on a return-home basis, every club season from 1995 to 2026 plus the Bears' 2027 projection.</p>
+        <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Perth Bears 2027 (projected)</span><span><i class="s1"></i>Western Reds</span><span><i class="mu"></i>Other clubs</span></div>
+        <div class="pb-chart dash-skeleton" id="chart-km" data-source="km_rank"></div>
+      </div>
+    </div>
+  </section>
+
   <section class="pb-sec" id="cost">
-    <span class="pb-loz">Travel cost</span>
+    <span class="pb-loz">2. Cost of travel</span>
     <h2>Cost of travel by distance</h2>
-    <p>Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
+    <p>The next question is what that distance costs on the field. Each match is modelled from the home side's view, controlling for team strength, rest and recent travel, with a separate home advantage for each season. Points are margin for the travelling team, relative to playing within 150 km of home. Bars are 95% intervals.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-bands">
         <h3>Margin change by trip distance, 1996 to 2026</h3>
         <p class="note">Trips of 150 to 1,000 km reduce the travelling team's margin, and the interval excludes zero. The estimates for 1,000 to 3,000 km are smaller and their intervals include zero. Trips of 3,000 km and over have the largest estimated cost, with a wide interval because few matches involve them.</p>
         <div class="pb-chart dash-skeleton" id="chart-bands" data-source="effects"></div>
       </div>
-      <div class="pb-card" id="card-market">
-        <h3>Actual and market-priced travel cost, 2013 to 2026</h3>
-        <p class="note">On matches with a closing line, the market prices all trips over 1,000 km at a similar cost. The difference between the actual and priced cost has a 95% interval that includes zero in <span class="v dash-skeleton" data-source="missed" data-field="crossing_zero" data-row="0" data-fmt="int">—</span> of <span class="v dash-skeleton" data-source="missed" data-field="bands" data-row="0" data-fmt="int">—</span> distance bands, so the closing line shows no measurable mispricing of travel.</p>
-        <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Actual result</span><span><i class="s1"></i>Priced by the closing line</span></div>
-        <div class="pb-chart dash-skeleton" id="chart-market" data-source="effects"></div>
-      </div>
-    </div>
-    <div class="pb-card" id="card-other">
-      <h3>Rest and recent travel</h3>
-      <p class="note">The estimates for rest and for travel in the previous 21 days are close to zero, so neither has a measurable effect on margin.</p>
-      <div class="pb-tablebox">
-        <table class="pb-table" id="table-other" data-source="effects" data-row-key="model,design,term">
-          <thead><tr><th data-field="label">Factor</th><th data-field="estimate">Points</th><th data-field="ci_low">95% low</th><th data-field="ci_high">95% high</th></tr></thead>
-          <tbody></tbody>
-        </table>
+      <div class="pb-card" id="card-other">
+        <h3>Rest and recent travel</h3>
+        <p class="note">The estimates for rest and for travel in the previous 21 days are close to zero, so neither has a measurable effect on margin.</p>
+        <div class="pb-tablebox">
+          <table class="pb-table" id="table-other" data-source="effects" data-row-key="model,design,term">
+            <thead><tr><th data-field="label">Factor</th><th data-field="estimate">Points</th><th data-field="ci_low">95% low</th><th data-field="ci_high">95% high</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="pb-sec" id="home">
-    <span class="pb-loz">Home advantage</span>
+    <span class="pb-loz">3. Home advantage</span>
     <h2>Home advantage and its travel component</h2>
-    <p>The raw home margin is the designated home side's average margin. The home-ground part is the season intercept from the model: the home advantage remaining after travel, rest and team strength are accounted for. The difference between the two lines is the part attributable to the visiting team's travel.</p>
+    <p>Home teams win more often partly because their opponents have travelled. The raw home margin is the designated home side's average margin. The home-ground part is the season intercept from the model: the home advantage remaining after travel, rest and team strength are accounted for. The difference between the two lines is the part attributable to the visiting team's travel.</p>
     <div class="pb-card" id="card-home">
       <h3>Home advantage by season</h3>
       <p class="note">Points per match for the designated home side. 1995 is not modelled because it is the first season in the data. 2020 and 2021 are left out because teams played from temporary bases.</p>
@@ -304,21 +319,39 @@
     </div>
   </section>
 
+  <section class="pb-sec" id="market">
+    <span class="pb-loz">4. Betting market</span>
+    <h2>Travel in the betting market</h2>
+    <p>If travel has a cost, the betting market should already include it in the line. Closing lines from 2013 to 2026 are compared here with the results of the same matches, using the same distance bands.</p>
+    <div class="pb-card" id="card-market">
+      <h3>Actual and market-priced travel cost, 2013 to 2026</h3>
+      <p class="note">On matches with a closing line, the market prices all trips over 1,000 km at a similar cost. The difference between the actual and priced cost has a 95% interval that includes zero in <span class="v dash-skeleton" data-source="missed" data-field="crossing_zero" data-row="0" data-fmt="int">—</span> of <span class="v dash-skeleton" data-source="missed" data-field="bands" data-row="0" data-fmt="int">—</span> distance bands, so the closing line shows no measurable mispricing of travel.</p>
+      <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Actual result</span><span><i class="s1"></i>Priced by the closing line</span></div>
+      <div class="pb-chart dash-skeleton" id="chart-market" data-source="effects"></div>
+    </div>
+  </section>
+
+  <section class="pb-sec" id="reds">
+    <span class="pb-loz">5. Perth evidence</span>
+    <h2>Western Reds, 1995 to 1997</h2>
+    <p>The estimates above come mostly from trips that do not involve Perth, such as North Queensland to Auckland and games in Darwin. The Western Reds are the only previous Perth club in the competition. Results are shown as margin against the expected margin for the fixture, given both teams' strength and the average home advantage, so zero means the Reds performed as an average club would have in the same fixture.</p>
+    <div class="pb-card" id="card-reds">
+      <h3>Western Reds against expectation</h3>
+      <p class="note">Away from Perth the Reds' margins were below expectation in all three seasons. At home their margins were close to expectation, so visiting teams did not show an equivalent travel cost in Perth. This is consistent with eastward travel costing more than westward travel, but each bar covers one season of home or away matches, so the difference is not statistically reliable.</p>
+      <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Away</span><span><i class="s1"></i>Home (Perth)</span></div>
+      <div class="pb-chart dash-skeleton" id="chart-reds" data-source="reds"></div>
+    </div>
+  </section>
+
   <section class="pb-sec" id="bears">
-    <span class="pb-loz">2027 outlook</span>
+    <span class="pb-loz">6. 2027 outlook</span>
     <h2>Perth Bears 2027 outlook</h2>
-    <p>The projection assumes a balanced draw: each club plays every other club equally often, and each away game is played at the opponent's base. Under that assumption a club's travel cost in away games equals its gain when the same opponents travel to it, so the projected season total is zero for every club. Distance changes the difference between a club's home and away margins.</p>
+    <p>Applying the cost by distance to the distance from Perth to each opponent gives the Bears' expected travel effect in 2027. The projection assumes a balanced draw: each club plays every other club equally often, and each away game is played at the opponent's base. Under that assumption a club's travel cost in away games equals its gain when the same opponents travel to it, so the projected season total is zero for every club. Distance changes the difference between a club's home and away margins.</p>
     <div class="pb-grid">
       <div class="pb-card" id="card-swing">
         <h3>Home-away swing by club</h3>
         <p class="note">Difference between a club's expected home and away margins attributable to travel, in points.</p>
         <div class="pb-chart dash-skeleton" id="chart-swing" data-source="proj2027"></div>
-      </div>
-      <div class="pb-card" id="card-km">
-        <h3>Most-travelled club seasons</h3>
-        <p class="note">Season km on a return-home basis, every club season from 1995 to 2026 plus the Bears' 2027 projection.</p>
-        <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Perth Bears 2027 (projected)</span><span><i class="s1"></i>Western Reds</span><span><i class="mu"></i>Other clubs</span></div>
-        <div class="pb-chart dash-skeleton" id="chart-km" data-source="km_rank"></div>
       </div>
     </div>
     <div class="pb-card" id="card-proj">
@@ -333,9 +366,9 @@
   </section>
 
   <section class="pb-sec" id="roads">
-    <span class="pb-loz">2027 outlook</span>
+    <span class="pb-loz">7. Road trips</span>
     <h2>Two-game road trips for the Bears</h2>
-    <p>If the Bears stay away between two consecutive away games instead of returning to Perth, the two games become one trip: Perth to the first ground, on to the second, then back to Perth. With no more than two away games in a row, the plan with the least travel is the pairing of away games that saves the most km, which can be solved exactly as a matching problem. The 2027 draw is not yet published, so the plan is computed for each of the <span class="v dash-skeleton" data-source="road_summary" data-field="away_sets" data-where="scenario=average" data-fmt="int">—</span> possible sets of away opponents.</p>
+    <p>The draw also affects travel: the order of away games sets how often the Bears fly between Perth and the east coast. If the Bears stay away between two consecutive away games instead of returning to Perth, the two games become one trip: Perth to the first ground, on to the second, then back to Perth. With no more than two away games in a row, the plan with the least travel is the pairing of away games that saves the most km, which can be solved exactly as a matching problem. The 2027 draw is not yet published, so the plan is computed for each of the <span class="v dash-skeleton" data-source="road_summary" data-field="away_sets" data-where="scenario=average" data-fmt="int">—</span> possible sets of away opponents.</p>
     <section class="pb-tiles" id="road-figures" aria-label="Perth Bears 2027 road trips, average over every set of away opponents">
       <div class="pb-tile">
         <span class="big dash-skeleton" data-source="road_summary" data-field="km_return_home" data-where="scenario=average" data-fmt="km">—</span>
@@ -378,31 +411,6 @@
       </div>
     </div>
     <p>Every possible set of away opponents pairs fully into two-game trips, so home games would also fall in pairs. Legs under 150 km, such as between two Sydney grounds, are counted as road travel rather than flights. The travel model found no measurable effect of travel in the previous 21 days on results, so the saving is reported in km and flights, not in points of margin.</p>
-  </section>
-
-  <section class="pb-sec" id="clubs">
-    <span class="pb-loz">Club travel</span>
-    <h2>Season travel by club</h2>
-    <p>Choose a club to see how far it has travelled each season, against every other club in grey. The red point is the Perth Bears' projected season.</p>
-    <div class="pb-card" id="card-club">
-      <div class="pb-pick"><label for="club-pick">Club</label><select id="club-pick" disabled></select></div>
-      <p class="note" id="club-summary"></p>
-      <div class="pb-legend" aria-hidden="true"><span><i class="ln s1"></i>Selected club</span><span><i class="dot s0"></i>Perth Bears (projected)</span><span><i class="ln mu"></i>Other clubs</span></div>
-      <div class="pb-chart dash-skeleton" id="chart-club" data-source="club_seasons"></div>
-      <p class="note">Season km on a return-home basis: each away trip is counted from the club's base to the venue and back. Projected seasons assume a balanced draw with away games at opponents' bases and are drawn with a dashed line. Gaps are seasons a club did not play.</p>
-    </div>
-  </section>
-
-  <section class="pb-sec" id="reds">
-    <span class="pb-loz">History</span>
-    <h2>Western Reds, 1995 to 1997</h2>
-    <p>The Western Reds are the only previous Perth club in the competition. Results are shown as margin against the expected margin for the fixture, given both teams' strength and the average home advantage, so zero means the Reds performed as an average club would have in the same fixture.</p>
-    <div class="pb-card" id="card-reds">
-      <h3>Western Reds against expectation</h3>
-      <p class="note">Away from Perth the Reds' margins were below expectation in all three seasons. At home their margins were close to expectation, so visiting teams did not show an equivalent travel cost in Perth. This is consistent with eastward travel costing more than westward travel, but each bar covers one season of home or away matches, so the difference is not statistically reliable.</p>
-      <div class="pb-legend" aria-hidden="true"><span><i class="s0"></i>Away</span><span><i class="s1"></i>Home (Perth)</span></div>
-      <div class="pb-chart dash-skeleton" id="chart-reds" data-source="reds"></div>
-    </div>
   </section>
 
   <section class="pb-sec" id="method">
