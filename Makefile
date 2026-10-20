@@ -4,9 +4,9 @@
 PYTHON ?= python
 ARGS ?=
 
-.PHONY: all scrape lines build elo model roads fixture assets test
+.PHONY: all scrape lines build elo model roads fixture draw assets test
 
-all: build model roads fixture test
+all: build model roads fixture draw test
 
 scrape:
 	$(PYTHON) src/scrape_rlp.py $(ARGS)
@@ -31,6 +31,10 @@ roads:
 # proposed Perth Bears 2027 fixture (about 15 s)
 fixture:
 	$(PYTHON) src/fixture_2027.py
+
+# full 2027 competition draw around the Bears' fixture (about 70 s)
+draw:
+	$(PYTHON) src/draw_2027.py
 
 # map outline and link-preview image for site/
 assets:

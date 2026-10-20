@@ -1,0 +1,217 @@
+round,date,day,home,away,venue,meeting,home_id,away_id
+1,2027-03-04,Thu,Dolphins,South Sydney Rabbitohs,Redcliffe,1 of 1,dolphins,south_sydney
+1,2027-03-05,Fri,New Zealand Warriors,Brisbane Broncos,Mt Smart (Auckland),1 of 1,warriors,brisbane
+1,2027-03-05,Fri,Gold Coast Titans,Manly-Warringah Sea Eagles,Robina,1 of 1,gold_coast,manly
+1,2027-03-06,Sat,Perth Bears,Canberra Raiders,Perth,1 of 1,perth_bears,canberra
+1,2027-03-06,Sat,Parramatta Eels,Newcastle Knights,Parramatta,1 of 1,parramatta,newcastle
+1,2027-03-06,Sat,North Queensland Cowboys,Wests Tigers,Townsville,1 of 1,north_qld,wests_tigers
+1,2027-03-07,Sun,Canterbury-Bankstown Bulldogs,Sydney Roosters,Belmore,1 of 1,canterbury,sydney_roosters
+1,2027-03-07,Sun,Cronulla-Sutherland Sharks,Penrith Panthers,Shark Park,1 of 1,cronulla,penrith
+1,2027-03-07,Sun,Melbourne Storm,St George Illawarra Dragons,AAMI Park,1 of 1,melbourne,st_george_illawarra
+2,2027-03-11,Thu,Gold Coast Titans,South Sydney Rabbitohs,Robina,1 of 2,gold_coast,south_sydney
+2,2027-03-12,Fri,Canberra Raiders,Brisbane Broncos,Canberra Stadium,1 of 2,canberra,brisbane
+2,2027-03-12,Fri,New Zealand Warriors,Parramatta Eels,Mt Smart (Auckland),1 of 2,warriors,parramatta
+2,2027-03-13,Sat,Wests Tigers,Manly-Warringah Sea Eagles,Concord,1 of 2,wests_tigers,manly
+2,2027-03-13,Sat,Canterbury-Bankstown Bulldogs,Newcastle Knights,Belmore,1 of 2,canterbury,newcastle
+2,2027-03-13,Sat,Penrith Panthers,North Queensland Cowboys,Penrith,1 of 2,penrith,north_qld
+2,2027-03-14,Sun,Dolphins,Perth Bears,Redcliffe,1 of 2,dolphins,perth_bears
+2,2027-03-14,Sun,Sydney Roosters,Melbourne Storm,Moore Park,1 of 2,sydney_roosters,melbourne
+2,2027-03-14,Sun,St George Illawarra Dragons,Cronulla-Sutherland Sharks,Kogarah,1 of 2,st_george_illawarra,cronulla
+3,2027-03-18,Thu,Brisbane Broncos,Perth Bears,Red Hill / Lang Park,1 of 2,brisbane,perth_bears
+3,2027-03-19,Fri,Parramatta Eels,Canberra Raiders,Parramatta,1 of 2,parramatta,canberra
+3,2027-03-19,Fri,South Sydney Rabbitohs,Wests Tigers,Redfern,1 of 2,south_sydney,wests_tigers
+3,2027-03-20,Sat,Dolphins,Gold Coast Titans,Redcliffe,1 of 2,dolphins,gold_coast
+3,2027-03-20,Sat,New Zealand Warriors,Canterbury-Bankstown Bulldogs,Mt Smart (Auckland),1 of 2,warriors,canterbury
+3,2027-03-20,Sat,Manly-Warringah Sea Eagles,Penrith Panthers,Brookvale,1 of 2,manly,penrith
+3,2027-03-21,Sun,Newcastle Knights,Melbourne Storm,Newcastle,1 of 2,newcastle,melbourne
+3,2027-03-21,Sun,St George Illawarra Dragons,North Queensland Cowboys,Kogarah,1 of 2,st_george_illawarra,north_qld
+3,2027-03-21,Sun,Sydney Roosters,Cronulla-Sutherland Sharks,Moore Park,1 of 2,sydney_roosters,cronulla
+4,2027-03-25,Thu,Brisbane Broncos,Parramatta Eels,Red Hill / Lang Park,1 of 1,brisbane,parramatta
+4,2027-03-26,Fri,Wests Tigers,Dolphins,Concord,1 of 1,wests_tigers,dolphins
+4,2027-03-26,Fri,Canberra Raiders,Canterbury-Bankstown Bulldogs,Canberra Stadium,1 of 1,canberra,canterbury
+4,2027-03-27,Sat,Perth Bears,Gold Coast Titans,Perth,1 of 1,perth_bears,gold_coast
+4,2027-03-27,Sat,South Sydney Rabbitohs,Penrith Panthers,Redfern,1 of 1,south_sydney,penrith
+4,2027-03-27,Sat,Melbourne Storm,New Zealand Warriors,AAMI Park,1 of 1,melbourne,warriors
+4,2027-03-28,Sun,St George Illawarra Dragons,Manly-Warringah Sea Eagles,Kogarah,1 of 1,st_george_illawarra,manly
+4,2027-03-28,Sun,Cronulla-Sutherland Sharks,Newcastle Knights,Shark Park,1 of 1,cronulla,newcastle
+4,2027-03-28,Sun,North Queensland Cowboys,Sydney Roosters,Townsville,1 of 1,north_qld,sydney_roosters
+5,2027-04-01,Thu,Canterbury-Bankstown Bulldogs,Brisbane Broncos,Belmore,1 of 2,canterbury,brisbane
+5,2027-04-02,Fri,Gold Coast Titans,Wests Tigers,Robina,1 of 2,gold_coast,wests_tigers
+5,2027-04-02,Fri,Penrith Panthers,Dolphins,Penrith,1 of 2,penrith,dolphins
+5,2027-04-03,Sat,Perth Bears,Parramatta Eels,Perth,1 of 2,perth_bears,parramatta
+5,2027-04-03,Sat,Melbourne Storm,Canberra Raiders,AAMI Park,1 of 2,melbourne,canberra
+5,2027-04-03,Sat,South Sydney Rabbitohs,St George Illawarra Dragons,Redfern,1 of 2,south_sydney,st_george_illawarra
+5,2027-04-04,Sun,Cronulla-Sutherland Sharks,New Zealand Warriors,Shark Park,1 of 2,cronulla,warriors
+5,2027-04-04,Sun,Manly-Warringah Sea Eagles,Sydney Roosters,Brookvale,1 of 2,manly,sydney_roosters
+5,2027-04-04,Sun,North Queensland Cowboys,Newcastle Knights,Townsville,1 of 2,north_qld,newcastle
+6,2027-04-08,Thu,Gold Coast Titans,Penrith Panthers,Robina,1 of 2,gold_coast,penrith
+6,2027-04-09,Fri,Parramatta Eels,Canterbury-Bankstown Bulldogs,Parramatta,1 of 2,parramatta,canterbury
+6,2027-04-09,Fri,Melbourne Storm,Brisbane Broncos,AAMI Park,1 of 2,melbourne,brisbane
+6,2027-04-10,Sat,Dolphins,St George Illawarra Dragons,Redcliffe,1 of 2,dolphins,st_george_illawarra
+6,2027-04-10,Sat,Cronulla-Sutherland Sharks,Canberra Raiders,Shark Park,1 of 2,cronulla,canberra
+6,2027-04-10,Sat,Sydney Roosters,South Sydney Rabbitohs,Moore Park,1 of 2,sydney_roosters,south_sydney
+6,2027-04-11,Sun,Wests Tigers,Perth Bears,Concord,1 of 2,wests_tigers,perth_bears
+6,2027-04-11,Sun,New Zealand Warriors,North Queensland Cowboys,Mt Smart (Auckland),1 of 2,warriors,north_qld
+6,2027-04-11,Sun,Newcastle Knights,Manly-Warringah Sea Eagles,Newcastle,1 of 2,newcastle,manly
+7,2027-04-15,Thu,Canterbury-Bankstown Bulldogs,Perth Bears,Belmore,1 of 2,canterbury,perth_bears
+7,2027-04-16,Fri,Parramatta Eels,Melbourne Storm,Parramatta,1 of 2,parramatta,melbourne
+7,2027-04-16,Fri,St George Illawarra Dragons,Gold Coast Titans,Kogarah,1 of 2,st_george_illawarra,gold_coast
+7,2027-04-17,Sat,Penrith Panthers,Wests Tigers,Penrith,1 of 2,penrith,wests_tigers
+7,2027-04-17,Sat,Brisbane Broncos,Cronulla-Sutherland Sharks,Red Hill / Lang Park,1 of 2,brisbane,cronulla
+7,2027-04-17,Sat,Sydney Roosters,Dolphins,Moore Park,1 of 2,sydney_roosters,dolphins
+7,2027-04-18,Sun,Canberra Raiders,North Queensland Cowboys,Canberra Stadium,1 of 2,canberra,north_qld
+7,2027-04-18,Sun,Newcastle Knights,South Sydney Rabbitohs,Newcastle,1 of 2,newcastle,south_sydney
+7,2027-04-18,Sun,New Zealand Warriors,Manly-Warringah Sea Eagles,Mt Smart (Auckland),1 of 2,warriors,manly
+8,2027-04-22,Thu,Melbourne Storm,Canterbury-Bankstown Bulldogs,AAMI Park,1 of 2,melbourne,canterbury
+8,2027-04-23,Fri,Wests Tigers,St George Illawarra Dragons,Concord,1 of 2,wests_tigers,st_george_illawarra
+8,2027-04-23,Fri,Cronulla-Sutherland Sharks,Parramatta Eels,Shark Park,1 of 2,cronulla,parramatta
+8,2027-04-24,Sat,Perth Bears,Penrith Panthers,Perth,1 of 2,perth_bears,penrith
+8,2027-04-24,Sat,Sydney Roosters,Gold Coast Titans,Moore Park,1 of 2,sydney_roosters,gold_coast
+8,2027-04-24,Sat,North Queensland Cowboys,Brisbane Broncos,Townsville,1 of 2,north_qld,brisbane
+8,2027-04-25,Sun,Dolphins,Newcastle Knights,Redcliffe,1 of 2,dolphins,newcastle
+8,2027-04-25,Sun,Manly-Warringah Sea Eagles,Canberra Raiders,Brookvale,1 of 2,manly,canberra
+8,2027-04-25,Sun,South Sydney Rabbitohs,New Zealand Warriors,Redfern,1 of 2,south_sydney,warriors
+9,2027-04-29,Thu,Cronulla-Sutherland Sharks,Canterbury-Bankstown Bulldogs,Shark Park,1 of 1,cronulla,canterbury
+9,2027-04-30,Fri,Penrith Panthers,St George Illawarra Dragons,Penrith,1 of 1,penrith,st_george_illawarra
+9,2027-04-30,Fri,Wests Tigers,Sydney Roosters,Concord,1 of 1,wests_tigers,sydney_roosters
+9,2027-05-01,Sat,Perth Bears,Melbourne Storm,Perth,1 of 1,perth_bears,melbourne
+9,2027-05-01,Sat,Parramatta Eels,North Queensland Cowboys,Parramatta,1 of 1,parramatta,north_qld
+9,2027-05-01,Sat,Gold Coast Titans,Newcastle Knights,Robina,1 of 1,gold_coast,newcastle
+9,2027-05-02,Sun,Manly-Warringah Sea Eagles,Brisbane Broncos,Brookvale,1 of 1,manly,brisbane
+9,2027-05-02,Sun,Dolphins,New Zealand Warriors,Redcliffe,1 of 1,dolphins,warriors
+9,2027-05-02,Sun,South Sydney Rabbitohs,Canberra Raiders,Redfern,1 of 1,south_sydney,canberra
+10,2027-05-06,Thu,Penrith Panthers,Sydney Roosters,Penrith,1 of 1,penrith,sydney_roosters
+10,2027-05-07,Fri,Melbourne Storm,Cronulla-Sutherland Sharks,AAMI Park,1 of 1,melbourne,cronulla
+10,2027-05-07,Fri,Canterbury-Bankstown Bulldogs,North Queensland Cowboys,Belmore,1 of 1,canterbury,north_qld
+10,2027-05-08,Sat,Newcastle Knights,Wests Tigers,Newcastle,1 of 1,newcastle,wests_tigers
+10,2027-05-08,Sat,Parramatta Eels,Manly-Warringah Sea Eagles,Parramatta,1 of 1,parramatta,manly
+10,2027-05-08,Sat,New Zealand Warriors,Gold Coast Titans,Mt Smart (Auckland),1 of 1,warriors,gold_coast
+10,2027-05-09,Sun,St George Illawarra Dragons,Perth Bears,Kogarah,1 of 1,st_george_illawarra,perth_bears
+10,2027-05-09,Sun,Brisbane Broncos,South Sydney Rabbitohs,Red Hill / Lang Park,1 of 1,brisbane,south_sydney
+10,2027-05-09,Sun,Canberra Raiders,Dolphins,Canberra Stadium,1 of 1,canberra,dolphins
+11,2027-05-13,Thu,Cronulla-Sutherland Sharks,Perth Bears,Shark Park,1 of 1,cronulla,perth_bears
+11,2027-05-14,Fri,North Queensland Cowboys,Melbourne Storm,Townsville,1 of 1,north_qld,melbourne
+11,2027-05-14,Fri,Newcastle Knights,Penrith Panthers,Newcastle,1 of 1,newcastle,penrith
+11,2027-05-15,Sat,Sydney Roosters,St George Illawarra Dragons,Moore Park,1 of 1,sydney_roosters,st_george_illawarra
+11,2027-05-15,Sat,Manly-Warringah Sea Eagles,Canterbury-Bankstown Bulldogs,Brookvale,1 of 1,manly,canterbury
+11,2027-05-15,Sat,Wests Tigers,New Zealand Warriors,Concord,1 of 1,wests_tigers,warriors
+11,2027-05-16,Sun,South Sydney Rabbitohs,Parramatta Eels,Redfern,1 of 1,south_sydney,parramatta
+11,2027-05-16,Sun,Canberra Raiders,Gold Coast Titans,Canberra Stadium,1 of 1,canberra,gold_coast
+11,2027-05-16,Sun,Brisbane Broncos,Dolphins,Red Hill / Lang Park,1 of 1,brisbane,dolphins
+12,2027-05-20,Thu,North Queensland Cowboys,Cronulla-Sutherland Sharks,Townsville,1 of 2,north_qld,cronulla
+12,2027-05-21,Fri,St George Illawarra Dragons,Newcastle Knights,Kogarah,1 of 2,st_george_illawarra,newcastle
+12,2027-05-21,Fri,Manly-Warringah Sea Eagles,Melbourne Storm,Brookvale,1 of 2,manly,melbourne
+12,2027-05-22,Sat,Perth Bears,Sydney Roosters,Perth,1 of 2,perth_bears,sydney_roosters
+12,2027-05-22,Sat,Penrith Panthers,New Zealand Warriors,Penrith,1 of 2,penrith,warriors
+12,2027-05-22,Sat,South Sydney Rabbitohs,Canterbury-Bankstown Bulldogs,Redfern,1 of 2,south_sydney,canterbury
+12,2027-05-23,Sun,Wests Tigers,Canberra Raiders,Concord,1 of 2,wests_tigers,canberra
+12,2027-05-23,Sun,Dolphins,Parramatta Eels,Redcliffe,1 of 2,dolphins,parramatta
+12,2027-05-23,Sun,Gold Coast Titans,Brisbane Broncos,Robina,1 of 2,gold_coast,brisbane
+14,2027-06-03,Thu,Sydney Roosters,Newcastle Knights,Moore Park,1 of 1,sydney_roosters,newcastle
+14,2027-06-04,Fri,Cronulla-Sutherland Sharks,Manly-Warringah Sea Eagles,Shark Park,1 of 1,cronulla,manly
+14,2027-06-04,Fri,New Zealand Warriors,St George Illawarra Dragons,Mt Smart (Auckland),1 of 1,warriors,st_george_illawarra
+14,2027-06-05,Sat,Perth Bears,North Queensland Cowboys,Perth,1 of 1,perth_bears,north_qld
+14,2027-06-05,Sat,Melbourne Storm,South Sydney Rabbitohs,AAMI Park,1 of 1,melbourne,south_sydney
+14,2027-06-05,Sat,Canberra Raiders,Penrith Panthers,Canberra Stadium,1 of 1,canberra,penrith
+14,2027-06-06,Sun,Canterbury-Bankstown Bulldogs,Dolphins,Belmore,1 of 1,canterbury,dolphins
+14,2027-06-06,Sun,Brisbane Broncos,Wests Tigers,Red Hill / Lang Park,1 of 1,brisbane,wests_tigers
+14,2027-06-06,Sun,Parramatta Eels,Gold Coast Titans,Parramatta,1 of 1,parramatta,gold_coast
+15,2027-06-10,Thu,New Zealand Warriors,Sydney Roosters,Mt Smart (Auckland),1 of 1,warriors,sydney_roosters
+15,2027-06-11,Fri,Manly-Warringah Sea Eagles,North Queensland Cowboys,Brookvale,1 of 1,manly,north_qld
+15,2027-06-11,Fri,South Sydney Rabbitohs,Cronulla-Sutherland Sharks,Redfern,1 of 1,south_sydney,cronulla
+15,2027-06-12,Sat,St George Illawarra Dragons,Canberra Raiders,Kogarah,1 of 1,st_george_illawarra,canberra
+15,2027-06-12,Sat,Dolphins,Melbourne Storm,Redcliffe,1 of 1,dolphins,melbourne
+15,2027-06-12,Sat,Brisbane Broncos,Penrith Panthers,Red Hill / Lang Park,1 of 1,brisbane,penrith
+15,2027-06-13,Sun,Newcastle Knights,Perth Bears,Newcastle,1 of 1,newcastle,perth_bears
+15,2027-06-13,Sun,Canterbury-Bankstown Bulldogs,Gold Coast Titans,Belmore,1 of 1,canterbury,gold_coast
+15,2027-06-13,Sun,Parramatta Eels,Wests Tigers,Parramatta,1 of 1,parramatta,wests_tigers
+16,2027-06-17,Thu,Manly-Warringah Sea Eagles,Perth Bears,Brookvale,1 of 1,manly,perth_bears
+16,2027-06-18,Fri,North Queensland Cowboys,South Sydney Rabbitohs,Townsville,1 of 1,north_qld,south_sydney
+16,2027-06-18,Fri,Sydney Roosters,Canberra Raiders,Moore Park,1 of 1,sydney_roosters,canberra
+16,2027-06-19,Sat,New Zealand Warriors,Newcastle Knights,Mt Smart (Auckland),1 of 1,warriors,newcastle
+16,2027-06-19,Sat,Dolphins,Cronulla-Sutherland Sharks,Redcliffe,1 of 1,dolphins,cronulla
+16,2027-06-19,Sat,St George Illawarra Dragons,Brisbane Broncos,Kogarah,1 of 1,st_george_illawarra,brisbane
+16,2027-06-20,Sun,Gold Coast Titans,Melbourne Storm,Robina,1 of 1,gold_coast,melbourne
+16,2027-06-20,Sun,Penrith Panthers,Parramatta Eels,Penrith,1 of 1,penrith,parramatta
+16,2027-06-20,Sun,Wests Tigers,Canterbury-Bankstown Bulldogs,Concord,1 of 1,wests_tigers,canterbury
+18,2027-07-01,Thu,Gold Coast Titans,Dolphins,Robina,2 of 2,gold_coast,dolphins
+18,2027-07-02,Fri,Canberra Raiders,Parramatta Eels,Canberra Stadium,2 of 2,canberra,parramatta
+18,2027-07-02,Fri,Wests Tigers,South Sydney Rabbitohs,Concord,2 of 2,wests_tigers,south_sydney
+18,2027-07-03,Sat,Perth Bears,Brisbane Broncos,Perth,2 of 2,perth_bears,brisbane
+18,2027-07-03,Sat,Canterbury-Bankstown Bulldogs,New Zealand Warriors,Belmore,2 of 2,canterbury,warriors
+18,2027-07-03,Sat,Penrith Panthers,Manly-Warringah Sea Eagles,Penrith,2 of 2,penrith,manly
+18,2027-07-04,Sun,Melbourne Storm,Newcastle Knights,AAMI Park,2 of 2,melbourne,newcastle
+18,2027-07-04,Sun,North Queensland Cowboys,St George Illawarra Dragons,Townsville,2 of 2,north_qld,st_george_illawarra
+18,2027-07-04,Sun,Cronulla-Sutherland Sharks,Sydney Roosters,Shark Park,2 of 2,cronulla,sydney_roosters
+19,2027-07-08,Thu,South Sydney Rabbitohs,Gold Coast Titans,Redfern,2 of 2,south_sydney,gold_coast
+19,2027-07-09,Fri,Brisbane Broncos,Canberra Raiders,Red Hill / Lang Park,2 of 2,brisbane,canberra
+19,2027-07-09,Fri,Parramatta Eels,New Zealand Warriors,Parramatta,2 of 2,parramatta,warriors
+19,2027-07-10,Sat,Perth Bears,Dolphins,Perth,2 of 2,perth_bears,dolphins
+19,2027-07-10,Sat,Manly-Warringah Sea Eagles,Wests Tigers,Brookvale,2 of 2,manly,wests_tigers
+19,2027-07-10,Sat,Newcastle Knights,Canterbury-Bankstown Bulldogs,Newcastle,2 of 2,newcastle,canterbury
+19,2027-07-11,Sun,North Queensland Cowboys,Penrith Panthers,Townsville,2 of 2,north_qld,penrith
+19,2027-07-11,Sun,Melbourne Storm,Sydney Roosters,AAMI Park,2 of 2,melbourne,sydney_roosters
+19,2027-07-11,Sun,Cronulla-Sutherland Sharks,St George Illawarra Dragons,Shark Park,2 of 2,cronulla,st_george_illawarra
+20,2027-07-15,Thu,Wests Tigers,Gold Coast Titans,Concord,2 of 2,wests_tigers,gold_coast
+20,2027-07-16,Fri,Brisbane Broncos,Canterbury-Bankstown Bulldogs,Red Hill / Lang Park,2 of 2,brisbane,canterbury
+20,2027-07-16,Fri,Newcastle Knights,North Queensland Cowboys,Newcastle,2 of 2,newcastle,north_qld
+20,2027-07-17,Sat,Dolphins,Penrith Panthers,Redcliffe,2 of 2,dolphins,penrith
+20,2027-07-17,Sat,Canberra Raiders,Melbourne Storm,Canberra Stadium,2 of 2,canberra,melbourne
+20,2027-07-17,Sat,St George Illawarra Dragons,South Sydney Rabbitohs,Kogarah,2 of 2,st_george_illawarra,south_sydney
+20,2027-07-18,Sun,Parramatta Eels,Perth Bears,Parramatta,2 of 2,parramatta,perth_bears
+20,2027-07-18,Sun,New Zealand Warriors,Cronulla-Sutherland Sharks,Mt Smart (Auckland),2 of 2,warriors,cronulla
+20,2027-07-18,Sun,Sydney Roosters,Manly-Warringah Sea Eagles,Moore Park,2 of 2,sydney_roosters,manly
+21,2027-07-22,Thu,Penrith Panthers,Perth Bears,Penrith,2 of 2,penrith,perth_bears
+21,2027-07-23,Fri,Canterbury-Bankstown Bulldogs,Melbourne Storm,Belmore,2 of 2,canterbury,melbourne
+21,2027-07-23,Fri,St George Illawarra Dragons,Wests Tigers,Kogarah,2 of 2,st_george_illawarra,wests_tigers
+21,2027-07-24,Sat,Parramatta Eels,Cronulla-Sutherland Sharks,Parramatta,2 of 2,parramatta,cronulla
+21,2027-07-24,Sat,Gold Coast Titans,Sydney Roosters,Robina,2 of 2,gold_coast,sydney_roosters
+21,2027-07-24,Sat,Brisbane Broncos,North Queensland Cowboys,Red Hill / Lang Park,2 of 2,brisbane,north_qld
+21,2027-07-25,Sun,Newcastle Knights,Dolphins,Newcastle,2 of 2,newcastle,dolphins
+21,2027-07-25,Sun,Canberra Raiders,Manly-Warringah Sea Eagles,Canberra Stadium,2 of 2,canberra,manly
+21,2027-07-25,Sun,New Zealand Warriors,South Sydney Rabbitohs,Mt Smart (Auckland),2 of 2,warriors,south_sydney
+23,2027-08-05,Thu,Wests Tigers,Penrith Panthers,Concord,2 of 2,wests_tigers,penrith
+23,2027-08-06,Fri,Melbourne Storm,Parramatta Eels,AAMI Park,2 of 2,melbourne,parramatta
+23,2027-08-06,Fri,Gold Coast Titans,St George Illawarra Dragons,Robina,2 of 2,gold_coast,st_george_illawarra
+23,2027-08-07,Sat,Perth Bears,Canterbury-Bankstown Bulldogs,Perth,2 of 2,perth_bears,canterbury
+23,2027-08-07,Sat,Cronulla-Sutherland Sharks,Brisbane Broncos,Shark Park,2 of 2,cronulla,brisbane
+23,2027-08-07,Sat,Dolphins,Sydney Roosters,Redcliffe,2 of 2,dolphins,sydney_roosters
+23,2027-08-08,Sun,North Queensland Cowboys,Canberra Raiders,Townsville,2 of 2,north_qld,canberra
+23,2027-08-08,Sun,South Sydney Rabbitohs,Newcastle Knights,Redfern,2 of 2,south_sydney,newcastle
+23,2027-08-08,Sun,Manly-Warringah Sea Eagles,New Zealand Warriors,Brookvale,2 of 2,manly,warriors
+24,2027-08-12,Thu,St George Illawarra Dragons,Parramatta Eels,Kogarah,1 of 1,st_george_illawarra,parramatta
+24,2027-08-13,Fri,Sydney Roosters,Brisbane Broncos,Moore Park,1 of 1,sydney_roosters,brisbane
+24,2027-08-13,Fri,Gold Coast Titans,Cronulla-Sutherland Sharks,Robina,1 of 1,gold_coast,cronulla
+24,2027-08-14,Sat,Perth Bears,New Zealand Warriors,Perth,1 of 1,perth_bears,warriors
+24,2027-08-14,Sat,Manly-Warringah Sea Eagles,South Sydney Rabbitohs,Brookvale,1 of 1,manly,south_sydney
+24,2027-08-14,Sat,Newcastle Knights,Canberra Raiders,Newcastle,1 of 1,newcastle,canberra
+24,2027-08-15,Sun,North Queensland Cowboys,Dolphins,Townsville,1 of 1,north_qld,dolphins
+24,2027-08-15,Sun,Melbourne Storm,Wests Tigers,AAMI Park,1 of 1,melbourne,wests_tigers
+24,2027-08-15,Sun,Penrith Panthers,Canterbury-Bankstown Bulldogs,Penrith,1 of 1,penrith,canterbury
+25,2027-08-19,Thu,Brisbane Broncos,Gold Coast Titans,Red Hill / Lang Park,2 of 2,brisbane,gold_coast
+25,2027-08-20,Fri,Newcastle Knights,St George Illawarra Dragons,Newcastle,2 of 2,newcastle,st_george_illawarra
+25,2027-08-20,Fri,Parramatta Eels,Dolphins,Parramatta,2 of 2,parramatta,dolphins
+25,2027-08-21,Sat,Cronulla-Sutherland Sharks,North Queensland Cowboys,Shark Park,2 of 2,cronulla,north_qld
+25,2027-08-21,Sat,Melbourne Storm,Manly-Warringah Sea Eagles,AAMI Park,2 of 2,melbourne,manly
+25,2027-08-21,Sat,New Zealand Warriors,Penrith Panthers,Mt Smart (Auckland),2 of 2,warriors,penrith
+25,2027-08-22,Sun,Sydney Roosters,Perth Bears,Moore Park,2 of 2,sydney_roosters,perth_bears
+25,2027-08-22,Sun,Canterbury-Bankstown Bulldogs,South Sydney Rabbitohs,Belmore,2 of 2,canterbury,south_sydney
+25,2027-08-22,Sun,Canberra Raiders,Wests Tigers,Canberra Stadium,2 of 2,canberra,wests_tigers
+26,2027-08-26,Thu,South Sydney Rabbitohs,Perth Bears,Redfern,1 of 1,south_sydney,perth_bears
+26,2027-08-27,Fri,Dolphins,Manly-Warringah Sea Eagles,Redcliffe,1 of 1,dolphins,manly
+26,2027-08-27,Fri,Newcastle Knights,Brisbane Broncos,Newcastle,1 of 1,newcastle,brisbane
+26,2027-08-28,Sat,Canberra Raiders,New Zealand Warriors,Canberra Stadium,1 of 1,canberra,warriors
+26,2027-08-28,Sat,Gold Coast Titans,North Queensland Cowboys,Robina,1 of 1,gold_coast,north_qld
+26,2027-08-28,Sat,Sydney Roosters,Parramatta Eels,Moore Park,1 of 1,sydney_roosters,parramatta
+26,2027-08-29,Sun,Wests Tigers,Cronulla-Sutherland Sharks,Concord,1 of 1,wests_tigers,cronulla
+26,2027-08-29,Sun,Canterbury-Bankstown Bulldogs,St George Illawarra Dragons,Belmore,1 of 1,canterbury,st_george_illawarra
+26,2027-08-29,Sun,Penrith Panthers,Melbourne Storm,Penrith,1 of 1,penrith,melbourne
+27,2027-09-02,Thu,Manly-Warringah Sea Eagles,Newcastle Knights,Brookvale,2 of 2,manly,newcastle
+27,2027-09-03,Fri,South Sydney Rabbitohs,Sydney Roosters,Redfern,2 of 2,south_sydney,sydney_roosters
+27,2027-09-03,Fri,North Queensland Cowboys,New Zealand Warriors,Townsville,2 of 2,north_qld,warriors
+27,2027-09-04,Sat,Perth Bears,Wests Tigers,Perth,2 of 2,perth_bears,wests_tigers
+27,2027-09-04,Sat,Canterbury-Bankstown Bulldogs,Parramatta Eels,Belmore,2 of 2,canterbury,parramatta
+27,2027-09-04,Sat,Penrith Panthers,Gold Coast Titans,Penrith,2 of 2,penrith,gold_coast
+27,2027-09-05,Sun,Brisbane Broncos,Melbourne Storm,Red Hill / Lang Park,2 of 2,brisbane,melbourne
+27,2027-09-05,Sun,St George Illawarra Dragons,Dolphins,Kogarah,2 of 2,st_george_illawarra,dolphins
+27,2027-09-05,Sun,Canberra Raiders,Cronulla-Sutherland Sharks,Canberra Stadium,2 of 2,canberra,cronulla

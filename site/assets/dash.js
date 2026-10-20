@@ -17,6 +17,8 @@
     fixture: 'data/fixture_2027.json',
     fixture_legs: 'data/fixture_2027_legs.json',
     fixture_summary: 'data/fixture_2027_summary.json',
+    draw: 'data/draw_2027.json',
+    draw_clubs: 'data/draw_2027_clubs.json',
   };
   const state = Object.fromEntries(Object.keys(SOURCES).map((id) => [id, { status: 'loading', data: [] }]));
   const calcs = {};

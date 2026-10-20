@@ -19,6 +19,7 @@ import config  # noqa: E402
 import build_dataset  # noqa: E402
 import elo  # noqa: E402
 import fetch_lines  # noqa: E402
+import draw_2027  # noqa: E402
 import fixture_2027  # noqa: E402
 import road_trips  # noqa: E402
 import scrape_rlp  # noqa: E402
@@ -156,7 +157,7 @@ def test_pipeline():
 def test_site_tables():
     # config.ROOT, not PROCESSED_DIR: test_pipeline points PROCESSED_DIR at a temp directory
     csv_dir = config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME
-    for name in (*travel_model.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES):
+    for name in (*travel_model.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES, *draw_2027.SITE_TABLES):
         json_path, csv_path = travel_model.SITE_DATA_DIR / f"{name}.json", csv_dir / f"{name}.csv"
         assert json_path.exists() and csv_path.exists(), f"{name}: missing {json_path.name} or {csv_path.name}"
         records = json.loads(json_path.read_text(encoding="utf-8"))
@@ -212,9 +213,22 @@ def test_fixture_rules():
         raise AssertionError("check_rules accepted a fixture that breaks the rules")
 
 
+def test_draw_round_robin():
+    """The circle method gives 17 rounds in which every club plays once and every pair meets once."""
+    others = [f"c{i:02d}" for i in range(17)]
+    seen = set()
+    for c in range(len(others)):
+        pairs = draw_2027.circle_round(others, c)
+        clubs = [x for p in pairs for x in p]
+        assert len(pairs) == 9 and len(set(clubs)) == 18 and road_trips.TEAM in clubs
+        seen.update(frozenset(p) for p in pairs)
+    assert len(seen) == 18 * 17 // 2
+
+
 if __name__ == "__main__":
     test_pipeline()
     test_site_tables()
     test_road_trips()
     test_fixture_rules()
+    test_draw_round_robin()
     print("All checks passed.")

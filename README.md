@@ -46,6 +46,7 @@ python src/elo.py                  # optional: refit the Elo parameters (needs s
 python src/travel_model.py         # Phase 2 models, tables in data/processed/travel_model/ and site/data/
 python src/road_trips.py           # Bears two-game road trip plans, same output folders (needs networkx)
 python src/fixture_2027.py         # proposed Bears 2027 fixture, same output folders
+python src/draw_2027.py            # full 2027 competition draw around it, plus site/data/perth_bears_2027_draw.csv
 python src/site_assets.py          # map outline and link-preview image for site/ (needs matplotlib)
 ```
 
@@ -62,9 +63,10 @@ The `Makefile` wraps the same steps (`PYTHON` defaults to `python`; pass script 
 | `make model` | `travel_model.py` |
 | `make roads` | `road_trips.py` |
 | `make fixture` | `fixture_2027.py` |
+| `make draw` | `draw_2027.py` |
 | `make assets` | `site_assets.py` |
 | `make test` | `tests/test_pipeline.py` |
-| `make all` | `build`, `model`, `roads`, `fixture`, `test` |
+| `make all` | `build`, `model`, `roads`, `fixture`, `draw`, `test` |
 
 `make all` does not scrape or download. Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
 
@@ -215,6 +217,16 @@ Results from the October 2026 run:
 - Travel time falls from 171 hours (average draw, returning to Perth after each away game) to 89 hours, 48% less; flights from 24 to 12; km from about 82,200 to 40,200.
 - Nights away from Perth rise from 24 to 36, because the team stays in the east between the two games of each trip.
 - The fixture is the Bears' preferred position for negotiation: a real draw has to meet every club's constraints.
+
+### Full 2027 draw
+
+`src/draw_2027.py` schedules the other clubs' games around the Bears' proposed fixture, which it keeps unchanged. Every club follows the same rules: no more than two away games in a row (counted over games, so a bye weekend does not reset it), no more than three home games in a row, at least four nights between games, games Thursday to Sunday. With no byes outside rounds 13, 17 and 22, those three rounds are bye weekends for every club, leaving 24 rounds of nine games.
+
+1. Match-ups come from a circle-method round robin for 18 clubs, labelled so the Bears meet the right club in each round. Each round in which the Bears meet a repeat opponent is played twice, so every club has exactly seven repeat opponents, spaced as far apart as the Bears' repeats (13 to 21 rounds).
+2. A mixed-integer program (`scipy.optimize.milp`, HiGHS) chooses the home team in every game: 12 home games per club, the run limits, the Bears' fixture fixed, and total door-to-door travel time for all 18 clubs minimised, counting two away games in consecutive rounds as one trip.
+3. Each round's games fill one Thursday, two Friday, three Saturday and three Sunday slots, with the Bears' days fixed, assigned round by round to avoid four- and five-night turnarounds.
+
+`check` asserts every rule for every club on each run. The October 2026 run gives 1,179 travel hours across the league; the Warriors (92 hours) and the Bears (89) travel most, Manly least (46). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
 
 ## Known gaps
 

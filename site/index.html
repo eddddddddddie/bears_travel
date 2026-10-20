@@ -178,6 +178,14 @@
   .pb-pick select:focus-visible { outline: 2px solid var(--pb-red); outline-offset: 1px; }
   #table-road td:first-child { white-space: normal; min-width: 12rem; }
   .pb-tablebox.tall { max-height: 34rem; }
+  .pb-subhead { font-size: 1.2rem; font-weight: 700; margin: var(--cds-gap-md) 0 0; scroll-margin-top: 4rem; }
+  .pb-btn { justify-self: start; display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 600; color: var(--pb-on-red); background: var(--pb-red); border-radius: 4px; padding: 0.55rem 0.9rem; text-decoration: none; }
+  .pb-btn:hover { filter: brightness(1.08); }
+  .pb-btn:focus-visible { outline: 2px solid var(--pb-fg); outline-offset: 2px; }
+  #table-draw tr.bears td, #table-draw-clubs tr.bears td { font-weight: 600; background: var(--pb-panel-2); }
+  #table-draw tr.bears td:first-child, #table-draw-clubs tr.bears td:first-child { box-shadow: inset 3px 0 0 var(--pb-red); }
+  #table-draw td:nth-child(2), #table-draw td:nth-child(3), #table-draw-clubs td:first-child { white-space: normal; }
+  @media (max-width: 30rem) { #table-draw th:nth-child(4), #table-draw td:nth-child(4) { display: none; } }
   #table-fixture tr.away td, #table-legs tr.flight td { color: var(--pb-fg); }
   #table-fixture tr.home td:nth-child(3) { color: var(--pb-red); font-weight: 600; }
   #table-fixture tr.bye td { color: var(--pb-muted); }
@@ -484,7 +492,37 @@
         </div>
       </div>
     </div>
-    <p>The proposal plays every away game in Sydney, Newcastle or south-east Queensland, where the second game of each trip is a short drive from the first, and brings the Warriors, Cowboys, Titans, Storm and Raiders to Perth. The clubs met twice are chosen so that the Bears' opponents are of average strength overall, which does not change travel. Two-game trips add nights away from Perth while halving the number of flights. The draw assumes 27 rounds with byes in the State of Origin window and no Magic Round or overseas round; a real draw also has to meet every other club's constraints, so this fixture is the club's preferred position for negotiation with the NRL.</p>
+    <p>The proposal plays every away game in Sydney, Newcastle or south-east Queensland, where the second game of each trip is a short drive from the first, and brings the Warriors, Cowboys, Titans, Storm and Raiders to Perth. The clubs met twice are chosen so that the Bears' opponents are of average strength overall, which does not change travel. Two-game trips add nights away from Perth while halving the number of flights.</p>
+    <h3 class="pb-subhead" id="draw">The full 2027 draw</h3>
+    <p>The other clubs' games are scheduled around the Bears' fixture under the same rules for every club: no more than two away games in a row, no more than three home games in a row, at least four nights between games, and games only from Thursday to Sunday. Rounds 13, 17 and 22 are bye weekends for every club. Each club plays 12 home and 12 away games, meets the other 17 clubs at least once and 7 of them twice, once at each ground. The match-ups follow a standard round robin arranged around the Bears' rounds; the home team in each game is chosen to minimise total travel time across all 18 clubs, counting two consecutive away games as one trip.</p>
+    <div class="pb-grid">
+      <div class="pb-card" id="card-draw">
+        <h3>Games by round or by club</h3>
+        <div class="pb-pick">
+          <label for="draw-round">Round</label><select id="draw-round"></select>
+          <label for="draw-club">Club</label><select id="draw-club"><option value="">All clubs</option></select>
+        </div>
+        <p class="note" id="draw-note"></p>
+        <div class="pb-tablebox tall">
+          <table class="pb-table" id="table-draw" data-source="draw" data-row-key="round,home">
+            <thead><tr><th data-field="date">Date</th><th data-field="home">Home</th><th data-field="away">Away</th><th data-field="venue">Venue</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+        <a class="pb-btn" href="data/perth_bears_2027_draw.csv" download="perth_bears_2027_draw.csv">Download the 2027 draw (CSV)</a>
+      </div>
+      <div class="pb-card" id="card-draw-clubs">
+        <h3>Season travel by club in this draw</h3>
+        <p class="note">Door-to-door travel time, returning home after each away game except where two away games fall in consecutive rounds. League total <span class="v dash-skeleton" data-source="draw_total" data-field="travel_hours" data-where="scope=league" data-fmt="h0">—</span> hours.</p>
+        <div class="pb-tablebox tall">
+          <table class="pb-table" id="table-draw-clubs" data-source="draw_clubs" data-row-key="team_id">
+            <thead><tr><th data-field="club">Club</th><th data-field="travel_hours">Hours</th><th data-field="flights">Flights</th><th data-field="two_game_trips">Two-game trips</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p>The draw assumes no Magic Round or overseas round and that every club plays at its usual ground. A real draw has further constraints, such as shared stadiums, broadcast slots and venue availability, so the draw demonstrates that the Bears' fixture is compatible with a complete competition. The NRL would adjust the other clubs' games to its own requirements.</p>
   </section>
 
   <section class="pb-sec" id="method">
@@ -982,6 +1020,51 @@
     note.textContent = p ? `Away: ${p.away_opponents}. Played twice: ${p.repeat_opponents}.` : '';
   }
 
+  // ---------------------------------------------------------------- full 2027 draw
+  dash.calc('draw_total', {
+    title: 'League travel in the 2027 draw',
+    description: 'Total door-to-door travel hours across all 18 clubs.',
+    inputs: ['draw_clubs'],
+    fn: (draw_clubs) => [{ scope: 'league', travel_hours: d3.sum(draw_clubs, (r) => r.travel_hours) }],
+  });
+  const drawRoundPick = document.getElementById('draw-round'), drawClubPick = document.getElementById('draw-club');
+  let drawControlsFilled = false;
+  function fillDrawControls(draw, clubs) {
+    if (drawControlsFilled) return;
+    const played = new Set(draw.map((r) => r.round));
+    const last = d3.max(draw, (r) => r.round);
+    drawRoundPick.replaceChildren(...d3.range(1, last + 1).map((r) => new Option(played.has(r) ? `Round ${r}` : `Round ${r} (bye weekend)`, String(r))));
+    drawClubPick.append(...[...clubs].sort((a, b) => d3.ascending(a.club, b.club)).map((c) => new Option(c.club, c.team_id)));
+    drawControlsFilled = true;
+  }
+  function drawDraw() {
+    const dd = dash.data('draw'), dc = dash.data('draw_clubs');
+    const body = document.querySelector('#table-draw tbody'), clubBody = document.querySelector('#table-draw-clubs tbody');
+    const note = document.getElementById('draw-note');
+    if (dd.status !== 'ok' || dc.status !== 'ok') { body.replaceChildren(); clubBody.replaceChildren(); return; }
+    fillDrawControls(dd.data, dc.data);
+    const club = drawClubPick.value;
+    drawRoundPick.disabled = !!club;
+    let rows;
+    if (club) {
+      rows = dd.data.filter((r) => r.home_id === club || r.away_id === club);
+      const c = dc.data.find((x) => x.team_id === club);
+      note.textContent = `${c.club}: ${c.home} home and ${c.away} away games, ${F.h0(c.travel_hours)} hours of travel, ${c.two_game_trips} two-game trips.`;
+    } else {
+      const r = +drawRoundPick.value || 1;
+      rows = dd.data.filter((x) => x.round === r);
+      note.textContent = rows.length ? `Round ${r}, week of ${isoDay(rows[0].date.slice(0, 10))}.` : `Round ${r} is a bye weekend for every club.`;
+    }
+    fillRows(body, rows, (r) => [club ? `R${r.round}, ${isoDay(r.date)}` : isoDay(r.date),
+        r.meeting === '1 of 1' ? r.home : `${r.home} (${r.meeting})`, r.away, r.venue],
+      (r) => [r.round, r.home].map((v) => encodeURIComponent(String(v))).join(','),
+      (r) => (r.home_id === 'perth_bears' || r.away_id === 'perth_bears' ? 'bears' : ''));
+    fillRows(clubBody, dc.data, (r) => [r.club, F.h0(r.travel_hours), F.int(r.flights), F.int(r.two_game_trips)],
+      (r) => r.team_id, (r) => (r.team_id === 'perth_bears' ? 'bears' : ''));
+  }
+  drawRoundPick.addEventListener('change', () => drawDraw());
+  drawClubPick.addEventListener('change', () => drawDraw());
+
   // ---------------------------------------------------------------- theme selector
   // The page always opens in Light; a visitor's choice applies until they leave or reload
   const themeButtons = [...root.querySelectorAll('.pb-seg button')];
@@ -1195,7 +1278,7 @@
 
   dash.onData(() => {
     fillValues();
-    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawHomeTrend(); drawEras(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawFixture(); drawClub(); drawReds();
+    drawMap(); drawBands(); drawMarket(); drawOther(); drawHome(); drawHomeTrend(); drawEras(); drawSwing(); drawKm(); drawProj(); drawRoad(); drawRoadPlan(); drawFixture(); drawDraw(); drawClub(); drawReds();
     if (!opened && dash.data('effects').status === 'ok') {
       opened = true;
       const named = document.getElementById(location.hash.slice(1));
