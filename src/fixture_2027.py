@@ -14,9 +14,10 @@ Assumptions (settings in config.py; the 2027 draw is not published):
     stays in the east and moves to the second city the day after the first game.
 
 Steps:
-  1. Away opponents and trips. For every set of 12 away opponents from the 17, the least-time trip
-     plan is a maximum-weight matching on the travel time saved by pairing two away games (each pair
-     flown in its quicker direction). The set with the least total travel time is proposed.
+  1. Away opponents and trips. For every set of 12 away opponents from the 17 that includes the clubs
+     in FIXTURE_AWAY_REQUIRED (the Warriors, so the season has a trip to New Zealand), the least-time
+     trip plan is a maximum-weight matching on the travel time saved by pairing two away games (each
+     pair flown in its quicker direction). The set with the least total travel time is proposed.
   2. Repeat opponents. The clubs met twice are chosen from the away set so that the average end-2026
      rating of the Bears' 24 opponents is as close as possible to the average of all 17. This does not
      change travel.
@@ -102,10 +103,13 @@ def best_pairs(base: str, away: list[str], t: pd.DataFrame) -> tuple[float, list
 # ---------------------------------------------------------------- choices
 def choose_away_set(base: str, opponents: list[str], t: pd.DataFrame, d: pd.DataFrame, n_away: int):
     best, return_home_hours, return_home_km = None, [], []
+    required = [c for c in config.FIXTURE_AWAY_REQUIRED if c in opponents]
     for away in combinations(opponents, n_away):
-        hours, trips = best_pairs(base, list(away), t)
         return_home_hours.append(sum(t.at[base, a] + t.at[a, base] for a in away))
         return_home_km.append(2 * sum(d.at[base, a] for a in away))
+        if not set(required) <= set(away):   # the average draw covers every set; the proposal must include these
+            continue
+        hours, trips = best_pairs(base, list(away), t)
         if best is None or hours < best[0] - 1e-9:
             best = (hours, list(away), trips)
     return best, float(np.mean(return_home_hours)), float(np.mean(return_home_km))
@@ -177,6 +181,7 @@ def build(long: pd.DataFrame, teams: pd.DataFrame):
 
     n_away = len(PATTERN) // 2
     (hours, away, trips), avg_return_home_hours, avg_return_home_km = choose_away_set(TEAM, opponents, t, d, n_away)
+    assert set(config.FIXTURE_AWAY_REQUIRED) & set(opponents) <= set(away), "required away games missing"
     repeats = choose_repeats(away, opponents, end_of_season_ratings(long), config.FIXTURE_REPEAT_OPPONENTS)
     home_opps = sorted([o for o in opponents if o not in away] + repeats)
     games, rounds = order_season(trips, home_opps, repeats)

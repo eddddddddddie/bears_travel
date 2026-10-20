@@ -58,6 +58,7 @@ FIXTURE_SEASON_START = "2027-03-04"   # Thursday of Round 1; each round is the T
 FIXTURE_ROUNDS = 27                   # 24 games and 3 byes, the byes in the State of Origin window
 FIXTURE_BYE_AFTER_GAME = (12, 15, 19) # byes fall after these game numbers (rounds 13, 17 and 22)
 FIXTURE_REPEAT_OPPONENTS = 7          # clubs met twice, once home and once away
+FIXTURE_AWAY_REQUIRED = ("warriors",)  # away games the draw must include (a trip to New Zealand)
 FIXTURE_MAX_AWAY_IN_A_ROW = 2
 FIXTURE_MIN_NIGHTS_BETWEEN = 4
 FIXTURE_GAME_DAYS = ("Thu", "Fri", "Sat", "Sun")

@@ -8,12 +8,12 @@ trip,date,day,from,to,mode,km,hours
 3,2027-05-08,Sat,Perth,St George Illawarra Dragons,Flight,3279.7,6.4997
 3,2027-05-10,Mon,St George Illawarra Dragons,Cronulla-Sutherland Sharks,Road,8.6524,0.62361
 3,2027-05-14,Fri,Cronulla-Sutherland Sharks,Perth,Flight,3279,7.3221
-4,2027-06-12,Sat,Perth,Newcastle Knights,Flight,3348.8,6.5839
-4,2027-06-14,Mon,Newcastle Knights,Manly-Warringah Sea Eagles,Road,103.69,1.9813
-4,2027-06-18,Fri,Manly-Warringah Sea Eagles,Perth,Flight,3294.3,7.3445
-5,2027-07-17,Sat,Perth,Parramatta Eels,Flight,3269.8,6.4876
-5,2027-07-19,Mon,Parramatta Eels,Penrith Panthers,Road,28.952,0.9136
-5,2027-07-23,Fri,Penrith Panthers,Perth,Flight,3242.3,7.2681
+4,2027-06-12,Sat,Perth,Parramatta Eels,Flight,3269.8,6.4876
+4,2027-06-14,Mon,Parramatta Eels,Penrith Panthers,Road,28.952,0.9136
+4,2027-06-18,Fri,Penrith Panthers,Perth,Flight,3242.3,7.2681
+5,2027-07-17,Sat,Perth,Melbourne Storm,Flight,2720.9,5.8182
+5,2027-07-19,Mon,Melbourne Storm,New Zealand Warriors,Flight,2626.7,5.7032
+5,2027-07-23,Fri,New Zealand Warriors,Perth,Flight,5346.7,10.363
 6,2027-08-21,Sat,Perth,Sydney Roosters,Flight,3289.1,6.5111
 6,2027-08-23,Mon,Sydney Roosters,South Sydney Rabbitohs,Road,1.8468,0.52638
 6,2027-08-27,Fri,South Sydney Rabbitohs,Perth,Flight,3287.3,7.3342

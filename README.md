@@ -202,19 +202,19 @@ Results from the October 2026 run:
 
 ## Proposed 2027 fixture
 
-`src/fixture_2027.py` builds a full 2027 fixture the Bears could put to the NRL to reduce their travel time. Rules: no more than two away games in a row, at least four nights between games, games only Thursday to Sunday. Assumptions (in `config.py`, `FIXTURE_*` and the travel-time settings): 27 rounds from the week of Thursday 4 March 2027 with 24 games and three byes in the State of Origin window; every other club played once and seven clubs twice (home and away); no Magic Round or overseas round; away games at the opponent's base. Travel time is door to door: 2.5 hours per flight for transfers, check-in and taxiing, plus air time at 820 km/h eastbound and 680 km/h westbound (Perth to Sydney about 4 hours east and 5 hours west), and road legs under 150 km at 70 km/h.
+`src/fixture_2027.py` builds a full 2027 fixture the Bears could put to the NRL to reduce their travel time. Rules: no more than two away games in a row, at least four nights between games, games only Thursday to Sunday. Assumptions (in `config.py`, `FIXTURE_*` and the travel-time settings): at least one away game in New Zealand (`FIXTURE_AWAY_REQUIRED`); 27 rounds from the week of Thursday 4 March 2027 with 24 games and three byes in the State of Origin window; every other club played once and seven clubs twice (home and away); no Magic Round or overseas round; away games at the opponent's base. Travel time is door to door: 2.5 hours per flight for transfers, check-in and taxiing, plus air time at 820 km/h eastbound and 680 km/h westbound (Perth to Sydney about 4 hours east and 5 hours west), and road legs under 150 km at 70 km/h.
 
 Method:
 
-1. For every set of 12 away opponents from the 17, the least-time plan with at most two away games in a row is a maximum-weight matching on the hours saved by pairing two away games; the set with the least total time is proposed.
+1. For every set of 12 away opponents from the 17 that includes the Warriors, the least-time plan with at most two away games in a row is a maximum-weight matching on the hours saved by pairing two away games; the set with the least total time is proposed.
 2. The seven clubs met twice are chosen from the away set so the average end-2026 rating of the Bears' 24 opponents is closest to the average of all 17. This does not affect travel.
 3. The season runs home, away trip, two home games, and so on, with byes in rounds 13, 17 and 22; trips and home opponents are ordered to maximise the gap between the two meetings with each repeat opponent (`scipy.optimize.linear_sum_assignment`).
 4. Home games are on Saturdays; each trip is a Sunday game then a Thursday game (the four-night minimum), flying east on the Saturday, moving by road on the Monday and flying home on the Friday.
 
 Results from the October 2026 run:
 
-- Away games: the nine Sydney clubs, Newcastle, the Broncos and the Dolphins, as six two-game trips whose second leg is by road. The Warriors, Cowboys, Titans, Storm and Raiders are played at home only.
-- Travel time falls from 171 hours (average draw, returning to Perth after each away game) to 89 hours, 48% less; flights from 24 to 12; km from about 82,200 to 40,200.
+- Away games: eight Sydney clubs, the Broncos and the Dolphins in five two-game trips whose second leg is by road, and the Storm then the Warriors on one trip (Perth, Melbourne, Auckland, Perth). The Cowboys, Titans, Knights, Raiders and Sea Eagles are played at home only.
+- Travel time falls from 171 hours (average draw, returning to Perth after each away game) to 95 hours, 44% less; flights from 24 to 13; km from about 82,200 to 44,200. Without the New Zealand requirement the optimum is 89 hours and 12 flights, with every away game in New South Wales or south-east Queensland.
 - Nights away from Perth rise from 24 to 36, because the team stays in the east between the two games of each trip.
 - The fixture is the Bears' preferred position for negotiation: a real draw has to meet every club's constraints.
 
@@ -226,7 +226,7 @@ Results from the October 2026 run:
 2. A mixed-integer program (`scipy.optimize.milp`, HiGHS) chooses the home team in every game: 12 home games per club, the run limits, the Bears' fixture fixed, and total door-to-door travel time for all 18 clubs minimised, counting two away games in consecutive rounds as one trip.
 3. Each round's games fill one Thursday, two Friday, three Saturday and three Sunday slots, with the Bears' days fixed, assigned round by round to avoid four- and five-night turnarounds.
 
-`check` asserts every rule for every club on each run. The October 2026 run gives 1,179 travel hours across the league; the Warriors (92 hours) and the Bears (89) travel most, Manly least (46). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
+`check` asserts every rule for every club on each run. The October 2026 run gives 1,185 travel hours across the league; the Warriors (103 hours) and the Bears (95) travel most, St George Illawarra least (38). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
 
 ## Known gaps
 

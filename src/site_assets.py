@@ -153,7 +153,7 @@ def preview_image(land: dict, refresh: bool) -> None:
     x0 = 0.055
     fig.text(x0, 0.875, "INDEPENDENT ANALYSIS", color=FG, fontsize=11, fontweight="semibold",
              bbox=dict(boxstyle="round,pad=0.45", fc=RED, ec="none"))
-    fig.text(x0, 0.70, "Perth Bears\ntravel cost", color=FG, fontsize=50, fontweight="bold", linespacing=0.95, va="center")
+    fig.text(x0, 0.70, "Perth Bears\ntravel impact", color=FG, fontsize=50, fontweight="bold", linespacing=0.95, va="center")
     fig.text(x0, 0.535, f"NRL matches {first} to {last} and a 2027 projection", color=MUTED_TEXT, fontsize=17)
     tiles = [(f"{bears['away_cost_per_game']:+.1f}", "points per away game", RED),
              (f"{bears['home_away_swing']:.1f}", f"home-away swing\n(Sydney club {sydney['home_away_swing']:.1f})", FG),
