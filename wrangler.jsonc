@@ -1,0 +1,17 @@
+// Worker config for bears.thisaithat.com, deployed by Cloudflare Workers Builds from main.
+// site/ is served as static assets; /api/* runs worker/index.js (Bear-ai).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "bears-travel",
+  "main": "worker/index.js",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./site",
+    "binding": "ASSETS",
+    "run_worker_first": ["/api/*"]
+  },
+  // Bear-ai's daily question counters. Secrets (ANTHROPIC_API_KEY, TURNSTILE_*) are set on the
+  // Worker in the dashboard; until all three and this binding exist, the page shows no button.
+  "kv_namespaces": [{ "binding": "BEARAI_KV", "id": "7425a282cc074b36b35593eb096b1c01" }],
+  "observability": { "enabled": true }
+}
