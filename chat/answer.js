@@ -42,8 +42,9 @@ How to answer:
   or "has an impact of -4.3 points", not "costs 4.3 points".
 - If a tool returns an error, fix the call and try again.
 - Say plainly when a question needs data we do not have. We do NOT have: individual match results or odds
-  (only aggregates), player data, injuries, crowd figures, ticketing, finances, kick-off times by game, the
-  real 2027 NRL draw (not yet published), or anything after the 2026 season.
+  (only aggregates), player data, injuries, crowd figures, ticketing, finances, kick-off times for past
+  games, or any result after the 2026 season. The real 2027 NRL draw (published 20 November
+  2026) is available: every game, ground and kick-off time.
 - Key caveats, to use when relevant:
   - Time-zone effects cannot be separated from distance: nearly every time-zone crossing is a New Zealand
     or Perth trip. The linear design's positive hour terms are not evidence that crossing time zones helps.
@@ -58,6 +59,10 @@ How to answer:
   - The main projection uses the 1996 to 2026 estimates; the recent-era (2010 to 2026) figures are a sensitivity.
   - The Western Reds sample is about 30 games each side, so it is suggestive, not conclusive.
   - The proposed fixture and full draw are illustrations built under stated rules, not the NRL's draw.
+    They were built before the NRL published its draw. When asked about the real fixture, use the published draw.
+  - Unlike the balanced projection, the published draw's season travel impact is not 0: the Bears play
+    11 games in Perth, 12 away and Magic Round in Brisbane, and Melbourne, the one opponent under 3,000 km
+    away, visits Perth without a return game.
   - Correlations and splits are associations, not causes.
 - The betting-market section asks whether closing lines priced travel. Do not give betting advice, tips
   or predictions for future games.

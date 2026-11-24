@@ -1,0 +1,28 @@
+round,date,day,kickoff_local,kickoff_perth,home_away,opponent,venue,city,nights_since_last_game,trip,km_from_perth,opponent_km,bears_band_cost,opponent_band_cost,travel_impact
+1,2027-03-07,Sun,13:05,Sun 07 Mar 13:05,Home,Manly-Warringah Sea Eagles,Optus Stadium,Perth,,,0,3294.3,0,-4.2872,4.2872
+2,2027-03-13,Sat,14:30,Sat 13 Mar 14:30,Home,Canberra Raiders,HBF Park,Perth,6,,2.0376,3085.5,0,-4.2872,4.2872
+3,2027-03-21,Sun,18:15,Sun 21 Mar 15:15,Away,Wests Tigers,Campbelltown Sports Stadium,Sydney,8,1,3250.3,34.681,-4.2872,0,-4.2872
+4,2027-03-28,Sun,16:05,Sun 28 Mar 13:05,Away,St George Illawarra Dragons,St George Venues Jubilee Stadium,Sydney,7,1,3279.7,0,-4.2872,0,-4.2872
+5,2027-04-04,Sun,12:00,Sun 04 Apr 12:00,Home,Melbourne Storm,HBF Park,Perth,7,,2.0376,2723,0,-0.33039,0.33039
+6,2027-04-11,Sun,16:15,Sun 11 Apr 16:15,Home,Gold Coast Titans,HBF Park,Perth,7,,2.0376,3619.4,0,-4.2872,4.2872
+7,2027-04-18,Sun,16:05,Sun 18 Apr 14:05,Away,Manly-Warringah Sea Eagles,4 Pines Park,Sydney,7,2,3294.3,0,-4.2872,0,-4.2872
+8,2027-04-26,Mon,16:05,Mon 26 Apr 14:05,Away,Canterbury-Bankstown Bulldogs,Accor Stadium,Sydney,8,2,3274.8,8.2304,-4.2872,0,-4.2872
+9,2027-05-02,Sun,16:15,Sun 02 May 16:15,Home,North Queensland Cowboys,HBF Park,Perth,6,,2.0376,3392.7,0,-4.2872,4.2872
+10,2027-05-08,Sat,15:00,Sat 08 May 13:00,Away,Canberra Raiders,GIO Stadium,Canberra,6,3,3083.5,0,-4.2872,0,-4.2872
+11,2027-05-15,Sat,15:00,Sat 15 May 13:00,Neutral,Parramatta Eels,Suncorp Stadium,Brisbane,7,3,3602.1,730.87,-4.2872,-1.4168,-2.8704
+12,2027-05-21,Fri,18:00,Fri 21 May 18:00,Home,Wests Tigers,HBF Park,Perth,6,,2.0376,3280.6,0,-4.2872,4.2872
+13,2027-05-30,Sun,14:00,Sun 30 May 12:00,Away,Sydney Roosters,Polytec Stadium,Gosford,9,4,3305.8,52.354,-4.2872,0,-4.2872
+14,,,,,Bye,,,,,,,,,,
+15,2027-06-10,Thu,17:50,Thu 10 Jun 17:50,Home,South Sydney Rabbitohs,HBF Park,Perth,11,,2.0376,3289.3,0,-4.2872,4.2872
+16,2027-06-19,Sat,17:00,Sat 19 Jun 13:00,Away,New Zealand Warriors,Go Media Stadium,Auckland,9,5,5346.7,0,-4.2872,0,-4.2872
+17,2027-06-24,Thu,19:50,Thu 24 Jun 17:50,Away,Newcastle Knights,McDonald Jones Stadium,Newcastle,5,5,3348.8,0,-4.2872,0,-4.2872
+18,,,,,Bye,,,,,,,,,,
+19,2027-07-11,Sun,16:15,Sun 11 Jul 16:15,Home,Dolphins,HBF Park,Perth,17,,2.0376,3621.2,0,-4.2872,4.2872
+20,2027-07-17,Sat,17:35,Sat 17 Jul 17:35,Home,Brisbane Broncos,HBF Park,Perth,6,,2.0376,3604,0,-4.2872,4.2872
+21,,,,,Bye,,,,,,,,,,
+22,2027-07-31,Sat,15:00,Sat 31 Jul 13:00,Away,Cronulla-Sutherland Sharks,Ocean Protect Stadium,Sydney,14,6,3279,0,-4.2872,0,-4.2872
+23,2027-08-07,Sat,15:00,Sat 07 Aug 13:00,Away,Gold Coast Titans,Cbus Super Stadium,Gold Coast,7,6,3617.4,0,-4.2872,0,-4.2872
+24,2027-08-14,Sat,17:35,Sat 14 Aug 17:35,Home,Canterbury-Bankstown Bulldogs,HBF Park,Perth,7,,2.0376,3278.3,0,-4.2872,4.2872
+25,2027-08-22,Sun,16:15,Sun 22 Aug 16:15,Home,St George Illawarra Dragons,HBF Park,Perth,8,,2.0376,3281.8,0,-4.2872,4.2872
+26,2027-08-29,Sun,16:05,Sun 29 Aug 14:05,Away,Dolphins,Suncorp Stadium,Brisbane,7,7,3602.1,27.302,-4.2872,0,-4.2872
+27,2027-09-05,Sun,14:00,Sun 05 Sep 12:00,Away,Penrith Panthers,Helloworld Stadium,Sydney,7,7,3242.3,0,-4.2872,0,-4.2872

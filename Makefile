@@ -1,18 +1,22 @@
-# Pipeline shortcuts. Run from bears_travel/. scrape and lines use the network (both cache their
+# Pipeline shortcuts. Run from bears_travel/. scrape, lines and nrldraw use the network (both cache their
 # downloads), so they are separate opt-in steps and not part of `all`. Pass script flags with ARGS,
 # e.g. make scrape ARGS=--refresh.
 PYTHON ?= python
 ARGS ?=
 
-.PHONY: all scrape lines build elo model flights roads fixture draw assets test chat-test chat-eval
+.PHONY: all scrape lines nrldraw build elo model flights roads fixture draw published assets test chat-test chat-eval
 
-all: build model flights roads fixture draw test
+all: build model flights roads fixture draw published test
 
 scrape:
 	$(PYTHON) src/scrape_rlp.py $(ARGS)
 
 lines:
 	$(PYTHON) src/fetch_lines.py $(ARGS)
+
+# published 2027 NRL draw from nrl.com to reference/nrl_draw_2027.csv (network)
+nrldraw:
+	$(PYTHON) src/fetch_draw.py $(ARGS)
 
 build:
 	$(PYTHON) src/build_dataset.py
@@ -39,6 +43,10 @@ fixture:
 # full 2027 competition draw around the Bears' fixture (about 70 s)
 draw:
 	$(PYTHON) src/draw_2027.py
+
+# travel in the published 2027 draw, for the Bears and every club
+published:
+	$(PYTHON) src/published_2027.py
 
 # map outline and link-preview image for site/
 assets:

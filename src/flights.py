@@ -52,9 +52,11 @@ def airport_km(a: str, b: str) -> float:
     return float(haversine_km(*config.AIRPORTS[a][1:], *config.AIRPORTS[b][1:]))
 
 
-def journey(club: str, lat: float, lon: float, east: bool, day: str | None = None) -> Journey | None:
-    """Perth to the club's base (east=True) or back, on `day` if given; None when nothing flies that day."""
-    for stops, carrier, days_east, days_west in config.PERTH_ROUTES[config.CLUB_AIRPORT.get(club, "SYD")]:
+def journey(club: str | None, lat: float, lon: float, east: bool, day: str | None = None,
+            airport: str | None = None) -> Journey | None:
+    """Perth to the club's base (east=True) or back, on `day` if given; None when nothing flies that day.
+    airport overrides the club's airport, for a ground away from the club's base (published_2027.py)."""
+    for stops, carrier, days_east, days_west in config.PERTH_ROUTES[airport or config.CLUB_AIRPORT.get(club, "SYD")]:
         days = days_east if east else days_west
         if config.FLIGHTS_QANTAS_ONLY and carrier == "Jetstar":
             continue

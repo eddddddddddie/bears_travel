@@ -1,0 +1,217 @@
+Round,Date,Day,Kick-Off (Local),Home,Away,Venue,City
+1,2027-02-27,Sat,05:00,Parramatta Eels,Gold Coast Titans,Allegiant Stadium,Las Vegas
+1,2027-02-27,Sat,05:00,Melbourne Storm,Wests Tigers,Allegiant Stadium,Las Vegas
+1,2027-03-04,Thu,20:00,Sydney Roosters,Brisbane Broncos,Allianz Stadium,Sydney
+1,2027-03-05,Fri,20:00,New Zealand Warriors,Canterbury-Bankstown Bulldogs,Go Media Stadium,Auckland
+1,2027-03-05,Fri,20:00,St George Illawarra Dragons,North Queensland Cowboys,St George Venues Jubilee Stadium,Sydney
+1,2027-03-06,Sat,16:30,Dolphins,Cronulla-Sutherland Sharks,Kayo Stadium,Redcliffe
+1,2027-03-06,Sat,19:35,Newcastle Knights,Penrith Panthers,McDonald Jones Stadium,Newcastle
+1,2027-03-07,Sun,13:05,Perth Bears,Manly-Warringah Sea Eagles,Optus Stadium,Perth
+1,2027-03-07,Sun,18:15,Canberra Raiders,South Sydney Rabbitohs,GIO Stadium,Canberra
+2,2027-03-11,Thu,20:00,Parramatta Eels,Canterbury-Bankstown Bulldogs,CommBank Stadium,Sydney
+2,2027-03-12,Fri,18:00,St George Illawarra Dragons,Dolphins,WIN Stadium,Wollongong
+2,2027-03-12,Fri,20:00,South Sydney Rabbitohs,Sydney Roosters,Allianz Stadium,Sydney
+2,2027-03-13,Sat,15:00,Melbourne Storm,Newcastle Knights,AAMI Park,Melbourne
+2,2027-03-13,Sat,14:30,Perth Bears,Canberra Raiders,HBF Park,Perth
+2,2027-03-13,Sat,18:35,Brisbane Broncos,Wests Tigers,Suncorp Stadium,Brisbane
+2,2027-03-14,Sun,14:00,Manly-Warringah Sea Eagles,Cronulla-Sutherland Sharks,4 Pines Park,Sydney
+2,2027-03-14,Sun,18:05,New Zealand Warriors,Penrith Panthers,Go Media Stadium,Auckland
+2,2027-03-14,Sun,17:15,North Queensland Cowboys,Gold Coast Titans,Queensland Country Bank Stadium,Townsville
+3,2027-03-18,Thu,19:00,Dolphins,Melbourne Storm,Suncorp Stadium,Brisbane
+3,2027-03-19,Fri,18:00,Sydney Roosters,Parramatta Eels,Allianz Stadium,Sydney
+3,2027-03-19,Fri,19:00,Brisbane Broncos,North Queensland Cowboys,Suncorp Stadium,Brisbane
+3,2027-03-20,Sat,15:00,South Sydney Rabbitohs,Manly-Warringah Sea Eagles,Allianz Stadium,Sydney
+3,2027-03-20,Sat,16:30,Gold Coast Titans,Canterbury-Bankstown Bulldogs,Cbus Super Stadium,Gold Coast
+3,2027-03-20,Sat,19:35,Canberra Raiders,Penrith Panthers,GIO Stadium,Canberra
+3,2027-03-21,Sun,14:00,Newcastle Knights,New Zealand Warriors,McDonald Jones Stadium,Newcastle
+3,2027-03-21,Sun,16:05,Cronulla-Sutherland Sharks,St George Illawarra Dragons,Ocean Protect Stadium,Sydney
+3,2027-03-21,Sun,18:15,Wests Tigers,Perth Bears,Campbelltown Sports Stadium,Sydney
+4,2027-03-25,Thu,20:00,Melbourne Storm,Sydney Roosters,AAMI Park,Melbourne
+4,2027-03-26,Fri,16:05,Canterbury-Bankstown Bulldogs,South Sydney Rabbitohs,Accor Stadium,Sydney
+4,2027-03-26,Fri,18:00,Manly-Warringah Sea Eagles,Gold Coast Titans,4 Pines Park,Sydney
+4,2027-03-26,Fri,20:00,Penrith Panthers,Dolphins,Helloworld Stadium,Sydney
+4,2027-03-27,Sat,16:30,North Queensland Cowboys,New Zealand Warriors,Queensland Country Bank Stadium,Townsville
+4,2027-03-27,Sat,18:35,Brisbane Broncos,Newcastle Knights,Suncorp Stadium,Brisbane
+4,2027-03-28,Sun,16:05,St George Illawarra Dragons,Perth Bears,St George Venues Jubilee Stadium,Sydney
+4,2027-03-28,Sun,18:15,Canberra Raiders,Cronulla-Sutherland Sharks,GIO Stadium,Canberra
+4,2027-03-29,Mon,16:05,Wests Tigers,Parramatta Eels,CommBank Stadium,Sydney
+5,2027-04-01,Thu,20:00,Manly-Warringah Sea Eagles,Newcastle Knights,4 Pines Park,Sydney
+5,2027-04-02,Fri,20:00,New Zealand Warriors,Sydney Roosters,Go Media Stadium,Auckland
+5,2027-04-02,Fri,19:00,Dolphins,South Sydney Rabbitohs,Suncorp Stadium,Brisbane
+5,2027-04-03,Sat,15:00,Penrith Panthers,Cronulla-Sutherland Sharks,Carrington Park,Bathurst
+5,2027-04-03,Sat,17:30,Wests Tigers,Canterbury-Bankstown Bulldogs,Campbelltown Sports Stadium,Sydney
+5,2027-04-03,Sat,18:35,Gold Coast Titans,Brisbane Broncos,Cbus Super Stadium,Gold Coast
+5,2027-04-04,Sun,12:00,Perth Bears,Melbourne Storm,HBF Park,Perth
+5,2027-04-04,Sun,16:05,Parramatta Eels,St George Illawarra Dragons,CommBank Stadium,Sydney
+5,2027-04-04,Sun,18:15,North Queensland Cowboys,Canberra Raiders,Queensland Country Bank Stadium,Townsville
+6,2027-04-08,Thu,19:50,Sydney Roosters,Penrith Panthers,Allianz Stadium,Sydney
+6,2027-04-09,Fri,18:00,Newcastle Knights,Canberra Raiders,McDonald Jones Stadium,Newcastle
+6,2027-04-09,Fri,20:00,Dolphins,Brisbane Broncos,Suncorp Stadium,Brisbane
+6,2027-04-10,Sat,15:00,Cronulla-Sutherland Sharks,Wests Tigers,Ocean Protect Stadium,Sydney
+6,2027-04-10,Sat,17:30,South Sydney Rabbitohs,St George Illawarra Dragons,Allianz Stadium,Sydney
+6,2027-04-10,Sat,19:35,Canterbury-Bankstown Bulldogs,North Queensland Cowboys,Accor Stadium,Sydney
+6,2027-04-11,Sun,14:00,Melbourne Storm,New Zealand Warriors,AAMI Park,Melbourne
+6,2027-04-11,Sun,16:05,Parramatta Eels,Manly-Warringah Sea Eagles,CommBank Stadium,Sydney
+6,2027-04-11,Sun,16:15,Perth Bears,Gold Coast Titans,HBF Park,Perth
+7,2027-04-15,Thu,19:50,Brisbane Broncos,Sydney Roosters,Suncorp Stadium,Brisbane
+7,2027-04-16,Fri,18:00,North Queensland Cowboys,Newcastle Knights,Queensland Country Bank Stadium,Townsville
+7,2027-04-16,Fri,19:30,Dolphins,Canterbury-Bankstown Bulldogs,TIO Stadium,Darwin
+7,2027-04-17,Sat,15:00,Cronulla-Sutherland Sharks,Parramatta Eels,Ocean Protect Stadium,Sydney
+7,2027-04-17,Sat,17:30,South Sydney Rabbitohs,Gold Coast Titans,Accor Stadium,Sydney
+7,2027-04-17,Sat,19:35,Canberra Raiders,Melbourne Storm,GIO Stadium,Canberra
+7,2027-04-18,Sun,16:00,Wests Tigers,New Zealand Warriors,Forsyth Barr Stadium,Dunedin
+7,2027-04-18,Sun,16:05,Manly-Warringah Sea Eagles,Perth Bears,4 Pines Park,Sydney
+7,2027-04-18,Sun,18:15,St George Illawarra Dragons,Penrith Panthers,WIN Stadium,Wollongong
+8,2027-04-22,Thu,19:50,Newcastle Knights,Dolphins,McDonald Jones Stadium,Newcastle
+8,2027-04-23,Fri,18:00,Gold Coast Titans,Canberra Raiders,Cbus Super Stadium,Gold Coast
+8,2027-04-23,Fri,20:00,Brisbane Broncos,Parramatta Eels,Suncorp Stadium,Brisbane
+8,2027-04-24,Sat,17:30,North Queensland Cowboys,Wests Tigers,Queensland Country Bank Stadium,Townsville
+8,2027-04-24,Sat,19:35,Penrith Panthers,Manly-Warringah Sea Eagles,Helloworld Stadium,Sydney
+8,2027-04-25,Sun,16:00,New Zealand Warriors,Cronulla-Sutherland Sharks,Eden Park,Auckland
+8,2027-04-25,Sun,16:05,Sydney Roosters,St George Illawarra Dragons,Allianz Stadium,Sydney
+8,2027-04-25,Sun,18:15,Melbourne Storm,South Sydney Rabbitohs,AAMI Park,Melbourne
+8,2027-04-26,Mon,16:05,Canterbury-Bankstown Bulldogs,Perth Bears,Accor Stadium,Sydney
+9,2027-04-30,Fri,18:00,Newcastle Knights,Wests Tigers,McDonald Jones Stadium,Newcastle
+9,2027-04-30,Fri,20:00,Parramatta Eels,Penrith Panthers,CommBank Stadium,Sydney
+9,2027-05-01,Sat,15:00,St George Illawarra Dragons,Canberra Raiders,WIN Stadium,Wollongong
+9,2027-05-01,Sat,17:30,Gold Coast Titans,Sydney Roosters,Cbus Super Stadium,Gold Coast
+9,2027-05-01,Sat,19:35,Canterbury-Bankstown Bulldogs,Cronulla-Sutherland Sharks,Accor Stadium,Sydney
+9,2027-05-02,Sun,14:00,Melbourne Storm,Manly-Warringah Sea Eagles,AAMI Park,Melbourne
+9,2027-05-02,Sun,16:05,Dolphins,New Zealand Warriors,Suncorp Stadium,Brisbane
+9,2027-05-02,Sun,16:15,Perth Bears,North Queensland Cowboys,HBF Park,Perth
+10,2027-05-06,Thu,19:50,Brisbane Broncos,South Sydney Rabbitohs,Suncorp Stadium,Brisbane
+10,2027-05-07,Fri,18:00,Cronulla-Sutherland Sharks,Gold Coast Titans,Ocean Protect Stadium,Sydney
+10,2027-05-07,Fri,20:00,Penrith Panthers,Canterbury-Bankstown Bulldogs,Helloworld Stadium,Sydney
+10,2027-05-08,Sat,15:00,Canberra Raiders,Perth Bears,GIO Stadium,Canberra
+10,2027-05-08,Sat,17:30,Wests Tigers,Dolphins,Campbelltown Sports Stadium,Sydney
+10,2027-05-08,Sat,19:35,Newcastle Knights,Sydney Roosters,McDonald Jones Stadium,Newcastle
+10,2027-05-09,Sun,14:00,North Queensland Cowboys,Parramatta Eels,Queensland Country Bank Stadium,Townsville
+10,2027-05-09,Sun,16:05,St George Illawarra Dragons,Melbourne Storm,WIN Stadium,Wollongong
+11,2027-05-13,Thu,19:50,Penrith Panthers,Brisbane Broncos,Suncorp Stadium,Brisbane
+11,2027-05-14,Fri,18:00,Wests Tigers,Canberra Raiders,Suncorp Stadium,Brisbane
+11,2027-05-14,Fri,20:00,Sydney Roosters,Dolphins,Suncorp Stadium,Brisbane
+11,2027-05-15,Sat,15:00,Perth Bears,Parramatta Eels,Suncorp Stadium,Brisbane
+11,2027-05-15,Sat,17:30,South Sydney Rabbitohs,North Queensland Cowboys,Suncorp Stadium,Brisbane
+11,2027-05-15,Sat,19:35,Cronulla-Sutherland Sharks,Melbourne Storm,Suncorp Stadium,Brisbane
+11,2027-05-16,Sun,14:00,Gold Coast Titans,Manly-Warringah Sea Eagles,Suncorp Stadium,Brisbane
+11,2027-05-16,Sun,16:05,New Zealand Warriors,St George Illawarra Dragons,Suncorp Stadium,Brisbane
+11,2027-05-16,Sun,18:15,Canterbury-Bankstown Bulldogs,Newcastle Knights,Suncorp Stadium,Brisbane
+12,2027-05-20,Thu,19:50,Parramatta Eels,Canberra Raiders,CommBank Stadium,Sydney
+12,2027-05-21,Fri,18:00,Perth Bears,Wests Tigers,HBF Park,Perth
+12,2027-05-22,Sat,17:30,South Sydney Rabbitohs,Cronulla-Sutherland Sharks,Accor Stadium,Sydney
+12,2027-05-22,Sat,19:35,Manly-Warringah Sea Eagles,Canterbury-Bankstown Bulldogs,4 Pines Park,Sydney
+12,2027-05-23,Sun,18:05,New Zealand Warriors,Brisbane Broncos,Go Media Stadium,Auckland
+13,2027-05-28,Fri,20:00,Newcastle Knights,Parramatta Eels,McDonald Jones Stadium,Newcastle
+13,2027-05-29,Sat,15:00,Canberra Raiders,Gold Coast Titans,Geohex Park,Wagga Wagga
+13,2027-05-29,Sat,17:30,St George Illawarra Dragons,South Sydney Rabbitohs,Allianz Stadium,Sydney
+13,2027-05-29,Sat,19:35,North Queensland Cowboys,Penrith Panthers,Queensland Country Bank Stadium,Townsville
+13,2027-05-30,Sun,14:00,Sydney Roosters,Perth Bears,Polytec Stadium,Gosford
+13,2027-05-30,Sun,16:05,Melbourne Storm,Dolphins,AAMI Park,Melbourne
+13,2027-05-30,Sun,18:15,Brisbane Broncos,Cronulla-Sutherland Sharks,Suncorp Stadium,Brisbane
+14,2027-06-03,Thu,19:50,Wests Tigers,Newcastle Knights,CommBank Stadium,Sydney
+14,2027-06-04,Fri,18:00,Manly-Warringah Sea Eagles,St George Illawarra Dragons,4 Pines Park,Sydney
+14,2027-06-04,Fri,20:00,Canterbury-Bankstown Bulldogs,Sydney Roosters,Accor Stadium,Sydney
+14,2027-06-05,Sat,17:30,Penrith Panthers,New Zealand Warriors,Helloworld Stadium,Sydney
+14,2027-06-05,Sat,19:35,Brisbane Broncos,Gold Coast Titans,Suncorp Stadium,Brisbane
+14,2027-06-06,Sun,14:00,Melbourne Storm,Canberra Raiders,AAMI Park,Melbourne
+14,2027-06-06,Sun,16:05,Dolphins,North Queensland Cowboys,Suncorp Stadium,Brisbane
+15,2027-06-10,Thu,17:50,Perth Bears,South Sydney Rabbitohs,HBF Park,Perth
+15,2027-06-11,Fri,20:00,Dolphins,Manly-Warringah Sea Eagles,Suncorp Stadium,Brisbane
+15,2027-06-12,Sat,17:30,Cronulla-Sutherland Sharks,Newcastle Knights,Ocean Protect Stadium,Sydney
+15,2027-06-12,Sat,19:35,Penrith Panthers,Wests Tigers,Helloworld Stadium,Sydney
+15,2027-06-13,Sun,18:05,St George Illawarra Dragons,New Zealand Warriors,Eden Park,Auckland
+15,2027-06-14,Mon,16:05,Canterbury-Bankstown Bulldogs,Parramatta Eels,Accor Stadium,Sydney
+16,2027-06-18,Fri,20:00,Canberra Raiders,Manly-Warringah Sea Eagles,GIO Stadium,Canberra
+16,2027-06-19,Sat,17:00,New Zealand Warriors,Perth Bears,Go Media Stadium,Auckland
+16,2027-06-19,Sat,17:30,North Queensland Cowboys,Cronulla-Sutherland Sharks,Queensland Country Bank Stadium,Townsville
+16,2027-06-19,Sat,19:35,Sydney Roosters,Melbourne Storm,Allianz Stadium,Sydney
+16,2027-06-20,Sun,14:00,Gold Coast Titans,Penrith Panthers,Cbus Super Stadium,Gold Coast
+16,2027-06-20,Sun,16:05,South Sydney Rabbitohs,Brisbane Broncos,Accor Stadium,Sydney
+16,2027-06-20,Sun,18:15,Parramatta Eels,Dolphins,CommBank Stadium,Sydney
+17,2027-06-24,Thu,19:50,Newcastle Knights,Perth Bears,McDonald Jones Stadium,Newcastle
+17,2027-06-25,Fri,20:00,New Zealand Warriors,Melbourne Storm,Go Media Stadium,Auckland
+17,2027-06-25,Fri,20:00,Wests Tigers,North Queensland Cowboys,Campbelltown Sports Stadium,Sydney
+17,2027-06-26,Sat,15:00,Gold Coast Titans,Dolphins,Cbus Super Stadium,Gold Coast
+17,2027-06-26,Sat,17:30,St George Illawarra Dragons,Canterbury-Bankstown Bulldogs,St George Venues Jubilee Stadium,Sydney
+17,2027-06-26,Sat,19:35,Manly-Warringah Sea Eagles,South Sydney Rabbitohs,4 Pines Park,Sydney
+17,2027-06-27,Sun,14:00,Canberra Raiders,Brisbane Broncos,GIO Stadium,Canberra
+17,2027-06-27,Sun,16:05,Penrith Panthers,Sydney Roosters,Helloworld Stadium,Sydney
+18,2027-07-02,Fri,18:00,Parramatta Eels,New Zealand Warriors,CommBank Stadium,Sydney
+18,2027-07-02,Fri,20:00,South Sydney Rabbitohs,Newcastle Knights,Accor Stadium,Sydney
+18,2027-07-03,Sat,17:30,Cronulla-Sutherland Sharks,Sydney Roosters,Ocean Protect Stadium,Sydney
+18,2027-07-03,Sat,19:35,North Queensland Cowboys,St George Illawarra Dragons,Queensland Country Bank Stadium,Townsville
+18,2027-07-04,Sun,16:05,Canterbury-Bankstown Bulldogs,Wests Tigers,Accor Stadium,Sydney
+19,2027-07-09,Fri,20:00,Melbourne Storm,North Queensland Cowboys,AAMI Park,Melbourne
+19,2027-07-10,Sat,15:00,Canberra Raiders,St George Illawarra Dragons,GIO Stadium,Canberra
+19,2027-07-10,Sat,17:30,Cronulla-Sutherland Sharks,Penrith Panthers,Ocean Protect Stadium,Sydney
+19,2027-07-10,Sat,19:35,Brisbane Broncos,New Zealand Warriors,Suncorp Stadium,Brisbane
+19,2027-07-11,Sun,14:00,Gold Coast Titans,Newcastle Knights,Cbus Super Stadium,Gold Coast
+19,2027-07-11,Sun,16:05,Manly-Warringah Sea Eagles,Parramatta Eels,4 Pines Park,Sydney
+19,2027-07-11,Sun,16:15,Perth Bears,Dolphins,HBF Park,Perth
+20,2027-07-15,Thu,19:50,Melbourne Storm,Canterbury-Bankstown Bulldogs,AAMI Park,Melbourne
+20,2027-07-16,Fri,20:00,Penrith Panthers,South Sydney Rabbitohs,Helloworld Stadium,Sydney
+20,2027-07-17,Sat,15:00,Sydney Roosters,Manly-Warringah Sea Eagles,Allianz Stadium,Sydney
+20,2027-07-17,Sat,17:30,Dolphins,Canberra Raiders,Suncorp Stadium,Brisbane
+20,2027-07-17,Sat,17:35,Perth Bears,Brisbane Broncos,HBF Park,Perth
+20,2027-07-18,Sun,14:00,Wests Tigers,Gold Coast Titans,Campbelltown Sports Stadium,Sydney
+20,2027-07-18,Sun,16:05,Newcastle Knights,Cronulla-Sutherland Sharks,McDonald Jones Stadium,Newcastle
+21,2027-07-22,Thu,19:50,South Sydney Rabbitohs,Parramatta Eels,Accor Stadium,Sydney
+21,2027-07-23,Fri,20:00,Manly-Warringah Sea Eagles,Dolphins,One New Zealand Stadium,Christchurch
+21,2027-07-23,Fri,20:00,Penrith Panthers,Melbourne Storm,Helloworld Stadium,Sydney
+21,2027-07-24,Sat,17:00,New Zealand Warriors,Newcastle Knights,One New Zealand Stadium,Christchurch
+21,2027-07-24,Sat,17:30,Gold Coast Titans,North Queensland Cowboys,Cbus Super Stadium,Gold Coast
+21,2027-07-24,Sat,19:35,Canterbury-Bankstown Bulldogs,Canberra Raiders,Accor Stadium,Sydney
+21,2027-07-25,Sun,14:00,Brisbane Broncos,St George Illawarra Dragons,Suncorp Stadium,Brisbane
+21,2027-07-25,Sun,16:05,Sydney Roosters,Wests Tigers,Allianz Stadium,Sydney
+22,2027-07-29,Thu,19:50,Gold Coast Titans,Melbourne Storm,Cbus Super Stadium,Gold Coast
+22,2027-07-30,Fri,20:00,New Zealand Warriors,Manly-Warringah Sea Eagles,Go Media Stadium,Auckland
+22,2027-07-30,Fri,20:00,South Sydney Rabbitohs,Canterbury-Bankstown Bulldogs,Accor Stadium,Sydney
+22,2027-07-31,Sat,15:00,Cronulla-Sutherland Sharks,Perth Bears,Ocean Protect Stadium,Sydney
+22,2027-07-31,Sat,17:30,Dolphins,Sydney Roosters,Suncorp Stadium,Brisbane
+22,2027-07-31,Sat,19:35,North Queensland Cowboys,Brisbane Broncos,Queensland Country Bank Stadium,Townsville
+22,2027-08-01,Sun,14:00,St George Illawarra Dragons,Newcastle Knights,WIN Stadium,Wollongong
+22,2027-08-01,Sun,16:05,Parramatta Eels,Wests Tigers,CommBank Stadium,Sydney
+23,2027-08-05,Thu,19:50,Canterbury-Bankstown Bulldogs,Penrith Panthers,Accor Stadium,Sydney
+23,2027-08-06,Fri,18:00,Cronulla-Sutherland Sharks,South Sydney Rabbitohs,Ocean Protect Stadium,Sydney
+23,2027-08-06,Fri,20:00,Melbourne Storm,Brisbane Broncos,AAMI Park,Melbourne
+23,2027-08-07,Sat,15:00,Gold Coast Titans,Perth Bears,Cbus Super Stadium,Gold Coast
+23,2027-08-07,Sat,17:30,Canberra Raiders,New Zealand Warriors,GIO Stadium,Canberra
+23,2027-08-07,Sat,19:35,Parramatta Eels,Sydney Roosters,CommBank Stadium,Sydney
+23,2027-08-08,Sun,14:00,Wests Tigers,St George Illawarra Dragons,CommBank Stadium,Sydney
+23,2027-08-08,Sun,16:05,Manly-Warringah Sea Eagles,North Queensland Cowboys,4 Pines Park,Sydney
+24,2027-08-12,Thu,19:50,South Sydney Rabbitohs,Melbourne Storm,Accor Stadium,Sydney
+24,2027-08-13,Fri,20:00,New Zealand Warriors,Parramatta Eels,Go Media Stadium,Auckland
+24,2027-08-13,Fri,20:00,Brisbane Broncos,Penrith Panthers,Suncorp Stadium,Brisbane
+24,2027-08-14,Sat,15:00,North Queensland Cowboys,Dolphins,Queensland Country Bank Stadium,Townsville
+24,2027-08-14,Sat,17:30,Sydney Roosters,Canberra Raiders,Allianz Stadium,Sydney
+24,2027-08-14,Sat,17:35,Perth Bears,Canterbury-Bankstown Bulldogs,HBF Park,Perth
+24,2027-08-15,Sun,14:00,Newcastle Knights,Gold Coast Titans,McDonald Jones Stadium,Newcastle
+24,2027-08-15,Sun,16:05,St George Illawarra Dragons,Cronulla-Sutherland Sharks,St George Venues Jubilee Stadium,Sydney
+24,2027-08-15,Sun,18:15,Wests Tigers,Manly-Warringah Sea Eagles,Campbelltown Sports Stadium,Sydney
+25,2027-08-19,Thu,19:50,Penrith Panthers,Parramatta Eels,Helloworld Stadium,Sydney
+25,2027-08-20,Fri,18:00,Canberra Raiders,North Queensland Cowboys,GIO Stadium,Canberra
+25,2027-08-20,Fri,20:00,Sydney Roosters,Canterbury-Bankstown Bulldogs,Allianz Stadium,Sydney
+25,2027-08-21,Sat,15:00,South Sydney Rabbitohs,Wests Tigers,Allianz Stadium,Sydney
+25,2027-08-21,Sat,17:30,Brisbane Broncos,Dolphins,Suncorp Stadium,Brisbane
+25,2027-08-21,Sat,19:35,Melbourne Storm,Cronulla-Sutherland Sharks,AAMI Park,Melbourne
+25,2027-08-22,Sun,14:00,Gold Coast Titans,New Zealand Warriors,Cbus Super Stadium,Gold Coast
+25,2027-08-22,Sun,16:05,Newcastle Knights,Manly-Warringah Sea Eagles,McDonald Jones Stadium,Newcastle
+25,2027-08-22,Sun,16:15,Perth Bears,St George Illawarra Dragons,HBF Park,Perth
+26,2027-08-26,Thu,19:50,Cronulla-Sutherland Sharks,Canberra Raiders,Ocean Protect Stadium,Sydney
+26,2027-08-27,Fri,20:00,New Zealand Warriors,South Sydney Rabbitohs,Go Media Stadium,Auckland
+26,2027-08-27,Fri,20:00,Canterbury-Bankstown Bulldogs,Brisbane Broncos,Accor Stadium,Sydney
+26,2027-08-28,Sat,15:00,St George Illawarra Dragons,Gold Coast Titans,St George Venues Jubilee Stadium,Sydney
+26,2027-08-28,Sat,17:30,North Queensland Cowboys,Sydney Roosters,Queensland Country Bank Stadium,Townsville
+26,2027-08-28,Sat,19:35,Wests Tigers,Penrith Panthers,CommBank Stadium,Sydney
+26,2027-08-29,Sun,14:00,Parramatta Eels,Newcastle Knights,CommBank Stadium,Sydney
+26,2027-08-29,Sun,16:05,Dolphins,Perth Bears,Suncorp Stadium,Brisbane
+26,2027-08-29,Sun,18:15,Manly-Warringah Sea Eagles,Melbourne Storm,4 Pines Park,Sydney
+27,2027-09-02,Thu,19:50,Canterbury-Bankstown Bulldogs,St George Illawarra Dragons,Accor Stadium,Sydney
+27,2027-09-03,Fri,18:00,Canberra Raiders,Wests Tigers,GIO Stadium,Canberra
+27,2027-09-03,Fri,20:00,Sydney Roosters,South Sydney Rabbitohs,Allianz Stadium,Sydney
+27,2027-09-04,Sat,15:00,Newcastle Knights,North Queensland Cowboys,McDonald Jones Stadium,Newcastle
+27,2027-09-04,Sat,17:30,Cronulla-Sutherland Sharks,New Zealand Warriors,Ocean Protect Stadium,Sydney
+27,2027-09-04,Sat,19:35,Manly-Warringah Sea Eagles,Brisbane Broncos,4 Pines Park,Sydney
+27,2027-09-05,Sun,14:00,Penrith Panthers,Perth Bears,Helloworld Stadium,Sydney
+27,2027-09-05,Sun,16:05,Parramatta Eels,Melbourne Storm,CommBank Stadium,Sydney
+27,2027-09-05,Sun,18:15,Dolphins,Gold Coast Titans,Suncorp Stadium,Brisbane

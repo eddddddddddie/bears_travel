@@ -1,0 +1,19 @@
+team_id,club,games,home,home_at_base,games_away_from_base,longest_away_run,min_nights_between,trips,two_game_trips,flights,km,travel_hours
+north_qld,North Queensland Cowboys,24,12,12,12,2,5,12,0,26,42850,120.63
+warriors,New Zealand Warriors,24,12,10,13,2,5,10,3,23,46805,120.31
+melbourne,Melbourne Storm,24,12,11,13,2,5,9,4,21,49220,119.47
+perth_bears,Perth Bears,24,12,11,13,2,5,7,6,18,53396,118.45
+gold_coast,Gold Coast Titans,24,12,11,13,2,5,8,5,18,41583,105.23
+dolphins,Dolphins,24,12,11,11,3,5,9,2,19,30137,89.69
+wests_tigers,Wests Tigers,24,12,10,8,2,5,4,3,11,40680,84.229
+canberra,Canberra Raiders,24,12,11,13,2,5,7,4,20,17474,73.588
+parramatta,Parramatta Eels,24,12,11,6,2,5,5,1,9,34450,73.092
+brisbane,Brisbane Broncos,24,12,12,10,2,6,7,3,14,21377,67.755
+newcastle,Newcastle Knights,24,12,12,12,2,5,8,4,13,13868,64.304
+cronulla,Cronulla-Sutherland Sharks,24,12,11,9,2,5,8,1,15,14540,61.579
+st_george_illawarra,St George Illawarra Dragons,24,12,6,11,3,5,7,3,11,18010,59.485
+manly,Manly-Warringah Sea Eagles,24,12,11,10,3,6,6,4,13,16744,59.098
+canterbury,Canterbury-Bankstown Bulldogs,24,12,11,6,3,5,6,0,12,21441,58.84
+sydney_roosters,Sydney Roosters,24,12,10,10,2,5,7,2,13,14602,56.847
+penrith,Penrith Panthers,24,12,10,11,3,5,7,2,12,12939,56.729
+south_sydney,South Sydney Rabbitohs,24,12,11,7,2,5,6,1,12,15726,51.653
