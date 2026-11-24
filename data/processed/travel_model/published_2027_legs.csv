@@ -1,0 +1,21 @@
+trip,date,day,from,to,mode,route,carrier,flights,km,hours
+1,2027-03-20,Sat,Perth,"Campbelltown Sports Stadium, Sydney",Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+1,2027-03-22,Mon,"Campbelltown Sports Stadium, Sydney","St George Venues Jubilee Stadium, Sydney",Road,Road,,0,30.422,0.9346
+1,2027-03-29,Mon,"St George Venues Jubilee Stadium, Sydney",Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+2,2027-04-17,Sat,Perth,"4 Pines Park, Sydney",Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+2,2027-04-19,Mon,"4 Pines Park, Sydney","Accor Stadium, Sydney",Road,Road,,0,20.601,0.7943
+2,2027-04-27,Tue,"Accor Stadium, Sydney",Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+3,2027-05-07,Fri,Perth,"GIO Stadium, Canberra",Flight,Perth to Canberra,Qantas,1,3084.9,6.262
+3,2027-05-09,Sun,"GIO Stadium, Canberra","Suncorp Stadium, Brisbane",Flight,Direct flight,,1,941.59,3.6483
+3,2027-05-16,Sun,"Suncorp Stadium, Brisbane",Perth,Flight,Brisbane to Perth,Qantas,1,3607.6,7.8052
+4,2027-05-29,Sat,Perth,"Polytec Stadium, Gosford",Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+4,2027-05-31,Mon,"Polytec Stadium, Gosford",Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194
+5,2027-06-16,Wed,Perth,"Go Media Stadium, Auckland",Flight,Perth to Auckland,Qantas,1,5336.5,9.008
+5,2027-06-20,Sun,"Go Media Stadium, Auckland","McDonald Jones Stadium, Newcastle",Flight,Direct flight,,1,2145.7,5.6554
+5,2027-06-25,Fri,"McDonald Jones Stadium, Newcastle",Perth,Flight,Newcastle to Perth,QantasLink,1,3353.7,7.4319
+6,2027-07-30,Fri,Perth,"Ocean Protect Stadium, Sydney",Flight,Perth to Sydney,Qantas,1,3277.2,6.4966
+6,2027-08-01,Sun,"Ocean Protect Stadium, Sydney","Cbus Super Stadium, Gold Coast",Flight,Direct flight,,1,696.91,3.3499
+6,2027-08-08,Sun,"Cbus Super Stadium, Gold Coast",Perth,Flight,Gold Coast to Perth,Jetstar,1,3619.3,7.8225
+7,2027-08-28,Sat,Perth,"Suncorp Stadium, Brisbane",Flight,Perth to Brisbane,Qantas,1,3607.6,6.8995
+7,2027-08-30,Mon,"Suncorp Stadium, Brisbane","Helloworld Stadium, Sydney",Flight,Direct flight,,1,733.41,3.5785
+7,2027-09-06,Mon,"Helloworld Stadium, Sydney",Perth,Flight,Sydney to Perth,Qantas,1,3277.2,7.3194

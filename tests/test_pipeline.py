@@ -18,10 +18,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 import config  # noqa: E402
 import build_dataset  # noqa: E402
 import elo  # noqa: E402
+import fetch_draw  # noqa: E402
 import fetch_lines  # noqa: E402
 import draw_2027  # noqa: E402
 import fixture_2027  # noqa: E402
 import flights  # noqa: E402
+import published_2027  # noqa: E402
 import road_trips  # noqa: E402
 import scrape_rlp  # noqa: E402
 import travel_model  # noqa: E402
@@ -159,7 +161,7 @@ def test_site_tables():
     # config.ROOT, not PROCESSED_DIR: test_pipeline points PROCESSED_DIR at a temp directory
     csv_dir = config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME
     for name in (*travel_model.SITE_TABLES, *flights.SITE_TABLES, *road_trips.SITE_TABLES, *fixture_2027.SITE_TABLES,
-                 *draw_2027.SITE_TABLES):
+                 *draw_2027.SITE_TABLES, *published_2027.SITE_TABLES):
         json_path, csv_path = travel_model.SITE_DATA_DIR / f"{name}.json", csv_dir / f"{name}.csv"
         assert json_path.exists() and csv_path.exists(), f"{name}: missing {json_path.name} or {csv_path.name}"
         records = json.loads(json_path.read_text(encoding="utf-8"))
@@ -252,6 +254,38 @@ def test_perth_flights():
     assert t2.at["warriors", "perth_bears"] == flights.PENALTY_H and t2.at["perth_bears", "warriors"] < 12
 
 
+def test_published_draw():
+    """The published 2027 draw (reference/nrl_draw_2027.csv): feed parsing, names, flying days and impact."""
+    payload = {"fixtures": [
+        {"type": "Match", "venue": "HBF Park", "venueCity": "Perth", "matchCentreUrl": "/draw/x/",
+         "homeTeam": {"nickName": "Bears"}, "awayTeam": {"nickName": "Raiders"},
+         "clock": {"kickOffTimeLong": "2027-03-13T06:30:00Z"}},
+        {"type": "Bye", "teams": []}]}
+    rows = fetch_draw.parse_round(payload, 2)
+    assert rows == [{"round": 2, "kickoff_utc": "2027-03-13T06:30:00Z", "home": "Bears", "away": "Raiders",
+                     "venue": "HBF Park", "venue_city": "Perth", "match_centre_url": "https://www.nrl.com/draw/x/"}]
+
+    ref = lambda name: pd.read_csv(config.REF_DIR / name)
+    effects = pd.read_csv(config.ROOT / "data" / "processed" / travel_model.OUT_DIR_NAME / "travel_effects.csv")
+    costs = effects[(effects["model"] == "travel_cost") & (effects["design"] == "bands")].set_index("term")["estimate"]
+    games, bears, legs, clubs, summary = published_2027.build(ref("nrl_draw_2027.csv"), ref("teams.csv"),
+                                                               ref("venues.csv"), costs)
+    assert len(games) == 216 and (clubs["games"] == 24).all()
+    r = bears.set_index("round")
+    assert list(r.index[r["home_away"] == "Bye"]) == [14, 18, 21]
+    assert (r["home_away"] == "Home").sum() == 11 and (r["home_away"] == "Neutral").sum() == 1   # Magic Round
+    assert r.at[1, "kickoff_local"] == "13:05" and r.at[3, "kickoff_local"] == "18:15"   # AWST; AEDT in March
+    # Auckland is served from Perth on Mon, Wed and Sat: for a Saturday game the team leaves on Wednesday
+    out = legs[(legs["from"] == "Perth") & legs["to"].str.contains("Auckland")].iloc[0]
+    assert out["day"] == "Wed" and out["date"] == "2027-06-16"
+    # Magic Round: the Bears' 3,000 km band less Parramatta's 150 to 1,000 km band
+    assert abs(r.at[11, "travel_impact"] - (costs["band_3000_6000"] - costs["band_150_1000"])) < 1e-9
+    s = summary.set_index("scenario")
+    assert abs(s.at["published_draw", "season_travel_impact"] - bears["travel_impact"].sum()) < 1e-9
+    assert s.at["published_draw", "flights"] < s.at["published_return_home", "flights"]
+    assert published_2027.eastbound({"lon": 151.2}, {"lon": -115.2})   # Sydney to Las Vegas crosses the Pacific
+
+
 if __name__ == "__main__":
     test_pipeline()
     test_site_tables()
@@ -259,4 +293,5 @@ if __name__ == "__main__":
     test_road_trips()
     test_fixture_rules()
     test_draw_round_robin()
+    test_published_draw()
     print("All checks passed.")

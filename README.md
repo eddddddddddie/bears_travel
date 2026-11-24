@@ -74,6 +74,8 @@ python src/flights.py              # Qantas Group routes from Perth to each 2027
 python src/road_trips.py           # Bears two-game road trip plans, same output folders (needs networkx)
 python src/fixture_2027.py         # proposed Bears 2027 fixture, same output folders
 python src/draw_2027.py            # full 2027 competition draw around it, plus site/data/perth_bears_2027_draw.csv
+python src/fetch_draw.py           # published 2027 NRL draw from nrl.com to reference/nrl_draw_2027.csv (committed)
+python src/published_2027.py       # travel in the published draw, plus site/data/nrl_2027_draw.csv
 python src/site_assets.py          # map outline and link-preview image for site/ (needs matplotlib)
 ```
 
@@ -92,11 +94,13 @@ The `Makefile` wraps the same steps (`PYTHON` defaults to `python`; pass script 
 | `make roads` | `road_trips.py` |
 | `make fixture` | `fixture_2027.py` |
 | `make draw` | `draw_2027.py` |
+| `make nrldraw` | `fetch_draw.py` (network) |
+| `make published` | `published_2027.py` |
 | `make assets` | `site_assets.py` |
 | `make test` | `tests/test_pipeline.py` |
-| `make all` | `build`, `model`, `flights`, `roads`, `fixture`, `draw`, `test` |
+| `make all` | `build`, `model`, `flights`, `roads`, `fixture`, `draw`, `published`, `test` |
 
-`make all` does not scrape or download. Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
+`make all` does not scrape or download (`published` reads the committed `reference/nrl_draw_2027.csv`). Run `make scrape` and `make lines` first on a fresh clone, and again only to pick up new results or lines.
 
 `requirements.txt` pins the versions the committed outputs were produced with. GitHub Actions (`.github/workflows/test.yml`) runs `tests/test_pipeline.py` on Python 3.12 for every push and pull request. Besides the synthetic-fixture pipeline test, it checks that each `site/data/*.json` table in `travel_model.SITE_TABLES` has the same rows and columns as its CSV in `data/processed/travel_model/`, so rerun `travel_model.py` and commit both together.
 
@@ -272,12 +276,27 @@ Results from the October 2026 run:
 
 `check` asserts every rule for every club on each run. The October 2026 run gives 1,176 travel hours across the league; the Warriors (100 hours) and the Bears (95) travel most, Manly-Warringah least (36). The site's fixture chapter shows the draw by round or by club, the travel by club, and links `site/data/perth_bears_2027_draw.csv` for download. The draw ignores shared stadiums, broadcast slots and venue availability.
 
+## Published 2027 draw
+
+The NRL published the 2027 draw on 20 November 2026. `src/fetch_draw.py` reads the JSON feed behind the nrl.com draw page (one request per round) and writes `reference/nrl_draw_2027.csv`: round, kick-off in UTC, home and away nicknames, ground, city and the match centre link. The committed copy was taken on 24 November 2026 and checked against two press reports of the Bears' fixture (the 11 Perth games with kick-off times, and the round 4, 8 and 11 games); all 216 games are there and every club plays 24. Rerun `fetch_draw.py --refresh` when the NRL changes kick-off times. The Las Vegas games are listed at 05:00 local time, which looks like a placeholder.
+
+`src/published_2027.py` measures travel in that draw with the rules of the proposed fixture, at the published grounds rather than club bases. Any game more than `AT_BASE_KM` (50 km) from a club's base is travel, home or away, so the Las Vegas round, Magic Round and regional home games count; so do the Dragons' Wollongong games, since their base is Kogarah. Two such games in consecutive rounds are one trip when going on is quicker than going home. The Bears' journeys are dated: out on the latest day before the game with a Qantas Group flight on the route, on to a second ground the day after the first game, home on the first day after the last game with a flight. Each Bears game also gets a travel impact from the bands design: the band of the Bears' straight-line trip to the ground less the opponent's.
+
+Findings (November 2026):
+
+- The Bears play 11 games in Perth (round 1 at Optus Stadium, the rest at HBF Park), 12 away and one at a neutral ground (Parramatta at Magic Round, Brisbane), with byes in rounds 14, 18 and 21. Six pairs of away games fall in consecutive rounds, and with the single game at Gosford that makes seven trips.
+- Travel comes to about 118 hours, 18 flights and 57 nights away, against 95 hours, 13 flights and 36 nights in the proposed fixture and 175 hours for an average draw flying home after every game. Flying home after every game of the published draw would take about 188 hours, so the road trips save 37%. Against the proposal, the extra trip and pairs that join grounds in different cities (Canberra and Brisbane, Auckland and Newcastle, Sydney and the Gold Coast, Brisbane and Penrith) add the hours. Qantas flies Perth to Auckland on Mondays, Wednesdays and Saturdays, so the team leaves on the Wednesday for the Saturday game in Auckland.
+- The season travel impact is -11.1 points of margin (about -0.5 a game), not 0 as in the balanced projection: the Bears host one game fewer than they play away, Magic Round is a long trip for the Bears (3,600 km) and a short one for Parramatta (730 km), and Melbourne, the one opponent based under 3,000 km from Perth, visits Perth without a return game.
+- Across the league the draw has about 1,441 travel hours, against 1,176 in the draw built around the proposed fixture, which has no Las Vegas, Magic Round or regional games. North Queensland (121 hours), the Warriors (120), Melbourne (119, including Las Vegas) and the Bears (118) travel most; South Sydney least (52).
+
+The site's section 9 shows the Bears' published fixture and journeys, the full draw by round or club with a CSV download (`site/data/nrl_2027_draw.csv`) and travel by club. The proposed fixture and its draw (section 8) stay as the pre-publication comparison.
+
 ## Known gaps
 
 - **Temporary bases are unverified.** The Warriors rows use the Central Coast (May 2020 to July 2021), a south-east Queensland hub (July to October 2021) and Redcliffe (2022, to June); the start and end dates are approximate. The 2021 relocation rows for the Sydney clubs, Raiders and Knights use a single Brisbane point because club-specific bases are not recorded here. Melbourne's 2020 Sunshine Coast base is not included. The Phase 2 models exclude 2020 and 2021; confirm these from club and NRL announcements before using those seasons.
 - **Return-home assumption.** Normal NRL practice is to fly home after each away match, so `km_21d_return_home` is the default load measure. The venue-to-venue measure covers multi-week trips and hubs. Phase 2 uses the return-home measure for prior load and has not compared the two.
 - **Lines cover 2013 to mid-2024 and 2026 only.** 2009 to 2012 have head-to-head odds (`implied_win_prob`) but no line. Mid-2024 to 2025 have `team_line_open` but no closing line. Earlier rows use `margin_vs_elo` as the outcome instead.
-- **Phase 2 projection is a balanced draw.** Away games are placed at the opponent's base, so neutral venues, Magic Round, Las Vegas and any Bears home games played outside Perth are ignored. The 3,000 km band is estimated mostly from non-Perth trips, and the projection assumes Perth trips cost the same as other trips of that length. Replace the pairs with the published 2027 draw when it is released.
+- **Phase 2 projection is a balanced draw.** Away games are placed at the opponent's base, so neutral venues, Magic Round, Las Vegas and any Bears home games played outside Perth are ignored. The 3,000 km band is estimated mostly from non-Perth trips, and the projection assumes Perth trips cost the same as other trips of that length. `published_2027.py` applies the same bands to the published draw for the Bears (see Published 2027 draw); the balanced projection and its site figures are unchanged.
 - **Elo home advantage has declined.** The home advantage is fixed at its 1996 to 2012 value. From 2013 the designated home side averages about 2 points below its Elo expectation, and Elo's home expectation is about 2.2 points above the closing line, so `margin_vs_elo` carries an era trend for home and away sides. The fixed home advantage also applies at neutral venues (Magic Round, Las Vegas, relocated games). The Phase 2 models avoid both by using `team_elo_pre - opp_elo_pre` with a separate home intercept for each season.
 - **Elo in 1995 and 1997.** No results before 1995 are used, so 1995 ratings start level and are unreliable. In 1997 the ARL and Super League clubs are rated in separate pools that only meet from 1998.
 - **World Club Challenge excluded.** The 67 Super League 1997 World Club Challenge games (`EXCLUDE_ROUND_RE`) are dropped. Super League clubs, including the Perth Reds, played some of these in England mid-season, so 1997 Super League rest and rolling travel figures understate actual travel.

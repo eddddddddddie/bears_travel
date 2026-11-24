@@ -19,6 +19,11 @@ import fixtureLegs from '../site/data/fixture_2027_legs.json' with { type: 'json
 import fixtureSummary from '../site/data/fixture_2027_summary.json' with { type: 'json' };
 import draw from '../site/data/draw_2027.json' with { type: 'json' };
 import drawClubs from '../site/data/draw_2027_clubs.json' with { type: 'json' };
+import pubDraw from '../site/data/published_2027_draw.json' with { type: 'json' };
+import pubBears from '../site/data/published_2027_bears.json' with { type: 'json' };
+import pubLegs from '../site/data/published_2027_legs.json' with { type: 'json' };
+import pubClubs from '../site/data/published_2027_clubs.json' with { type: 'json' };
+import pubSummary from '../site/data/published_2027_summary.json' with { type: 'json' };
 import perthFlights from '../site/data/perth_flights_2027.json' with { type: 'json' };
 
 const POINTS = 'Points of match margin for the travelling team, against playing within 150 km of its base (negative = worse).';
@@ -154,7 +159,7 @@ export const TABLES = {
   },
   fixture_2027: {
     rows: fixture,
-    about: 'A proposed Perth Bears 2027 fixture built to cut travel time: at most two away games in a row, at least four nights between games, games Thursday to Sunday, at least one away game in New Zealand. Byes have no opponent. It is the Bears\' preferred position for negotiation, not the real draw (not yet published).',
+    about: 'A proposed Perth Bears 2027 fixture built to cut travel time: at most two away games in a row, at least four nights between games, games Thursday to Sunday, at least one away game in New Zealand. Byes have no opponent. It is the Bears\' preferred position for negotiation, not the real draw. It was built before the NRL published the 2027 draw (20 November 2026); the published_2027 tables hold the real one.',
     columns: {
       round: 'Round', week_of: 'Thursday of the round', date: 'Game date', day: 'Day', home_away: 'Home, Away or Bye', opponent: 'Opponent',
       venue: 'Venue (city of the host base)', meeting: 'Meeting with this opponent, e.g. 1 of 2', trip: 'Away trip number', nights_since_last_game: 'Nights since the previous game',
@@ -191,6 +196,53 @@ export const TABLES = {
     columns: {
       club: 'Club', games: 'Games', home: 'Home games', away: 'Away games', longest_away_run: 'Longest run of away games', longest_home_run: 'Longest run of home games',
       min_nights_between: 'Fewest nights between games', two_game_trips: 'Two-game away trips', flights: 'Flights', km: 'Season km', travel_hours: 'Season travel hours, door to door',
+    },
+  },
+  published_2027_draw: {
+    rows: pubDraw,
+    about: 'The real 2027 NRL draw as published by the NRL on 20 November 2026: every game, at its published ground, with the local date and kick-off time at the ground. Includes Las Vegas (round 1), Magic Round (round 11, all games in Brisbane) and regional games.',
+    columns: {
+      round: 'Round', date: 'Local date at the ground', day: 'Day', kickoff_local: 'Kick-off, local time at the ground (24-hour)', home: 'Home club', away: 'Away club',
+      venue: 'Ground', city: 'City of the ground',
+    },
+  },
+  published_2027_bears: {
+    rows: pubBears,
+    about: 'The Perth Bears\' rounds in the published 2027 NRL draw, with byes. Neutral is Magic Round in Brisbane (the Bears are the designated home side). Travel impact applies the model\'s distance bands (1996 to 2026) to each game: the Bears\' trip less the opponent\'s, so positive helps the Bears.',
+    columns: {
+      round: 'Round', date: 'Local date at the ground', day: 'Day', kickoff_local: 'Kick-off, local time at the ground (24-hour)', kickoff_perth: 'Kick-off, Perth time',
+      home_away: 'Home (in Perth), Away, Neutral or Bye', opponent: 'Opponent', venue: 'Ground', city: 'City of the ground',
+      nights_since_last_game: 'Nights since the previous game', trip: 'Trip number for games away from Perth', km_from_perth: 'Straight-line km from Perth to the ground',
+      opponent_km: 'Straight-line km from the opponent\'s base to the ground', bears_band_cost: 'Bears\' travel impact for the game, points (negative = worse)',
+      opponent_band_cost: 'Opponent\'s travel impact for the game, points (negative = worse for the opponent)', travel_impact: 'Net travel impact for the Bears, points (Bears less opponent; positive helps the Bears)',
+    },
+  },
+  published_2027_legs: {
+    rows: pubLegs,
+    about: 'Every Bears journey in the published 2027 draw. The team leaves Perth the day before a game, or earlier when the route does not fly that day; moves to a second ground the day after the first game; flies home on the first day after its last game with a flight. Door-to-door hours as in the proposed fixture.',
+    columns: {
+      trip: 'Trip number', date: 'Date', day: 'Day', from: 'From', to: 'To', mode: 'Flight or Road',
+      route: 'Airports flown through for journeys to or from Perth; Direct flight or Road otherwise', carrier: 'Airline for journeys to or from Perth',
+      flights: 'Flights on the journey', km: 'km', hours: 'Door-to-door hours',
+    },
+  },
+  published_2027_clubs: {
+    rows: pubClubs,
+    about: 'Each club\'s travel in the published 2027 NRL draw: every game more than 50 km from the club\'s base counts as travel (home or away), two such games in consecutive rounds are one trip when that is quicker.',
+    columns: {
+      club: 'Club', games: 'Games', home: 'Designated home games', home_at_base: 'Home games at the club\'s base', games_away_from_base: 'Games more than 50 km from base',
+      longest_away_run: 'Longest run of designated away games', min_nights_between: 'Fewest nights between games', trips: 'Trips', two_game_trips: 'Two-game trips',
+      flights: 'Flights', km: 'Season km', travel_hours: 'Season travel hours, door to door',
+    },
+  },
+  published_2027_summary: {
+    rows: pubSummary,
+    about: 'The Bears\' season in the published 2027 draw: travel with two-game road trips, and the same grounds returning to Perth after every game. Compare with fixture_2027_summary (proposed fixture and average draw).',
+    columns: {
+      scenario: 'published_draw or published_return_home', label: 'Readable scenario', travel_hours: 'Season travel hours', km: 'Season km', flights: 'Flights',
+      trips: 'Trips', two_game_trips: 'Two-game trips', nights_away: 'Nights away from Perth', games: 'Games', home_in_perth: 'Games in Perth', away: 'Away games',
+      neutral: 'Games at a neutral ground', bye_rounds: 'Bye rounds', season_travel_impact: 'Season total travel impact on margin, points (0 in a balanced draw)',
+      impact_per_away_game: 'Bears\' average travel impact per game away from Perth, points',
     },
   },
 };

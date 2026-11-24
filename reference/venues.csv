@@ -6,10 +6,10 @@ stadium_australia,ANZ|ANZ Stadium,2004,2099,Stadium Australia,Sydney,-33.8471,15
 sfs,Allianz|Allianz Stadium|SFS|Sydney Football Stadium|Aussie Stadium|Aussie,1995,2099,Sydney Football Stadium,Sydney,-33.8891,151.2247,Australia/Sydney
 scg,SCG|Sydney Cricket Ground,1995,2099,Sydney Cricket Ground,Sydney,-33.8915,151.2249,Australia/Sydney
 parramatta,CommBank|CommBank Stadium|Bankwest|Bankwest Stadium|Parramatta|Parramatta Stadium|Pirtek|Pirtek Stadium,1995,2099,Western Sydney Stadium,Sydney,-33.8075,151.0035,Australia/Sydney
-penrith,BlueBet|BlueBet Stadium|Penrith|Penrith Stadium|Panthers Stadium|Pepper|Pepper Stadium|Sportingbet|CUA|CUA Stadium|Centrebet|Centrebet Stadium|Penrith Park|McGrath Found.|Penrith Football Stadium,1995,2099,Penrith Stadium,Sydney,-33.7537,150.6970,Australia/Sydney
+penrith,Helloworld|Helloworld Stadium|BlueBet|BlueBet Stadium|Penrith|Penrith Stadium|Panthers Stadium|Pepper|Pepper Stadium|Sportingbet|CUA|CUA Stadium|Centrebet|Centrebet Stadium|Penrith Park|McGrath Found.|Penrith Football Stadium,1995,2099,Penrith Stadium,Sydney,-33.7537,150.6970,Australia/Sydney
 brookvale,4 Pines|4 Pines Park|Lottoland|Brookvale|Brookvale Oval,1995,2099,Brookvale Oval,Sydney,-33.7676,151.2648,Australia/Sydney
 shark_park,Ocean Protect|Ocean Protect Stadium|PointsBet|PointsBet Stadium|Southern Cross|Southern Cross Group|Shark Park|Endeavour Field|Toyota Park|Toyota|Remondis|Sharks Stadium|Toyota Stadium|Caltex|Remondis Stadium|Shark Stadium|Sharks,1995,2099,Shark Park,Sydney,-34.0445,151.1342,Australia/Sydney
-kogarah,Netstrata|Netstrata Jubilee|Jubilee|Jubilee Oval|WIN Jubilee|OKI Jubilee|Kogarah|Kogarah Oval|Jubilee Stadium|SGV Jubilee|UOW Jubilee,1995,2099,Jubilee Oval,Sydney,-33.9667,151.1325,Australia/Sydney
+kogarah,St George Venues Jubilee Stadium|Netstrata|Netstrata Jubilee|Jubilee|Jubilee Oval|WIN Jubilee|OKI Jubilee|Kogarah|Kogarah Oval|Jubilee Stadium|SGV Jubilee|UOW Jubilee,1995,2099,Jubilee Oval,Sydney,-33.9667,151.1325,Australia/Sydney
 wollongong,WIN|WIN Stadium|Wollongong|Steelers Stadium|Wollongong Showground|Steelers,1995,2099,WIN Stadium,Wollongong,-34.4278,150.9034,Australia/Sydney
 belmore,Belmore|Belmore Oval|Belmore Sports Ground,1995,2099,Belmore Sports Ground,Sydney,-33.9181,151.0886,Australia/Sydney
 leichhardt,Leichhardt|Leichhardt Oval,1995,2099,Leichhardt Oval,Sydney,-33.8730,151.1610,Australia/Sydney
@@ -19,7 +19,7 @@ north_sydney_oval,North Sydney|North Sydney Oval,1995,2099,North Sydney Oval,Syd
 newcastle,McD. Jones|McDonald Jones|McDonald Jones Stadium|Hunter|Hunter Stadium|EnergyAustralia|EnergyAustralia Stadium|Energy Australia|Marathon|Marathon Stadium|Newcastle|International Sports Centre|ISC|Ausgrid,1995,2099,Newcastle International Sports Centre,Newcastle,-32.9187,151.7268,Australia/Sydney
 canberra,GIO|GIO Stadium|Canberra Stadium|Canberra|Bruce|Bruce Stadium,1995,2099,Canberra Stadium,Canberra,-35.2501,149.1023,Australia/Sydney
 manuka,Manuka|Manuka Oval,1995,2099,Manuka Oval,Canberra,-35.3180,149.1350,Australia/Sydney
-townsville_qcb,Qld Country Bank|Queensland Country Bank|QCB|QCB Stadium|North Queensland Stadium|Townsville|QLD C. Bank,2020,2099,North Queensland Stadium,Townsville,-19.2593,146.8188,Australia/Brisbane
+townsville_qcb,Qld Country Bank|Queensland Country Bank|Queensland Country Bank Stadium|QCB|QCB Stadium|North Queensland Stadium|Townsville|QLD C. Bank,2020,2099,North Queensland Stadium,Townsville,-19.2593,146.8188,Australia/Brisbane
 townsville_willows,1300SMILES|1300 Smiles|Dairy Farmers|Stockland|Willows|Malanda|Willows Sports Complex|Townsville|Stockland Stadium,1995,2019,Willows Sports Complex,Townsville,-19.3197,146.7335,Australia/Brisbane
 robina,Cbus|Cbus Super|Cbus Super Stadium|Skilled|Skilled Park|Robina,2008,2099,Robina Stadium,Gold Coast,-28.0789,153.3797,Australia/Brisbane
 carrara,Carrara|Gold Coast|Metricon,1995,2099,Carrara Stadium,Gold Coast,-28.0050,153.3660,Australia/Brisbane
@@ -49,7 +49,7 @@ central_coast,Industree|Industree Group|Industree Group Stadium|polytec|Polytec 
 tamworth,Scully Park|Tamworth|Scully,1995,2099,Scully Park,Tamworth,-31.0928,150.9304,Australia/Sydney
 bathurst,Carrington|Carrington Park|Bathurst,1995,2099,Carrington Park,Bathurst,-33.4366,149.5717,Australia/Sydney
 mudgee,Glen Willow|Glen Willow Oval|Mudgee,1995,2099,Glen Willow,Mudgee,-32.5926,149.5897,Australia/Sydney
-wagga,McDonalds Park|Equex|Equex Centre|Wagga,1995,2099,McDonalds Park,Wagga Wagga,-35.1035,147.3591,Australia/Sydney
+wagga,Geohex Park|McDonalds Park|Equex|Equex Centre|Wagga,1995,2099,McDonalds Park,Wagga Wagga,-35.1035,147.3591,Australia/Sydney
 coffs,Coffs Harbour|C.ex Coffs|BCU|BCU International Stadium|Coffs|BCU Stadium,1995,2099,Coffs Harbour International Stadium,Coffs Harbour,-30.3022,153.1189,Australia/Sydney
 las_vegas,Allegiant|Allegiant Stadium|Las Vegas,2024,2099,Allegiant Stadium,Las Vegas,36.0909,-115.1833,America/Los_Angeles
 dubbo,Apex Oval|Dubbo,1995,2099,Apex Oval,Dubbo,-32.2548,148.6226,Australia/Sydney
